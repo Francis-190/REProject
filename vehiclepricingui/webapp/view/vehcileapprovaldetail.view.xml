@@ -1,0 +1,1920 @@
+<mvc:View
+    controllerName="vehiclepricingui.controller.vehcileapprovaldetail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+>
+    <f:DynamicPage
+        id="approvalDetailPage"
+        headerExpanded="true"
+        toggleHeaderOnTitleClick="true"
+        fitContent="true"
+    >
+        <!-- TITLE -->
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <VBox>
+                        <HBox alignItems="Center">
+                            <core:Icon
+                                src="sap-icon://price-tag"
+                                size="1.5rem"
+                                color="Default"
+                                class="sapUiSmallMarginEnd"
+                            />
+                            <VBox>
+                                <Title
+                                    text="Price Breakup"
+                                    level="H2"
+                                    titleStyle="H2"
+                                />
+                                <HBox
+                                    alignItems="Center"
+                                    class="sapUiTinyMarginTop"
+                                >
+                                    <core:Icon
+                                        src="sap-icon://tag"
+                                        size="0.75rem"
+                                        color="Neutral"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                    <Text text="{vm>/reference}" />
+                                </HBox>
+                            </VBox>
+                        </HBox>
+
+                        <!-- Status Badge Row -->
+                        <HBox
+                            alignItems="Center"
+                            class="sapUiSmallMarginTop"
+                        >
+                            <ObjectStatus
+                                text="{= ${vm>/submissionStatus} === 'L1_APPROVED' ? 'Pending Approval' : 'Pending Approval' }"
+                                icon="sap-icon://pending"
+                                state="Warning"
+                                inverted="false"
+                                visible="{= ${vm>/submissionStatus} !== 'APPROVED' &amp;&amp; ${vm>/submissionStatus} !== 'REJECTED' }"
+                            />
+                            <ObjectStatus
+                                text="Approved"
+                                icon="sap-icon://sys-enter-2"
+                                state="Success"
+                                inverted="true"
+                                visible="{= ${vm>/submissionStatus} === 'APPROVED' }"
+                            />
+                            <ObjectStatus
+                                text="Rejected"
+                                icon="sap-icon://sys-cancel-2"
+                                state="Error"
+                                inverted="true"
+                                visible="{= ${vm>/submissionStatus} === 'REJECTED' }"
+                            />
+                        </HBox>
+                    </VBox>
+                </f:heading>
+
+                <f:snappedHeading>
+                    <HBox alignItems="Center">
+                        <core:Icon
+                            src="sap-icon://price-tag"
+                            size="1rem"
+                            color="Default"
+                            class="sapUiTinyMarginEnd"
+                        />
+                        <Title
+                            text="Price Breakup — {vm>/reference}"
+                            level="H3"
+                            titleStyle="H3"
+                        />
+                        <core:Icon
+                            src="sap-icon://sys-enter-2"
+                            size="0.875rem"
+                            color="Positive"
+                            class="sapUiSmallMarginBegin"
+                            visible="{= ${vm>/submissionStatus} === 'APPROVED' }"
+                        />
+                        <core:Icon
+                            src="sap-icon://sys-cancel-2"
+                            size="0.875rem"
+                            color="Negative"
+                            class="sapUiSmallMarginBegin"
+                            visible="{= ${vm>/submissionStatus} === 'REJECTED' }"
+                        />
+                    </HBox>
+                </f:snappedHeading>
+
+                <f:actions>
+                    <!-- Reject / Approve: only when the user may act on this record -->
+                    <Button
+                        id="btnReject"
+                        text="Reject"
+                        icon="sap-icon://decline"
+                        type="Reject"
+                        emphasized="true"
+                        visible="{vm>/canAct}"
+                        press=".onReject"
+                    />
+                    <Button
+                        id="btnApprove"
+                        text="Approve"
+                        icon="sap-icon://accept"
+                        type="Accept"
+                        emphasized="true"
+                        visible="{vm>/canAct}"
+                        press=".onApprove"
+                    />
+
+                    <!-- APPROVED: disabled badge -->
+                    <Button
+                        text="Approved"
+                        icon="sap-icon://sys-enter-2"
+                        type="Accept"
+                        emphasized="true"
+                        enabled="false"
+                        visible="{= ${vm>/submissionStatus} === 'APPROVED' }"
+                    />
+                    <!-- REJECTED: disabled badge -->
+                    <Button
+                        text="Rejected"
+                        icon="sap-icon://sys-cancel-2"
+                        type="Reject"
+                        emphasized="true"
+                        enabled="false"
+                        visible="{= ${vm>/submissionStatus} === 'REJECTED' }"
+                    />
+
+                    <Button
+                        id="updatetoSAP"
+                        text="Update to SAP"
+                        icon="sap-icon://upload-to-cloud"
+                        class="sapUiTinyMarginTop"
+                        visible="{vm>/canUpdateSap}"
+                        enabled="{vm>/canUpdateSap}"
+                        press=".onUpdateToSAP"
+                    />
+
+                    <Button
+                        id="checkStatus"
+                        text="Check Status"
+                        icon="sap-icon://refresh"
+                        class="sapUiTinyMarginTop"
+                        visible="{vm>/canCheckStatus}"
+                        press=".onCheckStatus"
+                    />
+                </f:actions>
+
+                <!-- visible="{= ${vm>/isL2Approver} &amp;&amp; !${vm>/forceViewOnly} }" -->
+
+                <f:navigationActions>
+                    <core:Icon
+                        src="sap-icon://show"
+                        visible="{vm>/viewOnly}"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Text
+                        text="View Only"
+                        visible="{vm>/viewOnly}"
+                    />
+                    <OverflowToolbarButton
+                        icon="sap-icon://nav-back"
+                        text="Back"
+                        press=".onNavBack"
+                    />
+                </f:navigationActions>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <!-- HEADER -->
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom">
+                    <!-- Status Banners -->
+                    <MessageStrip
+                        text="This submission has been APPROVED. No further action is required."
+                        type="Success"
+                        showIcon="true"
+                        showCloseButton="false"
+                        visible="{= ${vm>/submissionStatus} === 'APPROVED' }"
+                        class="sapUiSmallMarginBottom"
+                    />
+                    <MessageStrip
+                        text="This submission has been REJECTED. No further action is required."
+                        type="Error"
+                        showIcon="true"
+                        showCloseButton="false"
+                        visible="{= ${vm>/submissionStatus} === 'REJECTED' }"
+                        class="sapUiSmallMarginBottom"
+                    />
+                    <MessageStrip
+                        text="This submission is pending your review. Please approve or reject using the buttons above."
+                        type="Warning"
+                        showIcon="true"
+                        showCloseButton="false"
+                        visible="{vm>/canAct}"
+                        class="sapUiSmallMarginBottom"
+                    />
+                    <MessageStrip
+                        text="View only: this record belongs to another approver level, so Approve / Reject is not available."
+                        type="Information"
+                        showIcon="true"
+                        showCloseButton="false"
+                        visible="{vm>/viewOnly}"
+                        class="sapUiSmallMarginBottom"
+                    />
+
+                    <!-- Meta Info Row -->
+                    <HBox
+                        wrap="NoWrap"
+                        alignItems="Start"
+                        justifyContent="SpaceBetween"
+                        width="100%"
+                        class="sapUiSmallMarginTop"
+                    >
+                        <VBox
+                            class="sapUiSmallMarginBottom"
+                            width="18%"
+                        >
+                            <Label
+                                text="Reference Number"
+                                design="Bold"
+                            />
+                            <HBox
+                                alignItems="Center"
+                                class="sapUiTinyMarginTop"
+                            >
+                                <core:Icon
+                                    src="sap-icon://tag"
+                                    size="0.75rem"
+                                    color="Neutral"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Text
+                                    text="{vm>/reference}"
+                                    wrapping="false"
+                                />
+                            </HBox>
+                        </VBox>
+
+                        <VBox
+                            class="sapUiSmallMarginBottom"
+                            width="20%"
+                        >
+                            <Label
+                                text="Submitted By"
+                                design="Bold"
+                            />
+                            <HBox
+                                alignItems="Center"
+                                class="sapUiTinyMarginTop"
+                            >
+                                <Avatar
+                                    initials="{= ${vm>/createdBy} ? ${vm>/createdBy}.charAt(0).toUpperCase() : '?' }"
+                                    displaySize="XS"
+                                    backgroundColor="Accent6"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Text
+                                    text="{vm>/createdBy}"
+                                    wrapping="false"
+                                />
+                            </HBox>
+                        </VBox>
+
+                        <VBox
+                            class="sapUiSmallMarginBottom"
+                            width="18%"
+                        >
+                            <Label
+                                text="Submitted On"
+                                design="Bold"
+                            />
+                            <HBox
+                                alignItems="Center"
+                                class="sapUiTinyMarginTop"
+                            >
+                                <core:Icon
+                                    src="sap-icon://calendar"
+                                    size="0.75rem"
+                                    color="Neutral"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Text
+                                    text="{ path: 'vm>/createdOn', formatter: '.formatDate' }"
+                                    wrapping="false"
+                                />
+                            </HBox>
+                        </VBox>
+
+                        <VBox
+                            class="sapUiSmallMarginBottom"
+                            width="26%"
+                        >
+                            <Label
+                                text="Status Changed By"
+                                design="Bold"
+                            />
+                            <HBox
+                                alignItems="Center"
+                                class="sapUiTinyMarginTop"
+                            >
+                                <Avatar
+                                    initials="{= ${vm>/statChangedBy} ? ${vm>/statChangedBy}.charAt(0).toUpperCase() : '?' }"
+                                    displaySize="XS"
+                                    backgroundColor="Accent2"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Text
+                                    text="{vm>/statChangedBy}"
+                                    wrapping="false"
+                                    tooltip="{vm>/statChangedBy}"
+                                    width="calc(100% - 2rem)"
+                                />
+                            </HBox>
+                        </VBox>
+
+                        <VBox
+                            class="sapUiSmallMarginBottom"
+                            width="18%"
+                        >
+                            <Label
+                                text="Status Changed On"
+                                design="Bold"
+                            />
+                            <HBox
+                                alignItems="Center"
+                                class="sapUiTinyMarginTop"
+                            >
+                                <core:Icon
+                                    src="sap-icon://history"
+                                    size="0.75rem"
+                                    color="Neutral"
+                                    class="sapUiTinyMarginEnd"
+                                />
+                                <Text
+                                    text="{ path: 'vm>/statChangedOn', formatter: '.formatDate' }"
+                                    wrapping="false"
+                                />
+                            </HBox>
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <!-- CONTENT -->
+        <f:content>
+            <VBox
+                class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom"
+                height="100%"
+                fitContainer="true"
+            >
+                <OverflowToolbar>
+                    <core:Icon
+                        src="sap-icon://table-view"
+                        color="Tile"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Title
+                        text="Complete Price Breakup"
+                        level="H4"
+                    />
+                    <Text
+                        text="{= '(' + (${vm>/tableData/length} || 0) + ' rows)'}"
+                        class="sapUiTinyMarginBegin"
+                    />
+                    <ToolbarSpacer />
+                    <Button
+                        text="Export to Excel"
+                        icon="sap-icon://excel-attachment"
+                        type="Ghost"
+                        press=".onExportExcel"
+                        tooltip="Download complete price breakup as Excel file"
+                    />
+                    <Button
+                        text="Revert"
+                        icon="sap-icon://media-reverse"
+                        type="Ghost"
+                        visible="{vm>/canRevert}"
+                        enabled="{vm>/canRevert}"
+                        press=".onRevert"
+                        tooltip="Revert the changes"
+                    />
+                </OverflowToolbar>
+
+                <ScrollContainer
+                    id="priceBreakupScrollContainer"
+                    horizontal="true"
+                    vertical="true"
+                    width="100%"
+                    height="22rem"
+                    class="sapUiTinyMarginTop"
+                >
+                    <layoutData>
+                        <FlexItemData
+                            growFactor="1"
+                            baseSize="0"
+                        />
+                    </layoutData>
+                    <Table
+                        id="priceBreakupTable"
+                        class="priceBreakupTable"
+                        inset="false"
+                        mode="MultiSelect"
+                        alternateRowColors="true"
+                        sticky="ColumnHeaders"
+                        fixedLayout="true"
+                        busyIndicatorDelay="0"
+                        items="{vm>/tableData}"
+                        noDataText="No pricing data available for this submission"
+                    >
+                        <columns>
+                            <Column
+                                width="12rem"
+                                importance="High"
+                            >
+                                <Text
+                                    text="Model / MTO / MTS"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                importance="High"
+                            >
+                                <Text
+                                    text="Model Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="7rem"
+                                importance="High"
+                            >
+                                <Text
+                                    text="Region"
+                                    wrapping="false"
+                                />
+                            </Column>
+
+                            <Column
+                                width="12rem"
+                                importance="High"
+                            >
+                                <Text
+                                    text="Region Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+
+                            <Column
+                                width="7rem"
+                                importance="High"
+                            >
+                                <Text
+                                    text="Basis"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="13rem"
+                                hAlign="End"
+                                importance="High"
+                            >
+                                <Text
+                                    text="Input Ex-Showroom"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="8rem"
+                                hAlign="End"
+                                importance="High"
+                            >
+                                <Text
+                                    text="Input NSP"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                minScreenWidth="Tablet"
+                                demandPopin="true"
+                                importance="Medium"
+                            >
+                                <Text
+                                    text="Incremental NSP"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="8rem"
+                                hAlign="End"
+                                importance="High"
+                            >
+                                <Text
+                                    text="Actual NSP"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                minScreenWidth="Tablet"
+                                demandPopin="true"
+                                importance="Medium"
+                            >
+                                <Text
+                                    text="Dealer Margin %"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="14rem"
+                                hAlign="End"
+                                minScreenWidth="Desktop"
+                                demandPopin="true"
+                                importance="Low"
+                            >
+                                <Text
+                                    text="Increment Dlr Margin"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="13rem"
+                                hAlign="End"
+                                importance="High"
+                            >
+                                <Text
+                                    text="Actual Dlr Margin"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="End"
+                                importance="High"
+                            >
+                                <Text
+                                    text="Total Dlr Margin"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="7rem"
+                                hAlign="End"
+                                minScreenWidth="Tablet"
+                                demandPopin="true"
+                                importance="Low"
+                            >
+                                <Text
+                                    text="Helmet"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="8rem"
+                                hAlign="End"
+                                minScreenWidth="Tablet"
+                                demandPopin="true"
+                                importance="Low"
+                            >
+                                <Text
+                                    text="Transport"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="9rem"
+                                hAlign="End"
+                                minScreenWidth="Tablet"
+                                demandPopin="true"
+                                importance="Low"
+                            >
+                                <Text
+                                    text="Dealer Cost"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                minScreenWidth="Desktop"
+                                demandPopin="true"
+                                importance="Low"
+                            >
+                                <Text
+                                    text="Other Expenses"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="9rem"
+                                hAlign="End"
+                                minScreenWidth="Tablet"
+                                demandPopin="true"
+                                importance="Low"
+                            >
+                                <Text
+                                    text="Bike Margin"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="8rem"
+                                hAlign="End"
+                                importance="High"
+                            >
+                                <Text
+                                    text="NDP"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="8rem"
+                                hAlign="End"
+                                minScreenWidth="Tablet"
+                                demandPopin="true"
+                                importance="Medium"
+                            >
+                                <Text
+                                    text="Basic"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="7rem"
+                                hAlign="End"
+                                minScreenWidth="Tablet"
+                                demandPopin="true"
+                                importance="Medium"
+                            >
+                                <Text
+                                    text="GST (Rs)"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="7rem"
+                                hAlign="End"
+                                minScreenWidth="Tablet"
+                                demandPopin="true"
+                                importance="Medium"
+                            >
+                                <Text
+                                    text="RTO %"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="8rem"
+                                hAlign="End"
+                                minScreenWidth="Tablet"
+                                demandPopin="true"
+                                importance="Medium"
+                            >
+                                <Text
+                                    text="RTO"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                minScreenWidth="Desktop"
+                                demandPopin="true"
+                                importance="Low"
+                            >
+                                <Text
+                                    text="RTO (With Bill)"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="8rem"
+                                hAlign="End"
+                                minScreenWidth="Tablet"
+                                demandPopin="true"
+                                importance="Medium"
+                            >
+                                <Text
+                                    text="Insurance"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="7rem"
+                                hAlign="End"
+                                minScreenWidth="Tablet"
+                                demandPopin="true"
+                                importance="Low"
+                            >
+                                <Text
+                                    text="TPA + PA"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                importance="High"
+                            >
+                                <Text
+                                    text="Total Insurance"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="10rem"
+                                hAlign="End"
+                                importance="High"
+                            >
+                                <Text
+                                    text="On Road Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="9rem"
+                                hAlign="End"
+                                minScreenWidth="Desktop"
+                                demandPopin="true"
+                                importance="Low"
+                                visible="{vm>/showMto}"
+                            >
+                                <Text
+                                    text="MTO NSP"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="Begin"
+                                minScreenWidth="Desktop"
+                                demandPopin="true"
+                                importance="Low"
+                                visible="{vm>/showMto}"
+                            >
+                                <Text
+                                    text="Refer MTS Model"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                minScreenWidth="Desktop"
+                                demandPopin="true"
+                                importance="Low"
+                            >
+                                <Text
+                                    text="MTS Ex-Showroom"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                minScreenWidth="Desktop"
+                                demandPopin="true"
+                                importance="Low"
+                                visible="{vm>/showMto}"
+                            >
+                                <Text
+                                    text="MIY Ex-Showroom"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                minScreenWidth="Desktop"
+                                demandPopin="true"
+                                importance="Low"
+                                visible="{vm>/showMto}"
+                            >
+                                <Text
+                                    text="MTO Ex-Showroom"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="14rem"
+                                hAlign="End"
+                                minScreenWidth="Desktop"
+                                demandPopin="true"
+                                importance="Low"
+                                visible="{vm>/showMto}"
+                            >
+                                <Text
+                                    text="Expected Ex-Showroom"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="10rem"
+                                hAlign="End"
+                                minScreenWidth="Desktop"
+                                demandPopin="true"
+                                importance="Low"
+                                visible="{vm>/showMto}"
+                            >
+                                <Text
+                                    text="MTO On-Road"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="End"
+                                minScreenWidth="Desktop"
+                                demandPopin="true"
+                                importance="Low"
+                                visible="{vm>/showMto}"
+                            >
+                                <Text
+                                    text="MTS On-Road (L1)"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="10rem"
+                                hAlign="End"
+                                minScreenWidth="Desktop"
+                                demandPopin="true"
+                                importance="Low"
+                                visible="{vm>/showMto}"
+                            >
+                                <Text
+                                    text="MIY On-Road"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="End"
+                                minScreenWidth="Desktop"
+                                demandPopin="true"
+                                importance="Low"
+                                visible="{vm>/showMto}"
+                            >
+                                <Text
+                                    text="Expected On-Road"
+                                    wrapping="false"
+                                />
+                            </Column>
+
+                            <!-- ───────── CSD columns ───────── -->
+                            <Column
+                                width="10rem"
+                                hAlign="End"
+                                visible="{vm>/showCsd}"
+                            >
+                                <Text
+                                    text="CSD NSP"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="End"
+                                visible="{vm>/showCsd}"
+                            >
+                                <Text
+                                    text="Basic Price (W/O)"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="9rem"
+                                hAlign="End"
+                                visible="{vm>/showCsd}"
+                            >
+                                <Text
+                                    text="CSD Disc %"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="10rem"
+                                hAlign="End"
+                                visible="{vm>/showCsd}"
+                            >
+                                <Text
+                                    text="CSD Discount"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="End"
+                                visible="{vm>/showCsd}"
+                            >
+                                <Text
+                                    text="Pre-Tax Net Disc"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="9rem"
+                                hAlign="End"
+                                visible="{vm>/showCsd}"
+                            >
+                                <Text
+                                    text="CSD GST %"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/showCsd}"
+                            >
+                                <Text
+                                    text="CSD GST Amount"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/showCsd}"
+                            >
+                                <Text
+                                    text="CSD Ex-Showroom"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="10rem"
+                                hAlign="End"
+                                visible="{vm>/showCsd}"
+                            >
+                                <Text
+                                    text="Incidental %"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="End"
+                                visible="{vm>/showCsd}"
+                            >
+                                <Text
+                                    text="Incidental Charges"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/showCsd}"
+                            >
+                                <Text
+                                    text="Final CSD Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="10rem"
+                                hAlign="End"
+                                visible="{vm>/showCsd}"
+                            >
+                                <Text
+                                    text="CSD On-Road"
+                                    wrapping="false"
+                                />
+                            </Column>
+
+                            <!-- ───────── GeM columns ───────── -->
+                            <Column
+                                width="9rem"
+                                hAlign="End"
+                                visible="{vm>/showGem}"
+                            >
+                                <Text
+                                    text="GeM Disc %"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/showGem}"
+                            >
+                                <Text
+                                    text="GeM Disc Amount"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="9rem"
+                                hAlign="End"
+                                visible="{vm>/showGem}"
+                            >
+                                <Text
+                                    text="Sub Total"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="9rem"
+                                hAlign="End"
+                                visible="{vm>/showGem}"
+                            >
+                                <Text
+                                    text="GeM GST %"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="9rem"
+                                hAlign="End"
+                                visible="{vm>/showGem}"
+                            >
+                                <Text
+                                    text="Helmet Cost"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="9rem"
+                                hAlign="End"
+                                visible="{vm>/showGem}"
+                            >
+                                <Text
+                                    text="GeM Basic"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/showGem}"
+                            >
+                                <Text
+                                    text="GeM GST Amount"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/showGem}"
+                            >
+                                <Text
+                                    text="Final GeM Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/0}"
+                            >
+                                <Text
+                                    text="Part 1 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/0}"
+                            >
+                                <Text
+                                    text="Part 1 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/1}"
+                            >
+                                <Text
+                                    text="Part 2 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/1}"
+                            >
+                                <Text
+                                    text="Part 2 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/2}"
+                            >
+                                <Text
+                                    text="Part 3 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/2}"
+                            >
+                                <Text
+                                    text="Part 3 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/3}"
+                            >
+                                <Text
+                                    text="Part 4 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/3}"
+                            >
+                                <Text
+                                    text="Part 4 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/4}"
+                            >
+                                <Text
+                                    text="Part 5 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/4}"
+                            >
+                                <Text
+                                    text="Part 5 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/5}"
+                            >
+                                <Text
+                                    text="Part 6 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/5}"
+                            >
+                                <Text
+                                    text="Part 6 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/6}"
+                            >
+                                <Text
+                                    text="Part 7 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/6}"
+                            >
+                                <Text
+                                    text="Part 7 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/7}"
+                            >
+                                <Text
+                                    text="Part 8 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/7}"
+                            >
+                                <Text
+                                    text="Part 8 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/8}"
+                            >
+                                <Text
+                                    text="Part 9 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/8}"
+                            >
+                                <Text
+                                    text="Part 9 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/9}"
+                            >
+                                <Text
+                                    text="Part 10 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/9}"
+                            >
+                                <Text
+                                    text="Part 10 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/10}"
+                            >
+                                <Text
+                                    text="Part 11 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/10}"
+                            >
+                                <Text
+                                    text="Part 11 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/11}"
+                            >
+                                <Text
+                                    text="Part 12 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/11}"
+                            >
+                                <Text
+                                    text="Part 12 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/12}"
+                            >
+                                <Text
+                                    text="Part 13 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/12}"
+                            >
+                                <Text
+                                    text="Part 13 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/13}"
+                            >
+                                <Text
+                                    text="Part 14 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/13}"
+                            >
+                                <Text
+                                    text="Part 14 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/14}"
+                            >
+                                <Text
+                                    text="Part 15 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/14}"
+                            >
+                                <Text
+                                    text="Part 15 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/15}"
+                            >
+                                <Text
+                                    text="Part 16 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/15}"
+                            >
+                                <Text
+                                    text="Part 16 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/16}"
+                            >
+                                <Text
+                                    text="Part 17 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/16}"
+                            >
+                                <Text
+                                    text="Part 17 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/17}"
+                            >
+                                <Text
+                                    text="Part 18 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/17}"
+                            >
+                                <Text
+                                    text="Part 18 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/18}"
+                            >
+                                <Text
+                                    text="Part 19 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/18}"
+                            >
+                                <Text
+                                    text="Part 19 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="12rem"
+                                hAlign="Center"
+                                visible="{vm>/partVisible/19}"
+                            >
+                                <Text
+                                    text="Part 20 Name"
+                                    wrapping="false"
+                                />
+                            </Column>
+                            <Column
+                                width="11rem"
+                                hAlign="End"
+                                visible="{vm>/partVisible/19}"
+                            >
+                                <Text
+                                    text="Part 20 Price"
+                                    wrapping="false"
+                                />
+                            </Column>
+                        </columns>
+
+                        <items>
+                            <ColumnListItem
+                                type="Inactive"
+                                highlight="{= ${vm>OnRoad} ? 'Success' : 'None' }"
+                            >
+                                <cells>
+                                    <ObjectIdentifier
+                                        title="{vm>Model}"
+                                        text="{vm>MtoMts}"
+                                    />
+                                    <ObjectIdentifier
+                                        title="{vm>ModelName}"
+                                        text="{vm>MtoMts}"
+                                    />
+                                    <ObjectStatus
+                                        text="{vm>Region}"
+                                        state="None"
+                                        icon="sap-icon://map"
+                                    />
+                                    <ObjectStatus
+                                        text="{vm>RegionName}"
+                                        state="None"
+                                        icon="sap-icon://map"
+                                    />
+                                    <ObjectStatus
+                                        text="{vm>Basis}"
+                                        state="Information"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>InputExShowroom', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>InputNsp', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>IncrementalNsp', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>ActualNsp', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="Success"
+                                        emphasized="True"
+                                    />
+                                    <ObjectStatus
+                                        text="{ path: 'vm>DealerMargin', formatter: '.formatPercent' }"
+                                        state="Warning"
+                                        icon="sap-icon://employee"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>IncrementDlr', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>ActualDealerMargin', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>TotalDealerMargin', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="Warning"
+                                        emphasized="True"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Helmet', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Transportation', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>DealerCost', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>OtherExpenses', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>BikeMargin', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Ndp', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="Success"
+                                        emphasized="True"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Basic', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Gst', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectStatus
+                                        text="{ path: 'vm>RtoPerc', formatter: '.formatPercent' }"
+                                        state="None"
+                                        icon="sap-icon://documents"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Rto', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>RtoWithBill', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Insurance', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>TpaPa', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>TotalInsurance', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="Warning"
+                                        emphasized="True"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>OnRoad', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="Success"
+                                        emphasized="True"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>MtoNsp', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectStatus
+                                        text="{vm>ReferenceMtsModel}"
+                                        state="None"
+                                        icon="sap-icon://product"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>ActualExShowroom', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>MiyExshowroom', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>MtoExShwroom', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>ExpExshowroom', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>MtoOnRoad', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="Success"
+                                        emphasized="True"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>MtsOnRoad', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>MiyOnroad', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                        emphasized="False"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>ExpOnroad', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="Warning"
+                                        emphasized="True"
+                                    />
+
+                                    <!-- CSD -->
+                                    <ObjectNumber
+                                        number="{ path: 'vm>CsdNsp', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>BasicPriceWo', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                    />
+                                    <ObjectStatus
+                                        text="{ path: 'vm>CsdDiscPerc', formatter: '.formatPercent' }"
+                                        state="None"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Csd', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>PretaxNetDisc', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                    />
+                                    <ObjectStatus
+                                        text="{ path: 'vm>CsdGstPerc', formatter: '.formatPercent' }"
+                                        state="None"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>CsdGstAmount', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>CsdExshwroom', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                    />
+                                    <ObjectStatus
+                                        text="{ path: 'vm>IncidentalPerc', formatter: '.formatPercent' }"
+                                        state="None"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>IncidentalCharges', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>FinalCsdPrice', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="Success"
+                                        emphasized="true"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>CsdOnroad', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="Success"
+                                        emphasized="true"
+                                    />
+
+                                    <!-- GeM -->
+                                    <ObjectStatus
+                                        text="{ path: 'vm>DiscPerc', formatter: '.formatPercent' }"
+                                        state="None"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>DiscAmount', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>SubTotal', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                    />
+                                    <ObjectStatus
+                                        text="{ path: 'vm>GemGstPerc', formatter: '.formatPercent' }"
+                                        state="None"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>HelmetCost', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>GemBasic', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>GemGstAmount', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                    />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>FinalGemPrice', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="Success"
+                                        emphasized="true"
+                                    />
+
+                                    <Text text="{vm>Part1}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part1Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part2}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part2Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part3}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part3Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part4}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part4Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part5}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part5Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part6}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part6Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part7}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part7Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part8}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part8Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part9}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part9Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part10}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part10Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part11}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part11Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part12}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part12Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part13}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part13Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part14}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part14Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part15}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part15Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part16}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part16Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part17}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part17Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part18}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part18Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part19}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part19Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                    <Text text="{vm>Part20}" />
+                                    <ObjectNumber
+                                        number="{ path: 'vm>Part20Price', formatter: '.formatAmount' }"
+                                        unit="Rs"
+                                        state="None"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </ScrollContainer>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

@@ -1,0 +1,83 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        id="applyOtherRegionsDialog"
+        title="Apply to Other Regions"
+        contentWidth="480px"
+        draggable="true"
+        resizable="true"
+        state="None"
+    >
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <core:Icon
+                        src="sap-icon://world"
+                        class="sapUiSmallMarginEnd"
+                    />
+                    <Title
+                        text="Apply Pricing to Other Regions"
+                        level="H5"
+                    />
+                </contentLeft>
+            </Bar>
+        </customHeader>
+
+        <VBox class="sapUiMediumMargin">
+
+            <MultiComboBox
+                id="otherRegionsMCB"
+                width="100%"
+                placeholder="Choose regions..."
+                showSelectAll="true"
+                items="{ 
+        path: 'vm>/otherRegions',
+        sorter: { path: 'Region', descending: false }
+    }"
+                selectionChange="onRegionSelectionChange"
+            >
+                <core:ListItem
+                    key="{vm>Region}"
+                    text="{vm>Region}  –  {vm>Ort01}"
+                    enabled="{vm>_enabled}"
+                />
+            </MultiComboBox>
+
+            <MessageStrip
+                id="regionLimitStrip"
+                text="You can select a maximum of 5 regions at a time."
+                type="Warning"
+                showIcon="true"
+                showCloseButton="false"
+                visible="false"
+                class="sapUiSmallMarginTop"
+            />
+            <MessageStrip
+                text="Pricing will be recalculated for each selected region using the same input (NSP or Ex-Showroom)."
+                type="Information"
+                showIcon="true"
+                showCloseButton="false"
+                class="sapUiSmallMarginTop"
+            />
+        </VBox>
+
+        <beginButton>
+            <Button
+                text="Apply"
+                type="Accept"
+                icon="sap-icon://accept"
+                press="onConfirmApplyOtherRegions"
+            />
+        </beginButton>
+
+        <endButton>
+            <Button
+                text="Cancel"
+                icon="sap-icon://decline"
+                press="onCancelApplyOtherRegions"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

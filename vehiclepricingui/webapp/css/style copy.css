@@ -1,0 +1,443 @@
+/* ================================================================
+   Vehicle Pricing UI  –  Professional SAP Fiori Style
+   ================================================================ */
+
+:root {
+  --vp-blue-1:    #0070f2;
+  --vp-blue-2:    #0064d9;
+  --vp-blue-pale: #e8f2ff;
+  --vp-dealer:    #e8f4ff;
+  --vp-pricing:   #e8f8f0;
+  --vp-rto:       #fff8e6;
+  --vp-ins:       #f3eeff;
+  --vp-gem:       #e6f9f9;
+  --vp-csd:       #fff1ec;
+  --vp-mto:       #fef3e6;
+  --vp-dealer-txt:  #0057b8;
+  --vp-pricing-txt: #1a7a46;
+  --vp-rto-txt:     #9a6500;
+  --vp-ins-txt:     #6b35c7;
+  --vp-gem-txt:     #007070;
+  --vp-csd-txt:     #c44800;
+  --vp-mto-txt:     #a05c00;
+  --vp-border:    #d9d9d9;
+  --vp-radius:    8px;
+  --vp-shadow:    0 1px 4px rgba(0,0,0,0.07);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   APPROVAL PORTAL FIXES
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Page background ───────────────────────────────────────────── */
+.reApprovalPage {
+    background: #f5f6f7;
+}
+.reApprovalPage .sapFDynamicPageHeader {
+    padding-bottom: 0.5rem !important;
+}
+
+/* ── Brand title ───────────────────────────────────────────────── */
+.reBrandTitle .sapMTitle {
+    color: #b8811f !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    letter-spacing: 0.03em;
+}
+.reBrandSub {
+    font-size: 0.68rem;
+    color: var(--sapContent_LabelColor);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+/* ── KPI Tiles — compact ───────────────────────────────────────── */
+.reKpiTile.sapMGT {
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    transition: box-shadow 0.15s, transform 0.15s;
+    position: relative;
+    overflow: hidden;
+    min-height: 0 !important;
+}
+.reKpiTile.sapMGT:hover {
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+    cursor: pointer;
+}
+/* Compact inner padding */
+.reKpiTile.sapMGT .sapMGTHdrContent {
+    padding: 0.6rem 0.75rem 0.2rem !important;
+}
+.reKpiTile.sapMGT .sapMGTContent {
+    padding: 0 0.75rem 0.6rem !important;
+}
+/* Header label — small */
+.reKpiTile.sapMGT .sapMGTHdrTxt {
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    color: #333 !important;
+    line-height: 1.2 !important;
+}
+/* Subheader */
+.reKpiTile.sapMGT .sapMGTSubHdrTxt {
+    font-size: 0.68rem !important;
+    color: #888 !important;
+    line-height: 1.2 !important;
+}
+/* Big number — smaller */
+.reKpiTile .sapMNCValue {
+    font-size: 1.75rem !important;
+    font-weight: 700 !important;
+    line-height: 1.1 !important;
+}
+.reKpiTile .sapMNCIcon {
+    font-size: 1rem !important;
+}
+/* Top accent stripe */
+.reKpiTile.sapMGT::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 6px 6px 0 0;
+}
+.reKpiNeutral.sapMGT::before { background: #888; }
+.reKpiSuccess.sapMGT::before { background: #107e3e; }
+.reKpiWarning.sapMGT::before { background: #e9730c; }
+.reKpiError.sapMGT::before   { background: #bb0000; }
+
+/* ── IconTabBar — compact, smaller icons ───────────────────────── */
+.reTabBar.sapMITB {
+    background: #fff;
+    border-radius: 6px 6px 0 0;
+    border: 1px solid #e0e0e0;
+    border-bottom: none;
+    padding: 0 0.5rem;
+}
+.reTabBar.sapMITB .sapMITBFilter {
+    padding: 0.5rem 0.9rem !important;
+}
+.reTabBar.sapMITB .sapMITBFilter .sapUiIcon {
+    font-size: 0.9rem !important;
+}
+.reTabBar.sapMITB .sapMITBText {
+    font-size: 0.78rem !important;
+    font-weight: 500;
+}
+.reTabBar.sapMITB .sapMITBFilter.sapMITBSelected {
+    border-bottom: 2px solid #b8811f !important;
+}
+.reTabBar.sapMITB .sapMITBFilter.sapMITBSelected .sapMITBText {
+    color: #b8811f !important;
+    font-weight: 600 !important;
+}
+.reTabBar.sapMITB .sapMITBFilter.sapMITBSelected .sapUiIcon {
+    color: #b8811f !important;
+}
+.reTabBar.sapMITB .sapMITBCount {
+    font-size: 0.65rem !important;
+    border-radius: 10px;
+    padding: 0 6px;
+    background: #f0f0f0;
+    color: #555;
+    min-width: 18px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* ── Table Toolbar ─────────────────────────────────────────────── */
+.reTableToolbar.sapMTB {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-bottom: 1px solid #d0d0d0;
+    border-radius: 0;
+    padding: 0 0.75rem;
+    min-height: 2.75rem !important;
+}
+.reTableToolbar .sapMTitle {
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+}
+
+/* Count badge */
+.reCountBadge .sapMText {
+    font-size: 0.72rem;
+    color: #666;
+    background: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1px 8px;
+    margin-left: 4px;
+}
+
+/* ── Table ─────────────────────────────────────────────────────── */
+.reTable.sapMList {
+    border: 1px solid #e0e0e0;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    background: #fff;
+}
+/* Column headers */
+.reTable.sapMList .sapMListTblHeaderCell,
+.reTable.sapMList .sapMListTbl thead th {
+    background: #f7f8f9 !important;
+    border-bottom: 2px solid #dde1e6 !important;
+    padding: 0.45rem 0.75rem !important;
+    font-size: 0.69rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.07em !important;
+    text-transform: uppercase !important;
+    color: #556 !important;
+    white-space: nowrap;
+}
+/* Cells — compact */
+.reTable.sapMList .sapMListTblCell {
+    padding: 0.4rem 0.75rem !important;
+    vertical-align: middle;
+    font-size: 0.81rem !important;
+    border-bottom: 1px solid #f0f0f0;
+}
+/* Even rows */
+.reTable.sapMList .sapMLIBFocusable:nth-child(even) td {
+    background: #fafbfc !important;
+}
+/* Hover */
+.reTable.sapMList .sapMLIB.reTableRow:hover td {
+    background: #eef5ff !important;
+    cursor: pointer;
+}
+
+/* Highlight bar — thin and clean */
+.reTable .sapMListTblHighlightCell {
+    width: 4px !important;
+    min-width: 4px !important;
+    padding: 0 !important;
+}
+.reTable .sapMListHighlight-Success { background: #107e3e !important; }
+.reTable .sapMListHighlight-Warning { background: #e9730c !important; }
+.reTable .sapMListHighlight-Error   { background: #bb0000 !important; }
+
+/* ── Status badges — compact pill ──────────────────────────────── */
+.sapMObjStatusInverted.sapMObjStatusSuccess,
+.sapMObjStatusInverted.sapMObjStatusWarning,
+.sapMObjStatusInverted.sapMObjStatusError {
+    border-radius: 20px !important;
+    padding: 2px 9px !important;
+    font-size: 0.68rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 3px;
+}
+.sapMObjStatusInverted .sapUiIcon {
+    font-size: 0.68rem !important;
+}
+
+/* ── Reference link ────────────────────────────────────────────── */
+.reLinkBold.sapMLnk {
+    font-weight: 600;
+    font-size: 0.81rem;
+    color: #0070f2;
+}
+.reLinkBold.sapMLnk:hover {
+    text-decoration: underline;
+    color: #0057c2;
+}
+
+/* ── Comment cell ──────────────────────────────────────────────── */
+.reCommentText.sapMText {
+    color: #777;
+    font-size: 0.78rem;
+    max-width: 260px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-style: italic;
+}
+
+/* ── Avatar — compact ──────────────────────────────────────────── */
+.reTable .sapFAvatar {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    font-size: 0.6rem !important;
+    line-height: 24px !important;
+}
+
+/* ── User text — truncate email addresses ──────────────────────── */
+.reUserText.sapMText {
+    font-size: 0.78rem;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 130px;
+    display: block;
+}
+
+/* ── Nav arrow ─────────────────────────────────────────────────── */
+.reTable .sapMSLIImgIcon.sapMSLINavIcon,
+.reTable .sapMListTblNavigated {
+    color: #b8811f !important;
+}
+
+/* ── Title bar status chips ────────────────────────────────────── */
+.sapFDynamicPageTitle .sapMObjStatus {
+    font-size: 0.72rem !important;
+}
+
+/* ── Load More button ──────────────────────────────────────────── */
+.reTable .sapMGrowingList .sapMGrowingListButton {
+    margin: 0.5rem auto;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    padding: 0.3rem 1.5rem;
+    border: 1px solid #ccc;
+    color: #555;
+}
+.reTable .sapMGrowingList .sapMGrowingListButton:hover {
+    background: #f0f4ff;
+    border-color: #0070f2;
+    color: #0070f2;
+}
+
+/* ── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .sapUiCSSGrid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 500px) {
+    .sapUiCSSGrid { grid-template-columns: 1fr !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PRICING TABLE VIEW (existing styles — unchanged)
+   ═══════════════════════════════════════════════════════════════ */
+
+.vpTopBar.sapMBar {
+    background: #fff;
+    border-bottom: 2px solid var(--vp-blue-1);
+    padding: 0 1rem;
+    height: 3.5rem;
+}
+.vpLogoIcon.sapUiIcon { font-size: 1.6rem; color: var(--vp-blue-1); }
+.vpPageSubtitle.sapMText { font-size: 0.72rem; color: #6e6e6e; line-height: 1.2; }
+
+.vpFilterPanel {
+    background: #fff;
+    border: 1px solid var(--vp-border);
+    border-radius: var(--vp-radius);
+    box-shadow: var(--vp-shadow);
+    padding: 1rem 1.25rem 1.25rem;
+    margin: 0.75rem 1rem 0;
+}
+.vpPanelTitleRow { margin-bottom: 0.75rem; }
+.vpPanelIcon.sapUiIcon { font-size: 1rem; color: var(--vp-blue-1); margin-right: 0.4rem; }
+.vpPanelTitle.sapMTitle { font-size: 0.9rem; font-weight: 600; color: #333; }
+.vpFieldLabel.sapMLabelBase { font-size: 0.78rem; font-weight: 600; color: #444; margin-bottom: 4px; }
+.vpFilterRow { gap: 12px; }
+.vpFilterField { min-width: 220px; max-width: 280px; flex: 1; }
+.vpFilterFieldNarrow { min-width: 180px; max-width: 220px; }
+.vpFilterAction { padding-bottom: 0; align-self: flex-end; }
+.vpSearchBtn.sapMBtn { min-width: 110px; }
+
+.vpResultsSection { margin: 0.75rem 1rem 0; }
+.vpResultsHeader {
+    background: var(--vp-blue-pale);
+    border: 1px solid #c8dffb;
+    border-radius: var(--vp-radius) var(--vp-radius) 0 0;
+    padding: 0.6rem 1rem;
+}
+
+.vpTableToolbar.sapMTB {
+    background: #f5f8ff;
+    border-left: 1px solid var(--vp-border);
+    border-right: 1px solid var(--vp-border);
+    padding: 0 0.75rem;
+    min-height: 3rem;
+}
+.vpToolbarLabel.sapMLabelBase { font-size: 0.8rem; font-weight: 600; color: #333; white-space: nowrap; }
+.vpColumnGroupPicker.sapMMultiComboBox { border-radius: 6px; }
+
+.vpGroupHeaderStrip {
+    width: 100%;
+    overflow: hidden;
+    border-left: 1px solid var(--vp-border);
+    border-right: 1px solid var(--vp-border);
+}
+.vpGrpChip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 26px;
+    padding: 0 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-right: 1px solid rgba(0,0,0,0.08);
+    box-sizing: border-box;
+}
+.vpGrpChip-CORE     { background: #e4e8ec; color: #3a3a3a; }
+.vpGrpChip-DEALER   { background: var(--vp-dealer);  color: var(--vp-dealer-txt); }
+.vpGrpChip-PRICING  { background: var(--vp-pricing); color: var(--vp-pricing-txt); }
+.vpGrpChip-RTO      { background: var(--vp-rto);     color: var(--vp-rto-txt); }
+.vpGrpChip-INSURANCE{ background: var(--vp-ins);     color: var(--vp-ins-txt); }
+.vpGrpChip-GEM      { background: var(--vp-gem);     color: var(--vp-gem-txt); }
+.vpGrpChip-CSD      { background: var(--vp-csd);     color: var(--vp-csd-txt); }
+.vpGrpChip-MTO      { background: var(--vp-mto);     color: var(--vp-mto-txt); }
+
+.vpScrollContainer {
+    border: 1px solid var(--vp-border);
+    border-top: none;
+    border-radius: 0 0 var(--vp-radius) var(--vp-radius);
+}
+
+.vpPricingTable.sapMList { border: none; }
+.vpPricingTable .sapMListTblHeaderCell {
+    background: #f5f6f7 !important;
+    border-bottom: 2px solid #d0d5dd !important;
+    padding: 0.55rem 0.5rem !important;
+    vertical-align: bottom;
+}
+.vpPricingTable .sapMLIBSelected,
+.vpPricingTable .sapMListTblRow:nth-child(even) td { background: #fafbfd !important; }
+.vpPricingTable .sapMListTblRow:hover td { background: #eef5ff !important; }
+.vpColHeader.sapMText  { font-size: 0.74rem; font-weight: 700; color: #333; white-space: normal; word-break: break-word; }
+.vpColCore.sapMText    { color: #1a1a1a; }
+.vpColDealer.sapMText  { color: var(--vp-dealer-txt); }
+.vpColPricing.sapMText { color: var(--vp-pricing-txt); }
+.vpColRto.sapMText     { color: var(--vp-rto-txt); }
+.vpColIns.sapMText     { color: var(--vp-ins-txt); }
+.vpColGem.sapMText     { color: var(--vp-gem-txt); }
+.vpColCsd.sapMText     { color: var(--vp-csd-txt); }
+.vpColMto.sapMText     { color: var(--vp-mto-txt); }
+.vpPricingTable .sapMListTblCell { padding: 0.45rem 0.5rem !important; font-size: 0.82rem; border-right: 1px solid #ebebeb; }
+.vpModelId.sapMObjectIdentifier .sapMObjectIdentifierTitle { font-size: 0.82rem; font-weight: 600; color: var(--vp-blue-1); }
+.vpNumInput.sapMInputBase { border-radius: 4px; font-size: 0.82rem; }
+.vpNumInput.sapMInputBase input { text-align: right; }
+
+.vpFooterBar.sapMTB { border-top: 2px solid var(--vp-border); background: #fff; padding: 0 1rem; }
+
+.vpModelCell { gap: 6px; flex-wrap: nowrap; align-items: center; }
+.vpModelId .sapMObjectIdentifierTitle { font-weight: 600; font-size: 13px; white-space: nowrap; }
+.vpStatusPillWrapper { display: inline-flex; align-items: center; }
+
+@media (max-width: 1024px) {
+    .vpFilterField { min-width: 180px; }
+    .vpColumnGroupPicker.sapMMultiComboBox { width: 280px !important; }
+}
+@media (max-width: 768px) {
+    .vpFilterField, .vpFilterFieldNarrow { min-width: 100%; max-width: 100%; }
+    .vpFilterPanel { padding: 0.75rem; }
+}

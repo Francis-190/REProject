@@ -1,0 +1,1767 @@
+/* ════════════════════════════════════════════════════════════
+   Vehicle Pricing · Approval screens
+   Matches the Home / Pricing / Approval Levels pages:
+   light blue-white canvas, white rounded cards with coloured
+   accent edges, pastel icon tiles, Royal Enfield red as brand.
+   Save as webapp/css/style.css (registered in manifest.json)
+   ════════════════════════════════════════════════════════════ */
+:root {
+    --re-red: #c8102e;
+    --re-red-dark: #a30d24;
+    --navy: #0f2a4a;
+    --slate: #475569;
+    --muted: #64748b;
+    --canvas-1: #f4f7fd;
+    --canvas-2: #eceffa;
+    --line: #e3e8f0;
+
+    --blue: #0a6ed1;   --blue-bg: #e3efff;
+    --teal: #0f9d8a;   --teal-bg: #dcf5ee;
+    --amber: #e9730c;  --amber-bg: #fdeccc;
+    --rose: #d4183d;   --rose-bg: #fde8ec;
+    --purple: #7c3aed; --purple-bg: #efe5fd;
+}
+
+/* ── Canvas ──────────────────────────────────────────────── */
+.sapFDynamicPageContentWrapper {
+    background: linear-gradient(180deg, var(--canvas-1) 0%, var(--canvas-2) 100%);
+}
+
+/* ── Title bar: white, like the other pages ──────────────── */
+.reTitleBar.sapFDynamicPageTitle,
+.sapFDynamicPageTitleWrapper:has(.reTitleBar) {
+    background: #fff !important;
+    border-top: 3px solid var(--re-red) !important;
+    border-bottom: 1px solid var(--line) !important;
+    box-shadow: 0 1px 6px rgba(15, 42, 74, .06) !important;
+}
+.reTitleBar .sapMTitle,
+.reTitleBar .sapMTitle * { color: var(--navy) !important; font-weight: 700; }
+.reTitleBar .reSub { color: var(--muted); font-size: .8rem; }
+.reTitleBar .sapMBtn .sapUiIcon { color: var(--navy) !important; }
+.reTitleBar .sapMObjStatusText { font-weight: 600; }
+
+/* ── Hero: same canvas, no heavy band ────────────────────── */
+.reHero.sapFDynamicPageHeader,
+.sapFDynamicPageHeaderWrapper:has(.reHero) {
+    background: var(--canvas-1) !important;
+    border-bottom: 0 !important;
+}
+.reHero .sapFDynamicPageHeaderContent { padding-bottom: .5rem; }
+
+/* ── KPI cards ───────────────────────────────────────────── */
+.reKpiRow { gap: 1rem; width: 100%; }
+.reKpi {
+    flex: 1 1 14rem;
+    min-width: 13rem;
+    max-width: 21rem;
+    box-sizing: border-box;
+    padding: 1rem 1.25rem 1.1rem;
+    background: #fff;
+    border-radius: 1rem;
+    border-bottom: 3px solid var(--k);
+    box-shadow: 0 4px 14px rgba(15, 42, 74, .08);
+}
+.reKpiTotal { --k: var(--blue);  --kbg: var(--blue-bg); }
+.reKpiPend  { --k: var(--amber); --kbg: var(--amber-bg); }
+.reKpiOk    { --k: var(--teal);  --kbg: var(--teal-bg); }
+.reKpiBad   { --k: var(--rose);  --kbg: var(--rose-bg); }
+.reKpiTop   { width: 100%; }
+.reKpiLabel {
+    color: var(--muted);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+/* pastel rounded-square icon tile, like the Home cards */
+.reKpiIcon.sapUiIcon {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    line-height: 2.5rem !important;
+    font-size: 1.15rem !important;
+    border-radius: .75rem;
+    text-align: center;
+    background: var(--kbg);
+    color: var(--k) !important;
+}
+.reKpiValue {
+    color: var(--navy);
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: .35rem 0 .1rem;
+}
+.reKpiHint { color: var(--muted); font-size: .78rem; margin-bottom: .7rem; }
+.reKpi .sapMPI { background: #eef1f6; border: 0; border-radius: 99px; }
+.reKpi .sapMPIBar { border-radius: 99px; }
+.reKpiTotal .sapMPIBar { background: var(--blue); }
+.reKpiOk .sapMPIBar    { background: var(--teal); }
+.reKpiPend .sapMPIBar  { background: var(--amber); }
+.reKpiBad .sapMPIBar   { background: var(--rose); }
+
+/* ── Cards ───────────────────────────────────────────────── */
+.reCard {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 14px rgba(15, 42, 74, .08);
+}
+
+/* ── Filter tabs ─────────────────────────────────────────── */
+.reTabs.sapMITB { background: transparent; }
+.reTabs .sapMITH,
+.reTabs .sapMITBHead {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 14px rgba(15, 42, 74, .08);
+}
+.reTabs .sapMITBFilter .sapMITBText { font-weight: 600; }
+
+/* ── Tables ──────────────────────────────────────────────── */
+.reTable .sapMListHdr,
+.reTable .sapMListHdrTBar,
+.reTable .sapMTB { background: transparent; }
+.reTable .sapMListTblHeaderCell {
+    background: #f1f6fd;
+    color: var(--slate);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #d9e4f3;
+}
+.reTable .sapMListTblRow { transition: background .12s ease; }
+.reTable .sapMListTblRow:hover { background: #f8fbff; }
+
+/* ── Detail: approval stepper ────────────────────────────── */
+.reStepper { width: 100%; margin: .25rem 0 1.5rem; }
+.reStep {
+    flex: 1 1 0;
+    min-width: 7.5rem;
+    position: relative;
+    text-align: center;
+    align-items: center;
+}
+.reStep::before,
+.reStep::after {
+    content: "";
+    position: absolute;
+    top: 1.1rem;
+    width: 50%;
+    height: 3px;
+    background: #d5dde8;
+}
+.reStep::before { left: 0; }
+.reStep::after  { right: 0; }
+.reStepFirst::before,
+.reStepLast::after { display: none; }
+
+.reStepDot.sapUiIcon {
+    position: relative;
+    z-index: 1;
+    width: 2.2rem !important;
+    height: 2.2rem !important;
+    line-height: 2.2rem !important;
+    font-size: 1rem !important;
+    border-radius: 50%;
+    text-align: center;
+    background: #fff;
+    border: 2px solid #d5dde8;
+    box-sizing: border-box;
+    color: #94a3b8 !important;
+}
+.reStepLabel { color: var(--navy); font-weight: 700; margin-top: .5rem; }
+.reStepSub   { color: var(--muted); font-size: .75rem; }
+
+.reStep[data-state="done"]::before,
+.reStep[data-state="done"]::after,
+.reStep[data-state="active"]::before { background: var(--teal); }
+.reStep[data-state="error"]::before  { background: var(--rose); }
+
+.reStep[data-state="done"] .reStepDot.sapUiIcon {
+    background: var(--teal); border-color: var(--teal); color: #fff !important;
+}
+.reStep[data-state="active"] .reStepDot.sapUiIcon {
+    background: var(--amber); border-color: var(--amber); color: #fff !important;
+    box-shadow: 0 0 0 5px rgba(233, 115, 12, .20);
+}
+.reStep[data-state="error"] .reStepDot.sapUiIcon {
+    background: var(--rose); border-color: var(--rose); color: #fff !important;
+}
+.reStep[data-state="done"]   .reStepSub { color: var(--teal);  font-weight: 600; }
+.reStep[data-state="active"] .reStepSub { color: var(--amber); font-weight: 600; }
+.reStep[data-state="error"]  .reStepSub { color: var(--rose);  font-weight: 600; }
+.reStep[data-state="idle"]   .reStepLabel { color: var(--muted); }
+
+/* ── Detail: meta fields ─────────────────────────────────── */
+.reMeta {
+    width: 15rem;
+    margin: 0 1rem .75rem 0;
+    padding: .65rem .9rem;
+    background: #fff;
+    border-left: 4px solid var(--blue);
+    border-radius: .75rem;
+    box-shadow: 0 2px 8px rgba(15, 42, 74, .06);
+    box-sizing: border-box;
+}
+.reMetaLabel {
+    color: var(--muted);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: .2rem;
+}
+.reMetaValue { color: var(--navy); font-weight: 600; }
+.reHeroTitle {
+    color: var(--muted);
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: .6rem;
+}
+
+
+/* //other pages  */
+
+
+/* Reference cell */
+.reRefCell {
+    gap: 2px;
+}
+
+.reLinkBold.sapMLnk {
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: #0070f2;
+}
+
+.reLinkBold.sapMLnk:hover {
+    text-decoration: underline;
+    color: #0057c2;
+}
+
+.reRefSubText.sapMText {
+    font-size: 0.7rem;
+    color: var(--sapContent_LabelColor, #6a6d70);
+    font-style: italic;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Status badge — pill style */
+.reStatusBadge.sapMObjStatusInverted.sapMObjStatusSuccess,
+.reStatusBadge.sapMObjStatusInverted.sapMObjStatusWarning,
+.reStatusBadge.sapMObjStatusInverted.sapMObjStatusError,
+.sapMObjStatusInverted.sapMObjStatusSuccess,
+.sapMObjStatusInverted.sapMObjStatusWarning,
+.sapMObjStatusInverted.sapMObjStatusError {
+    border-radius: 20px !important;
+    padding: 3px 10px !important;
+    font-size: 0.69rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 4px;
+}
+
+.sapMObjStatusInverted .sapUiIcon {
+    font-size: 0.69rem !important;
+}
+
+/* Comment cell */
+.reCommentText.sapMText {
+    color: #777;
+    font-size: 0.79rem;
+    max-width: 280px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+/* Date + user cells */
+.reDateText.sapMText {
+    font-size: 0.81rem;
+    color: #333;
+    line-height: 1.3;
+}
+
+.reUserText.sapMText {
+    font-size: 0.72rem;
+    color: #888;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 140px;
+    display: block;
+    margin-top: 1px;
+}
+
+
+/* ════════════════════════════════════════════════════════════════
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      RESPONSIVE
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+    .reKpiGrid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .reKpiGrid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .reContentVBox {
+        padding: 0 0.5rem 1rem;
+    }
+}
+
+
+/* ════════════════════════════════════════════════════════════════
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        PRICING TABLE VIEW  (existing — unchanged)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ════════════════════════════════════════════════════════════════ */
+
+:root {
+    --vp-blue-1: #0070f2;
+    --vp-blue-2: #0064d9;
+    --vp-blue-pale: #e8f2ff;
+    --vp-dealer: #e8f4ff;
+    --vp-pricing: #e8f8f0;
+    --vp-rto: #fff8e6;
+    --vp-ins: #f3eeff;
+    --vp-gem: #e6f9f9;
+    --vp-csd: #fff1ec;
+    --vp-mto: #fef3e6;
+    --vp-dealer-txt: #0057b8;
+    --vp-pricing-txt: #1a7a46;
+    --vp-rto-txt: #9a6500;
+    --vp-ins-txt: #6b35c7;
+    --vp-gem-txt: #007070;
+    --vp-csd-txt: #c44800;
+    --vp-mto-txt: #a05c00;
+    --vp-border: #d9d9d9;
+    --vp-radius: 8px;
+    --vp-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+}
+
+.vpTopBar.sapMBar {
+    background: #fff;
+    border-bottom: 2px solid var(--vp-blue-1);
+    padding: 0 1rem;
+    height: 3.5rem;
+}
+
+.vpLogoIcon.sapUiIcon {
+    font-size: 1.6rem;
+    color: var(--vp-blue-1);
+}
+
+.vpPageSubtitle.sapMText {
+    font-size: 0.72rem;
+    color: #6e6e6e;
+    line-height: 1.2;
+}
+
+.vpFilterPanel {
+    background: #fff;
+}
+
+.vpPanelTitleRow {
+    margin-bottom: 0.75rem;
+}
+
+.vpPanelIcon.sapUiIcon {
+    font-size: 1rem;
+    color: var(--vp-blue-1);
+    margin-right: 0.4rem;
+}
+
+.vpPanelTitle.sapMTitle {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.vpFieldLabel.sapMLabelBase {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 4px;
+}
+
+.vpFilterRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    align-items: flex-end;
+}
+
+.vpFilterField {
+    flex: 1 1 220px;
+    min-width: 180px;
+    max-width: 280px;
+}
+
+.vpFilterFieldNarrow {
+    flex: 1 1 170px;
+    min-width: 150px;
+    max-width: 220px;
+}
+
+.vpFilterAction {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 0;
+}
+
+.vpSearchBtn.sapMBtn {
+    min-width: 100px;
+}
+
+.vpResultsSection {
+    margin: 0.75rem 1rem 0;
+}
+
+.vpResultsHeader {
+    background: var(--vp-blue-pale);
+    border: 1px solid #c8dffb;
+    border-radius: var(--vp-radius) var(--vp-radius) 0 0;
+    padding: 0.6rem 1rem;
+}
+
+.vpTableToolbar.sapMTB {
+    background: #f5f8ff;
+    border-left: 1px solid var(--vp-border);
+    border-right: 1px solid var(--vp-border);
+    padding: 0 0.75rem;
+    min-height: 3rem;
+}
+
+.vpToolbarLabel.sapMLabelBase {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+}
+
+.vpColumnGroupPicker.sapMMultiComboBox {
+    border-radius: 6px;
+}
+
+.vpGroupHeaderStrip {
+    width: 100%;
+    overflow: hidden;
+    border-left: 1px solid var(--vp-border);
+    border-right: 1px solid var(--vp-border);
+}
+
+.vpGrpChip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 26px;
+    padding: 0 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+}
+
+.vpGrpChip-CORE {
+    background: #e4e8ec;
+    color: #3a3a3a;
+}
+
+.vpGrpChip-DEALER {
+    background: var(--vp-dealer);
+    color: var(--vp-dealer-txt);
+}
+
+.vpGrpChip-PRICING {
+    background: var(--vp-pricing);
+    color: var(--vp-pricing-txt);
+}
+
+.vpGrpChip-RTO {
+    background: var(--vp-rto);
+    color: var(--vp-rto-txt);
+}
+
+.vpGrpChip-INSURANCE {
+    background: var(--vp-ins);
+    color: var(--vp-ins-txt);
+}
+
+.vpGrpChip-GEM {
+    background: var(--vp-gem);
+    color: var(--vp-gem-txt);
+}
+
+.vpGrpChip-CSD {
+    background: var(--vp-csd);
+    color: var(--vp-csd-txt);
+}
+
+.vpGrpChip-MTO {
+    background: var(--vp-mto);
+    color: var(--vp-mto-txt);
+}
+
+/* .vpScrollContainer {
+    border: 1px solid var(--vp-border);
+    border-top: none;
+    border-radius: 0 0 var(--vp-radius) var(--vp-radius);
+}
+
+.vpPricingTable.sapMList {
+    border: none;
+} */
+
+.vpPricingTable .sapMListTblHeaderCell {
+    background: #f5f6f7 !important;
+    border-bottom: 2px solid #d0d5dd !important;
+    padding: 0.55rem 0.5rem !important;
+    vertical-align: bottom;
+}
+
+.vpPricingTable .sapMLIBSelected,
+.vpPricingTable .sapMListTblRow:nth-child(even) td {
+    background: #fafbfd !important;
+}
+
+.vpPricingTable .sapMListTblRow:hover td {
+    background: #eef5ff !important;
+}
+
+.vpColHeader.sapMText {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #333;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.vpColCore.sapMText {
+    color: #1a1a1a;
+}
+
+.vpColDealer.sapMText {
+    color: var(--vp-dealer-txt);
+}
+
+.vpColPricing.sapMText {
+    color: var(--vp-pricing-txt);
+}
+
+.vpColRto.sapMText {
+    color: var(--vp-rto-txt);
+}
+
+.vpColIns.sapMText {
+    color: var(--vp-ins-txt);
+}
+
+.vpColGem.sapMText {
+    color: var(--vp-gem-txt);
+}
+
+.vpColCsd.sapMText {
+    color: var(--vp-csd-txt);
+}
+
+.vpColMto.sapMText {
+    color: var(--vp-mto-txt);
+}
+
+.vpPricingTable .sapMListTblCell {
+    padding: 0.45rem 0.5rem !important;
+    font-size: 0.82rem;
+    border-right: 1px solid #ebebeb;
+}
+
+.vpModelId.sapMObjectIdentifier .sapMObjectIdentifierTitle {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--vp-blue-1);
+}
+
+.vpNumInput.sapMInputBase {
+    border-radius: 4px;
+    font-size: 0.82rem;
+}
+
+.vpNumInput.sapMInputBase input {
+    text-align: right;
+}
+
+/* .vpFooterBar.sapMTB {
+    border-top: 2px solid var(--vp-border);
+    background: #fff;
+    padding: 0 1rem;
+} */
+
+.vpFooterBar.sapMTB {
+    border-top: none;
+    background: #fff;
+    padding: 0.6rem 1rem;
+    margin: 0 1rem 0;
+    border-radius: 0 0 12px 12px;
+}
+
+/* Kill any residual bottom padding UI5 adds around the footer bar itself */
+.sapMPageFooter,
+.sapMPage>footer .sapMTB,
+.sapMPage-footer {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Some UI5 versions wrap the footer in a bar container with its own bottom inset */
+.sapMBarContainer,
+.sapMIBar.sapMFooter-CTX {
+    padding-bottom: 0 !important;
+}
+
+/* And the outer page/shell content area sometimes reserves safe-area space */
+/* .vpMainPage.sapMPage {
+    padding-bottom: 0 !important;
+} */
+
+.sapMPage>footer {
+    padding-bottom: env(safe-area-inset-bottom, 0) !important;
+}
+
+.vpModelCell {
+    gap: 6px;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.vpModelId .sapMObjectIdentifierTitle {
+    font-weight: 600;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.vpStatusPillWrapper {
+    display: inline-flex;
+    align-items: center;
+}
+
+@media (max-width: 1024px) {
+    .vpColumnGroupPicker.sapMMultiComboBox {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .vpFilterRow {
+        gap: 0.65rem;
+    }
+
+    .vpFilterField,
+    .vpFilterFieldNarrow {
+        flex: 1 1 100%;
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+
+}
+
+.imageadding {
+    background-image: url("https://www.agilitypr.com/wp-content/uploads/2024/07/appr2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.vpMainPage {
+    position: relative;
+    /* needed so the ::before can be positioned inside it */
+    background: none;
+    /* remove the old background-image declaration */
+    background-color: #d0deec;
+    /* fallback background color */
+}
+
+.vpMainPage::before {
+    content: "";
+    position: absolute;
+    top: 120px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("../images/background6.png") no-repeat center center;
+    background-size: 320px auto;
+    opacity: 0.15;
+    /* adjust 0–1 to taste */
+    pointer-events: none;
+    /* so it doesn't block clicks on content */
+    z-index: 0;
+}
+
+
+
+/* .vpFilterPanel,
+.vpResultsSection {
+    background: #ffffff !important;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+} */
+
+.vpFilterPanel,
+.vpResultsSection {
+    background: #ffffff !important;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px;
+    box-shadow: none;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   SELECTED ROW — alternating shades so rows stay distinguishable
+   even when several consecutive rows are selected
+   ════════════════════════════════════════════════════════════════ */
+
+/* Odd selected rows — slightly lighter */
+.vpPricingTable .sapMLIBSelected:nth-child(odd) td {
+    background: #c4c5b6 !important;
+    border-bottom: 2px solid #c4c5b6 !important;
+}
+
+/* Even selected rows — slightly deeper, creates visible banding */
+.vpPricingTable .sapMLIBSelected:nth-child(even) td {
+    background: #c4c5b6 !important;
+    border-bottom: 2px solid #c4c5b6 !important;
+}
+
+/* Hover keeps the same odd/even distinction, just a touch darker */
+.vpPricingTable .sapMLIBSelected:nth-child(odd):hover td {
+    background: #c4c5b6 !important;
+}
+
+.vpPricingTable .sapMLIBSelected:nth-child(even):hover td {
+    background: #c4c5b6 !important;
+}
+
+/* Left-edge accent bar stays constant regardless of odd/even */
+.vpPricingTable .sapMLIBSelected {
+    box-shadow: inset 5px 0 0 #c4c5b6;
+}
+
+/* Sticky columns (checkbox + Model) mirror the same odd/even split */
+.vpPricingTable .sapMLIBSelected:nth-child(odd) td.sapMListTblCell:nth-child(1),
+.vpPricingTable .sapMLIBSelected:nth-child(odd) td.sapMListTblCell:nth-child(2) {
+    background: #c4c5b6 !important;
+    border-bottom: 2px solid #c4c5b6 !important;
+}
+
+.vpPricingTable .sapMLIBSelected:nth-child(even) td.sapMListTblCell:nth-child(1),
+.vpPricingTable .sapMLIBSelected:nth-child(even) td.sapMListTblCell:nth-child(2) {
+    background: #c4c5b6 !important;
+    border-bottom: 2px solid #c4c5b6 !important;
+}
+
+/* Tighten the gap right under the header, keep spacing elsewhere */
+
+
+.textHeaderTitle {
+    color: #0a090a !important;
+    /* RE red */
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.sapMToolbar {
+    background: #121212 !important;
+    color: #fff;
+    border-bottom: 2px solid #e60023;
+}
+
+.sapMBtnEmphasized {
+    background: linear-gradient(135deg, #e60023, #a00018) !important;
+    border: none;
+    color: #fff !important;
+    border-radius: 6px;
+}
+
+
+.logoImage {
+    background-image: url("../images/relogo.png") no-repeat center center;
+    ;
+}
+
+
+.vpPricingTable .sapMListTblRow:hover td {
+    background: #ffe5e9 !important;
+}
+
+.vpPricingTable {
+    min-height: 60%
+}
+
+/* =========================================================
+   VEHICLE PRICING HOME PAGE
+   ========================================================= */
+
+.vehiclePricingPage {
+    background: #ffffff !important;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.appHeader {
+    height: 3.5rem;
+    padding: 0 1.5rem;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.headerIcon {
+    color: #0a6ed1;
+    font-size: 1.35rem;
+    margin-right: 0.65rem;
+}
+
+.headerTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #172b4d;
+}
+
+.headerActions {
+    gap: 0.25rem;
+}
+
+.headerButton {
+    color: #52606d !important;
+}
+
+.profileButton {
+    min-width: 2.4rem !important;
+    height: 2.4rem !important;
+
+    border-radius: 50% !important;
+
+    background: #e1efff !important;
+    color: #0a6ed1 !important;
+
+    font-weight: 600 !important;
+
+    margin-left: 0.5rem;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.heroSection {
+    position: relative;
+
+    min-height: 390px;
+
+    padding: 2.8rem 3rem 1.5rem 3rem;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(90deg,
+            #f5f9ff 0%,
+            #f5f9ff 35%,
+            rgba(245, 249, 255, 0.92) 52%,
+            rgba(245, 249, 255, 0.25) 78%,
+            rgba(245, 249, 255, 0) 100%),
+        url("../images/Meteor350.jpg");
+
+    background-position: 70% center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.heroContent {
+    position: relative;
+    z-index: 3;
+
+    width: 58%;
+}
+
+.welcomeText {
+    font-size: 0.7rem;
+    font-weight: 600;
+
+    letter-spacing: 0.08rem;
+
+    color: #52606d;
+
+    margin-bottom: 0.35rem;
+}
+
+.heroTitle {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+
+    font-weight: 700 !important;
+
+    color: #0f2747 !important;
+
+    margin: 0 !important;
+}
+
+.titleUnderline {
+    width: 2rem;
+    height: 0.15rem;
+
+    margin-top: 0.45rem;
+
+    background: #0a6ed1;
+
+    border-radius: 0.2rem;
+}
+
+.heroDescription {
+    max-width: 25rem;
+
+    margin-top: 0.65rem;
+
+    font-size: 0.8rem;
+
+    line-height: 1.4;
+
+    color: #52606d;
+}
+
+
+/* =========================================================
+   ACTION CARDS
+   ========================================================= */
+
+.actionCards {
+    display: flex;
+
+    gap: 1rem;
+
+    margin-top: 1.35rem;
+}
+
+
+/* Main Card */
+
+.actionCard {
+    width: 17.5rem;
+    height: 6.4rem;
+
+    padding: 1rem;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border-radius: 0.6rem;
+
+    box-sizing: border-box;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.08);
+
+    border-bottom: 2px solid transparent;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Hover */
+
+.actionCard:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Submission */
+
+.submissionCard {
+    border-bottom-color: #0a6ed1;
+}
+
+
+/* Approval */
+
+.approvalCard {
+    border-bottom-color: #00a98f;
+}
+
+
+/* =========================================================
+   ACTION ICON
+   ========================================================= */
+
+.actionIconContainer {
+    width: 3.1rem;
+    height: 3.1rem;
+
+    border-radius: 0.7rem;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin-right: 0.8rem;
+}
+
+.submissionIcon {
+    background: #e6f0ff;
+}
+
+.approvalIcon {
+    background: #e5f8f3;
+}
+
+.actionIcon {
+    font-size: 1.65rem;
+}
+
+.submissionIcon .actionIcon {
+    color: #0a6ed1;
+}
+
+.approvalIcon .actionIcon {
+    color: #00a98f;
+}
+
+
+/* =========================================================
+   ACTION TEXT
+   ========================================================= */
+
+.actionText {
+    width: 10rem;
+}
+
+.actionTitle {
+    font-size: 0.95rem !important;
+
+    font-weight: 700 !important;
+
+    color: #172b4d !important;
+
+    margin: 0 !important;
+}
+
+.actionDescription {
+    font-size: 0.68rem;
+
+    line-height: 1.35;
+
+    color: #667085;
+
+    margin-top: 0.2rem;
+}
+
+/* =========================================================
+   ACTION CARDS
+   ========================================================= */
+
+.actionCards {
+    background: transparent !important;
+    border: none !important;
+
+    margin-top: 1.35rem;
+
+    width: 36rem !important;
+}
+
+
+/* List container */
+
+.actionCards .sapMListUl {
+    background: transparent !important;
+
+    padding: 0 !important;
+}
+
+
+/* Individual clickable card */
+
+.actionCard.sapMLIB {
+    width: 17.5rem !important;
+    height: 6.4rem !important;
+
+    padding: 1rem !important;
+
+    box-sizing: border-box;
+
+    background: rgba(255, 255, 255, 0.97) !important;
+
+    border-radius: 0.65rem !important;
+
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.08);
+
+    margin: 0 0 0.9rem 0 !important;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Remove margin from last card */
+
+.actionCard.sapMLIB:last-child {
+    margin-bottom: 0 !important;
+}
+
+
+/* Submission */
+
+.submissionCard.sapMLIB {
+    border-bottom: 2px solid #0a6ed1 !important;
+}
+
+
+/* Approval */
+
+.approvalCard.sapMLIB {
+    border-bottom: 2px solid #00a98f !important;
+}
+
+
+/* Hover */
+
+.actionCard.sapMLIB:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Pressed */
+
+.actionCard.sapMLIB.sapMLIBActive {
+    background: rgba(255, 255, 255, 0.97) !important;
+
+    transform: scale(0.99);
+}
+
+/* =========================================================
+   ARROW
+   ========================================================= */
+
+.arrowIcon {
+    font-size: 1rem;
+
+    margin-left: 0.3rem;
+}
+
+.submissionArrow {
+    color: #0a6ed1;
+}
+
+.approvalArrow {
+    color: #00a98f;
+}
+
+
+/* =========================================================
+   MOTORCYCLE
+   ========================================================= */
+
+.bikeSection {
+    position: absolute;
+    z-index: 2;
+
+    top: 0;
+    right: 0;
+
+    width: 52%;
+    height: 100%;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    background: #f4f8fd;
+
+    pointer-events: none;
+}
+
+.meteorBike {
+    width: 100% !important;
+    height: 420px !important;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center center;
+
+    border: none !important;
+    box-shadow: none !important;
+
+    /* Smoothly blend image into page background */
+    -webkit-mask-image: linear-gradient(to right,
+            transparent 0%,
+            transparent 10%,
+            rgba(204, 238, 253, 0.15) 24%,
+            rgba(0, 0, 0, 0.55) 38%,
+            #000 52%,
+            #000 100%);
+
+    mask-image: linear-gradient(to right,
+            transparent 0%,
+            transparent 10%,
+            rgba(0, 0, 0, 0.15) 24%,
+            rgba(0, 0, 0, 0.55) 38%,
+            #000 52%,
+            #000 100%);
+
+    mix-blend-mode: normal;
+
+    filter: saturate(0.95) contrast(1.02);
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.featuresSection {
+    margin: 1rem 2.8rem 0 2.8rem;
+
+    min-height: 4.5rem;
+
+    padding: 0.75rem 1rem;
+
+    background: #f4f8ff;
+
+    border-radius: 0.65rem;
+}
+
+.featureItem {
+    width: 22%;
+
+    gap: 0.7rem;
+}
+
+.featureIcon {
+    width: 2.65rem;
+    height: 2.65rem;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-shrink: 0;
+}
+
+.featureIconImage {
+    font-size: 1.2rem;
+}
+
+.blueFeature {
+    background: #dceaff;
+    color: #0a6ed1;
+}
+
+.greenFeature {
+    background: #d9f5ed;
+    color: #00a98f;
+}
+
+.orangeFeature {
+    background: #fff0d3;
+    color: #e9730c;
+}
+
+.purpleFeature {
+    background: #eee4ff;
+    color: #7c4dff;
+}
+
+.featureTitle {
+    font-size: 0.75rem !important;
+
+    font-weight: 700 !important;
+
+    color: #253858 !important;
+
+    margin: 0 !important;
+}
+
+.featureDescription {
+    font-size: 0.62rem;
+
+    line-height: 1.3;
+
+    color: #667085;
+
+    max-width: 8rem;
+}
+
+.featureDivider {
+    width: 1px;
+
+    height: 2.7rem;
+
+    background: #dce3ec;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+    height: 2.5rem;
+
+    align-items: center;
+}
+
+.footerText {
+    font-size: 0.62rem;
+
+    color: #7b8794;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .heroContent {
+        width: 70%;
+    }
+
+    .bikeSection {
+        opacity: 0.35;
+        width: 60%;
+    }
+
+    .featuresSection {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .heroSection {
+        padding: 2rem 1.5rem;
+
+        min-height: auto;
+    }
+
+    .heroContent {
+        width: 100%;
+    }
+
+    .bikeSection {
+        display: none;
+    }
+
+    .actionCards {
+        flex-direction: column;
+    }
+
+    .actionCard {
+        width: 100%;
+    }
+
+    .featuresSection {
+        flex-direction: column;
+
+        gap: 1rem;
+
+        padding: 1rem;
+    }
+
+    .featureItem {
+        width: 100%;
+    }
+
+    .featureDivider {
+        display: none;
+    }
+
+}
+
+/* approver List */
+
+/* =========================================================
+   APPROVER PAGE
+   ========================================================= */
+
+.approverPage {
+    background: #f5f7fb !important;
+}
+
+.approverPage .sapMPageEnableScrolling {
+    background: #f5f7fb !important;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.approverMain {
+    min-height: 100vh;
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 4rem 2rem 3rem;
+
+    background:
+        radial-gradient(circle at 15% 20%,
+            rgba(10, 110, 209, 0.07),
+            transparent 30%),
+        radial-gradient(circle at 85% 25%,
+            rgba(124, 58, 237, 0.07),
+            transparent 30%),
+        #f5f7fb;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.approverHeader {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+
+.approverEyebrow {
+    color: #64748b !important;
+
+    font-size: 0.72rem !important;
+
+    font-weight: 700 !important;
+
+    letter-spacing: 0.14rem;
+
+    margin-bottom: 0.45rem;
+}
+
+
+.approverMainTitle {
+    color: #172b4d !important;
+
+    font-size: 2.3rem !important;
+
+    font-weight: 700 !important;
+
+    margin: 0 !important;
+}
+
+
+.approverSubtitle {
+    color: #64748b !important;
+
+    font-size: 0.95rem !important;
+
+    margin-top: 0.5rem;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.approverCards {
+    gap: 2rem;
+}
+
+
+.roleCard {
+    width: 21rem;
+    height: 19rem;
+
+    box-sizing: border-box;
+
+    padding: 2rem 1.75rem 1.5rem;
+
+    border-radius: 1.25rem;
+
+    background: rgba(255, 255, 255, 0.98);
+
+    border: 1px solid #e2e8f0;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.07);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   L1
+   ========================================================= */
+
+.l1RoleCard {
+    border-top: 4px solid #0a6ed1;
+}
+
+
+.l1RoleCard:hover {
+    transform: translateY(-7px);
+
+    cursor: pointer;
+
+    box-shadow:
+        0 18px 40px rgba(10, 110, 209, 0.16);
+}
+
+
+/* =========================================================
+   L2
+   ========================================================= */
+
+.l2RoleCard {
+    border-top: 4px solid #7c3aed;
+}
+
+
+.l2RoleCard:hover {
+    transform: translateY(-7px);
+
+    cursor: pointer;
+
+    box-shadow:
+        0 18px 40px rgba(124, 58, 237, 0.16);
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.roleIcon {
+    width: 4.5rem;
+    height: 4.5rem;
+
+    border-radius: 1.2rem;
+
+    margin-bottom: 1.4rem;
+}
+
+
+.l1RoleIcon {
+    color: #0a6ed1;
+
+    background:
+        linear-gradient(135deg,
+            #eaf3ff,
+            #dcecff);
+}
+
+
+.l2RoleIcon {
+    color: #7c3aed;
+
+    background:
+        linear-gradient(135deg,
+            #f3edff,
+            #e8ddff);
+}
+
+
+/* =========================================================
+   LEVEL
+   ========================================================= */
+
+.roleLevel {
+    font-size: 0.68rem !important;
+
+    font-weight: 700 !important;
+
+    letter-spacing: 0.1rem;
+
+    text-align: center;
+}
+
+
+.l1Level {
+    color: #0a6ed1 !important;
+}
+
+
+.l2Level {
+    color: #7c3aed !important;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.roleTitle {
+    color: #172b4d !important;
+
+    font-size: 1.45rem !important;
+
+    font-weight: 700 !important;
+
+    text-align: center;
+
+    margin-top: 0.3rem;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.roleDescription {
+    color: #64748b !important;
+
+    font-size: 0.85rem !important;
+
+    text-align: center;
+
+    margin-top: 0.2rem;
+}
+
+
+/* =========================================================
+   ACTION
+   ========================================================= */
+
+.roleAction {
+    width: 100%;
+
+    margin-top: auto;
+
+    padding-top: 1.25rem;
+
+    border-top: 1px solid #edf0f2;
+}
+
+
+.roleActionText {
+    color: #334155 !important;
+
+    font-size: 0.8rem !important;
+
+    font-weight: 600 !important;
+
+    margin-right: 0.5rem;
+}
+
+
+.roleArrow {
+    transition: transform 0.2s ease;
+}
+
+
+.l1Arrow {
+    color: #0a6ed1 !important;
+}
+
+
+.l2Arrow {
+    color: #7c3aed !important;
+}
+
+
+.roleCard:hover .roleArrow {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.approverFooter {
+    color: #94a3b8 !important;
+
+    font-size: 0.75rem !important;
+
+    margin-top: 2rem;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .approverMain {
+        padding: 3rem 1.5rem;
+    }
+
+    .approverCards {
+        flex-direction: column;
+    }
+
+    .roleCard {
+        width: 21rem;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .approverMainTitle {
+        font-size: 1.8rem !important;
+    }
+
+    .roleCard {
+        width: 90vw;
+    }
+
+}

@@ -1,0 +1,1618 @@
+<mvc:View
+    controllerName="vehiclepricingui.controller.vechilepricingmain"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+>
+    <Page
+        enableScrolling="false"
+        showHeader="true"
+        class="vpMainPage"
+    >
+        <customHeader>
+            <Toolbar>
+                <Image
+                    src="https://www.royalenfield.com/content/dam/royal-enfield/india/logos/logo.svg"
+                    width="120px"
+                />
+
+                <!-- Spacer pushes title to center -->
+                <ToolbarSpacer />
+
+                <!-- Center Title -->
+                <Title
+                    text="Vehicle Pricing Automation"
+                    class="textHeaderTitle"
+                    level="H1"
+                />
+
+                <!-- Spacer keeps title centered -->
+                <ToolbarSpacer />
+
+                <HBox
+                    alignItems="Center"
+                    class="{= ${role>/isSubmitter} ? 'vpRoleBadge vpRoleBadgeSubmitter' : 'vpRoleBadge vpRoleBadgeViewer' }"
+                >
+                    <core:Icon
+                        src="{= ${role>/isSubmitter} ? 'sap-icon://approvals' : 'sap-icon://show' }"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Text
+                        text="{= ${role>/isSubmitter} ? 'Submitter' : 'Viewer' }"
+                    />
+                </HBox>
+            </Toolbar>
+        </customHeader>
+
+        <VBox class="vpFilterPanel">
+            <HBox
+                alignItems="Center"
+                class="vpPanelTitleRow"
+            >
+                <core:Icon
+                    src="sap-icon://filter"
+                    class="vpPanelIcon"
+                />
+                <Title
+                    text="Search Criteria"
+                    titleStyle="H5"
+                    class="vpPanelTitle"
+                />
+            </HBox>
+
+            <HBox
+                alignItems="End"
+                wrap="Wrap"
+                class="vpFilterRow"
+            >
+                <!-- Region -->
+                <VBox class="vpFilterField">
+                    <Label
+                        text="Region"
+                        required="true"
+                        class="vpFieldLabel"
+                    />
+                    <ComboBox
+                        id="idRegionMCB"
+                        valueState="{vm>/regionVS}"
+                        valueStateText="Region is mandatory"
+                        placeholder="Select region…"
+                        width="100%"
+                        items="{ path: 'vm>/regions' }"
+                    >
+                        <core:Item
+                            key="{vm>Region}"
+                            text="{= ${vm>Region} + ' – ' + ${vm>Ort01} }"
+                        />
+                    </ComboBox>
+                </VBox>
+
+                <!-- Model -->
+                <!-- <VBox class="vpFilterField">
+                        <Label
+                            text="Model"
+                            class="vpFieldLabel"
+                        />
+                        <MultiComboBox
+                            id="idModelMCB"
+                            placeholder="All models"
+                            width="100%"
+                            selectionChange="onProcessedFilterChange"
+                            visible="{vm>/showProcessedFilters}"
+                            items="{
+        path: 'vm>/filteredModels',
+        length: 9999
+    }"
+                        >
+                            <core:Item
+                                key="{vm>ModelCode}"
+                                text="{vm>ModelCode}"
+                            />
+                        </MultiComboBox>
+                    </VBox> -->
+
+                <VBox class="vpFilterField">
+                    <Label
+                        text="Model"
+                        class="vpFieldLabel"
+                    />
+                    <MultiComboBox
+                        id="idModelMCB"
+                        placeholder="All models"
+                        width="100%"
+                        items="{ path: 'vm>/filteredModels', length: 9999 }"
+                    >
+                        <core:Item
+                            key="{vm>ModelCode}"
+                            text="{vm>ModelCode}"
+                        />
+                    </MultiComboBox>
+                </VBox>
+
+                <!-- Type (MTO/MTS/GeM/CSD) -->
+                <VBox class="vpFilterField vpFilterFieldNarrow">
+                    <Label
+                        text="Pricing Type"
+                        required="true"
+                        class="vpFieldLabel"
+                    />
+                    <ComboBox
+                        id="idMtoMtsMCB"
+                        valueState="{vm>/mtoVS}"
+                        valueStateText="Pricing Type is mandatory"
+                        placeholder="Select type…"
+                        width="100%"
+                        selectionChange="onMtoMtsChange"
+                    >
+                        <core:Item
+                            key="MTO"
+                            text="MTO"
+                        />
+                        <core:Item
+                            key="MTS"
+                            text="MTS"
+                        />
+                        <core:Item
+                            key="GEM"
+                            text="GeM"
+                        />
+                        <core:Item
+                            key="CSD"
+                            text="CSD"
+                        />
+                        <core:Item
+                            key="EV"
+                            text="EV"
+                        />
+                    </ComboBox>
+                </VBox>
+
+                <!-- Status -->
+                <VBox class="vpFilterField">
+                    <Label
+                        text="Status"
+                        class="vpFieldLabel"
+                    />
+                    <ComboBox
+                        id="idStatus"
+                        placeholder="All statuses"
+                        width="100%"
+                        selectedKey="ACTIVE"
+                    >
+                        <core:Item
+                            key="ACTIVE"
+                            text="Active"
+                        />
+                        <core:Item
+                            key="IN-ACTIVE"
+                            text="In-Active"
+                        />
+                        <core:Item
+                            key="IN-STOCK"
+                            text="In-Stock"
+                        />
+                    </ComboBox>
+                </VBox>
+
+                <VBox class="vpFilterField">
+                    <Label
+                        text="Effective date"
+                        class="vpFieldLabel"
+                    />
+
+                    <DatePicker
+                        value="{
+						'path':'vm>/valueDP2',
+						'type':'sap.ui.model.type.Date',
+						'formatOptions': {
+							'pattern': 'yyyy-MM-dd'
+						}
+					}"
+                    />
+                </VBox>
+
+                <!-- Search button -->
+                <VBox class="vpFilterAction">
+                    <Button
+                        text="Search"
+                        type="Emphasized"
+                        icon="sap-icon://search"
+                        press="onGoPress"
+                        class="vpSearchBtn"
+                    />
+                </VBox>
+            </HBox>
+        </VBox>
+
+        <VBox
+            visible="{= ${vm>/tableData}.length > 0 }"
+            class="vpResultsSection"
+        >
+            <!-- Results header bar -->
+            <HBox
+                alignItems="Center"
+                class="vpResultsHeader"
+            >
+                <core:Icon
+                    src="sap-icon://table-view"
+                    class="vpPanelIcon"
+                />
+                <Title
+                    text="Pricing Results"
+                    titleStyle="H5"
+                    class="vpPanelTitle"
+                />
+                <Text
+                    text="{= ${vm>/tableData}.length + ' records' }"
+                    class="reCountBadge"
+                />
+                <ToolbarSpacer />
+            </HBox>
+
+            <!-- ── Table Toolbar ── -->
+            <OverflowToolbar class="vpTableToolbar">
+                <core:Icon
+                    src="sap-icon://show"
+                    class="sapUiTinyMarginEnd vpShowIcon"
+                />
+                <Label
+                    text="Column Groups:"
+                    class="vpToolbarLabel"
+                />
+                <MultiComboBox
+                    id="idColumnGroupMCB"
+                    placeholder="Select groups to display…"
+                    width="200px"
+                    selectionChange="onColumnGroupChange"
+                    class="vpColumnGroupPicker"
+                >
+                    <core:Item
+                        key="DEALER"
+                        text="Dealer Margin Details"
+                    />
+                    <core:Item
+                        key="PRICING"
+                        text="Price Breakup (NDP / Basic / GST)"
+                    />
+                    <core:Item
+                        key="RTO"
+                        text="RTO Details"
+                    />
+                    <core:Item
+                        key="INSURANCE"
+                        text="Insurance Details"
+                    />
+                    <core:Item
+                        key="GEM"
+                        text="GeM Extra Fields"
+                    />
+                    <core:Item
+                        key="CSD"
+                        text="CSD Extra Fields"
+                    />
+
+                    <core:Item
+                        key="MTO"
+                        text="MTO / MIY Fields"
+                    />
+                </MultiComboBox>
+
+                <ToolbarSeparator visible="{vm>/showProcessedFilters}" />
+
+                <Label
+                    text="Processed Region:"
+                    class="vpToolbarLabel"
+                    visible="{vm>/showProcessedFilters}"
+                />
+                <MultiComboBox
+                    id="idProcessedRegionFilter"
+                    placeholder="Filter Region…"
+                    width="180px"
+                    selectionChange="onProcessedFilterChange"
+                    visible="{vm>/showProcessedFilters}"
+                    items="{ path: 'vm>/processedRegions' }"
+                >
+                    <core:Item
+                        key="{vm>Region}"
+                        text="{vm>Region}"
+                    />
+                </MultiComboBox>
+
+                <Label
+                    text="Processed Model:"
+                    class="vpToolbarLabel"
+                    visible="{vm>/showProcessedFilters}"
+                />
+                <MultiComboBox
+                    id="idProcessedModelFilter"
+                    placeholder="Filter Model…"
+                    width="180px"
+                    selectionChange="onProcessedFilterChange"
+                    visible="{vm>/showProcessedFilters}"
+                    items="{
+        path: 'vm>/processedModels',
+        length: 9999
+    }"
+                >
+                    <core:Item
+                        key="{vm>Model}"
+                        text="{vm>Model}"
+                    />
+                </MultiComboBox>
+
+                <ToolbarSpacer />
+
+                <!-- ── Upload button ── -->
+                <Button
+                    id="uploadExcelBtn"
+                    text="Upload"
+                    icon="sap-icon://upload-to-cloud"
+                    type="Ghost"
+                    tooltip="Upload Excel file"
+                    press="onUploadPress"
+                />
+
+                <!-- ── Download button → opens ActionSheet ── -->
+                <Button
+                    id="downloadExcelBtn"
+                    text="Download"
+                    icon="sap-icon://download"
+                    type="Ghost"
+                    tooltip="Download options"
+                    press="onDownloadMenuPress"
+                />
+
+                <ToolbarSeparator />
+
+                <Button
+                    id="processcalculation"
+                    text="Process Calculation"
+                    icon="sap-icon://process"
+                    type="Emphasized"
+                    press="processcalculation"
+                    enabled="{vm>/processCalcEnabled}"
+                    visible="{vm>/processCalcVisible}"
+                />
+            </OverflowToolbar>
+
+            <!-- ── Dynamic Group Header Strip ── -->
+            <HBox
+                id="idGroupHeaderStrip"
+                class="vpGroupHeaderStrip"
+                visible="{vm>/hasGroupHeaders}"
+            />
+
+            <!-- ── Table ── -->
+            <ScrollContainer
+                width="100%"
+                height="calc(100vh - 340px)"
+                horizontal="true"
+                vertical="true"
+                focusable="true"
+                class="vpScrollContainer"
+            >
+                <!-- <Table
+                    id="idvechileTable"
+                    items="{vm>/tableData}"
+                    fixedLayout="true"
+                    class="vpPricingTable"
+                    mode="MultiSelect"
+                    alternateRowColors="true"
+                    sticky="ColumnHeaders"
+                    selectionChange="onTableSelectionChange"
+                    noDataText="No pricing data found. Please refine your search criteria."
+                    growing="true"
+                    growingThreshold="200"
+                    growingScrollToLoad="false"
+                    growingTriggerText="Load 200 more rows…"
+                    updateFinished="onTableUpdateFinished"
+                > -->
+
+                <Table
+                    id="idvechileTable"
+                    items="{ path: 'vm>/tableData', length: 1000000 }"
+                    fixedLayout="true"
+                    class="vpPricingTable"
+                    mode="MultiSelect"
+                    alternateRowColors="true"
+                    sticky="ColumnHeaders"
+                    selectionChange="onTableSelectionChange"
+                    noDataText="No pricing data found. Please refine your search criteria."
+
+                    updateFinished="onTableUpdateFinished"
+                >
+                    <columns>
+                        <!-- ═══════════ CORE (always visible) ═══════════ -->
+                        <Column
+                            width="170px"
+                            hAlign="Begin"
+                        >
+                            <Text
+                                text="Model"
+                                class="vpColHeader vpColCore"
+                            />
+                        </Column>
+
+                        <Column
+                            width="170px"
+                            hAlign="Begin"
+                        >
+                            <Text
+                                text="Model Name"
+                                class="vpColHeader vpColCore"
+                            />
+                        </Column>
+                        <Column
+                            width="100px"
+                            hAlign="Begin"
+                        >
+                            <Text
+                                text="Region"
+                                class="vpColHeader vpColCore"
+                            />
+                        </Column>
+
+                        <Column
+                            width="100px"
+                            hAlign="Begin"
+                        >
+                            <Text
+                                text="Region Name"
+                                class="vpColHeader vpColCore"
+                            />
+                        </Column>
+                        <Column
+                            width="110px"
+                            hAlign="End"
+                        >
+                            <Text
+                                text="Basis / RTO"
+                                class="vpColHeader vpColCore"
+                            />
+                        </Column>
+                        <Column
+                            width="150px"
+                            hAlign="End"
+                        >
+                            <Text
+                                text="Ex-Showroom"
+                                class="vpColHeader vpColCore"
+                            />
+                        </Column>
+                        <Column
+                            width="130px"
+                            hAlign="End"
+                        >
+                            <Text
+                                text="NSP Input"
+                                class="vpColHeader vpColCore"
+                            />
+                        </Column>
+                        <!-- <Column
+                                width="150px"
+                                hAlign="End"
+                            >
+                                <Text
+                                    text="On Road"
+                                    class="vpColHeader vpColCore"
+                                />
+                            </Column>
+                            <Column
+                                width="160px"
+                                hAlign="End"
+                            >
+                                <Text
+                                    text="New Exshowroom"
+                                    class="vpColHeader vpColCore vpColCoreLast"
+                                />
+                            </Column> -->
+
+                        <!-- ═══════════ DEALER group ═══════════ -->
+                        <Column
+                            width="130px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/DEALER}"
+                        >
+                            <Text
+                                text="Dealer Margin %"
+                                class="vpColHeader vpColDealer"
+                            />
+                        </Column>
+                        <Column
+                            width="130px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/DEALER}"
+                        >
+                            <Text
+                                text="MTS NSP"
+                                class="vpColHeader vpColDealer"
+                            />
+                        </Column>
+
+                        <Column
+                            width="130px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/DEALER}"
+                        >
+                            <Text
+                                text="Incremental"
+                                class="vpColHeader vpColDealer"
+                            />
+                        </Column>
+
+                        <Column
+                            width="150px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                        >
+                            <Text
+                                text="MTO NSP"
+                                class="vpColHeader vpColMto"
+                            />
+                        </Column>
+
+                        <Column
+                            width="120px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/DEALER}"
+                        >
+                            <Text
+                                text="Helmet"
+                                class="vpColHeader vpColDealer"
+                            />
+                        </Column>
+                        <Column
+                            width="130px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/DEALER}"
+                        >
+                            <Text
+                                text="Transportation"
+                                class="vpColHeader vpColDealer"
+                            />
+                        </Column>
+                        <Column
+                            width="120px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/DEALER}"
+                        >
+                            <Text
+                                text="Dealer Cost"
+                                class="vpColHeader vpColDealer"
+                            />
+                        </Column>
+                        <Column
+                            width="130px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/DEALER}"
+                        >
+                            <Text
+                                text="Other Expenses"
+                                class="vpColHeader vpColDealer"
+                            />
+                        </Column>
+                        <Column
+                            width="120px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/DEALER}"
+                        >
+                            <Text
+                                text="Bike Margin"
+                                class="vpColHeader vpColDealer"
+                            />
+                        </Column>
+                        <Column
+                            width="120px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/DEALER}"
+                        >
+                            <Text
+                                text="Incremental"
+                                class="vpColHeader vpColDealer"
+                            />
+                        </Column>
+                        <Column
+                            width="130px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/DEALER}"
+                        >
+                            <Text
+                                text="Dealer Margin"
+                                class="vpColHeader vpColDealer"
+                            />
+                        </Column>
+                        <Column
+                            width="120px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/DEALER}"
+                        >
+                            <Text
+                                text="Helmet Margin"
+                                class="vpColHeader vpColDealer"
+                            />
+                        </Column>
+                        <Column
+                            width="150px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/DEALER}"
+                        >
+                            <Text
+                                text="Total Dealer Margin"
+                                class="vpColHeader vpColDealer vpColDealerLast"
+                            />
+                        </Column>
+
+                        <!-- ═══════════ PRICING group ═══════════ -->
+                        <Column
+                            width="110px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/PRICING}"
+                        >
+                            <Text
+                                text="NDP"
+                                class="vpColHeader vpColPricing"
+                            />
+                        </Column>
+                        <Column
+                            width="120px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/PRICING}"
+                        >
+                            <Text
+                                text="Basic"
+                                class="vpColHeader vpColPricing"
+                            />
+                        </Column>
+                        <Column
+                            width="90px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/PRICING}"
+                        >
+                            <Text
+                                text="GST %"
+                                class="vpColHeader vpColPricing"
+                            />
+                        </Column>
+                        <Column
+                            width="130px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/PRICING}"
+                        >
+                            <Text
+                                text="GST"
+                                class="vpColHeader vpColPricing"
+                            />
+                        </Column>
+
+                        <Column
+                            width="150px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/PRICING}"
+                        >
+                            <Text
+                                text="Ex-Showroom"
+                                class="vpColHeader vpColPricing"
+                            />
+                        </Column>
+
+                        <Column
+                            width="140px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                        >
+                            <Text
+                                text="MTO Ex-showroom"
+                                class="vpColHeader vpColPricing"
+                            />
+                        </Column>
+
+                        <!-- ═══════════ RTO group ═══════════ -->
+                        <Column
+                            width="85px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/RTO}"
+                        >
+                            <Text
+                                text="RTO %"
+                                class="vpColHeader vpColRto"
+                            />
+                        </Column>
+                        <Column
+                            width="110px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/RTO}"
+                        >
+                            <Text
+                                text="RTO"
+                                class="vpColHeader vpColRto"
+                            />
+                        </Column>
+                        <Column
+                            width="140px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/RTO}"
+                        >
+                            <Text
+                                text="RTO (With Bill)"
+                                class="vpColHeader vpColRto vpColRtoLast"
+                            />
+                        </Column>
+
+                        <!-- ═══════════ INSURANCE group ═══════════ -->
+                        <Column
+                            width="130px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/INSURANCE}"
+                        >
+                            <Text
+                                text="Insurance %"
+                                class="vpColHeader vpColIns"
+                            />
+                        </Column>
+                        <Column
+                            width="120px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/INSURANCE}"
+                        >
+                            <Text
+                                text="Insurance"
+                                class="vpColHeader vpColIns"
+                            />
+                        </Column>
+                        <Column
+                            width="110px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/INSURANCE}"
+                        >
+                            <Text
+                                text="TPA + PA"
+                                class="vpColHeader vpColIns"
+                            />
+                        </Column>
+                        <Column
+                            width="90px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/INSURANCE}"
+                        >
+                            <Text
+                                text="GST"
+                                class="vpColHeader vpColIns"
+                            />
+                        </Column>
+                        <Column
+                            width="150px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/INSURANCE}"
+                        >
+                            <Text
+                                text="Total Insurance"
+                                class="vpColHeader vpColIns vpColInsLast"
+                            />
+                        </Column>
+
+                        <!-- ═══════════ GeM group ═══════════ -->
+
+                        <Column
+                            width="110px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/GEM} &amp;&amp; ${vm>/selectedMto} === 'GEM' }"
+                        >
+                            <Text
+                                text="Discount %"
+                                class="vpColHeader vpColGem"
+                            />
+                        </Column>
+
+                        <Column
+                            width="130px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/GEM} &amp;&amp; ${vm>/selectedMto} === 'GEM' }"
+                        >
+                            <Text
+                                text="Discount Amt"
+                                class="vpColHeader vpColGem"
+                            />
+                        </Column>
+
+                        <Column
+                            width="120px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/GEM} &amp;&amp; ${vm>/selectedMto} === 'GEM' }"
+                        >
+                            <Text
+                                text="Sub Total"
+                                class="vpColHeader vpColGem"
+                            />
+                        </Column>
+
+                        <Column
+                            width="85px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/GEM} &amp;&amp; ${vm>/selectedMto} === 'GEM' }"
+                        >
+                            <Text
+                                text="GST %"
+                                class="vpColHeader vpColGem"
+                            />
+                        </Column>
+
+                        <Column
+                            width="120px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/GEM} &amp;&amp; ${vm>/selectedMto} === 'GEM' }"
+                        >
+                            <Text
+                                text="Helmet Cost"
+                                class="vpColHeader vpColGem"
+                            />
+                        </Column>
+
+                        <Column
+                            width="120px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/GEM} &amp;&amp; ${vm>/selectedMto} === 'GEM' }"
+                        >
+                            <Text
+                                text="GeM Basic"
+                                class="vpColHeader vpColGem"
+                            />
+                        </Column>
+
+                        <Column
+                            width="120px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/GEM} &amp;&amp; ${vm>/selectedMto} === 'GEM' }"
+                        >
+                            <Text
+                                text="GST Amount"
+                                class="vpColHeader vpColGem"
+                            />
+                        </Column>
+
+                        <Column
+                            width="150px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/GEM} &amp;&amp; ${vm>/selectedMto} === 'GEM' }"
+                        >
+                            <Text
+                                text="Final GeM Price"
+                                class="vpColHeader vpColGem vpColGemLast"
+                            />
+                        </Column>
+
+
+                        <!-- ═══════════ CSD group ═══════════ -->
+
+                        <Column
+                            width="120px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                        >
+                            <Text
+                                text="CSD NSP"
+                                class="vpColHeader vpColCsd"
+                            />
+                        </Column>
+
+                        <Column
+                            width="130px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                        >
+                            <Text
+                                text="Basic Price WO"
+                                class="vpColHeader vpColCsd"
+                            />
+                        </Column>
+
+                        <Column
+                            width="110px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                        >
+                            <Text
+                                text="CSD Disc %"
+                                class="vpColHeader vpColCsd"
+                            />
+                        </Column>
+
+                        <Column
+                            width="120px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                        >
+                            <Text
+                                text="CSD Discount"
+                                class="vpColHeader vpColCsd"
+                            />
+                        </Column>
+
+                        <Column
+                            width="140px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                        >
+                            <Text
+                                text="Pre-Tax Net Discount"
+                                class="vpColHeader vpColCsd"
+                            />
+                        </Column>
+
+                        <Column
+                            width="100px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                        >
+                            <Text
+                                text="CSD GST %"
+                                class="vpColHeader vpColCsd"
+                            />
+                        </Column>
+
+                        <Column
+                            width="120px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                        >
+                            <Text
+                                text="CSD GST Amt"
+                                class="vpColHeader vpColCsd"
+                            />
+                        </Column>
+
+                        <Column
+                            width="150px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                        >
+                            <Text
+                                text="CSD Ex-Showroom"
+                                class="vpColHeader vpColCsd"
+                            />
+                        </Column>
+
+                        <Column
+                            width="110px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                        >
+                            <Text
+                                text="Incidental %"
+                                class="vpColHeader vpColCsd"
+                            />
+                        </Column>
+
+                        <Column
+                            width="140px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                        >
+                            <Text
+                                text="Incidental Charges"
+                                class="vpColHeader vpColCsd"
+                            />
+                        </Column>
+
+                        <Column
+                            width="150px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                        >
+                            <Text
+                                text="Final CSD Price"
+                                class="vpColHeader vpColCsd vpColCsdLast"
+                            />
+                        </Column>
+
+                        <Column
+                            width="150px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                        >
+                            <Text
+                                text="CSD On-Road"
+                                class="vpColHeader vpColCsd"
+                            />
+                        </Column>
+
+                        <!-- ═══════════ MTO group ═══════════ -->
+
+                        <Column
+                            width="140px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                        >
+                            <Text
+                                text="MTO On-Road"
+                                class="vpColHeader vpColMto vpColMtoLast"
+                            />
+                        </Column>
+
+                        <Column
+                            width="160px"
+                            hAlign="Begin"
+                            visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                        >
+                            <Text
+                                text="Refer MTS Model"
+                                class="vpColHeader vpColMto"
+                            />
+                        </Column>
+
+                        <Column
+                            width="150px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                        >
+                            <Text
+                                text="MTS Exshowroom"
+                                class="vpColHeader vpColMto"
+                            />
+                        </Column>
+
+                        <Column
+                            width="150px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                        >
+                            <Text
+                                text="MIY Ex-Showroom"
+                                class="vpColHeader vpColMto"
+                            />
+                        </Column>
+                        <Column
+                            width="150px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                        >
+                            <Text
+                                text="Expected Ex-Showroom"
+                                class="vpColHeader vpColMto"
+                            />
+                        </Column>
+
+                        <Column
+                            width="140px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                        >
+                            <Text
+                                text="MTO Onroad (L1)"
+                                class="vpColHeader vpColMto"
+                            />
+                        </Column>
+
+                        <Column
+                            width="140px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                        >
+                            <Text
+                                text="MIY On-Road"
+                                class="vpColHeader vpColMto vpColMtoLast"
+                            />
+                        </Column>
+                        <!-- <Column
+                                width="140px"
+                                hAlign="End"
+                                visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                            >
+                                <Text
+                                    text="MTO On-Road"
+                                    class="vpColHeader vpColMto vpColMtoLast"
+                                />
+                            </Column> -->
+                        <Column
+                            width="140px"
+                            hAlign="End"
+                            visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                        >
+                            <Text
+                                text="Expected On-Road"
+                                class="vpColHeader vpColMto vpColMtoLast"
+                            />
+                        </Column>
+
+                        <!-- new changes  -->
+
+                        <Column
+                            width="130px"
+                            hAlign="Center"
+                            visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                        >
+                            <Text
+                                text="GMA Parts"
+                                class="vpColHeader vpColMto"
+                            />
+                        </Column>
+
+                        <!-- new changes -->
+
+                        <Column
+                            width="150px"
+                            hAlign="End"
+                            visible="{vm>/colGrp/DEALER}"
+                        >
+                            <Text
+                                text="On Road"
+                                class="vpColHeader vpColCore"
+                            />
+                        </Column>
+                    </columns>
+
+                    <!-- ── Row Template ── -->
+                    <items>
+                        <ColumnListItem
+                            vAlign="Middle"
+                            class="vpTableRow"
+                        >
+                            <cells>
+                                <!-- ── CORE: Model + Status badge ── -->
+                                <HBox
+                                    alignItems="Center"
+                                    class="vpModelCell"
+                                >
+                                    <ObjectIdentifier
+                                        title="{vm>Model}"
+                                        class="vpModelId sapUiTinyMarginEnd"
+                                    />
+                                    <FormattedText
+                                        htmlText="{
+            path: 'vm>rowStatus',
+            formatter: '.formatStatusPill'
+        }"
+                                        class="vpStatusPillWrapper"
+                                    />
+                                </HBox>
+
+                                <Text text="{vm>Description}" />
+
+                                <!-- ── CORE: Region ── -->
+                                <Text text="{vm>Region}" />
+
+                                <!-- ── CORE: Region ── -->
+                                <Text text="{vm>Ort01}" />
+
+                                <!-- ── CORE: Basis ── -->
+                                <Text text="{vm>Basis}" />
+
+                                <!-- ── CORE: Ex-Showroom ── -->
+                                <VBox>
+                                    <Input
+                                        value="{vm>InputExShowroom}"
+                                        liveChange="onRowValueChange"
+                                        width="130px"
+                                        class="vpNumInput"
+                                        textAlign="End"
+                                        enabled="{vm>InputExShowroomEnabled}"
+                                        placeholder="Ex-Showroom"
+                                        visible="true"
+                                    />
+                                    <Text
+                                        text="{ path: 'vm>ActualExShowroom', formatter: '.formatIndian' }"
+                                        textAlign="End"
+                                        class="vpNumDisplay"
+                                        visible="false"
+                                    />
+                                </VBox>
+
+                                <!-- ── CORE: NSP Input ── -->
+                                <VBox>
+                                    <Input
+                                        value="{vm>InputNsp}"
+                                        liveChange="onRowValueChange"
+                                        width="110px"
+                                        class="vpNumInput"
+                                        textAlign="End"
+                                        enabled="{vm>InputNspEnabled}"
+                                        placeholder="NSP"
+                                        visible="true"
+                                    />
+                                    <Text
+                                        text="{ path: 'vm>ActualNsp', formatter: '.formatIndian' }"
+                                        textAlign="End"
+                                        class="vpNumDisplay"
+                                        visible="false"
+                                    />
+                                </VBox>
+
+                                <!-- ── CORE: On Road ── -->
+
+                                <!-- ══════════ DEALER cells ══════════ -->
+                                <Text
+                                    text="{vm>DealerMarginPerc}"
+                                    visible="{vm>/colGrp/DEALER}"
+                                />
+                                <Text
+                                    text="{ path: 'vm>ActualNsp',          formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/DEALER}"
+                                />
+
+                                <Text
+                                    text="{ path: 'vm>IncrementalNSP',     formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/DEALER}"
+                                />
+
+                                <!-- MTO NSP — bind MtoNsp (set in controller as oRow.MTO_NSP) -->
+                                <Text
+                                    text="{ path: 'vm>MtoNsp', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                                />
+                                <Text
+                                    text="{ path: 'vm>Helmet',             formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/DEALER}"
+                                />
+                                <Text
+                                    text="{ path: 'vm>Transportation',     formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/DEALER}"
+                                />
+                                <Text
+                                    text="{ path: 'vm>DealerCost',         formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/DEALER}"
+                                />
+                                <Text
+                                    text="{ path: 'vm>OtherExpenses',      formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/DEALER}"
+                                />
+                                <Text
+                                    text="{ path: 'vm>BikeMargin',         formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/DEALER}"
+                                />
+                                <Text
+                                    text="{ path: 'vm>IncrementDlr',       formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/DEALER}"
+                                />
+                                <Text
+                                    text="{ path: 'vm>ActualDealerMargin', formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/DEALER}"
+                                />
+                                <Text
+                                    text="{ path: 'vm>HelmetMargin',       formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/DEALER}"
+                                />
+                                <Text
+                                    text="{ path: 'vm>TotalDealerMargin',  formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/DEALER}"
+                                />
+
+                                <!-- ══════════ PRICING cells ══════════ -->
+                                <Text
+                                    text="{ path: 'vm>Ndp',              formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/PRICING}"
+                                />
+                                <Text
+                                    text="{ path: 'vm>Basic',            formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/PRICING}"
+                                />
+                                <Text
+                                    text="{vm>GSTPerc}"
+                                    visible="{vm>/colGrp/PRICING}"
+                                />
+                                <Text
+                                    text="{ path: 'vm>Gst',             formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/PRICING}"
+                                />
+
+                                <!-- ── CORE: Actual Ex-Showroom ── -->
+                                <Text
+                                    text="{ path: 'vm>ActualExShowroom', formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/DEALER}"
+                                />
+
+                                <Text
+                                    text="{ path: 'vm>ActualExShowroom',             formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                                />
+
+                                <!-- ══════════ RTO cells ══════════ -->
+                                <Text
+                                    text="{vm>RtoPerc}"
+                                    visible="{vm>/colGrp/RTO}"
+                                />
+                                <Text
+                                    text="{ path: 'vm>Rto',         formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/RTO}"
+                                />
+                                <Text
+                                    text="{ path: 'vm>RtoWithBill', formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/RTO}"
+                                />
+
+                                <!-- ══════════ INSURANCE cells ══════════ -->
+                                <Text
+                                    text="{ path: 'vm>insuranceperc'}"
+                                    visible="{vm>/colGrp/INSURANCE}"
+                                />
+                                <Text
+                                    text="{ path: 'vm>Insurance',      formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/INSURANCE}"
+                                />
+                                <Text
+                                    text="{ path: 'vm>TpaPa',          formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/INSURANCE}"
+                                />
+                                <Text
+                                    text="{ path: 'vm>ActualGst',      formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/INSURANCE}"
+                                />
+                                <Text
+                                    text="{ path: 'vm>TotalInsurance', formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/INSURANCE}"
+                                />
+
+                                <!-- ══════════ GeM cells ══════════ -->
+                                <!-- ══════════ GeM cells ══════════ -->
+
+                                <Text
+                                    text="{vm>DiscountPerc}"
+                                    visible="{= ${vm>/colGrp/GEM} &amp;&amp; ${vm>/selectedMto} === 'GEM' }"
+                                />
+                                <Text
+                                    text="{ path: 'vm>DiscountAmount', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/GEM} &amp;&amp; ${vm>/selectedMto} === 'GEM' }"
+                                />
+                                <Text
+                                    text="{ path: 'vm>SubTotal', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/GEM} &amp;&amp; ${vm>/selectedMto} === 'GEM' }"
+                                />
+                                <Text
+                                    text="{vm>GemGstPerc}"
+                                    visible="{= ${vm>/colGrp/GEM} &amp;&amp; ${vm>/selectedMto} === 'GEM' }"
+                                />
+                                <Text
+                                    text="{ path: 'vm>HelmetCost', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/GEM} &amp;&amp; ${vm>/selectedMto} === 'GEM' }"
+                                />
+                                <Text
+                                    text="{ path: 'vm>GemBasic', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/GEM} &amp;&amp; ${vm>/selectedMto} === 'GEM' }"
+                                />
+                                <Text
+                                    text="{ path: 'vm>GemGstAmount', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/GEM} &amp;&amp; ${vm>/selectedMto} === 'GEM' }"
+                                />
+                                <Text
+                                    text="{ path: 'vm>FinalGeMPrice', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/GEM} &amp;&amp; ${vm>/selectedMto} === 'GEM' }"
+                                />
+
+
+                                
+                                <!-- ══════════ CSD cells ══════════ -->
+
+                                <Text
+                                    text="{ path: 'vm>CsdNsp', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                                />
+                                <Text
+                                    text="{ path: 'vm>BasicPriceWO', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                                />
+                                <Text
+                                    text="{ path: 'vm>CsdDisPerc', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                                />
+                                <Text
+                                    text="{ path: 'vm>CSD', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                                />
+                                <Text
+                                    text="{ path: 'vm>PreTaxNetDiscount', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                                />
+                                <Text
+                                    text="{ path: 'vm>CsdGstPerc', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                                />
+                                <Text
+                                    text="{ path: 'vm>CsdGstAmount', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                                />
+                                <Text
+                                    text="{ path: 'vm>CsdExShowroom', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                                />
+                                <Text
+                                    text="{ path: 'vm>IncidentalPerc', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                                />
+                                <Text
+                                    text="{ path: 'vm>IncidentalCharges', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                                />
+                                <Text
+                                    text="{ path: 'vm>FinalCSDPrice', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                                />
+                                <Text
+                                    text="{ path: 'vm>CsdOnRoad', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/CSD} &amp;&amp; ${vm>/selectedMto} === 'CSD' }"
+                                />
+                                <!-- ══════════ MTO cells ══════════ -->
+
+                                <!-- MTO On-Road — backend: MTOOnRoad -->
+                                <!-- ══════════ MTO cells ══════════ -->
+
+                                <Text
+                                    text="{ path: 'vm>MTOOnRoad', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                                />
+
+                                <!-- Refer MTS Model -->
+                                <Text
+                                    text="{vm>ReferMtsModel}"
+                                    visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                                />
+
+                                <!-- MTS Exshowroom — column header: "MTS Exshowroom" -->
+                                <Text
+                                    text="{ path: 'vm>MTSExshowroom', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                                />
+
+                                <!-- MIY Ex-Showroom -->
+                                <Text
+                                    text="{ path: 'vm>MIYExShowroomTotal', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                                />
+
+                                <!-- Expected Ex-Showroom (MTOExshowroomafterGMA) -->
+                                <Text
+                                    text="{ path: 'vm>MTOExshowroomafterGMA', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                                />
+
+                                <!-- <Text
+                                        text="{
+        parts: [
+            { path: 'vm>MTSExshowroom' },
+            { path: 'vm>MIYExShowroomTotal' }
+        ],
+        formatter: '.formatMTOExshowroomafterGMA'
+    }"
+                                        visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                                    /> -->
+                                <!-- MTO On-Road -->
+                                <Text
+                                    text="{ path: 'vm>MTSOnRoad', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                                />
+
+                                <!-- <Text
+                                        text="{
+        parts: [
+            { path: 'vm>MTOOnRoad' },
+            { path: 'vm>MIYOnRoadTotal' }
+        ],
+        formatter: '.formatMTSOnRoad'
+    }"
+                                        visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                                    /> -->
+
+                                <!-- MIY On-Road -->
+                                <Text
+                                    text="{ path: 'vm>MIYOnRoadTotal', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                                />
+
+                                <!-- Expected On-Road -->
+                                <Text
+                                    text="{ path: 'vm>ExpectedOnRoad', formatter: '.formatIndian' }"
+                                    visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                                />
+
+                                <!-- ═══ ADD HERE ═══ -->
+                                <Button
+                                    icon="sap-icon://list"
+                                    type="Transparent"
+                                    text="{= ${vm>MiyBreakup} ? ${vm>MiyBreakup}.length + ' pts' : '0 pts' }"
+                                    press="onViewGmaBreakup"
+                                    enabled="{= !!${vm>MiyBreakup} &amp;&amp; ${vm>MiyBreakup}.length > 0 }"
+                                    visible="{= ${vm>/colGrp/MTO} &amp;&amp; ${vm>/selectedMto} === 'MTO' }"
+                                />
+                                <!-- ═══ END ADD ═══ -->
+
+                                <!-- ── CORE: On Road ── -->
+                                <Text
+                                    text="{ path: 'vm>OnRoad', formatter: '.formatIndian' }"
+                                    visible="{vm>/colGrp/DEALER}"
+                                />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </ScrollContainer>
+        </VBox>
+
+        <!-- ═══════════════════════════════════════════════════════
+             FOOTER
+        ═══════════════════════════════════════════════════════ -->
+        <footer>
+            <OverflowToolbar
+                visible="{= ${vm>/tableData}.length > 0 }"
+                class="vpFooterBar"
+            >
+                <ToolbarSpacer />
+                <Button
+                    text="Delete"
+                    type="Negative"
+                    icon="sap-icon://delete"
+                    enabled="{vm>/enableSaveActions}"
+                    press="onDelete"
+                />
+                <Button
+                    text="Clear"
+                    icon="sap-icon://clear-all"
+                    enabled="{vm>/enableSaveActions}"
+                    press="onClear"
+                />
+                <Button
+                    text="Edit"
+                    icon="sap-icon://edit"
+                    enabled="{vm>/enableSaveActions}"
+                    press="onEdit"
+                />
+                <Button
+                    id="saveBtn"
+                    text="Save"
+                    type="Emphasized"
+                    icon="sap-icon://save"
+                    press=".onSave"
+                    tooltip="{vm>/saveTooltip}"
+                    enabled="{vm>/saveBtnEnabled}"
+                />
+                <ToolbarSeparator />
+                <Button
+                    id="applyOtherRegionsBtn"
+                    text="Apply to Other Regions"
+                    type="Accept"
+                    icon="sap-icon://world"
+                    press="onApplyToOtherRegions"
+                    enabled="{vm>/applyOtherEnabled}"
+                />
+                <Button
+                    id="submitBtn"
+                    text="Submit"
+                    type="Emphasized"
+                    icon="sap-icon://action"
+                    press=".onSubmit"
+                    tooltip="{vm>/submitTooltip}"
+                    enabled="{vm>/saveBtnEnabled}"
+                />
+            </OverflowToolbar>
+        </footer>
+
+        <HBox visible="false">
+            <core:HTML
+                id="vpFileInputHTML"
+                content="&lt;input type='file' id='vpExcelFileInput' accept='.xlsx,.xls,.csv' style='display:none' /&gt;"
+            />
+        </HBox>
+
+        <dependents>
+            <ActionSheet
+                id="downloadActionSheet"
+                title="Download Options"
+                showCancelButton="true"
+                cancelButtonText="Cancel"
+            >
+                <Button
+                    text="Download All Data"
+                    icon="sap-icon://download"
+                    press="onExcelDownloadAll"
+                />
+                <Button
+                    text="Download Template"
+                    icon="sap-icon://document"
+                    press="onExcelDownloadTemplate"
+                />
+                <Button
+                    text="Select Fields &amp; Download"
+                    icon="sap-icon://table-column"
+                    press="onExcelDownload"
+                />
+            </ActionSheet>
+        </dependents>
+    </Page>
+</mvc:View>

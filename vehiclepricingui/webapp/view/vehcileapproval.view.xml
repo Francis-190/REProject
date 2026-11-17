@@ -1,0 +1,492 @@
+<mvc:View
+    controllerName="vehiclepricingui.controller.vehcileapproval"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+>
+    <f:DynamicPage
+        id="submissionPage"
+        headerExpanded="true"
+        toggleHeaderOnTitleClick="true"
+        fitContent="true"
+        backgroundDesign="Solid"
+    >
+        <!-- TITLE BAR -->
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <FlexBox alignItems="Center">
+                        <Image
+                            src="images/Royal-Enfield-logo.png"
+                            height="2.5rem"
+                            decorative="true"
+                            class="sapUiSmallMarginEnd"
+                        />
+                        <VBox>
+                            <Title
+                                text="{= ${vm>/entryLevel} === 'APPROVER2' ? 'Approver 2 - Submissions' : 'Approver 1 - Submissions' }"
+                                level="H2"
+                            />
+                            <Text
+                                text="Vehicle Pricing · Approval Workflow"
+                                class="sapUiTinyMarginTop"
+                            />
+                        </VBox>
+                    </FlexBox>
+                </f:heading>
+
+                <f:snappedHeading>
+                    <FlexBox alignItems="Center">
+                        <Image
+                            src="images/Royal-Enfield-logo.png"
+                            height="1.75rem"
+                            decorative="true"
+                            class="sapUiSmallMarginEnd"
+                        />
+                        <Title
+                            text="{= ${vm>/entryLevel} === 'APPROVER2' ? 'Approver 2 - Submissions' : 'Approver 1 - Submissions' }"
+                            level="H4"
+                        />
+                    </FlexBox>
+                </f:snappedHeading>
+
+                <f:navigationActions>
+                    <core:Icon
+                        src="{= ${vm>/readOnly} ? 'sap-icon://show' : 'sap-icon://approvals' }"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Text
+                        text="{= ${vm>/readOnly} ? 'View Only' : 'Approver' }"
+                    />
+                    <Button
+                        icon="sap-icon://nav-back"
+                        type="Transparent"
+                        press=".onNavBack"
+                    />
+                </f:navigationActions>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <!-- COLLAPSIBLE HEADER — KPI Strip -->
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <f:content>
+                    <FlexBox
+                        wrap="Wrap"
+                        alignItems="Stretch"
+                        justifyContent="SpaceBetween"
+                        class="sapUiSmallMarginBottom"
+                    >
+                        <!-- Description block -->
+                        <VBox
+                            justifyContent="Center"
+                            class="sapUiSmallMarginEnd"
+                        >
+                            <Label
+                                text="Department"
+                                design="Bold"
+                            />
+                            <Text
+                                text="Vehicle Pricing"
+                                class="sapUiTinyMarginBottom"
+                            />
+                            <Label
+                                text="Workflow"
+                                design="Bold"
+                            />
+                            <Text text="Multi-level Approval" />
+                        </VBox>
+
+                        <!-- KPI Strip -->
+                        <HBox
+                            wrap="Wrap"
+                            alignItems="Stretch"
+                        >
+                            <!-- Pending (Approver 1: SUBMITTED, Approver 2: L1_APPROVED) -->
+                            <VBox
+                                justifyContent="Center"
+                                alignItems="Center"
+                                width="9rem"
+                                class="sapUiSmallMarginEnd"
+                            >
+                                <core:Icon
+                                    src="sap-icon://pending"
+                                    size="2rem"
+                                    color="#E9730C"
+                                    class="sapUiTinyMarginBottom"
+                                />
+                                <ObjectNumber
+                                    number="{= ${vm>/entryLevel} === 'APPROVER2' ? ${vm>/counts/L1_APPROVED} : ${vm>/counts/SUBMITTED} }"
+                                    state="Warning"
+                                    emphasized="true"
+                                    class="sapUiTinyMarginBottom"
+                                />
+                                <Label
+                                    text="Pending"
+                                    design="Bold"
+                                />
+                                <Text
+                                    text="Awaiting action"
+                                    class="sapUiTinyMarginTop"
+                                />
+                            </VBox>
+
+                            <core:HTML
+                                content="&lt;div style='width:1px;background:#e0e0e0;margin:0 1rem;'&gt;&lt;/div&gt;"
+                            />
+
+                            <!-- Approved -->
+                            <VBox
+                                justifyContent="Center"
+                                alignItems="Center"
+                                width="9rem"
+                                class="sapUiSmallMarginEnd sapUiSmallMarginStart"
+                            >
+                                <core:Icon
+                                    src="sap-icon://sys-enter-2"
+                                    size="2rem"
+                                    color="#188918"
+                                    class="sapUiTinyMarginBottom"
+                                />
+                                <ObjectNumber
+                                    number="{vm>/counts/APPROVED}"
+                                    state="Success"
+                                    emphasized="true"
+                                    class="sapUiTinyMarginBottom"
+                                />
+                                <Label
+                                    text="Approved"
+                                    design="Bold"
+                                />
+                                <Text
+                                    text="Processed"
+                                    class="sapUiTinyMarginTop"
+                                />
+                            </VBox>
+
+                            <core:HTML
+                                content="&lt;div style='width:1px;background:#e0e0e0;margin:0 1rem;'&gt;&lt;/div&gt;"
+                            />
+
+                            <!-- Rejected -->
+                            <VBox
+                                justifyContent="Center"
+                                alignItems="Center"
+                                width="9rem"
+                                class="sapUiSmallMarginStart"
+                            >
+                                <core:Icon
+                                    src="sap-icon://sys-cancel-2"
+                                    size="2rem"
+                                    color="#BB0000"
+                                    class="sapUiTinyMarginBottom"
+                                />
+                                <ObjectNumber
+                                    number="{vm>/counts/REJECTED}"
+                                    state="Error"
+                                    emphasized="true"
+                                    class="sapUiTinyMarginBottom"
+                                />
+                                <Label
+                                    text="Rejected"
+                                    design="Bold"
+                                />
+                                <Text
+                                    text="Needs review"
+                                    class="sapUiTinyMarginTop"
+                                />
+                            </VBox>
+                        </HBox>
+                    </FlexBox>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <!-- PAGE CONTENT -->
+        <f:content>
+            <VBox class="sapUiResponsiveContentPadding">
+                <!-- Filter Tab Bar -->
+                <IconTabBar
+                    id="idFilterBar"
+                    select=".onFilterSelect"
+                    expandable="false"
+                    stretchContentHeight="false"
+                    tabDensityMode="Compact"
+                    class="sapUiSmallMarginBottom"
+                >
+                    <items>
+                        <IconTabFilter
+                            key="ALL"
+                            text="All"
+                            count="{vm>/counts/ALL}"
+                            icon="sap-icon://list"
+                        />
+                        <IconTabSeparator />
+                        <IconTabFilter
+                            key="SUBMITTED"
+                            text="Submitted"
+                            count="{vm>/counts/SUBMITTED}"
+                            icon="sap-icon://pending"
+                            iconColor="Critical"
+                        />
+
+                        <IconTabFilter
+                            key="APPROVED"
+                            text="Approved"
+                            count="{vm>/counts/APPROVED}"
+                            icon="sap-icon://accept"
+                            iconColor="Positive"
+                        />
+                        <IconTabFilter
+                            key="REJECTED"
+                            text="Rejected"
+                            count="{vm>/counts/REJECTED}"
+                            icon="sap-icon://decline"
+                            iconColor="Negative"
+                        />
+                    </items>
+                </IconTabBar>
+
+                <ScrollContainer
+                    id="priceBreakupScrollContainer1"
+                    horizontal="true"
+                    vertical="true"
+                    width="100%"
+                    height="22rem"
+                    class="sapUiTinyMarginTop"
+                >
+                    <!-- Main Table -->
+                    <Table
+                        id="submissionTable"
+                        inset="false"
+                        fixedLayout="true"
+                        alternateRowColors="true"
+                        sticky="ColumnHeaders,HeaderToolbar"
+                        mode="None"
+                        noDataText="No submission references found"
+                        showSeparators="Inner"
+                        busyIndicatorDelay="0"
+                        items="{
+                        path: 'vm>/filteredData',
+                        sorter: { path: 'CreatedOn', descending: true }
+                    }"
+                    >
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <Title
+                                    text="References"
+                                    level="H4"
+                                />
+                                <ToolbarSpacer />
+                                <SearchField
+                                    id="searchField"
+                                    placeholder="Search by reference, status, user…"
+                                    liveChange=".onSearch"
+                                    showSearchButton="false"
+                                    width="20rem"
+                                />
+                                <Button
+                                    icon="sap-icon://refresh"
+                                    type="Transparent"
+                                    tooltip="Refresh"
+                                    press=".onRefresh"
+                                />
+                                <Button
+                                    icon="sap-icon://sort"
+                                    type="Transparent"
+                                    tooltip="Sort by Created On"
+                                    press=".onSort"
+                                />
+                                <Button
+                                    icon="sap-icon://excel-attachment"
+                                    type="Transparent"
+                                    tooltip="Export to CSV"
+                                    press=".onExport"
+                                />
+                            </OverflowToolbar>
+                        </headerToolbar>
+
+                        <columns>
+                            <Column
+                                width="16rem"
+                                importance="High"
+                            >
+                                <Text text="Reference Number" />
+                            </Column>
+                            <Column
+                                width="10rem"
+                                importance="High"
+                                hAlign="Center"
+                            >
+                                <Text text="Status" />
+                            </Column>
+                            <Column
+                                minScreenWidth="Phone"
+                                demandPopin="true"
+                                importance="High"
+                            >
+                                <Text text="Comments" />
+                            </Column>
+                            <Column
+                                width="14rem"
+                                minScreenWidth="Tablet"
+                                demandPopin="true"
+                                importance="Medium"
+                            >
+                                <Text text="Created" />
+                            </Column>
+                            <Column
+                                width="14rem"
+                                minScreenWidth="Desktop"
+                                demandPopin="true"
+                                importance="Low"
+                            >
+                                <Text text="Last Update" />
+                            </Column>
+                        </columns>
+
+                        <items>
+                            <ColumnListItem
+                                type="Navigation"
+                                press=".onReferencePress"
+                                highlight="{=
+                                ${vm>Status} === 'APPROVED' ? 'Success' :
+                                ${vm>Status} === 'REJECTED' ? 'Error'   : 'Warning'
+                            }"
+                            >
+                                <cells>
+                                    <!-- Reference Number -->
+                                    <HBox alignItems="Center">
+                                        <core:Icon
+                                            src="sap-icon://document-text"
+                                            size="0.875rem"
+                                            color="@sapUiHighlight"
+                                            class="sapUiTinyMarginEnd"
+                                        />
+                                        <Text
+                                            text="{vm>ReferenceNum}"
+                                            wrapping="false"
+                                        />
+                                    </HBox>
+
+                                    <!-- Status pill -->
+                                    <ObjectStatus
+                                        text="{vm>Status}"
+                                        state="{=
+                                        ${vm>Status} === 'APPROVED' ? 'Success' :
+                                        ${vm>Status} === 'REJECTED' ? 'Error'   : 'Warning'
+                                    }"
+                                        icon="{=
+                                        ${vm>Status} === 'APPROVED' ? 'sap-icon://accept'  :
+                                        ${vm>Status} === 'REJECTED' ? 'sap-icon://decline' : 'sap-icon://pending'
+                                    }"
+                                        inverted="true"
+                                    />
+
+                                    <!-- Comments -->
+                                    <Text
+                                        text="{vm>Comments}"
+                                        wrapping="false"
+                                        maxLines="1"
+                                        tooltip="{vm>Comments}"
+                                    />
+
+                                    <!-- Created -->
+                                    <VBox>
+                                        <HBox
+                                            alignItems="Center"
+                                            class="sapUiTinyMarginBottom"
+                                        >
+                                            <core:Icon
+                                                src="sap-icon://appointment-2"
+                                                size="0.75rem"
+                                                color="@sapUiContentIconColor"
+                                                class="sapUiTinyMarginEnd"
+                                            />
+                                            <Text
+                                                text="{
+                                            path: 'vm>CreatedOn',
+                                            formatter: '.formatDateSafe'
+                                        }"
+                                            />
+                                        </HBox>
+                                        <HBox
+                                            alignItems="Center"
+                                            visible="{= !!${vm>CreatedBy} }"
+                                        >
+                                            <Avatar
+                                                initials="{
+                                                path: 'vm>CreatedBy',
+                                                formatter: '.formatInitials'
+                                            }"
+                                                displaySize="XS"
+                                                backgroundColor="Accent6"
+                                                tooltip="{vm>CreatedBy}"
+                                                class="sapUiTinyMarginEnd"
+                                            />
+                                            <Text
+                                                text="{vm>CreatedBy}"
+                                                wrapping="false"
+                                                maxLines="1"
+                                                tooltip="{vm>CreatedBy}"
+                                            />
+                                        </HBox>
+                                    </VBox>
+
+                                    <!-- Last Update -->
+                                    <VBox>
+                                        <HBox
+                                            alignItems="Center"
+                                            class="sapUiTinyMarginBottom"
+                                        >
+                                            <core:Icon
+                                                src="sap-icon://appointment-2"
+                                                size="0.75rem"
+                                                color="@sapUiContentIconColor"
+                                                class="sapUiTinyMarginEnd"
+                                                visible="{= !!${vm>StatChangedOn} }"
+                                            />
+                                            <Text
+                                                text="{
+                                            path: 'vm>StatChangedOn',
+                                            formatter: '.formatDateSafe'
+                                        }"
+                                            />
+                                        </HBox>
+                                        <HBox
+                                            alignItems="Center"
+                                            visible="{= !!${vm>StatChangedBy} }"
+                                        >
+                                            <Avatar
+                                                initials="{
+                                                path: 'vm>StatChangedBy',
+                                                formatter: '.formatInitials'
+                                            }"
+                                                displaySize="XS"
+                                                backgroundColor="Accent2"
+                                                tooltip="{vm>StatChangedBy}"
+                                                class="sapUiTinyMarginEnd"
+                                            />
+                                            <Text
+                                                text="{
+                                                path: 'vm>StatChangedBy',
+                                                formatter: '.formatDisplayName'
+                                            }"
+                                                wrapping="false"
+                                                maxLines="1"
+                                                tooltip="{vm>StatChangedBy}"
+                                            />
+                                        </HBox>
+                                    </VBox>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </ScrollContainer>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>
