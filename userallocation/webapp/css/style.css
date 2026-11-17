@@ -1,0 +1,37 @@
+/* Enter your custom styles here */
+html, body, #content, .sapUiBody {
+    height: 100%;
+    overflow: hidden !important;
+}
+
+.header{
+
+    padding-right: 100px;
+}
+
+.roleChip {
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Approver 1 - sky blue */
+.roleChip[data-role="APPROVER1"] { background: #dff0ff; }
+.roleChip[data-role="APPROVER1"] .sapMObjStatusText,
+.roleChip[data-role="APPROVER1"] .sapMObjStatusIcon { color: #0a6ed1; }
+
+/* Approver 2 - amber */
+.roleChip[data-role="APPROVER2"] { background: #fff1d6; }
+.roleChip[data-role="APPROVER2"] .sapMObjStatusText,
+.roleChip[data-role="APPROVER2"] .sapMObjStatusIcon { color: #b35c00; }
+
+/* Master Data Approver - rose */
+.roleChip[data-role="APPROVER"] { background: #fde4ec; }
+.roleChip[data-role="APPROVER"] .sapMObjStatusText,
+.roleChip[data-role="APPROVER"] .sapMObjStatusIcon { color: #b0245a; }
+
+/* Master Data Submitter - mint green */
+.roleChip[data-role="SUBMITTER"] { background: #def5e5; }
+.roleChip[data-role="SUBMITTER"] .sapMObjStatusText,
+.roleChip[data-role="SUBMITTER"] .sapMObjStatusIcon { color: #1e7b3c; }
