@@ -1,0 +1,1093 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+
+### RegionMasterSet
+# @name RegionMasterSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/RegionMasterSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### PostPriceSet
+# @name PostPriceSet
+POST {{server}}/odata/v4/vechileprocing-apis/PostPriceSet
+Content-Type: application/json
+# Authorization: Basic {{username}}:{{password}}
+
+{"ReferenceNum":"REF0000046","StockTransferDate":"2026-10-16T00:00:00.000Z","DealerBillingDate":"2026-10-22T00:00:00.000Z","CustomerBillingDate":"2026-10-21T00:00:00.000Z"}
+
+
+
+### RegionMasterSet
+# @name RegionMasterSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/RegionMasterSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Region": "631",
+  "Spras": "31",
+  "OperationNo": 56,
+  "Message": "Message-13087631",
+  "Ort01": "Ort01-13087631",
+  "Mail": "Mail-13087631",
+  "BasisRto": "BasisRto-13087631",
+  "Status": "s-13087631"
+}
+
+
+### RegionMasterSet
+# @name RegionMasterSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/RegionMasterSet(Region='631',Spras='31')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Region": "631",
+  "Spras": "31",
+  "OperationNo": 56,
+  "Message": "Message-13087631",
+  "Ort01": "Ort01-13087631",
+  "Mail": "Mail-13087631",
+  "BasisRto": "BasisRto-13087631",
+  "Status": "s-13087631"
+}
+
+
+### RegionMasterSet
+# @name RegionMasterSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/RegionMasterSet(Region='631',Spras='31')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### ModelMasterSet
+# @name ModelMasterSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/ModelMasterSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### ModelMasterSet
+# @name ModelMasterSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/ModelMasterSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ModelCode": "ModelMasterSet-1104283",
+  "EngineType": "04283",
+  "CcWatt": "04283",
+  "OperationNo": 68,
+  "Mail": "Mail-1104283",
+  "Description": "Description-1104283",
+  "ModelFam": "ModelFam-1104283",
+  "GstPerc": 369.963,
+  "DealerMargin": 832.532,
+  "DealerMargCalc": "alerMargCalc-1104283",
+  "DealerMargCostImp": "rMargCostImp-1104283",
+  "CsdIndex": "ex-1104283",
+  "CsdDisPerc": 29,
+  "Gem": 6,
+  "Status": "us-1104283"
+}
+
+
+### ModelMasterSet
+# @name ModelMasterSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/ModelMasterSet(ModelCode='ModelMasterSet-1104283',EngineType='04283',CcWatt='04283')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ModelCode": "ModelMasterSet-1104283",
+  "EngineType": "04283",
+  "CcWatt": "04283",
+  "OperationNo": 68,
+  "Mail": "Mail-1104283",
+  "Description": "Description-1104283",
+  "ModelFam": "ModelFam-1104283",
+  "GstPerc": 369.963,
+  "DealerMargin": 832.532,
+  "DealerMargCalc": "alerMargCalc-1104283",
+  "DealerMargCostImp": "rMargCostImp-1104283",
+  "CsdIndex": "ex-1104283",
+  "CsdDisPerc": 29,
+  "Gem": 6,
+  "Status": "us-1104283"
+}
+
+
+### ModelMasterSet
+# @name ModelMasterSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/ModelMasterSet(ModelCode='ModelMasterSet-1104283',EngineType='04283',CcWatt='04283')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### PricingComponentsSet
+# @name PricingComponentsSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/PricingComponentsSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### PricingComponentsSet
+# @name PricingComponentsSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/PricingComponentsSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Region": "889",
+  "OperationNo": 98,
+  "Mail": "Mail-30400889",
+  "EngineType": "00889",
+  "Helmet": 13,
+  "Transportation": 11,
+  "OtExpGt500": 7,
+  "OtExpLt500": 50,
+  "HelmetMargin": 74,
+  "InsuranceLe350": 786.324,
+  "InsuranceGt350": 25.569,
+  "TpaPaGt350": 90,
+  "TpaPaLe350": 24,
+  "BuffPdi": 39,
+  "HsprRate": 76,
+  "NoPlateWrit": 88,
+  "PetrolUpto500": 83,
+  "PetrolGt500": 28,
+  "Status": "s-30400889"
+}
+
+
+### PricingComponentsSet
+# @name PricingComponentsSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/PricingComponentsSet/889
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Region": "889",
+  "OperationNo": 98,
+  "Mail": "Mail-30400889",
+  "EngineType": "00889",
+  "Helmet": 13,
+  "Transportation": 11,
+  "OtExpGt500": 7,
+  "OtExpLt500": 50,
+  "HelmetMargin": 74,
+  "InsuranceLe350": 786.324,
+  "InsuranceGt350": 25.569,
+  "TpaPaGt350": 90,
+  "TpaPaLe350": 24,
+  "BuffPdi": 39,
+  "HsprRate": 76,
+  "NoPlateWrit": 88,
+  "PetrolUpto500": 83,
+  "PetrolGt500": 28,
+  "Status": "s-30400889"
+}
+
+
+### PricingComponentsSet
+# @name PricingComponentsSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/PricingComponentsSet/889
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### ModelPriceBreakupSet
+# @name ModelPriceBreakupSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/ModelPriceBreakupSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### ModelPriceBreakupSet
+# @name ModelPriceBreakupSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/ModelPriceBreakupSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Model": "ModelPriceBreakupSet-26830261",
+  "Region": "261",
+  "MtoMts": "0261",
+  "SaveInd": "1",
+  "OperationNo": 29,
+  "Mail": "Mail-26830261",
+  "AsmName": "AsmName-26830261",
+  "Basis": "Basis-26830261",
+  "DealerMargin": 125984482671.718,
+  "InputNsp": 834926401954.167,
+  "IncrementalNsp": 583306132144.322,
+  "ActualNsp": 520212665251.697,
+  "Helmet": 10,
+  "Transportation": 2,
+  "DealerCost": 63,
+  "OtherExpenses": 32,
+  "BikeMargin": 28,
+  "IncrementDlr": 250914696358.272,
+  "ActualDealerMargin": 32445930477.363,
+  "HelmetMargin": 78,
+  "TotalDealerMargin": 60,
+  "Ndp": 39,
+  "Basic": 99,
+  "Gst": 100,
+  "InputExShowroom": 24,
+  "ExceptionRef": "1",
+  "RtoPerc": 654.942,
+  "Rto": 2,
+  "RtoWithBill": 19,
+  "InsuranceLe350": 609.804,
+  "InsuranceGt350": 308.749,
+  "Insurance": 54,
+  "TpaPa": 65,
+  "ActualGst": 28,
+  "TotalInsurance": 90,
+  "OnRoad": 80,
+  "ActualExShowroom": 86,
+  "Diff": 4,
+  "ReferenceNum": "m-26830261"
+}
+
+
+### ModelPriceBreakupSet
+# @name ModelPriceBreakupSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/ModelPriceBreakupSet(Model='ModelPriceBreakupSet-26830261',Region='261',MtoMts='0261')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Model": "ModelPriceBreakupSet-26830261",
+  "Region": "261",
+  "MtoMts": "0261",
+  "SaveInd": "1",
+  "OperationNo": 29,
+  "Mail": "Mail-26830261",
+  "AsmName": "AsmName-26830261",
+  "Basis": "Basis-26830261",
+  "DealerMargin": 125984482671.718,
+  "InputNsp": 834926401954.167,
+  "IncrementalNsp": 583306132144.322,
+  "ActualNsp": 520212665251.697,
+  "Helmet": 10,
+  "Transportation": 2,
+  "DealerCost": 63,
+  "OtherExpenses": 32,
+  "BikeMargin": 28,
+  "IncrementDlr": 250914696358.272,
+  "ActualDealerMargin": 32445930477.363,
+  "HelmetMargin": 78,
+  "TotalDealerMargin": 60,
+  "Ndp": 39,
+  "Basic": 99,
+  "Gst": 100,
+  "InputExShowroom": 24,
+  "ExceptionRef": "1",
+  "RtoPerc": 654.942,
+  "Rto": 2,
+  "RtoWithBill": 19,
+  "InsuranceLe350": 609.804,
+  "InsuranceGt350": 308.749,
+  "Insurance": 54,
+  "TpaPa": 65,
+  "ActualGst": 28,
+  "TotalInsurance": 90,
+  "OnRoad": 80,
+  "ActualExShowroom": 86,
+  "Diff": 4,
+  "ReferenceNum": "m-26830261"
+}
+
+
+### ModelPriceBreakupSet
+# @name ModelPriceBreakupSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/ModelPriceBreakupSet(Model='ModelPriceBreakupSet-26830261',Region='261',MtoMts='0261')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### RTOExpenseSet
+# @name RTOExpenseSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/RTOExpenseSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### RTOExpenseSet
+# @name RTOExpenseSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/RTOExpenseSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "RegionCode": "324",
+  "MinRange": 16596324,
+  "MaxRange": 16596324,
+  "OperationNo": 85,
+  "Mail": "Mail-16596324",
+  "Expense": 89,
+  "Status": "s-16596324"
+}
+
+
+### RTOExpenseSet
+# @name RTOExpenseSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/RTOExpenseSet(RegionCode='324',MinRange=16596324,MaxRange=16596324)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "RegionCode": "324",
+  "MinRange": 16596324,
+  "MaxRange": 16596324,
+  "OperationNo": 85,
+  "Mail": "Mail-16596324",
+  "Expense": 89,
+  "Status": "s-16596324"
+}
+
+
+### RTOExpenseSet
+# @name RTOExpenseSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/RTOExpenseSet(RegionCode='324',MinRange=16596324,MaxRange=16596324)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### RtoMasterSet
+# @name RtoMasterSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/RtoMasterSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### RtoMasterSet
+# @name RtoMasterSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/RtoMasterSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "CcMin": 14290205,
+  "CcMax": 14290205,
+  "RegionCode": "205",
+  "Slab": 14290205,
+  "OperationNo": 41,
+  "Mail": "Mail-14290205",
+  "MinRange": 17,
+  "MaxRange": 80,
+  "PercValue": 387.607,
+  "Status": "s-14290205"
+}
+
+
+### RtoMasterSet
+# @name RtoMasterSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/RtoMasterSet(CcMin=14290205,CcMax=14290205,RegionCode='205',Slab=14290205)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "CcMin": 14290205,
+  "CcMax": 14290205,
+  "RegionCode": "205",
+  "Slab": 14290205,
+  "OperationNo": 41,
+  "Mail": "Mail-14290205",
+  "MinRange": 17,
+  "MaxRange": 80,
+  "PercValue": 387.607,
+  "Status": "s-14290205"
+}
+
+
+### RtoMasterSet
+# @name RtoMasterSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/RtoMasterSet(CcMin=14290205,CcMax=14290205,RegionCode='205',Slab=14290205)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### GMAComponentsSet
+# @name GMAComponentsSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/GMAComponentsSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### GMAComponentsSet
+# @name GMAComponentsSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/GMAComponentsSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Models": "GMAComponentsSet-30254797",
+  "OperationNo": 20,
+  "Description": "Description-30254797",
+  "Mail": "Mail-30254797",
+  "MtsMto": "4797",
+  "ReferMtsModel": "ReferMtsModel-30254797",
+  "Part1": "Part1-30254797",
+  "Part2": "Part2-30254797",
+  "Part3": "Part3-30254797",
+  "Part4": "Part4-30254797",
+  "Part5": "Part5-30254797",
+  "Part6": "Part6-30254797",
+  "Part7": "Part7-30254797",
+  "Part8": "Part8-30254797",
+  "Part9": "Part9-30254797",
+  "Part10": "Part10-30254797",
+  "Part11": "Part11-30254797",
+  "Part12": "Part12-30254797",
+  "Part13": "Part13-30254797",
+  "Part14": "Part14-30254797",
+  "Part15": "Part15-30254797",
+  "Part16": "Part16-30254797",
+  "Part17": "Part17-30254797",
+  "Part18": "Part18-30254797",
+  "Part19": "Part19-30254797",
+  "Part20": "Part20-30254797",
+  "Status": "s-30254797"
+}
+
+
+### GMAComponentsSet
+# @name GMAComponentsSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/GMAComponentsSet/GMAComponentsSet-30254797
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Models": "GMAComponentsSet-30254797",
+  "OperationNo": 20,
+  "Description": "Description-30254797",
+  "Mail": "Mail-30254797",
+  "MtsMto": "4797",
+  "ReferMtsModel": "ReferMtsModel-30254797",
+  "Part1": "Part1-30254797",
+  "Part2": "Part2-30254797",
+  "Part3": "Part3-30254797",
+  "Part4": "Part4-30254797",
+  "Part5": "Part5-30254797",
+  "Part6": "Part6-30254797",
+  "Part7": "Part7-30254797",
+  "Part8": "Part8-30254797",
+  "Part9": "Part9-30254797",
+  "Part10": "Part10-30254797",
+  "Part11": "Part11-30254797",
+  "Part12": "Part12-30254797",
+  "Part13": "Part13-30254797",
+  "Part14": "Part14-30254797",
+  "Part15": "Part15-30254797",
+  "Part16": "Part16-30254797",
+  "Part17": "Part17-30254797",
+  "Part18": "Part18-30254797",
+  "Part19": "Part19-30254797",
+  "Part20": "Part20-30254797",
+  "Status": "s-30254797"
+}
+
+
+### GMAComponentsSet
+# @name GMAComponentsSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/GMAComponentsSet/GMAComponentsSet-30254797
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### SubmissionReferenceSet
+# @name SubmissionReferenceSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/SubmissionReferenceSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### SubmissionReferenceSet
+# @name SubmissionReferenceSet_POST
+PUT {{server}}/odata/v4/vechileprocing-apis/SubmissionReferenceSet
+Content-Type: application/json
+# Authorization: Basic {{username}}:{{password}}
+
+{"ReferenceNum":"REF0000046","Mail":"francisajay.ds@laderatechnology.com","Status":"APPROVED","Comments":"","CreatedBy":"anand Kumar","CreatedOn":"2026-10-14T00:00:00Z","StatChangedOn":"2026-10-16T10:17:13.172Z","StatChangedBy":"francisajay.ds@laderatechnology.com","UpdateToSap":true,"Revert":false}
+
+### SubmissionReferenceSet
+# @name SubmissionReferenceSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/SubmissionReferenceSet(Mail='SubmissionReferenceSet-2246791',ReferenceNum='et-2246791')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Mail": "SubmissionReferenceSet-2246791",
+  "ReferenceNum": "et-2246791",
+  "Status": "us-2246791",
+  "Comments": "Comments-2246791",
+  "CreatedOn": "2006-11-18T00:00:00.000Z",
+  "CreatedBy": "edBy-2246791",
+  "StatChangedOn": "2011-11-05T00:00:00.000Z",
+  "StatChangedBy": "StatChangedBy-2246791"
+}
+
+
+### SubmissionReferenceSet
+# @name SubmissionReferenceSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/SubmissionReferenceRecallSet(Mail='siva.durairaj@laderatechnology.com',ReferenceNum='REF0000047')
+Content-Type: application/json
+# Authorization: Basic {{username}}:{{password}}
+
+
+### PartsSet
+# @name PartsSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/PartsSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### PartsSet
+# @name PartsSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/PartsSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Family": "PartsSet-6932089",
+  "PartCode": "PartsSet-6932089",
+  "OperationNo": 26,
+  "Mail": "Mail-6932089",
+  "PartDescr": "PartDescr-6932089",
+  "OeGma": "089",
+  "Mrp": 800301187339.962,
+  "MiyCost": 68,
+  "MiyMarkup": 9479.28,
+  "ExShowOnRoad": "ExShowOnRoad-6932089",
+  "MiyCostPerc": 353.821,
+  "MiyMarkupPerc": 313.573,
+  "Inactive": "9",
+  "Status": "us-6932089"
+}
+
+
+### PartsSet
+# @name PartsSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/PartsSet(Family='PartsSet-6932089',PartCode='PartsSet-6932089')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Family": "PartsSet-6932089",
+  "PartCode": "PartsSet-6932089",
+  "OperationNo": 26,
+  "Mail": "Mail-6932089",
+  "PartDescr": "PartDescr-6932089",
+  "OeGma": "089",
+  "Mrp": 800301187339.962,
+  "MiyCost": 68,
+  "MiyMarkup": 9479.28,
+  "ExShowOnRoad": "ExShowOnRoad-6932089",
+  "MiyCostPerc": 353.821,
+  "MiyMarkupPerc": 313.573,
+  "Inactive": "9",
+  "Status": "us-6932089"
+}
+
+
+### PartsSet
+# @name PartsSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/PartsSet(Family='PartsSet-6932089',PartCode='PartsSet-6932089')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### SubmissionReference
+# @name SubmissionReference_GET
+GET {{server}}/odata/v4/vechileprocing-apis/SubmissionReference
+Authorization: Basic {{username}}:{{password}}
+
+
+### SubmissionReference
+# @name SubmissionReference_POST
+POST {{server}}/odata/v4/vechileprocing-apis/SubmissionReference
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Mail": "SubmissionReference-17331594",
+  "ReferenceNum": "e-17331594",
+  "Status": "s-17331594",
+  "Comments": "Comments-17331594",
+  "CreatedOn": "2021-07-24T00:00:00.000Z",
+  "CreatedBy": "dBy-17331594",
+  "StatChangedOn": "2002-07-25T00:00:00.000Z",
+  "StatChangedBy": "StatChangedBy-17331594"
+}
+
+
+### SubmissionReference
+# @name SubmissionReference_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/SubmissionReference(Mail='SubmissionReference-17331594',ReferenceNum='e-17331594')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Mail": "SubmissionReference-17331594",
+  "ReferenceNum": "e-17331594",
+  "Status": "s-17331594",
+  "Comments": "Comments-17331594",
+  "CreatedOn": "2021-07-24T00:00:00.000Z",
+  "CreatedBy": "dBy-17331594",
+  "StatChangedOn": "2002-07-25T00:00:00.000Z",
+  "StatChangedBy": "StatChangedBy-17331594"
+}
+
+
+### SubmissionReference
+# @name SubmissionReference_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/SubmissionReference(Mail='SubmissionReference-17331594',ReferenceNum='e-17331594')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### ApproverSet
+# @name ApproverSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/ApproverSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### ApproverSet
+# @name ApproverSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/ApproverSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Mail": "ApproverSet-10085067",
+  "OperationNo": 62,
+  "Role": "Role-10085067"
+}
+
+
+### ApproverSet
+# @name ApproverSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/ApproverSet/ApproverSet-10085067
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Mail": "ApproverSet-10085067",
+  "OperationNo": 62,
+  "Role": "Role-10085067"
+}
+
+
+### ApproverSet
+# @name ApproverSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/ApproverSet/ApproverSet-10085067
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### saveToModelPriceBreakUp
+# @name saveToModelPriceBreakUp_POST
+POST {{server}}/odata/v4/vechileprocing-apis/saveToModelPriceBreakUp
+Content-Type: application/json
+# Authorization: Basic {{username}}:{{password}}
+
+# {"items":[{"Mail":"francisajay.ds@laderatechnology.com","AsmName":"Francis Ajay D S","Model":"VZMK81BB","ModelName":"HUNTER 350 FACTORY BLACK","Region":"001","RegionName":"ANDRA PRADESH","OperationNo":0,"SaveInd":"X","MtoMts":"GEM","Basis":"EXSHOWROOM","ReferenceNum":"REF0000001","ExceptionRef":"E","DealerMargPerc":4.25,"DealerMargin":5513,"InputNsp":107407,"IncrementalNsp":0,"ActualNsp":107407,"Helmet":1279,"Transportation":1250,"DealerCost":109936,"OtherExpenses":772,"BikeMargin":5513,"IncrementDlr":0,"ActualDealerMargin":5513,"HelmetMargin":292,"TotalDealerMargin":5805,"Ndp":129724,"Basic":116513,"GstPerc":18,"Gst":20972,"GstAftBasic":20972,"InputExShowroom":137486,"ActualExShowroom":137486,"RtoPerc":12,"Rto":16498,"RtoWithBill":2590,"InsuranceLe350":0,"InsuranceGt350":0,"InsurancePerc":0.008,"Insurance":1034,"TpaPa":7740,"InsuranceGst":0,"ActualGst":0,"TotalInsurance":10354,"OnRoad":166928,"Diff":0,"MtsExshwroom":137486,"DiscPerc":12,"DiscAmount":16498,"SubTotal":120988,"GemGstPerc":18,"GemGstAmount":18456,"HelmetCost":1338,"GemBasic":102532,"FinalGemPrice":120988}]}
+
+{
+  "items": [
+    {
+      "Mail": "anandkumar.n@laderatechnology.com",
+      "AsmName": "anand Kumar",
+      "Model": "VFFX81RR",
+      "ModelName": "CLASSIC 350 REDDITCH RED",
+      "Region": "022",
+      "RegionName": "TAMIL NADU",
+      "OperationNo": 0,
+      "SaveInd": "X",
+      "MtoMts": "MTO",
+      "Basis": "EXSHOWROOM",
+      "ReferenceNum": "REF0000044",
+      "ExceptionRef": "E",
+      "DealerMargPerc": 4.25,
+      "DealerMargin": 7877,
+      "InputNsp": 149052,
+      "IncrementalNsp": 1005,
+      "ActualNsp": 149052,
+      "Helmet": 1279,
+      "Transportation": 800,
+      "DealerCost": 152136,
+      "OtherExpenses": 1368,
+      "BikeMargin": 7579,
+      "IncrementDlr": 298,
+      "ActualDealerMargin": 7877,
+      "HelmetMargin": 35,
+      "TotalDealerMargin": 7912,
+      "Ndp": 179520,
+      "Basic": 161416,
+      "GstPerc": 18,
+      "Gst": 29055,
+      "GstAftBasic": 29055,
+      "InputExShowroom": 188934,
+      "ActualExShowroom": 190471,
+      "RtoPerc": 12,
+      "Rto": 22857,
+      "RtoWithBill": 775,
+      "InsuranceLe350": 0.00806,
+      "InsuranceGt350": 0.008456,
+      "InsurancePerc": 0.008,
+      "Insurance": 1458,
+      "TpaPa": 7740,
+      "InsuranceGst": 1656,
+      "ActualGst": 1656,
+      "TotalInsurance": 10854,
+      "OnRoad": 224957,
+      "Diff": 0,
+      "ReferenceMtsModel": "VSMZ81RR",
+      "MtoNsp": 150057,
+      "MtsExshwroom": 188934,
+      "MtsOnRoad": 223221,
+      "MtoExShwroom": 190471,
+      "MtoOnRoad": 224957,
+      "MtoExShwAftGma": 188934,
+      "MiyExshowroom": 0,
+      "MiyOnroad": 1736,
+      "ExpExshowroom": 188934,
+      "ExpOnroad": 224957,
+      "MiyBreakup": [
+        {
+          "PartCode": "KXA00051",
+          "Description": "Low seat - Black",
+          "ExShowOnRoad": "ON ROAD",
+          "MiyCost": 1736,
+          "MiyMarkup": 298,
+          "PartPrice": 2034
+        }
+      ]
+    },
+    {
+      "Mail": "anandkumar.n@laderatechnology.com",
+      "AsmName": "anand Kumar",
+      "Model": "VLLU81RR",
+      "ModelName": "CLASSIC 350 REDDITCH RED",
+      "Region": "022",
+      "RegionName": "TAMIL NADU",
+      "OperationNo": 0,
+      "SaveInd": "X",
+      "MtoMts": "MTO",
+      "Basis": "EXSHOWROOM",
+      "ReferenceNum": "REF0000044",
+      "ExceptionRef": "E",
+      "DealerMargPerc": 4.25,
+      "DealerMargin": 8352,
+      "InputNsp": 149052,
+      "IncrementalNsp": 2611,
+      "ActualNsp": 149052,
+      "Helmet": 1279,
+      "Transportation": 800,
+      "DealerCost": 153742,
+      "OtherExpenses": 1368,
+      "BikeMargin": 7579,
+      "IncrementDlr": 773,
+      "ActualDealerMargin": 8352,
+      "HelmetMargin": 35,
+      "TotalDealerMargin": 8387,
+      "Ndp": 181416,
+      "Basic": 163497,
+      "GstPerc": 18,
+      "Gst": 29429,
+      "GstAftBasic": 29429,
+      "InputExShowroom": 188934,
+      "ActualExShowroom": 192926,
+      "RtoPerc": 12,
+      "Rto": 23151,
+      "RtoWithBill": 775,
+      "InsuranceLe350": 0.00806,
+      "InsuranceGt350": 0.008456,
+      "InsurancePerc": 0.008,
+      "Insurance": 1477,
+      "TpaPa": 7740,
+      "InsuranceGst": 1659,
+      "ActualGst": 1659,
+      "TotalInsurance": 10876,
+      "OnRoad": 227728,
+      "Diff": 0,
+      "ReferenceMtsModel": "VSMZ81RR",
+      "MtoNsp": 151663,
+      "MtsExshwroom": 188934,
+      "MtsOnRoad": 223221,
+      "MtoExShwroom": 192926,
+      "MtoOnRoad": 227728,
+      "MtoExShwAftGma": 188934,
+      "MiyExshowroom": 0,
+      "MiyOnroad": 4508,
+      "ExpExshowroom": 188934,
+      "ExpOnroad": 227728,
+      "MiyBreakup": [
+        {
+          "PartCode": "KXA00069",
+          "Description": "BLACK TOURING RIDER SEAT",
+          "ExShowOnRoad": "ON ROAD",
+          "MiyCost": 4508,
+          "MiyMarkup": 773,
+          "PartPrice": 5281
+        }
+      ]
+    },
+    {
+      "Mail": "anandkumar.n@laderatechnology.com",
+      "AsmName": "anand Kumar",
+      "Model": "VHWU81RR",
+      "ModelName": "CLASSIC 350 REDDITCH RED",
+      "Region": "022",
+      "RegionName": "TAMIL NADU",
+      "OperationNo": 0,
+      "SaveInd": "X",
+      "MtoMts": "MTO",
+      "Basis": "EXSHOWROOM",
+      "ReferenceNum": "REF0000044",
+      "ExceptionRef": "E",
+      "DealerMargPerc": 4.25,
+      "DealerMargin": 7877,
+      "InputNsp": 149052,
+      "IncrementalNsp": 1005,
+      "ActualNsp": 149052,
+      "Helmet": 1279,
+      "Transportation": 800,
+      "DealerCost": 152136,
+      "OtherExpenses": 1368,
+      "BikeMargin": 7579,
+      "IncrementDlr": 298,
+      "ActualDealerMargin": 7877,
+      "HelmetMargin": 35,
+      "TotalDealerMargin": 7912,
+      "Ndp": 179520,
+      "Basic": 161416,
+      "GstPerc": 18,
+      "Gst": 29055,
+      "GstAftBasic": 29055,
+      "InputExShowroom": 188934,
+      "ActualExShowroom": 190471,
+      "RtoPerc": 12,
+      "Rto": 22857,
+      "RtoWithBill": 775,
+      "InsuranceLe350": 0.00806,
+      "InsuranceGt350": 0.008456,
+      "InsurancePerc": 0.008,
+      "Insurance": 1458,
+      "TpaPa": 7740,
+      "InsuranceGst": 1656,
+      "ActualGst": 1656,
+      "TotalInsurance": 10854,
+      "OnRoad": 224957,
+      "Diff": 0,
+      "ReferenceMtsModel": "VSMZ81RR",
+      "MtoNsp": 150057,
+      "MtsExshwroom": 188934,
+      "MtsOnRoad": 223221,
+      "MtoExShwroom": 190471,
+      "MtoOnRoad": 224957,
+      "MtoExShwAftGma": 188934,
+      "MiyExshowroom": 0,
+      "MiyOnroad": 1736,
+      "ExpExshowroom": 188934,
+      "ExpOnroad": 224957,
+      "MiyBreakup": [
+        {
+          "PartCode": "KXA00051",
+          "Description": "Low seat - Black",
+          "ExShowOnRoad": "ON ROAD",
+          "MiyCost": 1736,
+          "MiyMarkup": 298,
+          "PartPrice": 2034
+        }
+      ]
+    },
+    {
+      "Mail": "anandkumar.n@laderatechnology.com",
+      "AsmName": "anand Kumar",
+      "Model": "VKHC81RR",
+      "ModelName": "CLASSIC 350 REDDITCH RED",
+      "Region": "022",
+      "RegionName": "TAMIL NADU",
+      "OperationNo": 0,
+      "SaveInd": "X",
+      "MtoMts": "MTO",
+      "Basis": "EXSHOWROOM",
+      "ReferenceNum": "REF0000044",
+      "ExceptionRef": "E",
+      "DealerMargPerc": 4.25,
+      "DealerMargin": 8352,
+      "InputNsp": 149052,
+      "IncrementalNsp": 2611,
+      "ActualNsp": 149052,
+      "Helmet": 1279,
+      "Transportation": 800,
+      "DealerCost": 153742,
+      "OtherExpenses": 1368,
+      "BikeMargin": 7579,
+      "IncrementDlr": 773,
+      "ActualDealerMargin": 8352,
+      "HelmetMargin": 35,
+      "TotalDealerMargin": 8387,
+      "Ndp": 181416,
+      "Basic": 163497,
+      "GstPerc": 18,
+      "Gst": 29429,
+      "GstAftBasic": 29429,
+      "InputExShowroom": 188934,
+      "ActualExShowroom": 192926,
+      "RtoPerc": 12,
+      "Rto": 23151,
+      "RtoWithBill": 775,
+      "InsuranceLe350": 0.00806,
+      "InsuranceGt350": 0.008456,
+      "InsurancePerc": 0.008,
+      "Insurance": 1477,
+      "TpaPa": 7740,
+      "InsuranceGst": 1659,
+      "ActualGst": 1659,
+      "TotalInsurance": 10876,
+      "OnRoad": 227728,
+      "Diff": 0,
+      "ReferenceMtsModel": "VSMZ81RR",
+      "MtoNsp": 151663,
+      "MtsExshwroom": 188934,
+      "MtsOnRoad": 223221,
+      "MtoExShwroom": 192926,
+      "MtoOnRoad": 227728,
+      "MtoExShwAftGma": 188934,
+      "MiyExshowroom": 0,
+      "MiyOnroad": 4508,
+      "ExpExshowroom": 188934,
+      "ExpOnroad": 227728,
+      "MiyBreakup": [
+        {
+          "PartCode": "KXA00072",
+          "Description": "BROWN TOURING PASSENGER SEAT",
+          "ExShowOnRoad": "ON ROAD",
+          "MiyCost": 1932,
+          "MiyMarkup": 331,
+          "PartPrice": 2263
+        },
+        {
+          "PartCode": "KXA00070",
+          "Description": "BROWN TOURING RIDER SEAT",
+          "ExShowOnRoad": "ON ROAD",
+          "MiyCost": 2576,
+          "MiyMarkup": 442,
+          "PartPrice": 3018
+        }
+      ]
+    }
+  ]
+}
+
+### processCalculation
+# @name processCalculation_POST
+POST {{server}}/odata/v4/vechileprocing-apis/processCalculation
+Content-Type: application/json
+# Authorization: Basic {{username}}:{{password}}
+
+# {
+#   "nspValue": "135851",
+#   "exshowroomPrice": "",
+#   "regionCode": "001",
+#   "ModelCode": "VCDD81TK",
+#   "Mail": "siva.durairaj@laderatechnology.com",
+#   "MTOStatus": "CSD"
+# }
+
+{"items":[{"ModelCode":"VEWF81SE","nspValue":"","exshowroomPrice":"212370"}],"regionCode":"022","Mail":"siva.durairaj@laderatechnology.com","MTOStatus":"MTS"}
+
+# {"items":[{"ModelCode":"VBFV81HG","nspValue":"","exshowroomPrice":"182986"}],"regionCode":"005","Mail":"siva.durairaj@laderatechnology.com","MTOStatus":"MTO"}
+
+
+
+### goProcessing
+# @name goProcessing_POST
+POST {{server}}/odata/v4/vechileprocing-apis/goProcessing
+Content-Type: application/json
+# Authorization: Basic {{username}}:{{password}}
+
+{"regionCode":"022","MTOStatus":"CSD","Mail":"anandkumar.n@laderatechnology.com","ModelCodes":[]}
+
+# {
+#   "regionCode": "001",
+#   "MTOStatus": "",
+#   "Mail": "siva.durairaj@laderatechnology.com"
+# }
+
+# {"regionCode":"011","MTOStatus":"GEM","Mail":"siva.durairaj@laderatechnology.com"}
+# {"regionCode":"001","MTOStatus":"CSD","Mail":"francisajay.ds@laderatechnology.com","ModelCodes":[],"StatusFilter":"ACTIVE","EffectiveDate":""}
+
+# {"regionCode":"022","MTOStatus":"GEM","Mail":"francisajay.ds@laderatechnology.com","ModelCodes":[],"StatusFilter":"ACTIVE","EffectiveDate":""}
+
+
+### getApprovalDetailedData
+# @name getApprovalDetailedData_POST
+POST {{server}}/odata/v4/vechileprocing-apis/getApprovalDetailedData
+Content-Type: application/json
+
+
+{"refId" : "REF0000041"}
+
+### addToOtherRegion
+# @name addToOtherRegion_POST
+POST {{server}}/odata/v4/vechileprocing-apis/addToOtherRegion
+Content-Type: application/json
+# Authorization: Basic {{username}}:{{password}}
+
+# {"Mail":"anandkumar.n@laderatechnology.com","MTOStatus":"MTS","items":[{"ModelCode":"VLCQ81HK","nspValue":"","exshowroomPrice":"193274"}],"regionCodes":["007"],"StatusFilter":"ACTIVE","EffectiveDate":""}
+
+
+{"Mail":"francisajay.ds@laderatechnology.com","MTOStatus":"MTO","items":[{"ModelCode":"VRNV60WD","nspValue":"179446.00","exshowroomPrice":"278558.00"},{"ModelCode":"VXAV60WD","nspValue":"179446.00","exshowroomPrice":"281407.00"},{"ModelCode":"VHZQ60WD","nspValue":"179446.00","exshowroomPrice":"281725.00"},{"ModelCode":"VZBD60ED","nspValue":"175842.00","exshowroomPrice":"266991.00"},{"ModelCode":"VZSH60ED","nspValue":"175842.00","exshowroomPrice":"269842.00"},{"ModelCode":"VWYF60ED","nspValue":"175842.00","exshowroomPrice":"270158.00"},{"ModelCode":"VRNV60ED","nspValue":"175842.00","exshowroomPrice":"273195.00"},{"ModelCode":"VXAV60ED","nspValue":"175842.00","exshowroomPrice":"276045.00"},{"ModelCode":"VHZQ60ED","nspValue":"175842.00","exshowroomPrice":"276363.00"},{"ModelCode":"VZBD60SK","nspValue":"175842.00","exshowroomPrice":"266991.00"},{"ModelCode":"VZSH60SK","nspValue":"175842.00","exshowroomPrice":"269842.00"},{"ModelCode":"VWYF60SK","nspValue":"175842.00","exshowroomPrice":"270158.00"},{"ModelCode":"VRNV60SK","nspValue":"175842.00","exshowroomPrice":"273195.00"},{"ModelCode":"VXAV60SK","nspValue":"175842.00","exshowroomPrice":"276045.00"},{"ModelCode":"VHZQ60SK","nspValue":"175842.00","exshowroomPrice":"276363.00"},{"ModelCode":"VQGU60YY","nspValue":"179446.00","exshowroomPrice":"275205.00"},{"ModelCode":"VLSJ60YY","nspValue":"179446.00","exshowroomPrice":"275521.00"},{"ModelCode":"VZBD60YY","nspValue":"179446.00","exshowroomPrice":"272355.00"},{"ModelCode":"VZSH60YY","nspValue":"179446.00","exshowroomPrice":"275205.00"},{"ModelCode":"VWYF60YY","nspValue":"179446.00","exshowroomPrice":"275521.00"},{"ModelCode":"VXAA60YY","nspValue":"179446.00","exshowroomPrice":"278558.00"},{"ModelCode":"VSEX60YY","nspValue":"179446.00","exshowroomPrice":"281407.00"},{"ModelCode":"VSWR60YY","nspValue":"179446.00","exshowroomPrice":"281725.00"},{"ModelCode":"VRNV60YY","nspValue":"179446.00","exshowroomPrice":"278558.00"},{"ModelCode":"VXAV60YY","nspValue":"179446.00","exshowroomPrice":"281407.00"},{"ModelCode":"VHZQ60YY","nspValue":"179446.00","exshowroomPrice":"281725.00"},{"ModelCode":"VZBD60EG","nspValue":"175842.00","exshowroomPrice":"266991.00"},{"ModelCode":"VZSH60EG","nspValue":"175842.00","exshowroomPrice":"269842.00"},{"ModelCode":"VWYF60EG","nspValue":"175842.00","exshowroomPrice":"270158.00"},{"ModelCode":"VRNV60EG","nspValue":"175842.00","exshowroomPrice":"273195.00"},{"ModelCode":"VXAV60EG","nspValue":"175842.00","exshowroomPrice":"276045.00"},{"ModelCode":"VHZQ60EG","nspValue":"175842.00","exshowroomPrice":"276363.00"},{"ModelCode":"VZBD60KS","nspValue":"175842.00","exshowroomPrice":"266991.00"},{"ModelCode":"VZSH60KS","nspValue":"175842.00","exshowroomPrice":"269842.00"},{"ModelCode":"VWYF60KS","nspValue":"175842.00","exshowroomPrice":"270158.00"},{"ModelCode":"VRNV60KS","nspValue":"175842.00","exshowroomPrice":"273195.00"},{"ModelCode":"VXAV60KS","nspValue":"175842.00","exshowroomPrice":"276045.00"},{"ModelCode":"VHZQ60KS","nspValue":"175842.00","exshowroomPrice":"276363.00"},{"ModelCode":"VAGK60KS","nspValue":"168633.00","exshowroomPrice":"261036.00"},{"ModelCode":"VYUK60KS","nspValue":"168633.00","exshowroomPrice":"256263.00"},{"ModelCode":"VYHZ60KS","nspValue":"168633.00","exshowroomPrice":"263886.00"},{"ModelCode":"VGVH60KS","nspValue":"168633.00","exshowroomPrice":"259113.00"},{"ModelCode":"VAKL60KS","nspValue":"168633.00","exshowroomPrice":"264202.00"},{"ModelCode":"VNDM60KS","nspValue":"168633.00","exshowroomPrice":"259430.00"},{"ModelCode":"VAJR60KS","nspValue":"168633.00","exshowroomPrice":"267116.00"},{"ModelCode":"VRPL60KS","nspValue":"168633.00","exshowroomPrice":"262466.00"},{"ModelCode":"VQGL60KS","nspValue":"168633.00","exshowroomPrice":"269966.00"},{"ModelCode":"VVBG60KS","nspValue":"168633.00","exshowroomPrice":"265317.00"},{"ModelCode":"VPWD60KS","nspValue":"168633.00","exshowroomPrice":"270283.00"},{"ModelCode":"VNXG60KS","nspValue":"168633.00","exshowroomPrice":"265632.00"},{"ModelCode":"VAGK60SK","nspValue":"168633.00","exshowroomPrice":"261036.00"},{"ModelCode":"VYUK60SK","nspValue":"168633.00","exshowroomPrice":"256263.00"},{"ModelCode":"VYHZ60SK","nspValue":"168633.00","exshowroomPrice":"263886.00"},{"ModelCode":"VGVH60SK","nspValue":"168633.00","exshowroomPrice":"259113.00"},{"ModelCode":"VAKL60SK","nspValue":"168633.00","exshowroomPrice":"264202.00"},{"ModelCode":"VNDM60SK","nspValue":"168633.00","exshowroomPrice":"259430.00"},{"ModelCode":"VAJR60SK","nspValue":"168633.00","exshowroomPrice":"267116.00"},{"ModelCode":"VRPL60SK","nspValue":"168633.00","exshowroomPrice":"262466.00"},{"ModelCode":"VQGL60SK","nspValue":"168633.00","exshowroomPrice":"269966.00"},{"ModelCode":"VRVL81SE","nspValue":"159843.00","exshowroomPrice":"210486.00"},{"ModelCode":"VJXW81SE","nspValue":"159843.00","exshowroomPrice":"208167.00"},{"ModelCode":"VUHR81SE","nspValue":"159843.00","exshowroomPrice":"209705.00"},{"ModelCode":"VGJX81SE","nspValue":"159843.00","exshowroomPrice":"209705.00"},{"ModelCode":"VUYU81SE","nspValue":"159843.00","exshowroomPrice":"212159.00"},{"ModelCode":"VZFW81SE","nspValue":"159843.00","exshowroomPrice":"212159.00"},{"ModelCode":"VTEY81SE","nspValue":"159843.00","exshowroomPrice":"212286.00"},{"ModelCode":"VWJR81SE","nspValue":"159843.00","exshowroomPrice":"213823.00"},{"ModelCode":"VDVP81SE","nspValue":"159843.00","exshowroomPrice":"213823.00"},{"ModelCode":"VYAB81SE","nspValue":"159843.00","exshowroomPrice":"216279.00"},{"ModelCode":"VTLJ81SE","nspValue":"159843.00","exshowroomPrice":"216279.00"},{"ModelCode":"VRGD81DN","nspValue":"170441.00","exshowroomPrice":"217046.00"},{"ModelCode":"VRVL81DN","nspValue":"170441.00","exshowroomPrice":"219499.00"},{"ModelCode":"VDVP81SB","nspValue":"166658.00","exshowroomPrice":"212356.00"},{"ModelCode":"VYAB81SB","nspValue":"166658.00","exshowroomPrice":"214812.00"},{"ModelCode":"VDVP81GM","nspValue":"166658.00","exshowroomPrice":"212356.00"},{"ModelCode":"VYAB81GM","nspValue":"166658.00","exshowroomPrice":"214812.00"},{"ModelCode":"VSTG81AP","nspValue":"245767.00","exshowroomPrice":"374368.00"},{"ModelCode":"VSTG81PR","nspValue":"231038.00","exshowroomPrice":"352449.00"},{"ModelCode":"VSTG81PM","nspValue":"250186.00","exshowroomPrice":"380946.00"},{"ModelCode":"VSTG81PG","nspValue":"231038.00","exshowroomPrice":"352449.00"},{"ModelCode":"VSTG81BS","nspValue":"245767.00","exshowroomPrice":"374368.00"},{"ModelCode":"VGGP81BU","nspValue":"232513.00","exshowroomPrice":"354490.00"},{"ModelCode":"VGGP81BY","nspValue":"232513.00","exshowroomPrice":"354490.00"},{"ModelCode":"VGGP81CI","nspValue":"219255.00","exshowroomPrice":"334758.00"},{"ModelCode":"VGGP81PY","nspValue":"219255.00","exshowroomPrice":"334758.00"},{"ModelCode":"VGGP81PD","nspValue":"239877.00","exshowroomPrice":"365449.00"},{"ModelCode":"VGGP81PB","nspValue":"225149.00","exshowroomPrice":"343531.00"},{"ModelCode":"VCQT81FG","nspValue":"262468.00","exshowroomPrice":"406885.00"},{"ModelCode":"VYBB81FG","nspValue":"262468.00","exshowroomPrice":"409860.00"},{"ModelCode":"VNLU81FG","nspValue":"262468.00","exshowroomPrice":"409860.00"},{"ModelCode":"VCQT81SH","nspValue":"273610.00","exshowroomPrice":"423366.00"},{"ModelCode":"VYBB81SH","nspValue":"273610.00","exshowroomPrice":"426341.00"},{"ModelCode":"VNLU81SH","nspValue":"273610.00","exshowroomPrice":"426341.00"},{"ModelCode":"VCQT81CE","nspValue":"273610.00","exshowroomPrice":"423366.00"},{"ModelCode":"VYBB81CE","nspValue":"273610.00","exshowroomPrice":"426341.00"},{"ModelCode":"VNLU81CE","nspValue":"273610.00","exshowroomPrice":"426341.00"},{"ModelCode":"VZBD60WD","nspValue":"179446.00","exshowroomPrice":"272355.00"},{"ModelCode":"VZSH60WD","nspValue":"179446.00","exshowroomPrice":"275205.00"},{"ModelCode":"VWYF60WD","nspValue":"179446.00","exshowroomPrice":"275521.00"},{"ModelCode":"VMPD81SK","nspValue":"158151.00","exshowroomPrice":"202224.00"},{"ModelCode":"VTVR81SK","nspValue":"158151.00","exshowroomPrice":"202224.00"},{"ModelCode":"VQCS81SK","nspValue":"158151.00","exshowroomPrice":"204251.00"},{"ModelCode":"VCSF81SK","nspValue":"158151.00","exshowroomPrice":"204251.00"},{"ModelCode":"VUGU81FB","nspValue":"150657.00","exshowroomPrice":"193721.00"},{"ModelCode":"VEWZ81FB","nspValue":"150657.00","exshowroomPrice":"192937.00"},{"ModelCode":"VVGB81FB","nspValue":"150657.00","exshowroomPrice":"195432.00"},{"ModelCode":"VLZJ81FB","nspValue":"150657.00","exshowroomPrice":"195344.00"},{"ModelCode":"VDVT81FB","nspValue":"150657.00","exshowroomPrice":"197838.00"},{"ModelCode":"VCMP81FB","nspValue":"150657.00","exshowroomPrice":"197055.00"},{"ModelCode":"VLSZ81FB","nspValue":"150657.00","exshowroomPrice":"199549.00"},{"ModelCode":"VUGU81FD","nspValue":"150657.00","exshowroomPrice":"193721.00"},{"ModelCode":"VEWZ81FD","nspValue":"150657.00","exshowroomPrice":"192937.00"},{"ModelCode":"VVGB81FD","nspValue":"150657.00","exshowroomPrice":"195432.00"},{"ModelCode":"VLZJ81FD","nspValue":"150657.00","exshowroomPrice":"195344.00"},{"ModelCode":"VDVT81FD","nspValue":"150657.00","exshowroomPrice":"197838.00"},{"ModelCode":"VCMP81FD","nspValue":"150657.00","exshowroomPrice":"197055.00"},{"ModelCode":"VLSZ81FD","nspValue":"150657.00","exshowroomPrice":"199549.00"},{"ModelCode":"VUGU81FP","nspValue":"150657.00","exshowroomPrice":"193721.00"},{"ModelCode":"VEWZ81FP","nspValue":"150657.00","exshowroomPrice":"192937.00"},{"ModelCode":"VVGB81FP","nspValue":"150657.00","exshowroomPrice":"195432.00"},{"ModelCode":"VLZJ81FP","nspValue":"150657.00","exshowroomPrice":"195344.00"},{"ModelCode":"VDVT81FP","nspValue":"150657.00","exshowroomPrice":"197838.00"},{"ModelCode":"VCMP81FP","nspValue":"150657.00","exshowroomPrice":"197055.00"},{"ModelCode":"VLSZ81FP","nspValue":"150657.00","exshowroomPrice":"199549.00"},{"ModelCode":"VHDX60GC","nspValue":"211165.00","exshowroomPrice":"324379.00"},{"ModelCode":"VSSC60GC","nspValue":"211165.00","exshowroomPrice":"335672.00"},{"ModelCode":"VHAV60GC","nspValue":"211165.00","exshowroomPrice":"340519.00"},{"ModelCode":"VNGG60GC","nspValue":"211165.00","exshowroomPrice":"319532.00"},{"ModelCode":"VSML60GC","nspValue":"211165.00","exshowroomPrice":"335672.00"},{"ModelCode":"VPKM60GC","nspValue":"211165.00","exshowroomPrice":"325762.00"},{"ModelCode":"VJBN60GC","nspValue":"211165.00","exshowroomPrice":"330607.00"},{"ModelCode":"VHTX60GC","nspValue":"211165.00","exshowroomPrice":"341753.00"},{"ModelCode":"VKJB60GC","nspValue":"211165.00","exshowroomPrice":"346598.00"},{"ModelCode":"VSNA60GC","nspValue":"211165.00","exshowroomPrice":"325762.00"},{"ModelCode":"VCYF60GC","nspValue":"211165.00","exshowroomPrice":"341753.00"},{"ModelCode":"VHDX60GF","nspValue":"207561.00","exshowroomPrice":"319014.00"},{"ModelCode":"VSSC60GF","nspValue":"207561.00","exshowroomPrice":"330309.00"},{"ModelCode":"VHAV60GF","nspValue":"207561.00","exshowroomPrice":"335156.00"},{"ModelCode":"VNGG60GF","nspValue":"207561.00","exshowroomPrice":"314168.00"},{"ModelCode":"VSML60GF","nspValue":"207561.00","exshowroomPrice":"330309.00"},{"ModelCode":"VPKM60GF","nspValue":"207561.00","exshowroomPrice":"320400.00"},{"ModelCode":"VJBN60GF","nspValue":"207561.00","exshowroomPrice":"325247.00"},{"ModelCode":"VHTX60GF","nspValue":"207561.00","exshowroomPrice":"336389.00"},{"ModelCode":"VKJB60GF","nspValue":"207561.00","exshowroomPrice":"341235.00"},{"ModelCode":"VSNA60GF","nspValue":"207561.00","exshowroomPrice":"320400.00"},{"ModelCode":"VCYF60GF","nspValue":"207561.00","exshowroomPrice":"336389.00"},{"ModelCode":"VHDX60BZ","nspValue":"201795.00","exshowroomPrice":"310435.00"},{"ModelCode":"VSSC60BZ","nspValue":"201795.00","exshowroomPrice":"321727.00"},{"ModelCode":"VHAV60BZ","nspValue":"201795.00","exshowroomPrice":"326572.00"},{"ModelCode":"VNGG60BZ","nspValue":"201795.00","exshowroomPrice":"305588.00"},{"ModelCode":"VSML60BZ","nspValue":"201795.00","exshowroomPrice":"321727.00"},{"ModelCode":"VPKM60BZ","nspValue":"201795.00","exshowroomPrice":"311818.00"},{"ModelCode":"VJBN60BZ","nspValue":"201795.00","exshowroomPrice":"316663.00"},{"ModelCode":"VHTX60BZ","nspValue":"201795.00","exshowroomPrice":"327807.00"},{"ModelCode":"VRMA81RR","nspValue":"147354.00","exshowroomPrice":"188437.00"},{"ModelCode":"VVBP81RR","nspValue":"147354.00","exshowroomPrice":"190891.00"},{"ModelCode":"VRGD81RR","nspValue":"147354.00","exshowroomPrice":"192555.00"},{"ModelCode":"VRVL81RR","nspValue":"147354.00","exshowroomPrice":"195010.00"},{"ModelCode":"VRMA81SE","nspValue":"159843.00","exshowroomPrice":"203913.00"},{"ModelCode":"VVBP81SE","nspValue":"159843.00","exshowroomPrice":"206367.00"},{"ModelCode":"VRGD81SE","nspValue":"159843.00","exshowroomPrice":"208030.00"},{"ModelCode":"VVBG60SK","nspValue":"168633.00","exshowroomPrice":"265317.00"},{"ModelCode":"VPWD60SK","nspValue":"168633.00","exshowroomPrice":"270283.00"},{"ModelCode":"VNXG60SK","nspValue":"168633.00","exshowroomPrice":"265632.00"},{"ModelCode":"VAVU81RR","nspValue":"147354.00","exshowroomPrice":"188437.00"},{"ModelCode":"VQUD81RR","nspValue":"147354.00","exshowroomPrice":"190891.00"},{"ModelCode":"VMMX81RR","nspValue":"147354.00","exshowroomPrice":"191016.00"},{"ModelCode":"VSSQ81RR","nspValue":"147354.00","exshowroomPrice":"192555.00"},{"ModelCode":"VHMC81RR","nspValue":"147354.00","exshowroomPrice":"195010.00"},{"ModelCode":"VAVU81SE","nspValue":"159843.00","exshowroomPrice":"203913.00"},{"ModelCode":"VQUD81SE","nspValue":"159843.00","exshowroomPrice":"206367.00"},{"ModelCode":"VMMX81SE","nspValue":"159843.00","exshowroomPrice":"206493.00"},{"ModelCode":"VSSQ81SE","nspValue":"159843.00","exshowroomPrice":"208030.00"},{"ModelCode":"VHMC81SE","nspValue":"159843.00","exshowroomPrice":"210486.00"},{"ModelCode":"VSSQ81DN","nspValue":"170441.00","exshowroomPrice":"217046.00"},{"ModelCode":"VHMC81DN","nspValue":"170441.00","exshowroomPrice":"219499.00"},{"ModelCode":"VWJR81SB","nspValue":"166658.00","exshowroomPrice":"212356.00"},{"ModelCode":"VTLJ81SB","nspValue":"166658.00","exshowroomPrice":"214812.00"},{"ModelCode":"VWJR81GM","nspValue":"166658.00","exshowroomPrice":"212356.00"},{"ModelCode":"VTLJ81GM","nspValue":"166658.00","exshowroomPrice":"214812.00"},{"ModelCode":"VKJB60BZ","nspValue":"201795.00","exshowroomPrice":"332653.00"},{"ModelCode":"VSNA60BZ","nspValue":"201795.00","exshowroomPrice":"312021.00"},{"ModelCode":"VCYF60BZ","nspValue":"201795.00","exshowroomPrice":"328010.00"},{"ModelCode":"VHDX60RC","nspValue":"204678.00","exshowroomPrice":"314724.00"},{"ModelCode":"VSSC60RC","nspValue":"204678.00","exshowroomPrice":"326017.00"},{"ModelCode":"VHAV60RC","nspValue":"204678.00","exshowroomPrice":"330863.00"},{"ModelCode":"VNGG60RC","nspValue":"204678.00","exshowroomPrice":"310082.00"},{"ModelCode":"VSML60RC","nspValue":"204678.00","exshowroomPrice":"326220.00"},{"ModelCode":"VPKM60RC","nspValue":"204678.00","exshowroomPrice":"316107.00"},{"ModelCode":"VJBN60RC","nspValue":"204678.00","exshowroomPrice":"320953.00"},{"ModelCode":"VHTX60RC","nspValue":"204678.00","exshowroomPrice":"332097.00"},{"ModelCode":"VKJB60RC","nspValue":"204678.00","exshowroomPrice":"336944.00"},{"ModelCode":"VSNA60RC","nspValue":"204678.00","exshowroomPrice":"316107.00"},{"ModelCode":"VCYF60RC","nspValue":"204678.00","exshowroomPrice":"332097.00"},{"ModelCode":"VHDX60BL","nspValue":"204678.00","exshowroomPrice":"314724.00"},{"ModelCode":"VSSC60BL","nspValue":"204678.00","exshowroomPrice":"326017.00"},{"ModelCode":"VHAV60BL","nspValue":"204678.00","exshowroomPrice":"330863.00"},{"ModelCode":"VNGG60BL","nspValue":"204678.00","exshowroomPrice":"310082.00"},{"ModelCode":"VSML60BL","nspValue":"204678.00","exshowroomPrice":"326220.00"},{"ModelCode":"VPKM60BL","nspValue":"204678.00","exshowroomPrice":"316107.00"},{"ModelCode":"VJBN60BL","nspValue":"204678.00","exshowroomPrice":"320953.00"},{"ModelCode":"VHTX60BL","nspValue":"204678.00","exshowroomPrice":"332097.00"},{"ModelCode":"VKJB60BL","nspValue":"204678.00","exshowroomPrice":"336944.00"},{"ModelCode":"VSNA60BL","nspValue":"204678.00","exshowroomPrice":"316310.00"},{"ModelCode":"VCYF60BL","nspValue":"204678.00","exshowroomPrice":"332301.00"},{"ModelCode":"VQGU60WD","nspValue":"179446.00","exshowroomPrice":"275205.00"},{"ModelCode":"VLSJ60WD","nspValue":"179446.00","exshowroomPrice":"275521.00"},{"ModelCode":"VXAA60WD","nspValue":"179446.00","exshowroomPrice":"278558.00"},{"ModelCode":"VSEX60WD","nspValue":"179446.00","exshowroomPrice":"281407.00"},{"ModelCode":"VSWR60WD","nspValue":"179446.00","exshowroomPrice":"281725.00"},{"ModelCode":"VQGU60ED","nspValue":"175842.00","exshowroomPrice":"269842.00"},{"ModelCode":"VLSJ60ED","nspValue":"175842.00","exshowroomPrice":"270158.00"},{"ModelCode":"VXAA60ED","nspValue":"175842.00","exshowroomPrice":"273195.00"},{"ModelCode":"VSEX60ED","nspValue":"175842.00","exshowroomPrice":"276045.00"},{"ModelCode":"VSWR60ED","nspValue":"175842.00","exshowroomPrice":"276363.00"},{"ModelCode":"VQGU60SK","nspValue":"175842.00","exshowroomPrice":"269842.00"},{"ModelCode":"VLSJ60SK","nspValue":"175842.00","exshowroomPrice":"270158.00"},{"ModelCode":"VXAA60SK","nspValue":"175842.00","exshowroomPrice":"273195.00"},{"ModelCode":"VSEX60SK","nspValue":"175842.00","exshowroomPrice":"276045.00"},{"ModelCode":"VSWR60SK","nspValue":"175842.00","exshowroomPrice":"276363.00"},{"ModelCode":"VQGU60EG","nspValue":"175842.00","exshowroomPrice":"269842.00"},{"ModelCode":"VLSJ60EG","nspValue":"175842.00","exshowroomPrice":"270158.00"},{"ModelCode":"VXAA60EG","nspValue":"175842.00","exshowroomPrice":"273195.00"},{"ModelCode":"VSEX60EG","nspValue":"175842.00","exshowroomPrice":"276045.00"},{"ModelCode":"VSWR60EG","nspValue":"175842.00","exshowroomPrice":"276363.00"},{"ModelCode":"VQGU60KS","nspValue":"175842.00","exshowroomPrice":"269842.00"},{"ModelCode":"VLSJ60KS","nspValue":"175842.00","exshowroomPrice":"270158.00"},{"ModelCode":"VXAA60KS","nspValue":"175842.00","exshowroomPrice":"273195.00"},{"ModelCode":"VSEX60KS","nspValue":"175842.00","exshowroomPrice":"276045.00"},{"ModelCode":"VSWR60KS","nspValue":"175842.00","exshowroomPrice":"276363.00"},{"ModelCode":"VCCF60KS","nspValue":"168633.00","exshowroomPrice":"261036.00"},{"ModelCode":"VRUK60KS","nspValue":"168633.00","exshowroomPrice":"263886.00"},{"ModelCode":"VKML81NT","nspValue":"146287.00","exshowroomPrice":"223664.00"},{"ModelCode":"VENV81NT","nspValue":"146287.00","exshowroomPrice":"228427.00"},{"ModelCode":"VSKA81ET","nspValue":"146287.00","exshowroomPrice":"227780.00"},{"ModelCode":"VKML81ET","nspValue":"146287.00","exshowroomPrice":"223664.00"},{"ModelCode":"VENV81ET","nspValue":"146287.00","exshowroomPrice":"228427.00"},{"ModelCode":"VVZL81SP","nspValue":"161148.00","exshowroomPrice":"207964.00"},{"ModelCode":"VFJK81SP","nspValue":"161148.00","exshowroomPrice":"205937.00"},{"ModelCode":"VLVZ81SP","nspValue":"161148.00","exshowroomPrice":"205937.00"},{"ModelCode":"VXFB81NL","nspValue":"168643.00","exshowroomPrice":"215225.00"},{"ModelCode":"VWNC81NL","nspValue":"168643.00","exshowroomPrice":"215225.00"},{"ModelCode":"VNPE81NL","nspValue":"168643.00","exshowroomPrice":"217253.00"},{"ModelCode":"VRRW81NL","nspValue":"168643.00","exshowroomPrice":"217253.00"},{"ModelCode":"VXFB81SU","nspValue":"168643.00","exshowroomPrice":"215225.00"},{"ModelCode":"VWNC81SU","nspValue":"168643.00","exshowroomPrice":"215225.00"},{"ModelCode":"VNPE81SU","nspValue":"168643.00","exshowroomPrice":"217253.00"},{"ModelCode":"VRRW81SU","nspValue":"168643.00","exshowroomPrice":"217253.00"},{"ModelCode":"VMPD81SL","nspValue":"158151.00","exshowroomPrice":"202224.00"},{"ModelCode":"VTVR81SL","nspValue":"158151.00","exshowroomPrice":"202224.00"},{"ModelCode":"VQCS81SL","nspValue":"158151.00","exshowroomPrice":"204251.00"},{"ModelCode":"VCSF81SL","nspValue":"158151.00","exshowroomPrice":"204251.00"},{"ModelCode":"VAUA60KS","nspValue":"168633.00","exshowroomPrice":"270283.00"},{"ModelCode":"VTAP60KS","nspValue":"168633.00","exshowroomPrice":"265632.00"},{"ModelCode":"VCCF60SK","nspValue":"168633.00","exshowroomPrice":"261036.00"},{"ModelCode":"VRUK60SK","nspValue":"168633.00","exshowroomPrice":"263886.00"},{"ModelCode":"VSLP60SK","nspValue":"168633.00","exshowroomPrice":"259113.00"},{"ModelCode":"VVAR60SK","nspValue":"168633.00","exshowroomPrice":"264202.00"},{"ModelCode":"VNQR60SK","nspValue":"168633.00","exshowroomPrice":"259430.00"},{"ModelCode":"VLNF60SK","nspValue":"168633.00","exshowroomPrice":"267116.00"},{"ModelCode":"VWEN60SK","nspValue":"168633.00","exshowroomPrice":"262466.00"},{"ModelCode":"VMZJ60SK","nspValue":"168633.00","exshowroomPrice":"269966.00"},{"ModelCode":"VZZD60SK","nspValue":"168633.00","exshowroomPrice":"265317.00"},{"ModelCode":"VAUA60SK","nspValue":"168633.00","exshowroomPrice":"270283.00"},{"ModelCode":"VTAP60SK","nspValue":"168633.00","exshowroomPrice":"265632.00"},{"ModelCode":"VQGU60AH","nspValue":"175842.00","exshowroomPrice":"269842.00"},{"ModelCode":"VLSJ60AH","nspValue":"175842.00","exshowroomPrice":"270158.00"},{"ModelCode":"VXAA60AH","nspValue":"175842.00","exshowroomPrice":"273195.00"},{"ModelCode":"VSEX60AH","nspValue":"175842.00","exshowroomPrice":"276045.00"},{"ModelCode":"VSWR60AH","nspValue":"175842.00","exshowroomPrice":"276363.00"},{"ModelCode":"VMSS81FG","nspValue":"262468.00","exshowroomPrice":"399167.00"},{"ModelCode":"VXRA81FG","nspValue":"262468.00","exshowroomPrice":"401939.00"},{"ModelCode":"VRLN81FG","nspValue":"262468.00","exshowroomPrice":"401939.00"},{"ModelCode":"VARG81FG","nspValue":"262468.00","exshowroomPrice":"402143.00"},{"ModelCode":"VBFQ81FG","nspValue":"262468.00","exshowroomPrice":"402143.00"},{"ModelCode":"VMSS81SH","nspValue":"273610.00","exshowroomPrice":"415649.00"},{"ModelCode":"VXRA81SH","nspValue":"273610.00","exshowroomPrice":"418421.00"},{"ModelCode":"VRLN81SH","nspValue":"273610.00","exshowroomPrice":"418421.00"},{"ModelCode":"VARG81SH","nspValue":"273610.00","exshowroomPrice":"418624.00"},{"ModelCode":"VBFQ81SH","nspValue":"273610.00","exshowroomPrice":"418624.00"},{"ModelCode":"VMSS81CE","nspValue":"273610.00","exshowroomPrice":"415649.00"},{"ModelCode":"VXRA81CE","nspValue":"273610.00","exshowroomPrice":"418421.00"},{"ModelCode":"VRLN81CE","nspValue":"273610.00","exshowroomPrice":"418421.00"},{"ModelCode":"VARG81CE","nspValue":"273610.00","exshowroomPrice":"418624.00"},{"ModelCode":"VBFQ81CE","nspValue":"273610.00","exshowroomPrice":"418624.00"},{"ModelCode":"VXRA81SU","nspValue":"284755.00","exshowroomPrice":"435116.00"},{"ModelCode":"VRLN81SU","nspValue":"284755.00","exshowroomPrice":"435116.00"},{"ModelCode":"VXRA81MI","nspValue":"129641.00","exshowroomPrice":"202755.00"},{"ModelCode":"VRLN81MI","nspValue":"129641.00","exshowroomPrice":"202755.00"},{"ModelCode":"VBJL81DY","nspValue":"259197.00","exshowroomPrice":"396833.00"},{"ModelCode":"VPAL81DY","nspValue":"259197.00","exshowroomPrice":"396833.00"},{"ModelCode":"VJCL81DY","nspValue":"259197.00","exshowroomPrice":"398822.00"},{"ModelCode":"VZKD81DY","nspValue":"259197.00","exshowroomPrice":"401796.00"},{"ModelCode":"VRWF81DY","nspValue":"259197.00","exshowroomPrice":"401796.00"},{"ModelCode":"VBJL81GU","nspValue":"267034.00","exshowroomPrice":"408575.00"},{"ModelCode":"VPAL81GU","nspValue":"267034.00","exshowroomPrice":"408575.00"},{"ModelCode":"VJCL81GU","nspValue":"267034.00","exshowroomPrice":"410563.00"},{"ModelCode":"VZKD81GU","nspValue":"267034.00","exshowroomPrice":"413538.00"},{"ModelCode":"VRWF81GU","nspValue":"267034.00","exshowroomPrice":"413538.00"},{"ModelCode":"VBJL81HY","nspValue":"269128.00","exshowroomPrice":"411711.00"},{"ModelCode":"VPAL81HY","nspValue":"269128.00","exshowroomPrice":"411711.00"},{"ModelCode":"VJCL81HY","nspValue":"269128.00","exshowroomPrice":"413699.00"},{"ModelCode":"VZKD81HY","nspValue":"269128.00","exshowroomPrice":"416674.00"},{"ModelCode":"VRWF81HY","nspValue":"269128.00","exshowroomPrice":"416674.00"},{"ModelCode":"VBJL81FL","nspValue":"267034.00","exshowroomPrice":"408575.00"},{"ModelCode":"VPAL81FL","nspValue":"267034.00","exshowroomPrice":"408575.00"},{"ModelCode":"VWSG81WD","nspValue":"244244.00","exshowroomPrice":"374947.00"},{"ModelCode":"VWSG81GG","nspValue":"247906.00","exshowroomPrice":"380432.00"},{"ModelCode":"VWSG81GA","nspValue":"247906.00","exshowroomPrice":"380432.00"},{"ModelCode":"VWSG81HK","nspValue":"253028.00","exshowroomPrice":"388104.00"},{"ModelCode":"VWSG81WM","nspValue":"258881.00","exshowroomPrice":"396872.00"},{"ModelCode":"VUCN81PB","nspValue":"225149.00","exshowroomPrice":"343363.00"},{"ModelCode":"VWMG81PB","nspValue":"225149.00","exshowroomPrice":"344133.00"},{"ModelCode":"VUCN81PY","nspValue":"219255.00","exshowroomPrice":"334592.00"},{"ModelCode":"VWMG81PY","nspValue":"219255.00","exshowroomPrice":"335360.00"},{"ModelCode":"VUCN81PD","nspValue":"239877.00","exshowroomPrice":"365282.00"},{"ModelCode":"VWMG81PD","nspValue":"239877.00","exshowroomPrice":"366050.00"},{"ModelCode":"VUCN81CI","nspValue":"219255.00","exshowroomPrice":"334592.00"},{"ModelCode":"VWMG81CI","nspValue":"219255.00","exshowroomPrice":"335360.00"},{"ModelCode":"VUCN81BY","nspValue":"232513.00","exshowroomPrice":"354322.00"},{"ModelCode":"VWMG81BY","nspValue":"232513.00","exshowroomPrice":"355090.00"},{"ModelCode":"VUCN81BU","nspValue":"232513.00","exshowroomPrice":"354322.00"},{"ModelCode":"VWMG81BU","nspValue":"232513.00","exshowroomPrice":"355090.00"},{"ModelCode":"VSLP60KS","nspValue":"168633.00","exshowroomPrice":"259113.00"},{"ModelCode":"VVAR60KS","nspValue":"168633.00","exshowroomPrice":"264202.00"},{"ModelCode":"VNQR60KS","nspValue":"168633.00","exshowroomPrice":"259430.00"},{"ModelCode":"VLNF60KS","nspValue":"168633.00","exshowroomPrice":"267116.00"},{"ModelCode":"VWEN60KS","nspValue":"168633.00","exshowroomPrice":"262466.00"},{"ModelCode":"VMZJ60KS","nspValue":"168633.00","exshowroomPrice":"269966.00"},{"ModelCode":"VZZD60KS","nspValue":"168633.00","exshowroomPrice":"265317.00"},{"ModelCode":"VJCL81FL","nspValue":"267034.00","exshowroomPrice":"410563.00"},{"ModelCode":"VZKD81FL","nspValue":"267034.00","exshowroomPrice":"413538.00"},{"ModelCode":"VRWF81FL","nspValue":"267034.00","exshowroomPrice":"413538.00"},{"ModelCode":"VSKA81EF","nspValue":"151333.00","exshowroomPrice":"235290.00"},{"ModelCode":"VKML81EF","nspValue":"151333.00","exshowroomPrice":"231174.00"},{"ModelCode":"VENV81EF","nspValue":"151333.00","exshowroomPrice":"235936.00"},{"ModelCode":"VSKA81YF","nspValue":"151333.00","exshowroomPrice":"235290.00"},{"ModelCode":"VKML81YF","nspValue":"151333.00","exshowroomPrice":"231174.00"},{"ModelCode":"VENV81YF","nspValue":"151333.00","exshowroomPrice":"235936.00"},{"ModelCode":"VSKA81LF","nspValue":"151333.00","exshowroomPrice":"235290.00"},{"ModelCode":"VKML81LF","nspValue":"151333.00","exshowroomPrice":"231174.00"},{"ModelCode":"VENV81LF","nspValue":"151333.00","exshowroomPrice":"235936.00"},{"ModelCode":"VSKA81NT","nspValue":"146287.00","exshowroomPrice":"227780.00"}],"regionCodes":["005"],"StatusFilter":"ACTIVE","EffectiveDate":""}
+
+# {"Mail":"francisajay.ds@laderatechnology.com","MTOStatus":"MTO","items":[{"ModelCode":"VVZL81RB","nspValue":"161148.00","exshowroomPrice":"207973.00"},{"ModelCode":"VFJK81RB","nspValue":"161148.00","exshowroomPrice":"205945.00"},{"ModelCode":"VLVZ81RB","nspValue":"161148.00","exshowroomPrice":"205945.00"},{"ModelCode":"VVZL81SP","nspValue":"161148.00","exshowroomPrice":"207973.00"},{"ModelCode":"VFJK81SP","nspValue":"161148.00","exshowroomPrice":"205945.00"},{"ModelCode":"VLVZ81SP","nspValue":"161148.00","exshowroomPrice":"205945.00"},{"ModelCode":"VXFB81NL","nspValue":"168643.00","exshowroomPrice":"215233.00"},{"ModelCode":"VWNC81NL","nspValue":"168643.00","exshowroomPrice":"215233.00"},{"ModelCode":"VNPE81NL","nspValue":"168643.00","exshowroomPrice":"217260.00"},{"ModelCode":"VRRW81NL","nspValue":"168643.00","exshowroomPrice":"217260.00"},{"ModelCode":"VXFB81SU","nspValue":"168643.00","exshowroomPrice":"215233.00"},{"ModelCode":"VWNC81SU","nspValue":"168643.00","exshowroomPrice":"215233.00"},{"ModelCode":"VNPE81SU","nspValue":"168643.00","exshowroomPrice":"217260.00"},{"ModelCode":"VRRW81SU","nspValue":"168643.00","exshowroomPrice":"217260.00"},{"ModelCode":"VMPD81SL","nspValue":"158151.00","exshowroomPrice":"202232.00"},{"ModelCode":"VTVR81SL","nspValue":"158151.00","exshowroomPrice":"202232.00"},{"ModelCode":"VQCS81SL","nspValue":"158151.00","exshowroomPrice":"204259.00"},{"ModelCode":"VCSF81SL","nspValue":"158151.00","exshowroomPrice":"204259.00"},{"ModelCode":"VAUA60KS","nspValue":"168633.00","exshowroomPrice":"270283.00"},{"ModelCode":"VTAP60KS","nspValue":"168633.00","exshowroomPrice":"265632.00"},{"ModelCode":"VCCF60SK","nspValue":"168633.00","exshowroomPrice":"261036.00"},{"ModelCode":"VRUK60SK","nspValue":"168633.00","exshowroomPrice":"263886.00"},{"ModelCode":"VSLP60SK","nspValue":"168633.00","exshowroomPrice":"259238.00"},{"ModelCode":"VVAR60SK","nspValue":"168633.00","exshowroomPrice":"264202.00"},{"ModelCode":"VNQR60SK","nspValue":"168633.00","exshowroomPrice":"259556.00"},{"ModelCode":"VLNF60SK","nspValue":"168633.00","exshowroomPrice":"267116.00"},{"ModelCode":"VWEN60SK","nspValue":"168633.00","exshowroomPrice":"262466.00"},{"ModelCode":"VMZJ60SK","nspValue":"168633.00","exshowroomPrice":"269966.00"},{"ModelCode":"VZZD60SK","nspValue":"168633.00","exshowroomPrice":"265317.00"},{"ModelCode":"VAUA60SK","nspValue":"168633.00","exshowroomPrice":"270283.00"},{"ModelCode":"VTAP60SK","nspValue":"168633.00","exshowroomPrice":"265632.00"},{"ModelCode":"VQGU60AH","nspValue":"175842.00","exshowroomPrice":"269966.00"},{"ModelCode":"VLSJ60AH","nspValue":"175842.00","exshowroomPrice":"270283.00"},{"ModelCode":"VXAA60AH","nspValue":"175842.00","exshowroomPrice":"273195.00"},{"ModelCode":"VSEX60AH","nspValue":"175842.00","exshowroomPrice":"276045.00"},{"ModelCode":"VSWR60AH","nspValue":"175842.00","exshowroomPrice":"276363.00"},{"ModelCode":"VMSS81FG","nspValue":"262468.00","exshowroomPrice":"399178.00"},{"ModelCode":"VXRA81FG","nspValue":"262468.00","exshowroomPrice":"401948.00"},{"ModelCode":"VRLN81FG","nspValue":"262468.00","exshowroomPrice":"401948.00"},{"ModelCode":"VARG81FG","nspValue":"262468.00","exshowroomPrice":"402153.00"},{"ModelCode":"VBFQ81FG","nspValue":"262468.00","exshowroomPrice":"402153.00"},{"ModelCode":"VMSS81SH","nspValue":"273610.00","exshowroomPrice":"415869.00"},{"ModelCode":"VXRA81SH","nspValue":"273610.00","exshowroomPrice":"418641.00"},{"ModelCode":"VRLN81SH","nspValue":"273610.00","exshowroomPrice":"418641.00"},{"ModelCode":"VARG81SH","nspValue":"273610.00","exshowroomPrice":"418844.00"},{"ModelCode":"VBFQ81SH","nspValue":"273610.00","exshowroomPrice":"418844.00"},{"ModelCode":"VMSS81CE","nspValue":"273610.00","exshowroomPrice":"415869.00"},{"ModelCode":"VZKR81WF","nspValue":"127302.00","exshowroomPrice":"170750.00"},{"ModelCode":"VBXC81WF","nspValue":"127302.00","exshowroomPrice":"170750.00"},{"ModelCode":"VVLW81WF","nspValue":"127302.00","exshowroomPrice":"164888.00"},{"ModelCode":"VEYG81WF","nspValue":"127302.00","exshowroomPrice":"167866.00"},{"ModelCode":"VJZH81WF","nspValue":"127302.00","exshowroomPrice":"167866.00"},{"ModelCode":"VMJN81WF","nspValue":"127302.00","exshowroomPrice":"167771.00"},{"ModelCode":"VQSQ81WF","nspValue":"127302.00","exshowroomPrice":"170750.00"},{"ModelCode":"VXWN81WF","nspValue":"127302.00","exshowroomPrice":"170750.00"},{"ModelCode":"VXBP81WF","nspValue":"127302.00","exshowroomPrice":"164888.00"},{"ModelCode":"VVYY81WF","nspValue":"127302.00","exshowroomPrice":"167866.00"},{"ModelCode":"VXLT81WF","nspValue":"127302.00","exshowroomPrice":"167866.00"},{"ModelCode":"VHTN81WF","nspValue":"127302.00","exshowroomPrice":"167771.00"},{"ModelCode":"VZLZ81WF","nspValue":"127302.00","exshowroomPrice":"170750.00"},{"ModelCode":"VFJL81WF","nspValue":"127302.00","exshowroomPrice":"170750.00"},{"ModelCode":"VMCV81LK","nspValue":"131006.00","exshowroomPrice":"169859.00"},{"ModelCode":"VYXX81LK","nspValue":"131006.00","exshowroomPrice":"169859.00"},{"ModelCode":"VDMN81LK","nspValue":"131006.00","exshowroomPrice":"169480.00"},{"ModelCode":"VNUQ81LK","nspValue":"131006.00","exshowroomPrice":"172456.00"},{"ModelCode":"VDEG81LK","nspValue":"131006.00","exshowroomPrice":"172456.00"},{"ModelCode":"VVLW81LK","nspValue":"131006.00","exshowroomPrice":"169480.00"},{"ModelCode":"VEYG81LK","nspValue":"131006.00","exshowroomPrice":"172456.00"},{"ModelCode":"VJZH81LK","nspValue":"131006.00","exshowroomPrice":"172456.00"},{"ModelCode":"VXBP81LK","nspValue":"131006.00","exshowroomPrice":"169480.00"},{"ModelCode":"VVYY81LK","nspValue":"131006.00","exshowroomPrice":"172456.00"},{"ModelCode":"VXLT81LK","nspValue":"131006.00","exshowroomPrice":"172456.00"},{"ModelCode":"VMCV81TY","nspValue":"127302.00","exshowroomPrice":"165268.00"},{"ModelCode":"VYXX81TY","nspValue":"127302.00","exshowroomPrice":"165268.00"},{"ModelCode":"VDMN81TY","nspValue":"127302.00","exshowroomPrice":"164888.00"},{"ModelCode":"VNUQ81TY","nspValue":"127302.00","exshowroomPrice":"167866.00"},{"ModelCode":"VDEG81TY","nspValue":"127302.00","exshowroomPrice":"167866.00"},{"ModelCode":"VVLW81TY","nspValue":"127302.00","exshowroomPrice":"164888.00"},{"ModelCode":"VEYG81TY","nspValue":"127302.00","exshowroomPrice":"167866.00"},{"ModelCode":"VJZH81TY","nspValue":"127302.00","exshowroomPrice":"167866.00"},{"ModelCode":"VXBP81TY","nspValue":"127302.00","exshowroomPrice":"164888.00"},{"ModelCode":"VVYY81TY","nspValue":"127302.00","exshowroomPrice":"167866.00"},{"ModelCode":"VXLT81TY","nspValue":"127302.00","exshowroomPrice":"167866.00"},{"ModelCode":"VSKA81EF","nspValue":"151333.00","exshowroomPrice":"235290.00"},{"ModelCode":"VKML81EF","nspValue":"151333.00","exshowroomPrice":"231288.00"},{"ModelCode":"VENV81EF","nspValue":"151333.00","exshowroomPrice":"235936.00"},{"ModelCode":"VSKA81YF","nspValue":"151333.00","exshowroomPrice":"235290.00"},{"ModelCode":"VKML81YF","nspValue":"151333.00","exshowroomPrice":"231288.00"},{"ModelCode":"VENV81YF","nspValue":"151333.00","exshowroomPrice":"235936.00"},{"ModelCode":"VSKA81LF","nspValue":"151333.00","exshowroomPrice":"235290.00"},{"ModelCode":"VKML81LF","nspValue":"151333.00","exshowroomPrice":"231288.00"},{"ModelCode":"VENV81LF","nspValue":"151333.00","exshowroomPrice":"235936.00"},{"ModelCode":"VSKA81NT","nspValue":"146287.00","exshowroomPrice":"227780.00"}],"regionCodes":["001","002"],"StatusFilter":"ACTIVE","EffectiveDate":""}
+### SubmissionReferenceRecallSet
+# @name SubmissionReferenceRecallSet
+# DELETE {{server}}/odata/v4/vechileprocing-apis/SubmissionReferenceRecallSet(ReferenceNum='REF0000042')
+GET {{server}}/odata/v4/vechileprocing-apis/SubmissionReferenceRecallSet(ReferenceNum='REF0000050')
+Content-Type: application/json
+
+
+### ReferenceNumSet
+# @name ReferenceNumSet
+POST  {{server}}/odata/v4/vechileprocing-apis/revertData
+Content-Type: application/json
+
+{
+  "ReferenceNum" : "REF0000041"
+}
+
+### checkpricingStatus
+# @name checkpricingStatus
+POST  {{server}}/odata/v4/vechileprocing-apis/checkpricingStatus
+Content-Type: application/json
+
+### PostPriceStatusSet
+# @name PostPriceStatusSet
+GET  {{server}}/odata/v4/vechileprocing-apis/PostPriceStatusSet
+Content-Type: application/json
+
+{
+  "ReferenceNum" : "REF0000002"
+}
+
+
+### PostPriceStatusSet
+# @name PostPriceStatusSet
+POST {{server}}/odata/v4/vechileprocing-apis/PostPriceStatusSet
+Content-Type: application/json
+# Authorization: Basic {{username}}:{{password}}
+
+{
+  "ReferenceNum" : "REF0000054"
+}
+
+### PostPriceStatusSet
+# @name PostPriceStatusSet
+POST {{server}}/odata/v4/vechileprocing-apis/getPostPriceStatus
+Content-Type: application/json
+# Authorization: Basic {{username}}:{{password}}
+
+{
+  "refId" : "REF0000002"
+}
+

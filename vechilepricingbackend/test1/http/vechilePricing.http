@@ -1,0 +1,627 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+
+### RegionMasterSet
+# @name RegionMasterSet_GET
+GET {{server}}/odata/v4/vechile-pricing/RegionMasterSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### RegionMasterSet
+# @name RegionMasterSet_POST
+POST {{server}}/odata/v4/vechile-pricing/RegionMasterSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Region": "226",
+  "Spras": "26",
+  "OperationNo": 6,
+  "Message": "Message-3764226",
+  "Ort01": "Ort01-3764226",
+  "Mail": "Mail-3764226",
+  "BasisRto": "BasisRto-3764226",
+  "Status": "us-3764226"
+}
+
+
+### RegionMasterSet
+# @name RegionMasterSet_PATCH
+PATCH {{server}}/odata/v4/vechile-pricing/RegionMasterSet(Region='226',Spras='26')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Region": "226",
+  "Spras": "26",
+  "OperationNo": 6,
+  "Message": "Message-3764226",
+  "Ort01": "Ort01-3764226",
+  "Mail": "Mail-3764226",
+  "BasisRto": "BasisRto-3764226",
+  "Status": "us-3764226"
+}
+
+
+### RegionMasterSet
+# @name RegionMasterSet_DELETE
+DELETE {{server}}/odata/v4/vechile-pricing/RegionMasterSet(Region='226',Spras='26')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### ModelMasterSet
+# @name ModelMasterSet_GET
+GET {{server}}/odata/v4/vechile-pricing/ModelMasterSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### ModelMasterSet
+# @name ModelMasterSet_POST
+POST {{server}}/odata/v4/vechile-pricing/ModelMasterSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ModelCode": "ModelMasterSet-30349210",
+  "EngineType": "49210",
+  "CcWatt": "49210",
+  "OperationNo": 53,
+  "Mail": "Mail-30349210",
+  "Description": "Description-30349210",
+  "ModelFam": "ModelFam-30349210",
+  "GstPerc": 310.384,
+  "DealerMargin": 145.07,
+  "DealerMargCalc": "lerMargCalc-30349210",
+  "DealerMargCostImp": "MargCostImp-30349210",
+  "CsdIndex": "x-30349210",
+  "CsdDisPerc": 42,
+  "Gem": 50,
+  "Status": "s-30349210"
+}
+
+
+### ModelMasterSet
+# @name ModelMasterSet_PATCH
+PATCH {{server}}/odata/v4/vechile-pricing/ModelMasterSet(ModelCode='ModelMasterSet-30349210',EngineType='49210',CcWatt='49210')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ModelCode": "ModelMasterSet-30349210",
+  "EngineType": "49210",
+  "CcWatt": "49210",
+  "OperationNo": 53,
+  "Mail": "Mail-30349210",
+  "Description": "Description-30349210",
+  "ModelFam": "ModelFam-30349210",
+  "GstPerc": 310.384,
+  "DealerMargin": 145.07,
+  "DealerMargCalc": "lerMargCalc-30349210",
+  "DealerMargCostImp": "MargCostImp-30349210",
+  "CsdIndex": "x-30349210",
+  "CsdDisPerc": 42,
+  "Gem": 50,
+  "Status": "s-30349210"
+}
+
+
+### ModelMasterSet
+# @name ModelMasterSet_DELETE
+DELETE {{server}}/odata/v4/vechile-pricing/ModelMasterSet(ModelCode='ModelMasterSet-30349210',EngineType='49210',CcWatt='49210')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### PricingComponentsSet
+# @name PricingComponentsSet_GET
+GET {{server}}/odata/v4/vechile-pricing/PricingComponentsSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### PricingComponentsSet
+# @name PricingComponentsSet_POST
+POST {{server}}/odata/v4/vechile-pricing/PricingComponentsSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Region": "460",
+  "OperationNo": 66,
+  "Mail": "Mail-318460",
+  "EngineType": "18460",
+  "Helmet": 46,
+  "Transportation": 69,
+  "OtExpGt500": 2,
+  "OtExpLt500": 37,
+  "HelmetMargin": 71,
+  "InsuranceLe350": 903.288,
+  "InsuranceGt350": 644.889,
+  "TpaPaGt350": 11,
+  "TpaPaLe350": 97,
+  "BuffPdi": 73,
+  "HsprRate": 15,
+  "NoPlateWrit": 51,
+  "PetrolUpto500": 34,
+  "PetrolGt500": 58,
+  "Status": "tus-318460"
+}
+
+
+### PricingComponentsSet
+# @name PricingComponentsSet_PATCH
+PATCH {{server}}/odata/v4/vechile-pricing/PricingComponentsSet/460
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Region": "460",
+  "OperationNo": 66,
+  "Mail": "Mail-318460",
+  "EngineType": "18460",
+  "Helmet": 46,
+  "Transportation": 69,
+  "OtExpGt500": 2,
+  "OtExpLt500": 37,
+  "HelmetMargin": 71,
+  "InsuranceLe350": 903.288,
+  "InsuranceGt350": 644.889,
+  "TpaPaGt350": 11,
+  "TpaPaLe350": 97,
+  "BuffPdi": 73,
+  "HsprRate": 15,
+  "NoPlateWrit": 51,
+  "PetrolUpto500": 34,
+  "PetrolGt500": 58,
+  "Status": "tus-318460"
+}
+
+
+### PricingComponentsSet
+# @name PricingComponentsSet_DELETE
+DELETE {{server}}/odata/v4/vechile-pricing/PricingComponentsSet/460
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### ModelPriceBreakupSet
+# @name ModelPriceBreakupSet_GET
+GET {{server}}/odata/v4/vechile-pricing/ModelPriceBreakupSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### ModelPriceBreakupSet
+# @name ModelPriceBreakupSet_POST
+POST {{server}}/odata/v4/vechile-pricing/ModelPriceBreakupSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Model": "ModelPriceBreakupSet-21755642",
+  "Region": "642",
+  "MtoMts": "5642",
+  "OperationNo": 86,
+  "SaveInd": "2",
+  "Basis": "Basis-21755642",
+  "DealerMargin": 852833554026.429,
+  "InputNsp": 80546874183.515,
+  "IncrementalNsp": 842777118221.751,
+  "ActualNsp": 672673492706.294,
+  "Helmet": 95,
+  "Transportation": 57,
+  "DealerCost": 25,
+  "OtherExpenses": 7,
+  "BikeMargin": 26,
+  "IncrementDlr": 7442950200.287,
+  "ActualDealerMargin": 612813106873.881,
+  "HelmetMargin": 41,
+  "TotalDealerMargin": 21,
+  "Ndp": 36,
+  "Basic": 34,
+  "Gst": 28,
+  "InputExShowroom": 27,
+  "ExceptionRef": "2",
+  "RtoPerc": 406.049,
+  "Rto": 78,
+  "RtoWithBill": 40,
+  "InsuranceLe350": 37.592,
+  "InsuranceGt350": 939.692,
+  "Insurance": 95,
+  "TpaPa": 81,
+  "ActualGst": 61,
+  "TotalInsurance": 28,
+  "OnRoad": 89,
+  "ActualExShowroom": 63,
+  "Diff": 49,
+  "ReferenceNum": "m-21755642"
+}
+
+
+### ModelPriceBreakupSet
+# @name ModelPriceBreakupSet_PATCH
+PATCH {{server}}/odata/v4/vechile-pricing/ModelPriceBreakupSet(Model='ModelPriceBreakupSet-21755642',Region='642',MtoMts='5642')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Model": "ModelPriceBreakupSet-21755642",
+  "Region": "642",
+  "MtoMts": "5642",
+  "OperationNo": 86,
+  "SaveInd": "2",
+  "Basis": "Basis-21755642",
+  "DealerMargin": 852833554026.429,
+  "InputNsp": 80546874183.515,
+  "IncrementalNsp": 842777118221.751,
+  "ActualNsp": 672673492706.294,
+  "Helmet": 95,
+  "Transportation": 57,
+  "DealerCost": 25,
+  "OtherExpenses": 7,
+  "BikeMargin": 26,
+  "IncrementDlr": 7442950200.287,
+  "ActualDealerMargin": 612813106873.881,
+  "HelmetMargin": 41,
+  "TotalDealerMargin": 21,
+  "Ndp": 36,
+  "Basic": 34,
+  "Gst": 28,
+  "InputExShowroom": 27,
+  "ExceptionRef": "2",
+  "RtoPerc": 406.049,
+  "Rto": 78,
+  "RtoWithBill": 40,
+  "InsuranceLe350": 37.592,
+  "InsuranceGt350": 939.692,
+  "Insurance": 95,
+  "TpaPa": 81,
+  "ActualGst": 61,
+  "TotalInsurance": 28,
+  "OnRoad": 89,
+  "ActualExShowroom": 63,
+  "Diff": 49,
+  "ReferenceNum": "m-21755642"
+}
+
+
+### ModelPriceBreakupSet
+# @name ModelPriceBreakupSet_DELETE
+DELETE {{server}}/odata/v4/vechile-pricing/ModelPriceBreakupSet(Model='ModelPriceBreakupSet-21755642',Region='642',MtoMts='5642')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### RTOExpenseSet
+# @name RTOExpenseSet_GET
+GET {{server}}/odata/v4/vechile-pricing/RTOExpenseSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### RTOExpenseSet
+# @name RTOExpenseSet_POST
+POST {{server}}/odata/v4/vechile-pricing/RTOExpenseSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "RegionCode": "737",
+  "MinRange": 28124737,
+  "MaxRange": 28124737,
+  "OperationNo": 68,
+  "Mail": "Mail-28124737",
+  "Expense": 52,
+  "Status": "s-28124737"
+}
+
+
+### RTOExpenseSet
+# @name RTOExpenseSet_PATCH
+PATCH {{server}}/odata/v4/vechile-pricing/RTOExpenseSet(RegionCode='737',MinRange=28124737,MaxRange=28124737)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "RegionCode": "737",
+  "MinRange": 28124737,
+  "MaxRange": 28124737,
+  "OperationNo": 68,
+  "Mail": "Mail-28124737",
+  "Expense": 52,
+  "Status": "s-28124737"
+}
+
+
+### RTOExpenseSet
+# @name RTOExpenseSet_DELETE
+DELETE {{server}}/odata/v4/vechile-pricing/RTOExpenseSet(RegionCode='737',MinRange=28124737,MaxRange=28124737)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### RtoMasterSet
+# @name RtoMasterSet_GET
+GET {{server}}/odata/v4/vechile-pricing/RtoMasterSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### RtoMasterSet
+# @name RtoMasterSet_POST
+POST {{server}}/odata/v4/vechile-pricing/RtoMasterSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "CcMin": 3257915,
+  "CcMax": 3257915,
+  "RegionCode": "915",
+  "Slab": 3257915,
+  "OperationNo": 49,
+  "Mail": "Mail-3257915",
+  "MinRange": 35,
+  "MaxRange": 17,
+  "PercValue": 563.62,
+  "Status": "us-3257915"
+}
+
+
+### RtoMasterSet
+# @name RtoMasterSet_PATCH
+PATCH {{server}}/odata/v4/vechile-pricing/RtoMasterSet(CcMin=3257915,CcMax=3257915,RegionCode='915',Slab=3257915)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "CcMin": 3257915,
+  "CcMax": 3257915,
+  "RegionCode": "915",
+  "Slab": 3257915,
+  "OperationNo": 49,
+  "Mail": "Mail-3257915",
+  "MinRange": 35,
+  "MaxRange": 17,
+  "PercValue": 563.62,
+  "Status": "us-3257915"
+}
+
+
+### RtoMasterSet
+# @name RtoMasterSet_DELETE
+DELETE {{server}}/odata/v4/vechile-pricing/RtoMasterSet(CcMin=3257915,CcMax=3257915,RegionCode='915',Slab=3257915)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### GMAComponentsSet
+# @name GMAComponentsSet_GET
+GET {{server}}/odata/v4/vechile-pricing/GMAComponentsSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### GMAComponentsSet
+# @name GMAComponentsSet_POST
+POST {{server}}/odata/v4/vechile-pricing/GMAComponentsSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Models": "GMAComponentsSet-29137181",
+  "OperationNo": 18,
+  "Description": "Description-29137181",
+  "Mail": "Mail-29137181",
+  "MtsMto": "7181",
+  "ReferMtsModel": "ReferMtsModel-29137181",
+  "Part1": "Part1-29137181",
+  "Part2": "Part2-29137181",
+  "Part3": "Part3-29137181",
+  "Part4": "Part4-29137181",
+  "Part5": "Part5-29137181",
+  "Part6": "Part6-29137181",
+  "Part7": "Part7-29137181",
+  "Part8": "Part8-29137181",
+  "Part9": "Part9-29137181",
+  "Part10": "Part10-29137181",
+  "Part11": "Part11-29137181",
+  "Part12": "Part12-29137181",
+  "Part13": "Part13-29137181",
+  "Part14": "Part14-29137181",
+  "Part15": "Part15-29137181",
+  "Part16": "Part16-29137181",
+  "Part17": "Part17-29137181",
+  "Part18": "Part18-29137181",
+  "Part19": "Part19-29137181",
+  "Part20": "Part20-29137181",
+  "Status": "s-29137181"
+}
+
+
+### GMAComponentsSet
+# @name GMAComponentsSet_PATCH
+PATCH {{server}}/odata/v4/vechile-pricing/GMAComponentsSet/GMAComponentsSet-29137181
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Models": "GMAComponentsSet-29137181",
+  "OperationNo": 18,
+  "Description": "Description-29137181",
+  "Mail": "Mail-29137181",
+  "MtsMto": "7181",
+  "ReferMtsModel": "ReferMtsModel-29137181",
+  "Part1": "Part1-29137181",
+  "Part2": "Part2-29137181",
+  "Part3": "Part3-29137181",
+  "Part4": "Part4-29137181",
+  "Part5": "Part5-29137181",
+  "Part6": "Part6-29137181",
+  "Part7": "Part7-29137181",
+  "Part8": "Part8-29137181",
+  "Part9": "Part9-29137181",
+  "Part10": "Part10-29137181",
+  "Part11": "Part11-29137181",
+  "Part12": "Part12-29137181",
+  "Part13": "Part13-29137181",
+  "Part14": "Part14-29137181",
+  "Part15": "Part15-29137181",
+  "Part16": "Part16-29137181",
+  "Part17": "Part17-29137181",
+  "Part18": "Part18-29137181",
+  "Part19": "Part19-29137181",
+  "Part20": "Part20-29137181",
+  "Status": "s-29137181"
+}
+
+
+### GMAComponentsSet
+# @name GMAComponentsSet_DELETE
+DELETE {{server}}/odata/v4/vechile-pricing/GMAComponentsSet/GMAComponentsSet-29137181
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### SubmissionReferenceSet
+# @name SubmissionReferenceSet_GET
+GET {{server}}/odata/v4/vechile-pricing/SubmissionReferenceSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### SubmissionReferenceSet
+# @name SubmissionReferenceSet_POST
+POST {{server}}/odata/v4/vechile-pricing/SubmissionReferenceSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ReferenceNum": "et-1363039",
+  "Status": "us-1363039",
+  "Comments": "Comments-1363039",
+  "CreatedOn": "2013-03-22T00:00:00.000Z",
+  "CreatedBy": "edBy-1363039",
+  "StatChangedOn": "2016-02-12T00:00:00.000Z",
+  "StatChangedBy": "StatChangedBy-1363039"
+}
+
+
+### SubmissionReferenceSet
+# @name SubmissionReferenceSet_PATCH
+PATCH {{server}}/odata/v4/vechile-pricing/SubmissionReferenceSet/et-1363039
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ReferenceNum": "et-1363039",
+  "Status": "us-1363039",
+  "Comments": "Comments-1363039",
+  "CreatedOn": "2013-03-22T00:00:00.000Z",
+  "CreatedBy": "edBy-1363039",
+  "StatChangedOn": "2016-02-12T00:00:00.000Z",
+  "StatChangedBy": "StatChangedBy-1363039"
+}
+
+
+### SubmissionReferenceSet
+# @name SubmissionReferenceSet_DELETE
+DELETE {{server}}/odata/v4/vechile-pricing/SubmissionReferenceSet/et-1363039
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### PartsSet
+# @name PartsSet_GET
+GET {{server}}/odata/v4/vechile-pricing/PartsSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### PartsSet
+# @name PartsSet_POST
+POST {{server}}/odata/v4/vechile-pricing/PartsSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Family": "PartsSet-9263083",
+  "PartCode": "PartsSet-9263083",
+  "OperationNo": 46,
+  "Mail": "Mail-9263083",
+  "PartDescr": "PartDescr-9263083",
+  "OeGma": "083",
+  "Mrp": 508221818949.716,
+  "MiyCost": 44,
+  "MiyMarkup": 7803.1,
+  "ExShowOnRoad": "ExShowOnRoad-9263083",
+  "MiyCostPerc": 950.075,
+  "MiyMarkupPerc": 376.415,
+  "Inactive": "3",
+  "Status": "us-9263083"
+}
+
+
+### PartsSet
+# @name PartsSet_PATCH
+PATCH {{server}}/odata/v4/vechile-pricing/PartsSet(Family='PartsSet-9263083',PartCode='PartsSet-9263083')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Family": "PartsSet-9263083",
+  "PartCode": "PartsSet-9263083",
+  "OperationNo": 46,
+  "Mail": "Mail-9263083",
+  "PartDescr": "PartDescr-9263083",
+  "OeGma": "083",
+  "Mrp": 508221818949.716,
+  "MiyCost": 44,
+  "MiyMarkup": 7803.1,
+  "ExShowOnRoad": "ExShowOnRoad-9263083",
+  "MiyCostPerc": 950.075,
+  "MiyMarkupPerc": 376.415,
+  "Inactive": "3",
+  "Status": "us-9263083"
+}
+
+
+### PartsSet
+# @name PartsSet_DELETE
+DELETE {{server}}/odata/v4/vechile-pricing/PartsSet(Family='PartsSet-9263083',PartCode='PartsSet-9263083')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### ApproverSet
+# @name ApproverSet_GET
+GET {{server}}/odata/v4/vechile-pricing/ApproverSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### ApproverSet
+# @name ApproverSet_POST
+POST {{server}}/odata/v4/vechile-pricing/ApproverSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Mail": "ApproverSet-29233483",
+  "OperationNo": 74,
+  "Role": "Role-29233483"
+}
+
+
+### ApproverSet
+# @name ApproverSet_PATCH
+PATCH {{server}}/odata/v4/vechile-pricing/ApproverSet/ApproverSet-29233483
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Mail": "ApproverSet-29233483",
+  "OperationNo": 74,
+  "Role": "Role-29233483"
+}
+
+
+### ApproverSet
+# @name ApproverSet_DELETE
+DELETE {{server}}/odata/v4/vechile-pricing/ApproverSet/ApproverSet-29233483
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}

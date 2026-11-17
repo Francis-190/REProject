@@ -1,0 +1,144 @@
+
+{
+    "VCAP_SERVICES": {
+  "connectivity": [
+    {
+      "binding_guid": "00b2262b-77c4-4baa-9575-1c3c477dd8ef",
+      "binding_name": null,
+      "credentials": {
+        "clientid": "sb-clonedd991c88f6ea4b819dca1497e0eda40f!b14364|connectivity!b5",
+        "clientsecret": "00b2262b-77c4-4baa-9575-1c3c477dd8ef$Pa0-VhS0mt6yIOXxM13Ed4RW-C8PaV-fsQc82eLuwhA=",
+        "credential-type": "binding-secret",
+        "identityzone": "re-ai-nonprod-ygusmasa",
+        "onpremise_proxy_host": "192.168.2.5",
+        "onpremise_proxy_http_port": "20003",
+        "onpremise_proxy_ldap_port": "20001",
+        "onpremise_proxy_port": "20003",
+        "onpremise_proxy_rfc_port": "20001",
+        "onpremise_socks5_proxy_port": "20004",
+        "region_configuration_id": "cf-in30",
+        "tenantid": "f348f19e-876b-4eb3-9b88-0a4d9b68b14a",
+        "tenantmode": "dedicated",
+        "token-type": [
+          "xsuaa",
+          "ias"
+        ],
+        "token_service_domain": "authentication.in30.hana.ondemand.com",
+        "token_service_url": "https://re-ai-nonprod-ygusmasa.authentication.in30.hana.ondemand.com",
+        "uaadomain": "authentication.in30.hana.ondemand.com",
+        "url": "https://re-ai-nonprod-ygusmasa.authentication.in30.hana.ondemand.com",
+        "verificationkey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoQDrrcEQ5XNUHzS3PYhO\nqch7jMIwGRapMKvT+iOY0xKmF98jiugsxcT1gAxxCA7Sz0e7RrcYgj1CZ+D3y7rw\nqN3AYBpkCweWJSETeb3px28il2u9iZo5eTCokyf45RMy0OF8JKtuwwQC2Ww0H2bo\nbVZta38kQ8c71G6n2WFMi00GQfoZp5vnYKdJsHck25+A494F0ekoobMzo0RX4Wfw\n+xoyym7pJakoStgcTyz6hvcu7+2DW9jwRi3utXteZKd2WamWmz4KKc+ObXiBmIJW\nai3z3QEz83GSmZ15bhuYXmFOn3Gf5QuM29OAOBEjMAeU5TnHWY6g+ZqWqhkyNphX\nKQIDAQAB\n-----END PUBLIC KEY-----",
+        "xsappname": "clonedd991c88f6ea4b819dca1497e0eda40f!b14364|connectivity!b5"
+      },
+      "instance_guid": "dd991c88-f6ea-4b81-9dca-1497e0eda40f",
+      "instance_name": "vechilepricingbackend-connectivity",
+      "label": "connectivity",
+      "name": "vechilepricingbackend-connectivity",
+      "plan": "lite",
+      "provider": null,
+      "syslog_drain_url": null,
+      "tags": [
+        "connectivity",
+        "conn",
+        "connsvc"
+      ],
+      "volume_mounts": []
+    }
+  ],
+  "destination": [
+    {
+      "binding_guid": "3229045e-ff6d-4990-bec2-21eef4cf764c",
+      "binding_name": null,
+      "credentials": {
+        "clientid": "sb-clone15590c8d223b4712bd48267d5be23f9d!b14364|destination-xsappname!b4",
+        "clientsecret": "3229045e-ff6d-4990-bec2-21eef4cf764c$hUP7qpW8hSpSWsKrajp_aMpY941PrwapahzF5uhHyGI=",
+        "credential-type": "binding-secret",
+        "identityzone": "re-ai-nonprod-ygusmasa",
+        "instanceid": "15590c8d-223b-4712-bd48-267d5be23f9d",
+        "tenantid": "f348f19e-876b-4eb3-9b88-0a4d9b68b14a",
+        "tenantmode": "dedicated",
+        "token-type": [
+          "xsuaa",
+          "ias"
+        ],
+        "uaadomain": "authentication.in30.hana.ondemand.com",
+        "uri": "https://destination-configuration.cfapps.in30.hana.ondemand.com",
+        "url": "https://re-ai-nonprod-ygusmasa.authentication.in30.hana.ondemand.com",
+        "verificationkey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoQDrrcEQ5XNUHzS3PYhO\nqch7jMIwGRapMKvT+iOY0xKmF98jiugsxcT1gAxxCA7Sz0e7RrcYgj1CZ+D3y7rw\nqN3AYBpkCweWJSETeb3px28il2u9iZo5eTCokyf45RMy0OF8JKtuwwQC2Ww0H2bo\nbVZta38kQ8c71G6n2WFMi00GQfoZp5vnYKdJsHck25+A494F0ekoobMzo0RX4Wfw\n+xoyym7pJakoStgcTyz6hvcu7+2DW9jwRi3utXteZKd2WamWmz4KKc+ObXiBmIJW\nai3z3QEz83GSmZ15bhuYXmFOn3Gf5QuM29OAOBEjMAeU5TnHWY6g+ZqWqhkyNphX\nKQIDAQAB\n-----END PUBLIC KEY-----",
+        "xsappname": "clone15590c8d223b4712bd48267d5be23f9d!b14364|destination-xsappname!b4"
+      },
+      "instance_guid": "15590c8d-223b-4712-bd48-267d5be23f9d",
+      "instance_name": "vechilepricingbackend-destination",
+      "label": "destination",
+      "name": "vechilepricingbackend-destination",
+      "plan": "lite",
+      "provider": null,
+      "syslog_drain_url": null,
+      "tags": [
+        "destination",
+        "conn",
+        "connsvc"
+      ],
+      "volume_mounts": []
+    }
+  ],
+  "xsuaa": [
+    {
+      "binding_guid": "78f792de-36c1-43de-a9ca-e478bed66025",
+      "binding_name": null,
+      "credentials": {
+        "apiurl": "https://api.authentication.in30.hana.ondemand.com",
+        "clientid": "sb-vechilepricingbackend-dev!t14364",
+        "clientsecret": "78f792de-36c1-43de-a9ca-e478bed66025$0Msgv8tVbCPmtuZFoBjAkhLIobH7bVOmY8ZTSy6seJE=",
+        "credential-type": "binding-secret",
+        "identityzone": "re-ai-nonprod-ygusmasa",
+        "identityzoneid": "f348f19e-876b-4eb3-9b88-0a4d9b68b14a",
+        "sburl": "https://internal-xsuaa.authentication.in30.hana.ondemand.com",
+        "serviceInstanceId": "f22e83a9-e5cd-4736-8c85-39e404c9cfc9",
+        "subaccountid": "f348f19e-876b-4eb3-9b88-0a4d9b68b14a",
+        "tenantid": "f348f19e-876b-4eb3-9b88-0a4d9b68b14a",
+        "tenantmode": "dedicated",
+        "uaadomain": "authentication.in30.hana.ondemand.com",
+        "url": "https://re-ai-nonprod-ygusmasa.authentication.in30.hana.ondemand.com",
+        "verificationkey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoQDrrcEQ5XNUHzS3PYhO\nqch7jMIwGRapMKvT+iOY0xKmF98jiugsxcT1gAxxCA7Sz0e7RrcYgj1CZ+D3y7rw\nqN3AYBpkCweWJSETeb3px28il2u9iZo5eTCokyf45RMy0OF8JKtuwwQC2Ww0H2bo\nbVZta38kQ8c71G6n2WFMi00GQfoZp5vnYKdJsHck25+A494F0ekoobMzo0RX4Wfw\n+xoyym7pJakoStgcTyz6hvcu7+2DW9jwRi3utXteZKd2WamWmz4KKc+ObXiBmIJW\nai3z3QEz83GSmZ15bhuYXmFOn3Gf5QuM29OAOBEjMAeU5TnHWY6g+ZqWqhkyNphX\nKQIDAQAB\n-----END PUBLIC KEY-----",
+        "xsappname": "vechilepricingbackend-dev!t14364",
+        "zoneid": "f348f19e-876b-4eb3-9b88-0a4d9b68b14a"
+      },
+      "instance_guid": "f22e83a9-e5cd-4736-8c85-39e404c9cfc9",
+      "instance_name": "vechilepricingbackend-auth",
+      "label": "xsuaa",
+      "name": "vechilepricingbackend-auth",
+      "plan": "application",
+      "provider": null,
+      "syslog_drain_url": null,
+      "tags": [
+        "xsuaa"
+      ],
+      "volume_mounts": []
+    }
+  ]
+},
+
+
+"VCAP_APPLICATION": {
+  "application_id": "4a572d89-7138-486f-89a5-a6d0bdf41879",
+  "application_name": "vechilepricingbackend-srv",
+  "application_uris": [
+    "eicher-motors-limited-re-ai-nonprod-ygusmasa-re-dev-vec554603f4.cfapps.in30.hana.ondemand.com"
+  ],
+  "cf_api": "https://api.cf.in30.hana.ondemand.com",
+  "limits": {
+    "fds": 32768
+  },
+  "name": "vechilepricingbackend-srv",
+  "organization_id": "d0562a7e-5007-4546-acfe-92dc16d37c0c",
+  "organization_name": "Eicher Motors Limited_re-ai-nonprod-ygusmasa",
+  "space_id": "3c4955e9-f7b3-4ad6-b213-230b9c225d0a",
+  "space_name": "RE-DEV",
+  "uris": [
+    "eicher-motors-limited-re-ai-nonprod-ygusmasa-re-dev-vec554603f4.cfapps.in30.hana.ondemand.com"
+  ],
+  "users": null
+}
+
+}

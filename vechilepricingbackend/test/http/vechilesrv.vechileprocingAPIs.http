@@ -1,0 +1,1398 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+
+### RegionMasterSet
+# @name RegionMasterSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/RegionMasterSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### RegionMasterSet
+# @name RegionMasterSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/RegionMasterSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "FromDate": "2000-03-10T00:00:00.000Z",
+  "Region": "079",
+  "Spras": "79",
+  "EngineType": "61079",
+  "OperationNo": 68,
+  "Message": "Message-29861079",
+  "Mail": "Mail-29861079",
+  "Ort01": "Ort01-29861079",
+  "BasisRto": "BasisRto-29861079",
+  "Status": "s-29861079"
+}
+
+
+### RegionMasterSet
+# @name RegionMasterSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/RegionMasterSet(FromDate=2000-03-10T00:00:00.000Z,Region='079',Spras='79')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "FromDate": "2000-03-10T00:00:00.000Z",
+  "Region": "079",
+  "Spras": "79",
+  "EngineType": "61079",
+  "OperationNo": 68,
+  "Message": "Message-29861079",
+  "Mail": "Mail-29861079",
+  "Ort01": "Ort01-29861079",
+  "BasisRto": "BasisRto-29861079",
+  "Status": "s-29861079"
+}
+
+
+### RegionMasterSet
+# @name RegionMasterSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/RegionMasterSet(FromDate=2000-03-10T00:00:00.000Z,Region='079',Spras='79')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### ModelMasterSet
+# @name ModelMasterSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/ModelMasterSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### ModelMasterSet
+# @name ModelMasterSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/ModelMasterSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ModelCode": "ModelMasterSet-4366878",
+  "FromDate": "2001-02-26T00:00:00.000Z",
+  "EngineType": "66878",
+  "CcWatt": "66878",
+  "Helmet": 44985500182.341,
+  "HelmetMargin": 71356953070.742,
+  "OrdType": "6878",
+  "Description": "Description-4366878",
+  "ModelFam": "ModelFam-4366878",
+  "GstPerc": 321.156,
+  "DealerMargin": 377.883,
+  "DealerMargCalc": "alerMargCalc-4366878",
+  "DealerMargCostImp": "rMargCostImp-4366878",
+  "CsdIndex": "ex-4366878",
+  "CsdDisPerc": 394.877,
+  "Gem": 781181374170.069,
+  "ModelStatus": "ModelStatus-4366878",
+  "Status": "us-4366878",
+  "OperationNo": 33,
+  "Mail": "Mail-4366878",
+  "Message": "Message-4366878"
+}
+
+
+### ModelMasterSet
+# @name ModelMasterSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/ModelMasterSet(ModelCode='ModelMasterSet-4366878',FromDate=2001-02-26T00:00:00.000Z,EngineType='66878',CcWatt='66878')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ModelCode": "ModelMasterSet-4366878",
+  "FromDate": "2001-02-26T00:00:00.000Z",
+  "EngineType": "66878",
+  "CcWatt": "66878",
+  "Helmet": 44985500182.341,
+  "HelmetMargin": 71356953070.742,
+  "OrdType": "6878",
+  "Description": "Description-4366878",
+  "ModelFam": "ModelFam-4366878",
+  "GstPerc": 321.156,
+  "DealerMargin": 377.883,
+  "DealerMargCalc": "alerMargCalc-4366878",
+  "DealerMargCostImp": "rMargCostImp-4366878",
+  "CsdIndex": "ex-4366878",
+  "CsdDisPerc": 394.877,
+  "Gem": 781181374170.069,
+  "ModelStatus": "ModelStatus-4366878",
+  "Status": "us-4366878",
+  "OperationNo": 33,
+  "Mail": "Mail-4366878",
+  "Message": "Message-4366878"
+}
+
+
+### ModelMasterSet
+# @name ModelMasterSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/ModelMasterSet(ModelCode='ModelMasterSet-4366878',FromDate=2001-02-26T00:00:00.000Z,EngineType='66878',CcWatt='66878')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### PricingComponentsSet
+# @name PricingComponentsSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/PricingComponentsSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### PricingComponentsSet
+# @name PricingComponentsSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/PricingComponentsSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "FromDate": "2020-09-21T00:00:00.000Z",
+  "Region": "253",
+  "RtoExpense": 440020938096.724,
+  "EngineType": "79253",
+  "Transportation": 41112115936.103,
+  "OtExpGt500": 263196206192.606,
+  "OtExpLt500": 74319826563.626,
+  "InsuranceLe350": 352497037.661509,
+  "InsuranceGt350": 932699716.625085,
+  "TpaPaGt350": 122569941463.209,
+  "TpaPaLe350": 813091641591.848,
+  "BuffPdi": 508471035548.943,
+  "HsprRate": 907038022793.106,
+  "NoPlateWrit": 420993050888.273,
+  "PetrolUpto500": 57447305747.95,
+  "PetrolGt500": 515005552063.704,
+  "Status": "us-5279253",
+  "OperationNo": 53,
+  "Mail": "Mail-5279253",
+  "Message": "Message-5279253"
+}
+
+
+### PricingComponentsSet
+# @name PricingComponentsSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/PricingComponentsSet(FromDate=2020-09-21T00:00:00.000Z,Region='253')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "FromDate": "2020-09-21T00:00:00.000Z",
+  "Region": "253",
+  "RtoExpense": 440020938096.724,
+  "EngineType": "79253",
+  "Transportation": 41112115936.103,
+  "OtExpGt500": 263196206192.606,
+  "OtExpLt500": 74319826563.626,
+  "InsuranceLe350": 352497037.661509,
+  "InsuranceGt350": 932699716.625085,
+  "TpaPaGt350": 122569941463.209,
+  "TpaPaLe350": 813091641591.848,
+  "BuffPdi": 508471035548.943,
+  "HsprRate": 907038022793.106,
+  "NoPlateWrit": 420993050888.273,
+  "PetrolUpto500": 57447305747.95,
+  "PetrolGt500": 515005552063.704,
+  "Status": "us-5279253",
+  "OperationNo": 53,
+  "Mail": "Mail-5279253",
+  "Message": "Message-5279253"
+}
+
+
+### PricingComponentsSet
+# @name PricingComponentsSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/PricingComponentsSet(FromDate=2020-09-21T00:00:00.000Z,Region='253')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### ModelPriceBreakupSet
+# @name ModelPriceBreakupSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/ModelPriceBreakupSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### ModelPriceBreakupSet
+# @name ModelPriceBreakupSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/ModelPriceBreakupSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Model": "ModelPriceBreakupSet-7081898",
+  "Region": "898",
+  "ReferenceNum": "et-7081898",
+  "ModelName": "ModelName-7081898",
+  "Part1": "Part1-7081898",
+  "GstPerc": 555.7,
+  "GstAftBasic": 382227108295.643,
+  "RegionName": "RegionName-7081898",
+  "Part2": "Part2-7081898",
+  "InsuranceGst": 464300563967.817,
+  "InsurancePerc": 153.677,
+  "CsdNsp": 881549638193.766,
+  "DealerMargPerc": 11246689752.745,
+  "Part3": "Part3-7081898",
+  "MtsExshwroom": 229390457550.221,
+  "MtoNsp": 974539561396.408,
+  "BasicPriceWo": 54311752436.746,
+  "Part4": "Part4-7081898",
+  "MtsOnRoad": 513352804475.085,
+  "CsdDiscPerc": 237938061351.028,
+  "Part5": "Part5-7081898",
+  "MiyOnroad": 732921188641.387,
+  "Csd": 695883963945.637,
+  "Part6": "Part6-7081898",
+  "MtoOnRoad": 969631482951.746,
+  "MtoExShwroom": 980290520025.886,
+  "Part7": "Part7-7081898",
+  "MtoMts": "1898",
+  "PretaxNetDisc": 692148736142.342,
+  "Part8": "Part8-7081898",
+  "CsdGstPerc": 761675352374.458,
+  "Basis": "Basis-7081898",
+  "MtoExShwAftGma": 620503448372.227,
+  "Part9": "Part9-7081898",
+  "CsdGstAmount": 272020343174.31,
+  "MiyExshowroom": 508307104589.651,
+  "Part10": "Part10-7081898",
+  "CsdExshwroom": 509872709765.854,
+  "DealerMargin": 917683212752.235,
+  "Part11": "Part11-7081898",
+  "IncidentalPerc": 132540399272.749,
+  "ExpExshowroom": 103368996787.847,
+  "Part12": "Part12-7081898",
+  "IncidentalCharges": 726485206938.21,
+  "ExpOnroad": 881535885490.904,
+  "InputNsp": 542897103473.07,
+  "FinalCsdPrice": 889064845158.412,
+  "Part13": "Part13-7081898",
+  "CsdOnroad": 736564679307.739,
+  "Part14": "Part14-7081898",
+  "IncrementalNsp": 947405856297.409,
+  "ReferenceMtsModel": "ReferenceMtsModel-7081898",
+  "DiscPerc": 908725262286.387,
+  "Part15": "Part15-7081898",
+  "DiscAmount": 934932406566.905,
+  "Part16": "Part16-7081898",
+  "ActualNsp": 279379958919.386,
+  "Helmet": 773295442171.74,
+  "SubTotal": 543991214383.174,
+  "Part17": "Part17-7081898",
+  "Transportation": 647134251430.627,
+  "GemGstPerc": 668574620781.019,
+  "Part18": "Part18-7081898",
+  "HelmetCost": 780825692138.602,
+  "Part19": "Part19-7081898",
+  "DealerCost": 529063804107.129,
+  "Part20": "Part20-7081898",
+  "GemBasic": 695396734321.572,
+  "OtherExpenses": 162538757760.206,
+  "Part1Price": 973188303266.42,
+  "GemGstAmount": 465618620492.496,
+  "BikeMargin": 27734701361.159,
+  "FinalGemPrice": 203254562970.574,
+  "IncrementDlr": 651269944094.161,
+  "Part2Price": 152155498569.782,
+  "Part3Price": 641687866389.942,
+  "ActualDealerMargin": 542239774629.391,
+  "HelmetMargin": 635805202814.287,
+  "Part4Price": 157793823506.938,
+  "TotalDealerMargin": 470432853262.248,
+  "Part5Price": 497425978673.177,
+  "Ndp": 284345754657.068,
+  "Part6Price": 614567032813.76,
+  "Basic": 229274676786.306,
+  "Part7Price": 545563428409.723,
+  "Gst": 616265885001.22,
+  "Part8Price": 49753156292.513,
+  "Part9Price": 503667943412.631,
+  "InputExShowroom": 248791304213.186,
+  "Part10Price": 110481976532.161,
+  "ExceptionRef": "8",
+  "Part11Price": 108102884819.823,
+  "RtoPerc": 748.859,
+  "Rto": 34571399690.303,
+  "Part12Price": 580221026390.964,
+  "RtoWithBill": 594864979928.606,
+  "Part13Price": 598117698715.226,
+  "InsuranceLe350": 704953855.748056,
+  "Part14Price": 817399573483.68,
+  "Part15Price": 552405036170.552,
+  "InsuranceGt350": 561079907.546589,
+  "Part16Price": 562671255768.424,
+  "Insurance": 162207150.826427,
+  "TpaPa": 125657187225.457,
+  "Part17Price": 645422527720.35,
+  "Part18Price": 215012305679.344,
+  "ActualGst": 912881505327.425,
+  "Part19Price": 68339792592.876,
+  "TotalInsurance": 315177646.526709,
+  "Part20Price": 271745729707.084,
+  "OnRoad": 605704470087.902,
+  "ActualExShowroom": 921342784954.429,
+  "Diff": 263953674854.382,
+  "SaveInd": "8",
+  "OperationNo": 4,
+  "Mail": "Mail-7081898",
+  "AsmName": "AsmName-7081898"
+}
+
+
+### ModelPriceBreakupSet
+# @name ModelPriceBreakupSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/ModelPriceBreakupSet(Model='ModelPriceBreakupSet-7081898',Region='898',ReferenceNum='et-7081898')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Model": "ModelPriceBreakupSet-7081898",
+  "Region": "898",
+  "ReferenceNum": "et-7081898",
+  "ModelName": "ModelName-7081898",
+  "Part1": "Part1-7081898",
+  "GstPerc": 555.7,
+  "GstAftBasic": 382227108295.643,
+  "RegionName": "RegionName-7081898",
+  "Part2": "Part2-7081898",
+  "InsuranceGst": 464300563967.817,
+  "InsurancePerc": 153.677,
+  "CsdNsp": 881549638193.766,
+  "DealerMargPerc": 11246689752.745,
+  "Part3": "Part3-7081898",
+  "MtsExshwroom": 229390457550.221,
+  "MtoNsp": 974539561396.408,
+  "BasicPriceWo": 54311752436.746,
+  "Part4": "Part4-7081898",
+  "MtsOnRoad": 513352804475.085,
+  "CsdDiscPerc": 237938061351.028,
+  "Part5": "Part5-7081898",
+  "MiyOnroad": 732921188641.387,
+  "Csd": 695883963945.637,
+  "Part6": "Part6-7081898",
+  "MtoOnRoad": 969631482951.746,
+  "MtoExShwroom": 980290520025.886,
+  "Part7": "Part7-7081898",
+  "MtoMts": "1898",
+  "PretaxNetDisc": 692148736142.342,
+  "Part8": "Part8-7081898",
+  "CsdGstPerc": 761675352374.458,
+  "Basis": "Basis-7081898",
+  "MtoExShwAftGma": 620503448372.227,
+  "Part9": "Part9-7081898",
+  "CsdGstAmount": 272020343174.31,
+  "MiyExshowroom": 508307104589.651,
+  "Part10": "Part10-7081898",
+  "CsdExshwroom": 509872709765.854,
+  "DealerMargin": 917683212752.235,
+  "Part11": "Part11-7081898",
+  "IncidentalPerc": 132540399272.749,
+  "ExpExshowroom": 103368996787.847,
+  "Part12": "Part12-7081898",
+  "IncidentalCharges": 726485206938.21,
+  "ExpOnroad": 881535885490.904,
+  "InputNsp": 542897103473.07,
+  "FinalCsdPrice": 889064845158.412,
+  "Part13": "Part13-7081898",
+  "CsdOnroad": 736564679307.739,
+  "Part14": "Part14-7081898",
+  "IncrementalNsp": 947405856297.409,
+  "ReferenceMtsModel": "ReferenceMtsModel-7081898",
+  "DiscPerc": 908725262286.387,
+  "Part15": "Part15-7081898",
+  "DiscAmount": 934932406566.905,
+  "Part16": "Part16-7081898",
+  "ActualNsp": 279379958919.386,
+  "Helmet": 773295442171.74,
+  "SubTotal": 543991214383.174,
+  "Part17": "Part17-7081898",
+  "Transportation": 647134251430.627,
+  "GemGstPerc": 668574620781.019,
+  "Part18": "Part18-7081898",
+  "HelmetCost": 780825692138.602,
+  "Part19": "Part19-7081898",
+  "DealerCost": 529063804107.129,
+  "Part20": "Part20-7081898",
+  "GemBasic": 695396734321.572,
+  "OtherExpenses": 162538757760.206,
+  "Part1Price": 973188303266.42,
+  "GemGstAmount": 465618620492.496,
+  "BikeMargin": 27734701361.159,
+  "FinalGemPrice": 203254562970.574,
+  "IncrementDlr": 651269944094.161,
+  "Part2Price": 152155498569.782,
+  "Part3Price": 641687866389.942,
+  "ActualDealerMargin": 542239774629.391,
+  "HelmetMargin": 635805202814.287,
+  "Part4Price": 157793823506.938,
+  "TotalDealerMargin": 470432853262.248,
+  "Part5Price": 497425978673.177,
+  "Ndp": 284345754657.068,
+  "Part6Price": 614567032813.76,
+  "Basic": 229274676786.306,
+  "Part7Price": 545563428409.723,
+  "Gst": 616265885001.22,
+  "Part8Price": 49753156292.513,
+  "Part9Price": 503667943412.631,
+  "InputExShowroom": 248791304213.186,
+  "Part10Price": 110481976532.161,
+  "ExceptionRef": "8",
+  "Part11Price": 108102884819.823,
+  "RtoPerc": 748.859,
+  "Rto": 34571399690.303,
+  "Part12Price": 580221026390.964,
+  "RtoWithBill": 594864979928.606,
+  "Part13Price": 598117698715.226,
+  "InsuranceLe350": 704953855.748056,
+  "Part14Price": 817399573483.68,
+  "Part15Price": 552405036170.552,
+  "InsuranceGt350": 561079907.546589,
+  "Part16Price": 562671255768.424,
+  "Insurance": 162207150.826427,
+  "TpaPa": 125657187225.457,
+  "Part17Price": 645422527720.35,
+  "Part18Price": 215012305679.344,
+  "ActualGst": 912881505327.425,
+  "Part19Price": 68339792592.876,
+  "TotalInsurance": 315177646.526709,
+  "Part20Price": 271745729707.084,
+  "OnRoad": 605704470087.902,
+  "ActualExShowroom": 921342784954.429,
+  "Diff": 263953674854.382,
+  "SaveInd": "8",
+  "OperationNo": 4,
+  "Mail": "Mail-7081898",
+  "AsmName": "AsmName-7081898"
+}
+
+
+### ModelPriceBreakupSet
+# @name ModelPriceBreakupSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/ModelPriceBreakupSet(Model='ModelPriceBreakupSet-7081898',Region='898',ReferenceNum='et-7081898')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### RTOExpenseSet
+# @name RTOExpenseSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/RTOExpenseSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### RTOExpenseSet
+# @name RTOExpenseSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/RTOExpenseSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "FromDate": "2003-07-03T00:00:00.000Z",
+  "RegionCode": "858",
+  "Slab": 3233858,
+  "EngineType": "33858",
+  "MinRange": 424528691411.125,
+  "MaxRange": 885639981555.642,
+  "Expense": 940465996961.438,
+  "Status": "us-3233858",
+  "OperationNo": 19,
+  "Mail": "Mail-3233858",
+  "Message": "Message-3233858"
+}
+
+
+### RTOExpenseSet
+# @name RTOExpenseSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/RTOExpenseSet(FromDate=2003-07-03T00:00:00.000Z,RegionCode='858',Slab=3233858)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "FromDate": "2003-07-03T00:00:00.000Z",
+  "RegionCode": "858",
+  "Slab": 3233858,
+  "EngineType": "33858",
+  "MinRange": 424528691411.125,
+  "MaxRange": 885639981555.642,
+  "Expense": 940465996961.438,
+  "Status": "us-3233858",
+  "OperationNo": 19,
+  "Mail": "Mail-3233858",
+  "Message": "Message-3233858"
+}
+
+
+### RTOExpenseSet
+# @name RTOExpenseSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/RTOExpenseSet(FromDate=2003-07-03T00:00:00.000Z,RegionCode='858',Slab=3233858)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### RtoMasterSet
+# @name RtoMasterSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/RtoMasterSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### RtoMasterSet
+# @name RtoMasterSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/RtoMasterSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "FromDate": "2018-08-20T00:00:00.000Z",
+  "RegionCode": "257",
+  "Slab": 25061257,
+  "EngineType": "61257",
+  "PriceValue": 903358151979.136,
+  "RtoPercent": 802938968337.06,
+  "CcMin": 737900737081.931,
+  "CcMax": 900223291023.682,
+  "MinRange": 453892537323.954,
+  "MaxRange": 422581094684.936,
+  "Status": "s-25061257",
+  "OperationNo": 65,
+  "Mail": "Mail-25061257",
+  "Message": "Message-25061257"
+}
+
+
+### RtoMasterSet
+# @name RtoMasterSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/RtoMasterSet(FromDate=2018-08-20T00:00:00.000Z,RegionCode='257',Slab=25061257)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "FromDate": "2018-08-20T00:00:00.000Z",
+  "RegionCode": "257",
+  "Slab": 25061257,
+  "EngineType": "61257",
+  "PriceValue": 903358151979.136,
+  "RtoPercent": 802938968337.06,
+  "CcMin": 737900737081.931,
+  "CcMax": 900223291023.682,
+  "MinRange": 453892537323.954,
+  "MaxRange": 422581094684.936,
+  "Status": "s-25061257",
+  "OperationNo": 65,
+  "Mail": "Mail-25061257",
+  "Message": "Message-25061257"
+}
+
+
+### RtoMasterSet
+# @name RtoMasterSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/RtoMasterSet(FromDate=2018-08-20T00:00:00.000Z,RegionCode='257',Slab=25061257)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### GMAComponentsSet
+# @name GMAComponentsSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/GMAComponentsSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### GMAComponentsSet
+# @name GMAComponentsSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/GMAComponentsSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Models": "GMAComponentsSet-29028624",
+  "FromDate": "2006-03-08T00:00:00.000Z",
+  "Part1": "Part1-29028624",
+  "Part2": "Part2-29028624",
+  "Description": "Description-29028624",
+  "Part3": "Part3-29028624",
+  "MtsMto": "8624",
+  "Part4": "Part4-29028624",
+  "Part5": "Part5-29028624",
+  "ReferMtsModel": "ReferMtsModel-29028624",
+  "Part1Price": 647442727388.196,
+  "Part6": "Part6-29028624",
+  "Part2Price": 111721639503.452,
+  "Part7": "Part7-29028624",
+  "Part3Price": 930466711976.104,
+  "Part8": "Part8-29028624",
+  "Part4Price": 152789004081.5,
+  "Part9": "Part9-29028624",
+  "Part10": "Part10-29028624",
+  "Part5Price": 174333037970.174,
+  "Part11": "Part11-29028624",
+  "Part6Price": 412101000101.587,
+  "Part12": "Part12-29028624",
+  "Part7Price": 340748043811.768,
+  "Part13": "Part13-29028624",
+  "Part8Price": 61333120926.981,
+  "Part14": "Part14-29028624",
+  "Part9Price": 808947263010.717,
+  "Part10Price": 211846257244.401,
+  "Part15": "Part15-29028624",
+  "Part11Price": 662227134731.044,
+  "Part16": "Part16-29028624",
+  "Part12Price": 729194929992.133,
+  "Part17": "Part17-29028624",
+  "Part13Price": 304421490823.202,
+  "Part18": "Part18-29028624",
+  "Part14Price": 826449386969.335,
+  "Part19": "Part19-29028624",
+  "Part15Price": 676143265021.318,
+  "Part20": "Part20-29028624",
+  "Part16Price": 732747690584.452,
+  "Part17Price": 463607075271.532,
+  "Part18Price": 781582059325.32,
+  "Part19Price": 435780731185.578,
+  "Part20Price": 906914972293.81,
+  "Status": "s-29028624",
+  "Mail": "Mail-29028624",
+  "Message": "Message-29028624",
+  "OperationNo": 87
+}
+
+
+### GMAComponentsSet
+# @name GMAComponentsSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/GMAComponentsSet(Models='GMAComponentsSet-29028624',FromDate=2006-03-08T00:00:00.000Z)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Models": "GMAComponentsSet-29028624",
+  "FromDate": "2006-03-08T00:00:00.000Z",
+  "Part1": "Part1-29028624",
+  "Part2": "Part2-29028624",
+  "Description": "Description-29028624",
+  "Part3": "Part3-29028624",
+  "MtsMto": "8624",
+  "Part4": "Part4-29028624",
+  "Part5": "Part5-29028624",
+  "ReferMtsModel": "ReferMtsModel-29028624",
+  "Part1Price": 647442727388.196,
+  "Part6": "Part6-29028624",
+  "Part2Price": 111721639503.452,
+  "Part7": "Part7-29028624",
+  "Part3Price": 930466711976.104,
+  "Part8": "Part8-29028624",
+  "Part4Price": 152789004081.5,
+  "Part9": "Part9-29028624",
+  "Part10": "Part10-29028624",
+  "Part5Price": 174333037970.174,
+  "Part11": "Part11-29028624",
+  "Part6Price": 412101000101.587,
+  "Part12": "Part12-29028624",
+  "Part7Price": 340748043811.768,
+  "Part13": "Part13-29028624",
+  "Part8Price": 61333120926.981,
+  "Part14": "Part14-29028624",
+  "Part9Price": 808947263010.717,
+  "Part10Price": 211846257244.401,
+  "Part15": "Part15-29028624",
+  "Part11Price": 662227134731.044,
+  "Part16": "Part16-29028624",
+  "Part12Price": 729194929992.133,
+  "Part17": "Part17-29028624",
+  "Part13Price": 304421490823.202,
+  "Part18": "Part18-29028624",
+  "Part14Price": 826449386969.335,
+  "Part19": "Part19-29028624",
+  "Part15Price": 676143265021.318,
+  "Part20": "Part20-29028624",
+  "Part16Price": 732747690584.452,
+  "Part17Price": 463607075271.532,
+  "Part18Price": 781582059325.32,
+  "Part19Price": 435780731185.578,
+  "Part20Price": 906914972293.81,
+  "Status": "s-29028624",
+  "Mail": "Mail-29028624",
+  "Message": "Message-29028624",
+  "OperationNo": 87
+}
+
+
+### GMAComponentsSet
+# @name GMAComponentsSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/GMAComponentsSet(Models='GMAComponentsSet-29028624',FromDate=2006-03-08T00:00:00.000Z)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### SubmissionReferenceSet
+# @name SubmissionReferenceSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/SubmissionReferenceSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### SubmissionReferenceSet
+# @name SubmissionReferenceSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/SubmissionReferenceSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Mail": "SubmissionReferenceSet-413742",
+  "ReferenceNum": "Set-413742",
+  "UpdateToSap": true,
+  "Revert": true,
+  "Status": "tus-413742",
+  "Comments": "Comments-413742",
+  "CreatedOn": "2016-06-16T00:00:00.000Z",
+  "CreatedBy": "tedBy-413742",
+  "StatChangedOn": "2023-02-27T00:00:00.000Z",
+  "StatChangedBy": "StatChangedBy-413742"
+}
+
+
+### SubmissionReferenceSet
+# @name SubmissionReferenceSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/SubmissionReferenceSet(Mail='SubmissionReferenceSet-413742',ReferenceNum='Set-413742')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Mail": "SubmissionReferenceSet-413742",
+  "ReferenceNum": "Set-413742",
+  "UpdateToSap": true,
+  "Revert": true,
+  "Status": "tus-413742",
+  "Comments": "Comments-413742",
+  "CreatedOn": "2016-06-16T00:00:00.000Z",
+  "CreatedBy": "tedBy-413742",
+  "StatChangedOn": "2023-02-27T00:00:00.000Z",
+  "StatChangedBy": "StatChangedBy-413742"
+}
+
+
+### SubmissionReferenceSet
+# @name SubmissionReferenceSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/SubmissionReferenceSet(Mail='SubmissionReferenceSet-413742',ReferenceNum='Set-413742')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### PartsSet
+# @name PartsSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/PartsSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### PartsSet
+# @name PartsSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/PartsSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Family": "PartsSet-26351593",
+  "PartCode": "PartsSet-26351593",
+  "FromDate": "2010-05-30T00:00:00.000Z",
+  "PartDescr": "PartDescr-26351593",
+  "OeGma": "26351593",
+  "Mrp": 420042761149.98,
+  "MiyCost": 140866228938.381,
+  "MiyMarkup": 11838937155.876,
+  "ExShowOnRoad": "xShowOnRoad-26351593",
+  "MiyCostPerc": 677.789,
+  "MiyMarkupPerc": 20.099,
+  "Inactive": "3",
+  "Status": "s-26351593",
+  "OperationNo": 80,
+  "Mail": "Mail-26351593",
+  "Message": "Message-26351593"
+}
+
+
+### PartsSet
+# @name PartsSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/PartsSet(Family='PartsSet-26351593',PartCode='PartsSet-26351593',FromDate=2010-05-30T00:00:00.000Z)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Family": "PartsSet-26351593",
+  "PartCode": "PartsSet-26351593",
+  "FromDate": "2010-05-30T00:00:00.000Z",
+  "PartDescr": "PartDescr-26351593",
+  "OeGma": "26351593",
+  "Mrp": 420042761149.98,
+  "MiyCost": 140866228938.381,
+  "MiyMarkup": 11838937155.876,
+  "ExShowOnRoad": "xShowOnRoad-26351593",
+  "MiyCostPerc": 677.789,
+  "MiyMarkupPerc": 20.099,
+  "Inactive": "3",
+  "Status": "s-26351593",
+  "OperationNo": 80,
+  "Mail": "Mail-26351593",
+  "Message": "Message-26351593"
+}
+
+
+### PartsSet
+# @name PartsSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/PartsSet(Family='PartsSet-26351593',PartCode='PartsSet-26351593',FromDate=2010-05-30T00:00:00.000Z)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### SubmissionReference
+# @name SubmissionReference_GET
+GET {{server}}/odata/v4/vechileprocing-apis/SubmissionReference
+Authorization: Basic {{username}}:{{password}}
+
+
+### SubmissionReference
+# @name SubmissionReference_POST
+POST {{server}}/odata/v4/vechileprocing-apis/SubmissionReference
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Mail": "SubmissionReference-13010154",
+  "ReferenceNum": "e-13010154",
+  "UpdateToSap": true,
+  "Revert": true,
+  "Status": "s-13010154",
+  "Comments": "Comments-13010154",
+  "CreatedOn": "2023-07-31T00:00:00.000Z",
+  "CreatedBy": "dBy-13010154",
+  "StatChangedOn": "2015-06-16T00:00:00.000Z",
+  "StatChangedBy": "StatChangedBy-13010154"
+}
+
+
+### SubmissionReference
+# @name SubmissionReference_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/SubmissionReference(Mail='SubmissionReference-13010154',ReferenceNum='e-13010154')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Mail": "SubmissionReference-13010154",
+  "ReferenceNum": "e-13010154",
+  "UpdateToSap": true,
+  "Revert": true,
+  "Status": "s-13010154",
+  "Comments": "Comments-13010154",
+  "CreatedOn": "2023-07-31T00:00:00.000Z",
+  "CreatedBy": "dBy-13010154",
+  "StatChangedOn": "2015-06-16T00:00:00.000Z",
+  "StatChangedBy": "StatChangedBy-13010154"
+}
+
+
+### SubmissionReference
+# @name SubmissionReference_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/SubmissionReference(Mail='SubmissionReference-13010154',ReferenceNum='e-13010154')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### ApproverSet
+# @name ApproverSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/ApproverSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### ApproverSet
+# @name ApproverSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/ApproverSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Mail": "ApproverSet-21659583",
+  "OperationNo": 66,
+  "Role": "Role-21659583"
+}
+
+
+### ApproverSet
+# @name ApproverSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/ApproverSet/'ApproverSet-21659583'
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Mail": "ApproverSet-21659583",
+  "OperationNo": 66,
+  "Role": "Role-21659583"
+}
+
+
+### ApproverSet
+# @name ApproverSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/ApproverSet/'ApproverSet-21659583'
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### VariantVariableSet
+# @name VariantVariableSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/VariantVariableSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### VariantVariableSet
+# @name VariantVariableSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/VariantVariableSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Numb": "8478",
+  "Low": "VariantVariableSet-4708478",
+  "High": "High-4708478"
+}
+
+
+### VariantVariableSet
+# @name VariantVariableSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/VariantVariableSet(Numb='8478',Low='VariantVariableSet-4708478')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Numb": "8478",
+  "Low": "VariantVariableSet-4708478",
+  "High": "High-4708478"
+}
+
+
+### VariantVariableSet
+# @name VariantVariableSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/VariantVariableSet(Numb='8478',Low='VariantVariableSet-4708478')
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### ReferenceNumSet
+# @name ReferenceNumSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/ReferenceNumSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### ReferenceNumSet
+# @name ReferenceNumSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/ReferenceNumSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Reference": "t-11345530"
+}
+
+
+### ReferenceNumSet
+# @name ReferenceNumSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/ReferenceNumSet/'t-11345530'
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Reference": "t-11345530"
+}
+
+
+### ReferenceNumSet
+# @name ReferenceNumSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/ReferenceNumSet/'t-11345530'
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### PostPriceSet
+# @name PostPriceSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/PostPriceSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### PostPriceSet
+# @name PostPriceSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/PostPriceSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ReferenceNum": "t-15965561",
+  "StockTransferDate": "2006-05-14T00:00:00.000Z",
+  "DealerBillingDate": "2004-11-12T00:00:00.000Z",
+  "CustomerBillingDate": "2013-03-18T00:00:00.000Z",
+  "CsdDate": "2013-06-07T00:00:00.000Z",
+  "GemDate": "2022-06-10T00:00:00.000Z",
+  "UpdatedOn": "2015-09-18T00:00:00.000Z",
+  "UpdatedBy": "UpdatedBy-15965561"
+}
+
+
+### PostPriceSet
+# @name PostPriceSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/PostPriceSet/'t-15965561'
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ReferenceNum": "t-15965561",
+  "StockTransferDate": "2006-05-14T00:00:00.000Z",
+  "DealerBillingDate": "2004-11-12T00:00:00.000Z",
+  "CustomerBillingDate": "2013-03-18T00:00:00.000Z",
+  "CsdDate": "2013-06-07T00:00:00.000Z",
+  "GemDate": "2022-06-10T00:00:00.000Z",
+  "UpdatedOn": "2015-09-18T00:00:00.000Z",
+  "UpdatedBy": "UpdatedBy-15965561"
+}
+
+
+### PostPriceSet
+# @name PostPriceSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/PostPriceSet/'t-15965561'
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### ModelInvalidSet
+# @name ModelInvalidSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/ModelInvalidSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### ModelInvalidSet
+# @name ModelInvalidSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/ModelInvalidSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ModelCode": "ModelInvalidSet-31365282",
+  "FromDate": "2004-06-08T00:00:00.000Z",
+  "Helmet": 98866387047.257,
+  "HelmetMargin": 304324340723.119,
+  "EngineType": "65282",
+  "CcWatt": "65282",
+  "OrdType": "5282",
+  "Description": "Description-31365282",
+  "ModelFam": "ModelFam-31365282",
+  "GstPerc": 628.126,
+  "DealerMargin": 406.586,
+  "DealerMargCalc": "lerMargCalc-31365282",
+  "DealerMargCostImp": "MargCostImp-31365282",
+  "CsdIndex": "x-31365282",
+  "CsdDisPerc": 138.925,
+  "Gem": 592379926315.724,
+  "ModelStatus": "ModelStatus-31365282",
+  "Status": "s-31365282",
+  "OperationNo": 100,
+  "Mail": "Mail-31365282",
+  "Message": "Message-31365282"
+}
+
+
+### ModelInvalidSet
+# @name ModelInvalidSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/ModelInvalidSet(ModelCode='ModelInvalidSet-31365282',FromDate=2004-06-08T00:00:00.000Z)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ModelCode": "ModelInvalidSet-31365282",
+  "FromDate": "2004-06-08T00:00:00.000Z",
+  "Helmet": 98866387047.257,
+  "HelmetMargin": 304324340723.119,
+  "EngineType": "65282",
+  "CcWatt": "65282",
+  "OrdType": "5282",
+  "Description": "Description-31365282",
+  "ModelFam": "ModelFam-31365282",
+  "GstPerc": 628.126,
+  "DealerMargin": 406.586,
+  "DealerMargCalc": "lerMargCalc-31365282",
+  "DealerMargCostImp": "MargCostImp-31365282",
+  "CsdIndex": "x-31365282",
+  "CsdDisPerc": 138.925,
+  "Gem": 592379926315.724,
+  "ModelStatus": "ModelStatus-31365282",
+  "Status": "s-31365282",
+  "OperationNo": 100,
+  "Mail": "Mail-31365282",
+  "Message": "Message-31365282"
+}
+
+
+### ModelInvalidSet
+# @name ModelInvalidSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/ModelInvalidSet(ModelCode='ModelInvalidSet-31365282',FromDate=2004-06-08T00:00:00.000Z)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### RegionInvalidSet
+# @name RegionInvalidSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/RegionInvalidSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### RegionInvalidSet
+# @name RegionInvalidSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/RegionInvalidSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Region": "970",
+  "Spras": "70",
+  "FromDate": "2008-05-01T00:00:00.000Z",
+  "Ort01": "Ort01-16427970",
+  "BasisRto": "BasisRto-16427970",
+  "Status": "s-16427970",
+  "OperationNo": 64,
+  "Message": "Message-16427970",
+  "Mail": "Mail-16427970",
+  "EngineType": "27970"
+}
+
+
+### RegionInvalidSet
+# @name RegionInvalidSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/RegionInvalidSet(Region='970',Spras='70',FromDate=2008-05-01T00:00:00.000Z)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "Region": "970",
+  "Spras": "70",
+  "FromDate": "2008-05-01T00:00:00.000Z",
+  "Ort01": "Ort01-16427970",
+  "BasisRto": "BasisRto-16427970",
+  "Status": "s-16427970",
+  "OperationNo": 64,
+  "Message": "Message-16427970",
+  "Mail": "Mail-16427970",
+  "EngineType": "27970"
+}
+
+
+### RegionInvalidSet
+# @name RegionInvalidSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/RegionInvalidSet(Region='970',Spras='70',FromDate=2008-05-01T00:00:00.000Z)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### SubmissionReferenceRecallSet
+# @name SubmissionReferenceRecallSet_GET
+GET {{server}}/odata/v4/vechileprocing-apis/SubmissionReferenceRecallSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### SubmissionReferenceRecallSet
+# @name SubmissionReferenceRecallSet_POST
+POST {{server}}/odata/v4/vechileprocing-apis/SubmissionReferenceRecallSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ReferenceNum": "et-4763873"
+}
+
+
+### SubmissionReferenceRecallSet
+# @name SubmissionReferenceRecallSet_PATCH
+PATCH {{server}}/odata/v4/vechileprocing-apis/SubmissionReferenceRecallSet/'et-4763873'
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ReferenceNum": "et-4763873"
+}
+
+
+### SubmissionReferenceRecallSet
+# @name SubmissionReferenceRecallSet_DELETE
+DELETE {{server}}/odata/v4/vechileprocing-apis/SubmissionReferenceRecallSet/'et-4763873'
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### getSaveJobStatus
+# @name getSaveJobStatus_POST
+POST {{server}}/odata/v4/vechileprocing-apis/getSaveJobStatus
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "jobId": "jobId-22192226"
+}
+
+
+### getApprovalDetailedData
+# @name getApprovalDetailedData_POST
+POST {{server}}/odata/v4/vechileprocing-apis/getApprovalDetailedData
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "refId": "refId-14162958"
+}
+
+
+### processCalculation
+# @name processCalculation_POST
+POST {{server}}/odata/v4/vechileprocing-apis/processCalculation
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "items": [
+    {
+      "ModelCode": "ModelCode-5612821",
+      "nspValue": "nspValue-5612821",
+      "exshowroomPrice": "exshowroomPrice-5612821"
+    }
+  ],
+  "regionCode": "regionCode-5612821",
+  "Mail": "Mail-5612821",
+  "MTOStatus": "MTOStatus-5612821",
+  "EffectiveDate": "EffectiveDate-5612821"
+}
+
+
+### goProcessing
+# @name goProcessing_POST
+POST {{server}}/odata/v4/vechileprocing-apis/goProcessing
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "regionCode": "regionCode-26605056",
+  "MTOStatus": "MTOStatus-26605056",
+  "Mail": "Mail-26605056",
+  "ModelCodes": [
+    "String-26605056"
+  ],
+  "StatusFilter": "StatusFilter-26605056",
+  "EffectiveDate": "EffectiveDate-26605056"
+}
+
+
+### addToOtherRegion
+# @name addToOtherRegion_POST
+POST {{server}}/odata/v4/vechileprocing-apis/addToOtherRegion
+Content-Type: application/json
+# Authorization: Basic {{username}}:{{password}}
+
+{"Mail":"francisajay.ds@laderatechnology.com","MTOStatus":"MTS","items":[{"ModelCode":"VZMK81YY","nspValue":"185844","exshowroomPrice":"234567"}],"regionCodes":["002"],"StatusFilter":"ACTIVE","EffectiveDate":""}
+
+### ReferenceNumSets
+# @name ReferenceNumSets_GET
+GET {{server}}/odata/v4/vechileprocing-apis/ReferenceNumSets()
+Authorization: Basic {{username}}:{{password}}
+
+
+### saveToModelPriceBreakUp
+# @name saveToModelPriceBreakUp_POST
+POST {{server}}/odata/v4/vechileprocing-apis/saveToModelPriceBreakUp
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "items": [
+    {
+      "Mail": "Mail-31245574",
+      "AsmName": "AsmName-31245574",
+      "Model": "Model-31245574",
+      "ModelName": "ModelName-31245574",
+      "Region": "Region-31245574",
+      "RegionName": "RegionName-31245574",
+      "OperationNo": 9,
+      "SaveInd": "SaveInd-31245574",
+      "MtoMts": "MtoMts-31245574",
+      "Basis": "Basis-31245574",
+      "ReferenceNum": "ReferenceNum-31245574",
+      "ExceptionRef": "ExceptionRef-31245574",
+      "ReferenceMtsModel": "ReferenceMtsModel-31245574",
+      "DealerMargPerc": 406235645419.695,
+      "DealerMargin": 853238865377.466,
+      "InputNsp": 935643770629.84,
+      "IncrementalNsp": 781958669382.882,
+      "ActualNsp": 327092333695.834,
+      "Helmet": 109525612945.693,
+      "Transportation": 297676655513.864,
+      "DealerCost": 553689324617.036,
+      "OtherExpenses": 164428731605.524,
+      "BikeMargin": 5144171755.586,
+      "IncrementDlr": 861144560985.4,
+      "ActualDealerMargin": 753860135074.83,
+      "HelmetMargin": 158142928158.775,
+      "TotalDealerMargin": 156708776163.022,
+      "Ndp": 50142669343.608,
+      "Basic": 914262943873.991,
+      "GstPerc": 398557860736.543,
+      "Gst": 606894975800.907,
+      "GstAftBasic": 344337688083.16,
+      "InputExShowroom": 992711067482.907,
+      "ActualExShowroom": 204185057628.545,
+      "RtoPerc": 418153070541.106,
+      "Rto": 835540458563.578,
+      "RtoWithBill": 315672460593.313,
+      "InsuranceLe350": 127667819.795659,
+      "InsuranceGt350": 326286746.309397,
+      "InsurancePerc": 912362018.21953,
+      "Insurance": 774444815.659022,
+      "TpaPa": 111908764380.386,
+      "InsuranceGst": 636806349229.527,
+      "ActualGst": 475213380895.236,
+      "TotalInsurance": 938458763.228557,
+      "OnRoad": 500131642004.745,
+      "Diff": 300526863843.71,
+      "MtoNsp": 50121961612.524,
+      "MtsExshwroom": 940137851806.412,
+      "MtsOnRoad": 140775876512.939,
+      "MtoExShwroom": 417379646226.352,
+      "MtoOnRoad": 784139401172.699,
+      "MtoExShwAftGma": 523378178683.927,
+      "MiyExshowroom": 323001549743.935,
+      "MiyOnroad": 358558329020.796,
+      "ExpExshowroom": 903068180802.535,
+      "ExpOnroad": 391232516601.117,
+      "MiyBreakup": [
+        {
+          "PartCode": "PartCode-31245574",
+          "Description": "Description-31245574",
+          "ExShowOnRoad": "xShowOnRoad-31245574",
+          "MiyCost": 475918702580.712,
+          "MiyMarkup": 710042764926.465,
+          "PartPrice": 8751691393.628,
+          "ExShowroomBefore": 757783085698.661,
+          "ExShowroomAfter": 526255137122.315
+        }
+      ],
+      "CsdNsp": 648812867947.742,
+      "BasicPriceWo": 189799730434.435,
+      "CsdDiscPerc": 189227498406.637,
+      "Csd": 337342377345.717,
+      "PretaxNetDisc": 152536073937.552,
+      "CsdGstPerc": 276758227987.21,
+      "CsdGstAmount": 570816852643.911,
+      "CsdExshwroom": 13562682679.638,
+      "IncidentalPerc": 669035950.006,
+      "IncidentalCharges": 223034820584.819,
+      "FinalCsdPrice": 882794525303.902,
+      "CsdOnroad": 171125762897.36,
+      "DiscPerc": 670436176569.85,
+      "DiscAmount": 945017952784.61,
+      "SubTotal": 471882457379.524,
+      "GemGstPerc": 423898773561.023,
+      "HelmetCost": 762035534718.304,
+      "GemBasic": 491057407243.526,
+      "GemGstAmount": 850249965602.507,
+      "FinalGemPrice": 792501831280.959
+    }
+  ]
+}
+
+
+### checkpricingStatus
+# @name checkpricingStatus_GET
+GET {{server}}/odata/v4/vechileprocing-apis/checkpricingStatus()
+# Authorization: Basic {{username}}:{{password}}
