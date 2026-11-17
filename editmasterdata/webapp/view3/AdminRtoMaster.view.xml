@@ -1,0 +1,138 @@
+<mvc:View controllerName="editmasterdata.controller.AdminRtoMaster"
+ xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+
+    <App>
+        <Page>
+    <customHeader>
+                <Toolbar>
+                        <Button
+            icon="sap-icon://nav-back"
+            type="Transparent"
+            press="onNavBack" />
+                    <ToolbarSpacer/>
+                    <Title text="RTO MASTER" level="H2"/>
+                    <ToolbarSpacer/>
+                </Toolbar>
+            </customHeader>
+            <!-- TABLE -->
+            <content>
+
+<VBox width="100%" alignItems="Center" >
+
+
+
+    <Panel width="95%" class="sapUiResponsiveMargin">
+
+    <headerToolbar>
+    <Toolbar>
+        <ToolbarSpacer/>
+        <Button
+            text="Create Row"
+            icon="sap-icon://add"
+            press="onCreateMasterRow"
+            />
+    </Toolbar>
+</headerToolbar>
+
+        <table:Table
+            id="RtoMaterTable"
+            rows="{/RtoMasterSet}"
+            visibleRowCount="10"
+            selectionMode="None"
+            width="100%"
+            enableBusyIndicator="true">
+
+            <table:columns>
+
+               <table:Column>
+    <Label text="Region"/>
+    <table:template>
+        <Text text="{RegionCode}"/>
+    </table:template>
+</table:Column>
+
+<table:Column>
+    <Label text="Slab"/>
+    <table:template>
+        <Text text="{Slab}"/>
+    </table:template>
+</table:Column>
+
+<table:Column>
+    <Label text="CC Min"/>
+    <table:template>
+        <Text text="{CcMin}"/>
+    </table:template>
+</table:Column>
+
+<table:Column>
+    <Label text="CC Max"/>
+    <table:template>
+        <Text text="{CcMax}"/>
+    </table:template>
+</table:Column>
+
+<table:Column>
+    <Label text="Min Range"/>
+    <table:template>
+        <Text text="{MinRange}"/>
+    </table:template>
+</table:Column>
+
+<table:Column>
+    <Label text="Max Range"/>
+    <table:template>
+        <Text text="{MaxRange}"/>
+    </table:template>
+</table:Column>
+
+<table:Column>
+    <Label text="RTO %"/>
+    <table:template>
+        <Text text="{RtoPercent}"/>
+    </table:template>
+</table:Column>
+
+<table:Column>
+    <Label text="RTO Value"/>
+    <table:template>
+        <Text text="{PriceValue}"/>
+    </table:template>
+</table:Column>
+            </table:columns>
+
+        </table:Table>
+
+    </Panel>
+
+</VBox>
+
+
+
+
+            </content>
+
+            <!-- FOOTER -->
+           <footer>
+    <OverflowToolbar>
+        <ToolbarSpacer/>
+        <Button
+            text="Approve"
+            type="Accept"
+            icon="sap-icon://accept"
+            press="onApprove"/>
+        <Button
+            text="Reject"
+            type="Reject"
+            icon="sap-icon://decline"
+            press="onReject"/>
+    </OverflowToolbar>
+</footer>
+
+        </Page>
+    </App>
+</mvc:View>

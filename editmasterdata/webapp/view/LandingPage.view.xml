@@ -1,0 +1,164 @@
+<mvc:View
+    controllerName="editmasterdata.controller.LandingPage"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Page
+        id="landingPage"
+        showHeader="false"
+        enableScrolling="false"
+        class="enterprisePage">
+
+        <content>
+
+            <VBox
+                id="mainContainer"
+                class="landingPage"
+                fitContainer="true">
+
+                <!-- Enterprise Header -->
+                <HBox
+                    class="enterpriseHeader"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center">
+
+                    <!-- Logo / Application Name -->
+                    <HBox
+                        alignItems="Center"
+                        class="brandSection">
+
+                        <Image
+                            src="img/re-logo.png"
+                            width="145px"
+                            class="brandLogo" />
+
+                        <VBox class="applicationInfo">
+                            <Title
+                                text="Vehicle Pricing Master"
+                                class="applicationTitle" />
+
+                            <Text
+                                text="Enterprise Master Data Management"
+                                class="applicationSubtitle" />
+                        </VBox>
+
+                    </HBox>
+
+                    <!-- User Section -->
+                    <HBox
+                        alignItems="Center"
+                        class="userSection">
+
+                        <VBox
+                            alignItems="End"
+                            class="userInfo">
+
+                            <Text
+                                text="Welcome"
+                                class="welcomeText" />
+
+                            <Text
+                                text="User"
+                                class="userName" />
+
+                        </VBox>
+
+                        <core:Icon
+                            src="sap-icon://person-placeholder"
+                            class="userIcon" />
+
+                    </HBox>
+
+                </HBox>
+
+
+                <!-- Main Content -->
+                <VBox
+                    class="landingContent"
+                    alignItems="Center"
+                    justifyContent="Center">
+
+                    <VBox
+                        class="titleSection"
+                        alignItems="Center">
+
+                        <Title
+                            text="Vehicle Pricing Master"
+                            class="landingTitle" />
+
+                        <Text
+                            text="Select the workspace to continue"
+                            class="landingDescription" />
+
+                    </VBox>
+
+
+                    <!-- Workspace Cards -->
+                    <HBox
+                        id="tilesContainer"
+                        class="tilesContainer"
+                        justifyContent="Center"
+                        alignItems="Stretch">
+
+                        <!-- Submitter -->
+                        <GenericTile
+                            id="submitterTile"
+                            class="viewTile submitterTile"
+                            header="Submitter Workspace"
+                            subheader="Create and submit vehicle pricing master data"
+                            press=".onSubmitterPress">
+
+                            <TileContent>
+                                <ImageContent
+                                    src="sap-icon://create"
+                                    description="Submitter Workspace" />
+                            </TileContent>
+
+                        </GenericTile>
+
+
+                        <!-- Approver -->
+                        <GenericTile
+                            id="approverTile"
+                            class="viewTile approverTile"
+                            header="Approver Workspace"
+                            subheader="Review and approve vehicle pricing master data"
+                            press=".onApproverPress">
+
+                            <TileContent>
+                                <ImageContent
+                                    src="sap-icon://approvals"
+                                    description="Approver Workspace" />
+                            </TileContent>
+
+                        </GenericTile>
+
+                    </HBox>
+
+                </VBox>
+
+
+                <!-- Footer -->
+                <HBox
+                    class="enterpriseFooter"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center">
+
+                    <Text
+                        text="Vehicle Pricing Master | Enterprise Application"
+                        class="footerText" />
+
+                    <Text
+                        text="© Royal Enfield"
+                        class="footerText" />
+
+                </HBox>
+
+            </VBox>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

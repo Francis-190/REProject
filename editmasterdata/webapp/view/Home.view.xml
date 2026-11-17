@@ -1,0 +1,198 @@
+<mvc:View
+    controllerName="editmasterdata.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <App class="reApp">
+        <pages>
+            <Page
+                showHeader="false"
+                class="reHomePage"
+            >
+                <content>
+                    <!-- ══════════ MAIN SPLIT LAYOUT ══════════ -->
+                    <HBox
+                        class="reMainLayout"
+                        width="100%"
+                        height="100%"
+                    >
+                        <!-- ══════ LEFT PANEL (white) ══════ -->
+                        <VBox
+                            class="reLeftPanel"
+                            justifyContent="SpaceBetween"
+                            height="100%"
+                        >
+                            <!-- Logo top -->
+                            <!-- <VBox class="reLogoWrap">
+                                <Image src="img/homelogo.png" width="100%" height="100%"
+                                    class="reLogoImg" decorative="false" alt="Royal Enfield"/>
+                            </VBox> -->
+
+                            <VBox class="reLogoWrap" />
+
+                            <!-- Brand info middle -->
+                            <VBox class="reBrandInfo">
+                                <Text
+                                    text="Master Data App"
+                                    class="reBrandSub"
+                                />
+                                <Title
+                                    text="Vehicle Pricing Automation"
+                                    level="H3"
+                                    class="reBrandTitle"
+                                />
+                                <VBox class="reBrandRule" />
+                                <Text
+                                    text="Manage, review and publish vehicle pricing data across all regions and engine types."
+                                    class="reBrandDesc"
+                                    wrapping="true"
+                                />
+                            </VBox>
+
+                            <!-- Copyright bottom -->
+                            <Text
+                                text="© Royal Enfield · 2026"
+                                class="reCopyright"
+                            />
+                        </VBox>
+
+                        <!-- ══════ RIGHT PANEL (warm gray) ══════ -->
+                        <VBox
+                            class="reRightPanel"
+                            justifyContent="Center"
+                            alignItems="Center"
+                            height="100%"
+                        >
+                            <VBox class="reCardArea">
+                                <List
+                                    class="reNavList"
+                                    showSeparators="None"
+                                >
+                                    <!-- Live Data -->
+                                    <CustomListItem
+                                        class="reNavCard reNavCardLive"
+                                        press="onLiveDataPress"
+                                        type="Active"
+                                    >
+                                        <HBox
+                                            alignItems="Center"
+                                            class="reNavCardInner"
+                                        >
+                                            <VBox
+                                                class="reNavIcon reNavIconLive"
+                                                justifyContent="Center"
+                                                alignItems="Center"
+                                            >
+                                                <core:Icon
+                                                    src="sap-icon://activity-individual"
+                                                    size="1.1rem"
+                                                    color="white"
+                                                />
+                                            </VBox>
+                                            <VBox class="reNavCardText">
+                                                <Title
+                                                    text="Live Data"
+                                                    level="H4"
+                                                    class="reNavCardTitle"
+                                                />
+                                                <Text
+                                                    text="View and edit current pricing"
+                                                    class="reNavCardDesc"
+                                                />
+                                            </VBox>
+                                            <core:Icon
+                                                src="sap-icon://navigation-right-arrow"
+                                                size="0.8rem"
+                                                class="reNavArrow"
+                                            />
+                                        </HBox>
+                                    </CustomListItem>
+
+                                    <CustomListItem
+                                        class="reNavCard reNavCardLive"
+                                        press="onApproverDataPress"
+                                        type="Active"
+                                    >
+                                        <HBox
+                                            alignItems="Center"
+                                            class="reNavCardInner"
+                                        >
+                                            <VBox
+                                                class="reNavIcon reNavIconLive"
+                                                justifyContent="Center"
+                                                alignItems="Center"
+                                            >
+                                                <core:Icon
+                                                    src="sap-icon://validate"
+                                                    size="1.1rem"
+                                                    color="white"
+                                                />
+                                            </VBox>
+                                            <VBox class="reNavCardText">
+                                                <Title
+                                                    text="Approver Data"
+                                                    level="H4"
+                                                    class="reNavCardTitle"
+                                                />
+                                                <Text
+                                                    text="Review and approve current pricing"
+                                                    class="reNavCardDesc"
+                                                />
+                                            </VBox>
+                                            <core:Icon
+                                                src="sap-icon://navigation-right-arrow"
+                                                size="0.8rem"
+                                                class="reNavArrow"
+                                            />
+                                        </HBox>
+                                    </CustomListItem>
+
+                                    <!-- History Data -->
+                                    <CustomListItem
+                                        class="reNavCard reNavCardHist"
+                                        press="onHistoryDataPress"
+                                        type="Active"
+                                    >
+                                        <HBox
+                                            alignItems="Center"
+                                            class="reNavCardInner"
+                                        >
+                                            <VBox
+                                                class="reNavIcon reNavIconHist"
+                                                justifyContent="Center"
+                                                alignItems="Center"
+                                            >
+                                                <core:Icon
+                                                    src="sap-icon://history"
+                                                    size="1.1rem"
+                                                    color="white"
+                                                />
+                                            </VBox>
+                                            <VBox class="reNavCardText">
+                                                <Title
+                                                    text="History Data"
+                                                    level="H4"
+                                                    class="reNavCardTitle"
+                                                />
+                                                <Text
+                                                    text="Browse past pricing records"
+                                                    class="reNavCardDesc"
+                                                />
+                                            </VBox>
+                                            <core:Icon
+                                                src="sap-icon://navigation-right-arrow"
+                                                size="0.8rem"
+                                                class="reNavArrow"
+                                            />
+                                        </HBox>
+                                    </CustomListItem>
+                                </List>
+                            </VBox>
+                        </VBox>
+                    </HBox>
+                </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

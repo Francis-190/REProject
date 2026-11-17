@@ -1,0 +1,160 @@
+<mvc:View
+    controllerName="editmasterdata.controller.masterdata"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    displayBlock="true">
+
+   
+        <Page>
+            <!-- CENTER HEADER -->
+            <customHeader>
+                <Toolbar>
+                        <Button
+            icon="sap-icon://nav-back"
+            type="Transparent"
+            press="onNavBack" />
+                    <ToolbarSpacer/>
+                    <Title text="Model Master" level="H2"/>
+                    <ToolbarSpacer/>
+                </Toolbar>             
+            </customHeader>
+
+            <content>
+
+                <VBox>
+                                <Toolbar>
+                                    <Title text="Master Table" />
+                                    <ToolbarSpacer />
+                                    <Button
+                                        text="Create Row"
+                                        icon="sap-icon://add"
+                                        press="onCreateMasterRow"
+                                    />
+                                </Toolbar>
+                            </VBox>   <!-- TABLE TOOLBAR -->
+        
+
+                <!-- TABLE -->
+            <table:Table
+    id="modelTable"
+    width="100%"
+    rows="{ path: '/ModelMasterSet' }"
+    visibleRowCount="8"
+    visibleRowCountMode="Fixed"
+    selectionMode="None"
+  
+    enableBusyIndicator="true">
+
+                    <table:columns>
+
+                        <!-- NON EDITABLE -->
+                        <table:Column width="150px">
+                            <Label text="Model Code"/>
+                            <table:template>
+                                <Input value="{ModelCode}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="150px">
+                            <Label text="Engine Type"/>
+                            <table:template>
+                                <Input value="{EngineType}"/>
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="CC/Watt"/>
+                            <table:template>
+                                <Input value="{CcWatt}"/>
+                            </table:template>
+                        </table:Column>
+
+
+                        <table:Column width="200px">
+                            <Label text="Description"/>
+                            <table:template>
+                                <Input value="{Description}"/>
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="160px">
+                            <Label text="Model Family"/>
+                            <table:template>
+                                <Input value="{ModelFam}"/>
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="GST%"/>
+                            <table:template>
+                                <Input type="Number" value="{path:'GstPerc', type:'sap.ca.ui.model.type.Number' }"/>
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="160px">
+                            <Label text="Dealer Margin"/>
+                            <table:template>
+                                <Input value="{DealerMargin}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="200px">
+                            <Label text="Dealer Margin Calculation"/>
+                            <table:template>
+                                <Input value="{DealerMargCalc}"/>
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="200px">
+                            <Label text="Dealer Margin Cost Impact"/>
+                            <table:template>
+                                <Input value="{DealerMargCostImp}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="160px">
+                            <Label text="CSD Index Number"/>
+                            <table:template>
+                                <Input value="{CsdIndex}"/>
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="160px">
+                            <Label text="CSD Discount Rate %"/>
+                            <table:template>
+                                <Input type="Number" value="{ path:'CsdDisPerc', type:'sap.ui.model.odata.type.Byte'}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="GeM"/>
+                            <table:template>
+                                <Input type="Number" value="{path:'Gem',type:'sap.ui.model.odata.type.Byte'}"/>
+                            </table:template>
+                        </table:Column>
+
+                        <!-- <table:Column width="120px">
+                            <Label text="Status"/>
+                            <table:template>
+                                <Input value="{Status}"/>
+                            </table:template>
+                        </table:Column> -->
+
+                    </table:columns>
+                </table:Table>
+
+            </content>
+
+            <!-- FOOTER -->
+            <footer>
+                <OverflowToolbar>
+                    <ToolbarSpacer/>
+                    <Button
+                        text="Submit"
+                        type="Emphasized"
+                        press="onSubmit"/>
+                </OverflowToolbar>
+            </footer>
+        </Page>
+</mvc:View>

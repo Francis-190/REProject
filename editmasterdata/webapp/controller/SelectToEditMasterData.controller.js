@@ -1,0 +1,125 @@
+sap.ui.define([
+    "sap/ui/core/mvc/Controller",
+    "sap/m/MessageToast"
+],
+    function (Controller, MessageToast) {
+        "use strict";
+
+        return Controller.extend("editmasterdata.controller.SelectToEditMasterData", {
+            onInit: function () {
+
+            },
+            OnModelMaster: function () {
+
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oRouter.navTo("masterdata");
+
+                // var message="Currently The Region Master only A Working One"
+                // MessageToast.show(message);
+
+
+            },
+
+
+            onNavBack: function () {
+
+
+                const oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("Home", {}, true);
+            },
+
+            OnpricingComponent: function () {
+
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oRouter.navTo("pricingcomponent");
+                //     var message="Currently The Region Master only A Working One"
+                // MessageToast.show(message);
+            },
+            OnregionMaster: function () {
+
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oRouter.navTo("regionmaster");
+
+                //     var message="Currently The Region Master only A Working One"
+                // MessageToast.show(message);
+            },
+
+            OnpartcodeMaster: function () {
+                console.log("Hi")
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oRouter.navTo("partcode");
+
+            },
+
+            OnGMAComponent: function () {
+                console.log("Hi")
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oRouter.navTo("gmacomponent");
+                //     var message="Currently The Region Master only A Working One"
+                // MessageToast.show(message);
+            },
+
+            OnRTOExpence: function () {
+                console.log("Hi")
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oRouter.navTo("rtoexpence");
+
+                //     var message="Currently The Region Master only A Working One"
+                // MessageToast.show(message);
+            },
+
+            OnRTOMaster: function () {
+                console.log("Hi")
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oRouter.navTo("rtomaster");
+
+                //     var message="Currently The Region Master only A Working One"
+                // MessageToast.show(message);
+            },
+            OnAppendedReport: function () {
+
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oRouter.navTo("AppendedReport");
+
+            },
+
+            onUserPress: function (oEvent) {
+
+                var oButton = oEvent.getSource();
+
+                if (!this._oUserPopover) {
+
+                    this._oUserPopover = new sap.m.ResponsivePopover({
+                        placement: sap.m.PlacementType.Bottom,
+                        showHeader: false,
+                        contentWidth: "280px",
+                        content: [
+                            new sap.m.VBox({
+                                width: "100%",
+                                items: [
+                                    new sap.m.Title({
+                                        text: "Welcome User!!",
+                                        level: "H5"
+                                    }).addStyleClass("sapUiSmallMarginTop sapUiSmallMarginBegin"),
+
+                                    new sap.m.Text({
+                                        text: "{user>/email}"
+                                    }).addStyleClass("sapUiSmallMarginBegin sapUiSmallMarginBottom"),
+
+                                ]
+                            })
+                        ]
+                    });
+
+                    this.getView().addDependent(this._oUserPopover);
+                }
+
+                if (this._oUserPopover.isOpen()) {
+                    this._oUserPopover.close();
+                } else {
+                    this._oUserPopover.openBy(oButton);
+                }
+            }
+
+        });
+    });

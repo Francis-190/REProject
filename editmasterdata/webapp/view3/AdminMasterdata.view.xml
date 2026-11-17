@@ -1,0 +1,163 @@
+<mvc:View
+    controllerName="editmasterdata.controller.AdminMasterdata"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    displayBlock="true">
+
+   
+        <Page>
+            <!-- CENTER HEADER -->
+            <customHeader>
+                <Toolbar>
+                        <Button
+            icon="sap-icon://nav-back"
+            type="Transparent"
+            press="onNavBack" />
+                    <ToolbarSpacer/>
+                    <Title text="Admin Model Master" level="H2"/>
+                    <ToolbarSpacer/>
+                </Toolbar>             
+            </customHeader>
+
+            <content>
+
+                
+        
+
+                <!-- TABLE -->
+            <table:Table
+    id="modelTable"
+    width="100%"
+    rows="{ path: '/ModelMasterSet' }"
+    visibleRowCount="8"
+    visibleRowCountMode="Auto"
+    selectionMode="None"
+  
+    enableBusyIndicator="true">
+
+                   <table:columns>
+
+    <table:Column width="150px">
+        <Label text="Model Code"/>
+        <table:template>
+            <Text text="{ModelCode}" />
+        </table:template>
+    </table:Column>
+
+    <table:Column width="150px">
+        <Label text="Engine Type"/>
+        <table:template>
+            <Text text="{EngineType}"/>
+        </table:template>
+    </table:Column>
+
+    <table:Column width="120px">
+        <Label text="CC/Watt"/>
+        <table:template>
+            <Text text="{CcWatt}"/>
+        </table:template>
+    </table:Column>
+
+    <table:Column width="200px">
+        <Label text="Description"/>
+        <table:template>
+            <Text text="{Description}"/>
+        </table:template>
+    </table:Column>
+
+    <table:Column width="160px">
+        <Label text="Model Family"/>
+        <table:template>
+            <Text text="{ModelFam}"/>
+        </table:template>
+    </table:Column>
+
+    <table:Column width="120px">
+        <Label text="GST%"/>
+        <table:template>
+            <Text text="{GstPerc}"/>
+        </table:template>
+    </table:Column>
+
+    <table:Column width="160px">
+        <Label text="Dealer Margin"/>
+        <table:template>
+            <Text text="{DealerMargin}"/>
+        </table:template>
+    </table:Column>
+
+    <table:Column width="200px">
+        <Label text="Dealer Margin Calculation"/>
+        <table:template>
+            <Text text="{DealerMargCalc}"/>
+        </table:template>
+    </table:Column>
+
+    <table:Column width="200px">
+        <Label text="Dealer Margin Cost Impact"/>
+        <table:template>
+            <Text text="{DealerMargCostImp}"/>
+        </table:template>
+    </table:Column>
+
+    <table:Column width="160px">
+        <Label text="CSD Index Number"/>
+        <table:template>
+            <Text text="{CsdIndex}"/>
+        </table:template>
+    </table:Column>
+
+    <table:Column width="160px">
+        <Label text="CSD Discount Rate %"/>
+        <table:template>
+            <Text text="{CsdDisPerc}"/>
+        </table:template>
+    </table:Column>
+
+    <table:Column width="120px">
+        <Label text="GeM"/>
+        <table:template>
+            <Text text="{Gem}"/>
+        </table:template>
+    </table:Column>
+
+    <table:Column width="120px">
+        <Label text="Status"/>
+        <table:template>
+            <Text text="{Status}"/>
+        </table:template>
+    </table:Column>
+
+    <table:Column width="120px">
+        <Label text="Model Status"/>
+        <table:template>
+            <Text text="{ModelStatus}"/>
+        </table:template>
+    </table:Column>
+
+</table:columns>
+                </table:Table>
+
+            </content>
+
+            <!-- FOOTER -->
+            <footer>
+    <OverflowToolbar>
+        <ToolbarSpacer/>
+        <Button
+            text="Approve"
+            type="Accept"
+            icon="sap-icon://accept"
+            press="onApprove"/>
+        <Button
+            text="Reject"
+            type="Reject"
+            icon="sap-icon://decline"
+            press="onReject"/>
+    </OverflowToolbar>
+</footer>
+
+
+        </Page>
+</mvc:View>

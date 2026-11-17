@@ -1,0 +1,220 @@
+<mvc:View
+    controllerName="editmasterdata.controller.AdminPartcode"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+>
+    <App>
+        <Page>
+            <!-- CENTER HEADER -->
+            <customHeader>
+                <Toolbar>
+                    <Button
+                        icon="sap-icon://nav-back"
+                        type="Transparent"
+                        press="onNavBack"
+                    />
+                    <ToolbarSpacer />
+                    <Title
+                        text=" Admin Part Code Master"
+                        level="H2"
+                    />
+                    <ToolbarSpacer />
+                    <Button
+                        id="downloadExcelBtn"
+                        text="Download"
+                        icon="sap-icon://download"
+                        type="Ghost"
+                        tooltip="Download options"
+                        press="onDownloadMenuPress"
+                    />
+                </Toolbar>
+            </customHeader>
+
+            <content>
+                <!-- TABLE TOOLBAR -->
+                <!-- TABLE -->
+                <table:Table
+                    id="AdminpartMasterTable"
+                    rows="{/PartsSet}"
+                    visibleRowCount="14"
+                    enableBusyIndicator="true"
+                    selectionMode="None"
+                    width="100%"
+                >
+                    <table:columns>
+                        <!-- Family -->
+                        <table:Column width="120px">
+                            <Label text="Material Group" />
+                            <table:template>
+                                <Text text="{Family}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- Part Code -->
+                        <table:Column width="150px">
+                            <Label text="Part code" />
+                            <table:template>
+                                <Text text="{PartCode}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label
+                                text="Effective Date"
+                                tooltip="Effective Date"
+                            />
+                            <table:template>
+                                <Text
+                                    text="{
+            path: 'FromDate',
+            formatter: '.formatDate'
+        }"
+                                />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- Description -->
+                        <table:Column width="240px">
+                            <Label text="Description" />
+                            <table:template>
+                                <Text text="{PartDescr}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- OE/GMA/GMA OE -->
+                        <table:Column width="160px">
+                            <Label text="OE/GMA/GMA OE" />
+                            <table:template>
+                                <Text text="{OeGma}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- MRP -->
+                        <table:Column width="120px">
+                            <Label text="MRP" />
+                            <table:template>
+                                <Text text="{Mrp}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- MiY Cost -->
+                        <table:Column width="120px">
+                            <Label text="MiY Cost" />
+                            <table:template>
+                                <Text text="{MiyCost}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- MiY Markup -->
+                        <table:Column width="120px">
+                            <Label text="MiY Markup" />
+                            <table:template>
+                                <Text text="{MiyMarkup}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- Ex showroom / On Road -->
+                        <table:Column width="180px">
+                            <Label text="Ex showroom / On Road" />
+                            <table:template>
+                                <Text text="{ExShowOnRoad}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- MiY Cost % -->
+                        <table:Column width="120px">
+                            <Label text="MiY Cost %" />
+                            <table:template>
+                                <Text text="{MiyCostPerc}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- MiY Markup % -->
+                        <table:Column width="140px">
+                            <Label text="MiY Markup %" />
+                            <table:template>
+                                <Text text="{MiyMarkupPerc}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- In Active -->
+                    </table:columns>
+                </table:Table>
+            </content>
+
+            <!-- FOOTER -->
+            <footer>
+                <OverflowToolbar>
+                    <ToolbarSpacer />
+                   <Button
+                        text="Approve"
+                        type="Accept"
+                        enabled="{user>/isApprover}"
+                        icon="sap-icon://accept"
+                        press="onApprove"
+                    />
+                    <Button
+                        text="Reject"
+                        type="Reject"
+                         enabled="{user>/isApprover}"
+                        icon="sap-icon://decline"
+                        press="onReject"
+                    />
+                </OverflowToolbar>
+            </footer>
+            <dependents>
+                <ActionSheet
+                    id="downloadActionSheet"
+                    title="Download Options"
+                    showCancelButton="true"
+                    cancelButtonText="Cancel"
+                >
+                    <Button
+                        text="Download All Data"
+                        icon="sap-icon://download"
+                        press="onExcelDownloadAll"
+                    />
+
+                    <Button
+                        text="Select Fields &amp; Download"
+                        icon="sap-icon://table-column"
+                        press="onExcelDownload"
+                    />
+                </ActionSheet>
+
+                <Dialog
+                    id="fieldSelectDialog"
+                    title="Select Fields to Download"
+                    contentWidth="250px"
+                >
+                    <List
+                        id="fieldList"
+                        mode="MultiSelect"
+                        includeItemInSelection="true"
+                        items="{fields>/fields}"
+                    >
+                        <StandardListItem title="{fields>label}" />
+                    </List>
+
+                    <beginButton>
+                        <Button
+                            text="Download"
+                            type="Emphasized"
+                            press="onDownloadSelectedFields"
+                        />
+                    </beginButton>
+
+                    <endButton>
+                        <Button
+                            text="Cancel"
+                            press="onCancelDownload"
+                        />
+                    </endButton>
+                </Dialog>
+            </dependents>
+        </Page>
+    </App>
+</mvc:View>

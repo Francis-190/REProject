@@ -1,0 +1,274 @@
+<mvc:View
+    controllerName="editmasterdata.controller.AdminSelectToEditMasterData"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    displayBlock="true">
+
+    <Page
+        id="masterDataPage"
+        enableScrolling="true"
+        backgroundDesign="Standard"
+        showHeader="true"
+        class="masterBg"
+        
+        >
+
+        <headerContent>
+
+          <Image
+        src="https://www.royalenfield.com/content/dam/royal-enfield/india/logos/logo.svg"
+        width="134px"
+        height="44px"
+        class="sapUiSmallMarginEnd headderTitle"  />
+
+    <!-- Spacer pushes remaining items to the right -->
+    <ToolbarSpacer/>
+
+    <!-- Screen Type Badge -->
+    <ObjectStatus
+        text="Approver View"
+        state="Information"
+        icon="sap-icon://person-placeholder"
+        class="sapUiSmallMarginEnd"/>
+
+    <!-- User Button -->
+    <Button
+        icon="sap-icon://account"
+        type="Transparent"
+        tooltip="User Profile"
+        press="onUserPress"/>
+
+</headerContent>
+        <!-- HEADER -->
+        <!-- <customHeader> 
+            <Toolbar height="3.5rem" class="masterHeader">
+                <ToolbarSpacer/>
+                <core:Icon
+                    src="sap-icon://database"
+                    size="1.2rem"
+                    color="@sapUiHighlight"
+                    class="sapUiTinyMarginEnd"/>
+                <Title
+                    text="Master Data Management"
+                    level="H3"
+                    titleStyle="H4"/>
+                <ToolbarSpacer/>
+                <Button
+                    icon="sap-icon://customer"
+                    type="Default"
+                    tooltip="Notifications"
+                    press="onNotifications"/>
+            </Toolbar>
+        </customHeader> -->
+
+        <!-- CONTENT -->
+        <content>
+
+            <l:VerticalLayout width="100%"  class="sapUiResponsivePadding">
+
+                <!-- HERO SECTION -->
+                <FlexBox
+                    justifyContent="Center"
+                    alignItems="Center"
+                    direction="Column"
+                    class="sapUiTinyMarginTop sapUiMediumMarginBottom heroSection">
+
+                    <core:Icon
+                        src="sap-icon://database"
+                        size="3rem"
+                        color="@sapUiHighlight"
+                        class="sapUiSmallMarginBottom"/>
+
+                    <Title
+                        text="Master Data Management"
+                        level="H1"
+                        titleStyle="H2"
+                        textAlign="Center"
+                        class="sapUiSmallMarginBottom"/>
+
+                    <Text
+                        text="Select a module below to view or manage master data records."
+                        textAlign="Center"
+                        wrapping="true"
+                        class="sapUiMediumMarginBottom"/>
+
+                    <!-- Status Strip -->
+              
+
+                </FlexBox>
+
+                <!-- SECTION LABEL -->
+               
+
+                <!-- TILE ROW 1 -->
+                <FlexBox
+                    justifyContent="Center"
+                    alignItems="Stretch"
+                    wrap="Wrap"
+                    class="sapUiResponsiveMargin tileRow" >
+
+                    <GenericTile
+                        id="tileModelMaster"
+                        header="Model Master"
+                        subheader="Products &amp; Configurations"
+                        tileSizeBehavior="Responsive"
+                        frameType="OneByOne"
+                        press="OnModelMaster"
+                        scope="Display"
+                        state="Loaded"
+                       class="sapUiSmallMargin masterTile">
+                        <tileContent>
+                            <TileContent label="View / Edit Records">
+                                <content>
+                                    <ImageContent src="sap-icon://product"/>
+                                </content>
+                            </TileContent>
+                        </tileContent>
+                    </GenericTile>
+
+                    <GenericTile
+                        id="tilePricingComponent"
+                        header="Pricing Component"
+                        subheader="Rates &amp; Price Structures"
+                        tileSizeBehavior="Responsive"
+                        frameType="OneByOne"
+                        press="OnpricingComponent"
+                        scope="Display"
+                        state="Loaded"
+                     class="sapUiSmallMargin masterTile">
+                        <tileContent>
+                            <TileContent label="Manage Pricing">
+                                <content>
+                                    <ImageContent src="sap-icon://currency"/>
+                                </content>
+                            </TileContent>
+                        </tileContent>
+                    </GenericTile>
+
+                    <GenericTile
+                        id="tileRegionMaster"
+                        header="Region Master"
+                        subheader="Geographic Zones &amp; Mapping"
+                        tileSizeBehavior="Responsive"
+                        frameType="OneByOne"
+                        press="OnregionMaster"
+                        scope="Display"
+                        state="Loaded"
+                        class="sapUiSmallMargin masterTile">
+                        <tileContent>
+                            <TileContent label="Manage Regions">
+                                <content>
+                                    <ImageContent src="sap-icon://map"/>
+                                </content>
+                            </TileContent>
+                        </tileContent>
+                    </GenericTile>
+
+                    <GenericTile
+                        id="tilePartcodeMaster"
+                        header="Partcode Master"
+                        subheader="SKUs &amp; Part References"
+                        tileSizeBehavior="Responsive"
+                        frameType="OneByOne"
+                        press="OnpartcodeMaster"
+                        scope="Display"
+                        state="Loaded"
+                      class="sapUiSmallMargin masterTile">
+                        <tileContent>
+                            <TileContent label="Manage Partcodes">
+                                <content>
+                                    <ImageContent src="sap-icon://bar-code"/>
+                                </content>
+                            </TileContent>
+                        </tileContent>
+                    </GenericTile>
+
+                </FlexBox>
+
+                <!-- TILE ROW 2 -->
+                <FlexBox
+                    justifyContent="Center"
+                    alignItems="Stretch"
+                    wrap="Wrap"
+                    class="sapUiResponsiveMargin tileRow">
+
+                    <GenericTile
+                        id="tileGMAComponent"
+                        header="GMA Component"
+                        subheader="Gross Margin Adjustments"
+                        tileSizeBehavior="Responsive"
+                        frameType="OneByOne"
+                        press="OnGMAComponent"
+                        scope="Display"
+                        state="Loaded"
+                   class="sapUiSmallMargin masterTile">
+                        <tileContent>
+                            <TileContent label="Manage GMA">
+                                <content>
+                                    <ImageContent src="sap-icon://building"/>
+                                </content>
+                            </TileContent>
+                        </tileContent>
+                    </GenericTile>
+
+                    <GenericTile
+                        id="tileRTOExpence"
+                        header="RTO Expense"
+                        subheader="Expense Tracking &amp; Control"
+                        tileSizeBehavior="Responsive"
+                        frameType="OneByOne"
+                        press="OnRTOExpence"
+                        scope="Display"
+                        state="Loaded"
+                       class="sapUiSmallMargin masterTile">
+                        <tileContent>
+                            <TileContent label="Manage Expenses">
+                                <content>
+                                    <ImageContent src="sap-icon://expense-report"/>
+                                </content>
+                            </TileContent>
+                        </tileContent>
+                    </GenericTile>
+
+                    <GenericTile
+                        id="tileRTOMaster"
+                        header="RTO Master"
+                        subheader="RTO Office &amp; Registration Data"
+                        tileSizeBehavior="Responsive"
+                        frameType="OneByOne"
+                        press="OnRTOMaster"
+                        scope="Display"
+                        state="Loaded"
+                        class="sapUiSmallMargin masterTile">
+                        <tileContent>
+                            <TileContent label="Manage RTO">
+                                <content>
+                                    <ImageContent src="sap-icon://crm-service-manager"/>
+                                </content>
+                            </TileContent>
+                        </tileContent>
+                    </GenericTile>
+
+                </FlexBox>
+
+                <!-- INFO BAR -->
+               
+
+            </l:VerticalLayout>
+
+        </content>
+
+        <!-- PAGE FOOTER -->
+        <footer>
+            <OverflowToolbar class="masterFooter">
+                <ToolbarSpacer/>
+              <Text text="Master Data Management Console  •  v2.4.0.44"/>
+                <ToolbarSpacer/>
+            </OverflowToolbar>
+        </footer>
+
+    </Page>
+
+</mvc:View>

@@ -1,0 +1,480 @@
+{
+  "_version": "1.48.0",
+  "sap.app": {
+    "id": "editmasterdata",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.20.2",
+      "toolsId": "3065a095-71a2-4780-be95-8bb66a9b0eca"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZSD_VEH_PRIC_AUTOMATION_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "new-new": {
+          "semanticObject": "new",
+          "action": "new",
+          "icon": "sap-icon://database",
+          "title": "{{new-new.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.108.22",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "editmasterdata.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "useBatch": true,
+          "tokenHandling": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ],
+      "js": [
+        {
+          "uri": "lib/xlsx.full.min.js"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "editmasterdata.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RouteSelectToEditMasterData",
+          "pattern": ":?query:",
+          "target": [
+            "Home"
+          ]
+        },
+        {
+          "name": "masterdata",
+          "pattern": "masterdata",
+          "target": [
+            "masterdata"
+          ]
+        },
+        {
+          "name": "SelectToEditMasterData",
+          "pattern": "SelectToEditMasterData",
+          "target": [
+            "SelectToEditMasterData"
+          ]
+        },
+        {
+          "name": "AdminRegionMaster",
+          "pattern": "AdminRegionMaster",
+          "target": [
+            "AdminRegionMaster"
+          ]
+        },
+        {
+          "name": "AdminMasterdata",
+          "pattern": "AdminMasterdata",
+          "target": [
+            "AdminMasterdata"
+          ]
+        },
+        {
+          "name": "AdminSelectToEditMasterData",
+          "pattern": "AdminSelectToEditMasterData",
+          "target": [
+            "AdminSelectToEditMasterData"
+          ]
+        },
+        {
+          "name": "AdminGmaComponent",
+          "pattern": "AdminGmaComponent",
+          "target": [
+            "AdminGmaComponent"
+          ]
+        },
+        {
+          "name": "gmacomponent",
+          "pattern": "gmacomponent",
+          "target": [
+            "gmacomponent"
+          ]
+        },
+        {
+          "name": "partcode",
+          "pattern": "partcode",
+          "target": [
+            "partcode"
+          ]
+        },
+        {
+          "name": "pricingcomponent",
+          "pattern": "pricingcomponent",
+          "target": [
+            "pricingcomponent"
+          ]
+        },
+        {
+          "name": "regionmaster",
+          "pattern": "regionmaster",
+          "target": [
+            "regionmaster"
+          ]
+        },
+        {
+          "name": "rtomaster",
+          "pattern": "rtomaster",
+          "target": [
+            "rtomaster"
+          ]
+        },
+        {
+          "name": "AppendedReport",
+          "pattern": "AppendedReport",
+          "target": [
+            "AppendedReport"
+          ]
+        },
+        {
+          "name": "AdminPricingComponent",
+          "pattern": "AdminPricingComponent",
+          "target": [
+            "AdminPricingComponent"
+          ]
+        },
+        {
+          "name": "AdminPartcode",
+          "pattern": "AdminPartcode",
+          "target": [
+            "AdminPartcode"
+          ]
+        },
+        {
+          "name": "AdminRtoMaster",
+          "pattern": "AdminRtoMaster",
+          "target": [
+            "AdminRtoMaster"
+          ]
+        },
+        {
+          "name": "AdminRtoExpence",
+          "pattern": "AdminRtoExpence",
+          "target": [
+            "AdminRtoExpence"
+          ]
+        },
+        {
+          "name": "rtoexpence",
+          "pattern": "rtoexpence",
+          "target": [
+            "rtoexpence"
+          ]
+        },
+        {
+          "name": "Home",
+          "pattern": "Home",
+          "target": [
+            "Home"
+          ]
+        },
+        {
+          "name": "History",
+          "pattern": "History",
+          "target": [
+            "History"
+          ]
+        },
+        {
+          "name": "MasterdataHistory",
+          "pattern": "MasterdataHistory",
+          "target": [
+            "MasterdataHistory"
+          ]
+        },
+        {
+          "name": "Pricingcomponenthistory",
+          "pattern": "Pricingcomponenthistory",
+          "target": [
+            "Pricingcomponenthistory"
+          ]
+        },
+        {
+          "name": "RegionmasterHistory",
+          "pattern": "RegionmasterHistory",
+          "target": [
+            "RegionmasterHistory"
+          ]
+        },
+        {
+          "name": "Partcodehistory",
+          "pattern": "Partcodehistory",
+          "target": [
+            "Partcodehistory"
+          ]
+        },
+        {
+          "name": "Gmacomponenthistory",
+          "pattern": "Gmacomponenthistory",
+          "target": [
+            "Gmacomponenthistory"
+          ]
+        },
+        {
+          "name": "Rtoexpensehistory",
+          "pattern": "Rtoexpensehistory",
+          "target": [
+            "Rtoexpensehistory"
+          ]
+        },
+        {
+          "name": "Rtomasterhistory",
+          "pattern": "Rtomasterhistory",
+          "target": [
+            "Rtomasterhistory"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetSelectToEditMasterData": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Home",
+          "viewName": "Home"
+        },
+        "masterdata": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "masterdata",
+          "viewName": "masterdata"
+        },
+        "SelectToEditMasterData": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "SelectToEditMasterData",
+          "viewName": "SelectToEditMasterData"
+        },
+        "Home": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "Home",
+          "viewName": "Home"
+        },
+        "History": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "History",
+          "viewName": "History"
+        },
+        "MasterdataHistory": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "MasterdataHistory",
+          "viewName": "MasterdataHistory"
+        },
+        "Pricingcomponenthistory": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "Pricingcomponenthistory",
+          "viewName": "Pricingcomponenthistory"
+        },
+        "RegionmasterHistory": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "RegionmasterHistory",
+          "viewName": "RegionmasterHistory"
+        },
+        "Partcodehistory": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "Partcodehistory",
+          "viewName": "Partcodehistory"
+        },
+        "Gmacomponenthistory": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "Gmacomponenthistory",
+          "viewName": "Gmacomponenthistory"
+        },
+        "Rtoexpensehistory": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "Rtoexpensehistory",
+          "viewName": "Rtoexpensehistory"
+        },
+        "Rtomasterhistory": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "Rtomasterhistory",
+          "viewName": "Rtomasterhistory"
+        },
+        "gmacomponent": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "gmacomponent",
+          "viewName": "gmacomponent"
+        },
+        "partcode": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "partcode",
+          "viewName": "partcode"
+        },
+        "pricingcomponent": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "pricingcomponent",
+          "viewName": "pricingcomponent"
+        },
+        "regionmaster": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "regionmaster",
+          "viewName": "regionmaster"
+        },
+        "rtoexpence": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "rtoexpence",
+          "viewName": "rtoexpence"
+        },
+        "AdminMasterdata": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "AdminMasterdata",
+          "viewName": "AdminMasterdata"
+        },
+        "AdminGmaComponent": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "AdminGmaComponent",
+          "viewName": "AdminGmaComponent"
+        },
+        "rtomaster": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "rtomaster",
+          "viewName": "rtomaster"
+        },
+        "AppendedReport": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "AppendedReport",
+          "viewName": "AppendedReport"
+        },
+        "AdminRegionMaster": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "AdminRegionMaster",
+          "viewName": "AdminRegionMaster"
+        },
+        "AdminSelectToEditMasterData": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "AdminSelectToEditMasterData",
+          "viewName": "AdminSelectToEditMasterData"
+        },
+        "AdminPricingComponent": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "AdminPricingComponent",
+          "viewName": "AdminPricingComponent"
+        },
+        "AdminRtoExpence": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "AdminRtoExpence",
+          "viewName": "AdminRtoExpence"
+        },
+        "AdminRtoMaster": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "AdminRtoMaster",
+          "viewName": "AdminRtoMaster"
+        },
+        "AdminPartcode": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "AdminPartcode",
+          "viewName": "AdminPartcode"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "editmasterdata.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "editmasterdata"
+  }
+}

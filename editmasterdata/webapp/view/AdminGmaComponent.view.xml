@@ -1,0 +1,476 @@
+<mvc:View
+    controllerName="editmasterdata.controller.AdminGmaComponent"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+>
+    <App>
+        <Page>
+            <!-- CENTER HEADER -->
+            <customHeader>
+                <Toolbar>
+                    <Button
+                        icon="sap-icon://nav-back"
+                        type="Transparent"
+                        press="onNavBack"
+                    />
+                    <ToolbarSpacer />
+                    <Title
+                        text="GMA Component"
+                        level="H2"
+                    />
+                    <ToolbarSpacer />
+                    <Button
+                        id="downloadExcelBtn"
+                        text="Download"
+                        icon="sap-icon://download"
+                        type="Ghost"
+                        tooltip="Download options"
+                        press="onDownloadMenuPress"
+                    />
+                </Toolbar>
+            </customHeader>
+
+            <content>
+                <!-- TABLE TOOLBAR -->
+                <table:Table
+                    id="AdminGMAComponentsTable"
+                    rows="{/GMAComponentsSet}"
+                    visibleRowCount="14"
+                    enableBusyIndicator="true"
+                    selectionMode="None"
+                    width="100%"
+                >
+                    <table:columns>
+                        <!-- ================= BASIC FIELDS ================= -->
+
+                        <table:Column width="150px">
+                            <Label text="Model" />
+                            <table:template>
+                                <Text text="{Models}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="220px">
+                            <Label text="Description" />
+                            <table:template>
+                                <Text text="{Description}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="MTS/MTO" />
+                            <table:template>
+                                <Text text="{MtsMto}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label
+                                text="Effective Date"
+                                tooltip="Effective Date"
+                            />
+                            <table:template>
+                                <Text
+                                    text="{
+            path: 'FromDate',
+            formatter: '.formatDate'
+        }"
+                                />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="180px">
+                            <Label text="Reference Model" />
+                            <table:template>
+                                <Text text="{ReferMtsModel}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 1 ================= -->
+
+                        <table:Column width="150px">
+                            <Label text="Part1" />
+                            <table:template>
+                                <Text text="{Part1}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price1" />
+                            <table:template>
+                                <Text text="{Part1Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 2 ================= -->
+
+                        <table:Column width="150px">
+                            <Label text="Part2" />
+                            <table:template>
+                                <Text text="{Part2}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price2" />
+                            <table:template>
+                                <Text text="{Part2Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 3 ================= -->
+
+                        <table:Column width="150px">
+                            <Label text="Part3" />
+                            <table:template>
+                                <Text text="{Part3}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price3" />
+                            <table:template>
+                                <Text text="{Part3Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 4 ================= -->
+
+                        <table:Column width="150px">
+                            <Label text="Part4" />
+                            <table:template>
+                                <Text text="{Part4}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price4" />
+                            <table:template>
+                                <Text text="{Part4Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 5 ================= -->
+
+                        <table:Column width="150px">
+                            <Label text="Part5" />
+                            <table:template>
+                                <Text text="{Part5}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price5" />
+                            <table:template>
+                                <Text text="{Part5Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 6 ================= -->
+                        <table:Column width="150px">
+                            <Label text="Part6" />
+                            <table:template>
+                                <Text text="{Part6}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price6" />
+                            <table:template>
+                                <Text text="{Part6Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 7 ================= -->
+                        <table:Column width="150px">
+                            <Label text="Part7" />
+                            <table:template>
+                                <Text text="{Part7}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price7" />
+                            <table:template>
+                                <Text text="{Part7Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 8 ================= -->
+                        <table:Column width="150px">
+                            <Label text="Part8" />
+                            <table:template>
+                                <Text text="{Part8}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price8" />
+                            <table:template>
+                                <Text text="{Part8Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 9 ================= -->
+                        <table:Column width="150px">
+                            <Label text="Part9" />
+                            <table:template>
+                                <Text text="{Part9}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price9" />
+                            <table:template>
+                                <Text text="{Part9Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 10 ================= -->
+                        <table:Column width="150px">
+                            <Label text="Part10" />
+                            <table:template>
+                                <Text text="{Part10}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price10" />
+                            <table:template>
+                                <Text text="{Part10Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 11 ================= -->
+                        <table:Column width="150px">
+                            <Label text="Part11" />
+                            <table:template>
+                                <Text text="{Part11}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price11" />
+                            <table:template>
+                                <Text text="{Part11Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 12 ================= -->
+                        <table:Column width="150px">
+                            <Label text="Part12" />
+                            <table:template>
+                                <Text text="{Part12}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price12" />
+                            <table:template>
+                                <Text text="{Part12Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 13 ================= -->
+                        <table:Column width="150px">
+                            <Label text="Part13" />
+                            <table:template>
+                                <Text text="{Part13}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price13" />
+                            <table:template>
+                                <Text text="{Part13Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 14 ================= -->
+                        <table:Column width="150px">
+                            <Label text="Part14" />
+                            <table:template>
+                                <Text text="{Part14}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price14" />
+                            <table:template>
+                                <Text text="{Part14Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 15 ================= -->
+                        <table:Column width="150px">
+                            <Label text="Part15" />
+                            <table:template>
+                                <Text text="{Part15}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price15" />
+                            <table:template>
+                                <Text text="{Part15Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 16 ================= -->
+                        <table:Column width="150px">
+                            <Label text="Part16" />
+                            <table:template>
+                                <Text text="{Part16}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price16" />
+                            <table:template>
+                                <Text text="{Part16Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 17 ================= -->
+                        <table:Column width="150px">
+                            <Label text="Part17" />
+                            <table:template>
+                                <Text text="{Part17}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price17" />
+                            <table:template>
+                                <Text text="{Part17Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 18 ================= -->
+                        <table:Column width="150px">
+                            <Label text="Part18" />
+                            <table:template>
+                                <Text text="{Part18}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price18" />
+                            <table:template>
+                                <Text text="{Part18Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 19 ================= -->
+                        <table:Column width="150px">
+                            <Label text="Part19" />
+                            <table:template>
+                                <Text text="{Part19}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price19" />
+                            <table:template>
+                                <Text text="{Part19Price}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 20 ================= -->
+                        <table:Column width="150px">
+                            <Label text="Part20" />
+                            <table:template>
+                                <Text text="{Part20}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="Price20" />
+                            <table:template>
+                                <Text text="{Part20Price}" />
+                            </table:template>
+                        </table:Column>
+                    </table:columns>
+                </table:Table>
+
+                <!-- TABLE -->
+            </content>
+
+            <!-- FOOTER -->
+            <footer>
+                <OverflowToolbar>
+                    <ToolbarSpacer />
+                    <Button
+                        text="Approve"
+                        type="Accept"
+                        enabled="{user>/isApprover}"
+                        icon="sap-icon://accept"
+                        press="onApprove"
+                    />
+                    <Button
+                        text="Reject"
+                        type="Reject"
+                         enabled="{user>/isApprover}"
+                        icon="sap-icon://decline"
+                        press="onReject"
+                    />
+                </OverflowToolbar>
+            </footer>
+
+            <dependents>
+                <ActionSheet
+                    id="downloadActionSheet"
+                    title="Download Options"
+                    showCancelButton="true"
+                    cancelButtonText="Cancel"
+                >
+                    <Button
+                        text="Download All Data"
+                        icon="sap-icon://download"
+                        press="onExcelDownloadAll"
+                    />
+
+                    <Button
+                        text="Select Fields &amp; Download"
+                        icon="sap-icon://table-column"
+                        press="onExcelDownload"
+                    />
+                </ActionSheet>
+
+                <Dialog
+                    id="fieldSelectDialog"
+                    title="Select Fields to Download"
+                    contentWidth="250px"
+                >
+                    <List
+                        id="fieldList"
+                        mode="MultiSelect"
+                        includeItemInSelection="true"
+                        items="{fields>/fields}"
+                    >
+                        <StandardListItem title="{fields>label}" />
+                    </List>
+
+                    <beginButton>
+                        <Button
+                            text="Download"
+                            type="Emphasized"
+                            press="onDownloadSelectedFields"
+                        />
+                    </beginButton>
+
+                    <endButton>
+                        <Button
+                            text="Cancel"
+                            press="onCancelDownload"
+                        />
+                    </endButton>
+                </Dialog>
+            </dependents>
+        </Page>
+    </App>
+</mvc:View>

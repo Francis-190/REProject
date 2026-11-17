@@ -1,0 +1,788 @@
+<mvc:View
+    controllerName="editmasterdata.controller.gmacomponent"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+>
+    <App  >
+        <Page  enableScrolling="false" >
+            <!-- ================= HEADER ================= -->
+            <!-- <customHeader>
+                <Toolbar>
+                    <Button
+                        icon="sap-icon://nav-back"
+                        type="Transparent"
+                        press="onNavBack"
+                    />
+                    <ToolbarSpacer />
+
+                    <Title
+                        text="GMA Component"
+                        level="H2"
+                    />
+                    <ToolbarSpacer />
+                </Toolbar>
+
+            </customHeader> -->
+
+<Bar ></Bar>
+
+<customHeader>
+    <Toolbar>
+
+        <!-- Back Button -->
+        <Button
+            icon="sap-icon://nav-back"
+            type="Transparent"
+            press="onNavBack" />
+
+        <!-- Royal Enfield Logo -->
+        <Image
+            src="https://www.royalenfield.com/content/dam/royal-enfield/india/logos/logo.svg"
+            width="130px"
+            height="40px"
+            class="logoImage"
+        />
+
+        <!-- Spacer pushes title to center -->
+        <ToolbarSpacer/>
+
+        <!-- Center Title -->
+        <Title text="GMA Component" class="textHeaderTitle" level="H2"/>
+
+        <!-- Spacer keeps title centered -->
+        <ToolbarSpacer/>
+
+    </Toolbar>
+</customHeader>
+            <!-- ================= CONTENT ================= -->
+            <content >
+
+<VBox >
+
+     <Toolbar>
+
+     <Label text="Model" class="sapUiTinyMarginEnd"/>
+
+            <MultiComboBox
+                id="filterModelCode"
+                width="220px"
+                class="sapUiTinyMarginEnd"
+                items="{filter>/ModelsSet}">
+                <core:Item key="{filter>Models}" text="{filter>Models}" />
+            </MultiComboBox>
+
+            <Button
+            text="Filter"
+            icon="sap-icon://filter"
+            class="sapUiTinyMarginEnd"
+            press="onApplyFilter"/>
+
+        <Button
+            text="Clear"
+            icon="sap-icon://clear-filter"
+            press="onClearFilter"/>
+
+
+                        <ToolbarSpacer/>
+                        <Button
+                            text="Create Row"
+                            type="Emphasized"
+                            icon="sap-icon://add"
+                            press="onCreateMasterRow"/>
+                    </Toolbar>
+
+                    <Bar ></Bar>
+            
+                <table:Table
+                    id="gmaComponentTable"
+                    rows="{/GMAComponentsSet}"
+                    visibleRowCount="13"
+                    enableBusyIndicator="true"
+                    selectionMode="None"
+                    width="100%"
+                   
+                >
+                    <table:columns>
+                        <!-- ================= BASIC FIELDS ================= -->
+                        <table:Column width="150px">
+                            <Label text="Model" tooltip="Model" />
+                            <table:template>
+                                <Input value="{Models}"  editable="{= ${@$ui5.context.isTransient} === true }"
+            required="true"  />
+                            </table:template>
+                        </table:Column>
+                        <table:Column width="220px">
+                            <Label text="Description" tooltip="Description" />
+                            <table:template>
+                                <Input value="{Description}" />
+                            </table:template>
+                        </table:Column>
+                     
+
+
+                         <table:Column width="200px">
+                            <Label text="MTS/MTO" tooltip="MTS or MTO Type"/>
+                            <table:template>
+
+        <ComboBox
+            value="{MtsMto}"
+            selectedKey="{MtsMto}"
+            width="100%">
+            
+              <core:Item key="MTS" text="MTS"/>
+             <core:Item key="MTO" text="MTO"/>
+            
+
+        </ComboBox>
+                            </table:template>
+                        </table:Column>
+                        <table:Column width="180px">
+                            <Label text="Reference Model" tooltip="Reference Model"/>
+                            <table:template>
+                                <Input value="{ReferMtsModel}" />
+                            </table:template>
+                        </table:Column>
+
+                        <!-- ================= PART 1 ================= -->
+                    
+<!-- <table:Column width="150px">
+    <Label text="Part1" />
+    <table:template>
+
+        <Input
+            value="{Part1}"
+            editable="{= ${@$ui5.context.isTransient} !== true }"
+        />
+
+        <ComboBox
+            selectedKey="{Part1}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+            editable="{= ${@$ui5.context.isTransient} === true }">
+
+            <customData>
+                <core:CustomData key="part" value="1"/>
+            </customData>
+
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </ComboBox>
+
+    </table:template>
+</table:Column> -->
+
+<!-- ================= PART 1 ================= -->
+<table:Column width="150px">
+    <Label text="Part1" tooltip="Part 1"/>
+    <table:template>
+        <Select
+            selectedKey="{Part1}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="1" />
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price1" tooltip="Part 1 Price"/>
+    <table:template>
+        <Input value="{Part1Price}" type="Number" editable="false"/>
+    </table:template>
+</table:Column>
+
+<!-- ================= PART 2 ================= -->
+<table:Column width="150px">
+    <Label text="Part2" tooltip="Part 2" />
+    <table:template>
+        <Select
+            selectedKey="{Part2}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="2"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price2" tooltip="Part 2 Price"/>
+    <table:template>
+        <Input value="{Part2Price}"  editable="false"/>
+    </table:template>
+</table:Column>
+
+<!-- ================= PART 3 ================= -->
+<table:Column width="150px">
+    <Label text="Part3" tooltip="Part 3" />
+    <table:template>
+        <Select
+            selectedKey="{Part3}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="3"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price3" tooltip="Part 3 Price" />
+    <table:template>
+        <Input value="{Part3Price}"  editable="false"/>
+    </table:template>
+</table:Column>
+
+<!-- ================= PART 4 ================= -->
+<table:Column width="150px">
+    <Label text="Part4" tooltip="Part 4"/>
+    <table:template>
+        <Select
+            selectedKey="{Part4}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="4"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price4" tooltip="Part 4 Price"/>
+    <table:template>
+        <Input value="{Part4Price}"   editable="false"/>
+    </table:template>
+</table:Column>
+
+<!-- ================= PART 5 ================= -->
+<table:Column width="150px">
+    <Label text="Part5" tooltip="Part 5"/>
+    <table:template>
+        <Select
+            selectedKey="{Part5}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="5"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price5" tooltip="Part 5 Price"/>
+    <table:template>
+        <Input value="{Part5Price}"  editable="false"/>
+    </table:template>
+</table:Column>
+
+
+<!-- ================= PART 6 ================= -->
+<table:Column width="150px">
+    <Label text="Part6" tooltip="Part 6"/>
+    <table:template>
+        <Select
+            selectedKey="{Part6}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="6"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price6" tooltip="Part 6 Price"/>
+    <table:template>
+        <Input value="{Part6Price}"  editable="false"/>
+    </table:template>
+</table:Column>
+
+
+<!-- ================= PART 7 ================= -->
+<table:Column width="150px">
+    <Label text="Part7"  tooltip="Part 7"/>
+    <table:template>
+        <Select
+            selectedKey="{Part7}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="7"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price7"  tooltip="Part 7 Price"/>
+    <table:template>
+        <Input value="{Part7Price}"  editable="false"/>
+    </table:template>
+</table:Column>
+
+<!-- ================= PART 8 ================= -->
+<table:Column width="150px">
+    <Label text="Part8"  tooltip="Part 8"/>
+    <table:template>
+        <Select
+            selectedKey="{Part8}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="8"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price8"  tooltip="Part 8 Price"/>
+    <table:template>
+        <Input value="{Part8Price}"  editable="false"/>
+    </table:template>
+</table:Column>
+
+<!-- ================= PART 9 ================= -->
+<table:Column width="150px">
+    <Label text="Part9"  tooltip="Part 9"/>
+    <table:template>
+        <Select
+            selectedKey="{Part9}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="9"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price9"  tooltip="Part 9 Price" />
+    <table:template>
+        <Input value="{Part9Price}"  editable="false"/>
+    </table:template>
+</table:Column>
+
+
+
+<!-- ================= PART 10 ================= -->
+<table:Column width="150px">
+    <Label text="Part10"  tooltip="Part 10"/>
+    <table:template>
+        <Select
+            selectedKey="{Part10}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="10"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price10"  tooltip="Part 10 Price"/>
+    <table:template>
+        <Input value="{Part10Price}"  editable="false"/>
+    </table:template>
+</table:Column>
+
+
+<!-- ================= PART 11 ================= -->
+<table:Column width="150px">
+    <Label text="Part11"  tooltip="Part 11"/>
+    <table:template>
+        <Select
+            selectedKey="{Part11}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="11"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price11"  tooltip="Part 11 Price"/>
+    <table:template>
+        <Input value="{Part11Price}"  editable="false"/>
+    </table:template>
+</table:Column>
+
+<!-- ================= PART 12 ================= -->
+<table:Column width="150px">
+    <Label text="Part12"  tooltip="Part 12"/>
+    <table:template>
+        <Select
+            selectedKey="{Part12}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="12"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price12"  tooltip="Part 12 Price"/>
+    <table:template>
+        <Input value="{Part12Price}"  editable="false"/>
+    </table:template>
+</table:Column>
+
+<!-- ================= PART 13 ================= -->
+<table:Column width="150px">
+    <Label text="Part13"  tooltip="Part 13"/>
+    <table:template>
+        <Select
+            selectedKey="{Part13}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="13"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price13"  tooltip="Part 13 Price"/>
+    <table:template>
+        <Input value="{Part13Price}"  editable="false"/>
+    </table:template>
+</table:Column>
+
+
+<!-- ================= PART 14 ================= -->
+<table:Column width="150px">
+    <Label text="Part14"  tooltip="Part 14"/>
+    <table:template>
+        <Select
+            selectedKey="{Part14}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="14"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price14"  tooltip="Part 14 Price"/>
+    <table:template>
+        <Input value="{Part14Price}"  editable="false"/>
+    </table:template>
+</table:Column>
+
+
+<!-- ================= PART 15 ================= -->
+<table:Column width="150px">
+    <Label text="Part15"  tooltip="Part 15"/>
+    <table:template>
+        <Select
+            selectedKey="{Part15}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="15"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price15"  tooltip="Part 15 Price"/>
+    <table:template>
+        <Input value="{Part15Price}"  editable="false"/>
+    </table:template>
+</table:Column>
+
+
+<!-- ================= PART 16 ================= -->
+<table:Column width="150px">
+    <Label text="Part16"  tooltip="Part 16"/>
+    <table:template>
+        <Select
+            selectedKey="{Part16}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="16"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price16"  tooltip="Part 16 Price"/>
+    <table:template>
+        <Input value="{Part16Price}"  editable="false"/>
+    </table:template>
+</table:Column>
+
+<!-- ================= PART 17 ================= -->
+<table:Column width="150px">
+    <Label text="Part17"  tooltip="Part 17"/>
+    <table:template>
+        <Select
+            selectedKey="{Part17}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="17"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price17"  tooltip="Part 17 Price"/>
+    <table:template>
+        <Input value="{Part17Price}"  editable="false"/>
+    </table:template>
+</table:Column>
+
+
+<!-- ================= PART 18 ================= -->
+<table:Column width="150px">
+    <Label text="Part18"  tooltip="Part 18"/>
+    <table:template>
+        <Select
+            selectedKey="{Part18}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="18"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price18"  tooltip="Part 18 Price"/>
+    <table:template>
+        <Input value="{Part18Price}"  editable="false"/>
+    </table:template>
+</table:Column>
+
+<!-- ================= PART 19 ================= -->
+<table:Column width="150px">
+    <Label text="Part19"  tooltip="Part 19"/>
+    <table:template>
+        <Select
+            selectedKey="{Part19}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="19"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price19"  tooltip="Part 19"/>
+    <table:template>
+        <Input value="{Part19Price}"  editable="false"/>
+    </table:template>
+</table:Column>
+
+<!-- ================= PART 20 ================= -->
+<table:Column width="150px">
+    <Label text="Part20"  tooltip="Part 20"/>
+    <table:template>
+        <Select
+            selectedKey="{Part20}"
+            items="{
+                path: 'viewModel>/PartsSet',
+                templateShareable: false
+            }"
+            change="onPartChange"
+        >
+            <customData>
+                <core:CustomData key="part" value="20"/>
+            </customData>
+            <core:Item
+                key="{viewModel>PartCode}"
+                text="{viewModel>PartCode}"
+            />
+        </Select>
+    </table:template>
+</table:Column>
+<table:Column width="120px">
+    <Label text="Price20"  tooltip="Part 20"/>
+    <table:template>
+        <Input value="{Part20Price}"  editable="false"/>
+    </table:template>
+</table:Column>
+                        
+                    </table:columns>
+                </table:Table>
+                </VBox>
+            </content>
+
+            <footer>
+                <OverflowToolbar>
+                    <ToolbarSpacer />
+                    <Button
+                        text="Submit"
+                        type="Emphasized"
+                        press="onSubmit"
+                    />
+                </OverflowToolbar>
+            </footer>
+        </Page>
+    </App>
+</mvc:View>

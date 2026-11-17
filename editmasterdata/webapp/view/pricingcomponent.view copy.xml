@@ -1,0 +1,290 @@
+<mvc:View
+    controllerName="editmasterdata.controller.pricingcomponent"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    displayBlock="true">
+
+    <App>
+        <Page enableScrolling="false">
+
+            <!-- ================= HEADER ================= -->
+            <!-- <customHeader>
+                <Toolbar>
+                    <Button
+                        icon="sap-icon://nav-back"
+                        type="Transparent"
+                        press="onNavBack"/>
+                    <ToolbarSpacer/>
+                    <Title
+                        text="Pricing Component"
+                        level="H2"/>
+                    <ToolbarSpacer/>
+                </Toolbar>
+            </customHeader> -->
+
+            <customHeader>
+    <Toolbar>
+
+        <!-- Back Button -->
+        <Button
+            icon="sap-icon://nav-back"
+            type="Transparent"
+            press="onNavBack" />
+
+        <!-- Royal Enfield Logo -->
+        <Image
+            src="https://www.royalenfield.com/content/dam/royal-enfield/india/logos/logo.svg"
+            width="130px"
+            height="40px"
+            class="logoImage"
+        />
+
+        <!-- Spacer pushes title to center -->
+        <ToolbarSpacer/>
+
+        <!-- Center Title -->
+        <Title text="Pricing Component" class="textHeaderTitle" level="H2"/>
+
+        <!-- Spacer keeps title centered -->
+        <ToolbarSpacer/>
+
+    </Toolbar>
+</customHeader>
+
+            <!-- ================= CONTENT ================= -->
+            <content>
+
+                <VBox>
+
+                    <!-- Top Toolbar -->
+                    <Toolbar>
+                        <ToolbarSpacer/>
+                        <Button
+                            text="Create Row"
+                            icon="sap-icon://add"
+                            press="onCreateMasterRow"/>
+
+                            <Button
+                        id="uploadExcelBtn"
+                        text="Upload"
+                        icon="sap-icon://upload-to-cloud"
+                        type="Ghost"
+                        tooltip="Upload Excel file"
+                        press="onUploadPress"
+                    />
+
+                    <Button
+    text="Download"
+    icon="sap-icon://download"
+    type="Ghost"
+    press="onDownloadMenuPress"
+/>
+
+
+                    </Toolbar>
+
+                    <!-- ================= TABLE ================= -->
+                    <table:Table
+                        id="masterTable"
+                        rows="{/PricingComponentsSet}"
+                        visibleRowCount="8"
+                        selectionMode="None">
+
+                        <table:columns>
+
+                            <table:Column width="120px">
+                                <Label text="Region"/>
+                                <table:template>
+                                    <Input
+                                        value="{Region}"
+                                       editable="{= ${@$ui5.context.isTransient} === true }"
+            required="true"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="120px">
+                                <Label text="Engine Type"/>
+                                <table:template>
+                                    <Input
+                                        value="{EngineType}"
+                                        editable="{isEditable}"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="120px">
+                                <Label text="Helmet"/>
+                                <table:template>
+                                    <Input type="Number"
+                                        value="{
+                                            path: 'Helmet',
+                                            type: 'sap.ui.model.type.Integer'
+                                        }"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="120px">
+                                <Label text="Transportation"/>
+                                <table:template>
+                                    <Input type="Number"
+                                     liveChange="onCalcChange"
+                                        value="{
+                                            path: 'Transportation',
+                                            type: 'sap.ui.model.type.Integer'
+                                        }"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="160px">
+                                <Label text="Other Expenses (>500)"/>
+                                <table:template>
+                                    <Input type="Number"
+                                        value="{
+                                            path: 'OtExpGt500',
+                                            type: 'sap.ui.model.type.Integer'
+                                        }"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="160px">
+                                <Label text="Other Expenses (500)"/>
+                                <table:template>
+                                    <Input type="Number"
+                                        value="{
+                                            path: 'OtExpLt500',
+                                            type: 'sap.ui.model.type.Integer'
+                                        }"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="120px">
+                                <Label text="Helmet Margin"/>
+                                <table:template>
+                                    <Input type="Number"
+                                        value="{
+                                            path: 'HelmetMargin',
+                                            type: 'sap.ui.model.type.Integer'
+                                        }"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="120px">
+                                <Label text="Insurance % Below 350cc"/>
+                                <table:template>
+                                    <Input type="Number"
+                                        value="{InsuranceLe350}"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="120px">
+                                <Label text="Insurance % Above 350cc"/>
+                                <table:template>
+                                    <Input type="Number"
+                                        value="{InsuranceGt350}"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="120px">
+                                <Label text="TPA-PA Above 350CC"/>
+                                <table:template>
+                                    <Input type="Number"
+                                        value="{
+                                            path: 'TpaPaGt350',
+                                            type: 'sap.ui.model.type.Integer'
+                                        }"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="120px">
+                                <Label text="TPA-PA Below 350CC"/>
+                                <table:template>
+                                    <Input type="Number"
+                                        value="{
+                                            path: 'TpaPaLe350',
+                                            type: 'sap.ui.model.type.Integer'
+                                        }"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="120px">
+                                <Label text="Cleaning and Polishing PDI"/>
+                                <table:template>
+                                    <Input type="Number"
+                                    liveChange="onCalcChange"
+                                        value="{
+                                            path: 'BuffPdi',
+                                            type: 'sap.ui.model.type.Integer'
+                                        }"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="120px">
+                                <Label text="HSPR Rate"/>
+                                <table:template>
+                                    <Input type="Number"
+                                    liveChange="onCalcChange"
+                                        value="{
+                                            path: 'HsprRate',
+                                            type: 'sap.ui.model.type.Integer'
+                                        }"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="120px">
+                                <Label text="Number Plate Writing"/>
+                                <table:template>
+                                    <Input type="Number"
+                                    liveChange="onCalcChange"
+                                        value="{
+                                            path: 'NoPlateWrit',
+                                            type: 'sap.ui.model.type.Integer'
+                                        }"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="120px">
+                                <Label text="Petrol charge 500cc"/>
+                                <table:template>
+                                    <Input type="Number"
+                                    liveChange="onCalcChange"
+                                        value="{
+                                            path: 'PetrolUpto500',
+                                            type: 'sap.ui.model.type.Integer'
+                                        }"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="120px">
+                                <Label text="Petrol charge above 500cc"/>
+                                <table:template>
+                                    <Input type="Number"
+                                    liveChange="onCalcChange"
+                                        value="{
+                                            path: 'PetrolGt500',
+                                            type: 'sap.ui.model.type.Integer'
+                                        }"/>
+                                </table:template>
+                            </table:Column>
+
+                        </table:columns>
+                    </table:Table>
+
+                </VBox>
+
+            </content>
+
+            <!-- ================= FOOTER ================= -->
+            <footer>
+                <OverflowToolbar>
+                    <ToolbarSpacer/>
+                    <Button
+                        text="Submit"
+                        type="Emphasized"
+                        press="onSubmit"/>
+                </OverflowToolbar>
+            </footer>
+
+        </Page>
+    </App>
+
+</mvc:View>

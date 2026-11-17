@@ -1,0 +1,559 @@
+<mvc:View
+    controllerName="editmasterdata.controller.AppendedReport"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+>
+    <App>
+        <Page>
+            <!-- ================= HEADER ================= -->
+            <customHeader>
+                <Toolbar>
+                    <Button
+                        icon="sap-icon://nav-back"
+                        type="Transparent"
+                        press="onNavBack"
+                    />
+
+                    <Image
+                        src="https://www.royalenfield.com/content/dam/royal-enfield/india/logos/logo.svg"
+                        width="130px"
+                        height="40px"
+                        class="logoImage"
+                    />
+
+                    <ToolbarSpacer />
+
+                    <Title
+                        text="Appended Report"
+                        class="textHeaderTitle"
+                        level="H2"
+                    />
+
+                    <ToolbarSpacer />
+                </Toolbar>
+            </customHeader>
+
+            <!-- ================= CONTENT ================= -->
+            
+                <!-- ================= ACTION BAR ================= -->
+              
+
+                    <!-- ================= FILTER ================= -->
+                   
+                        <Toolbar>
+                         <ToolbarSpacer ></ToolbarSpacer>
+                       
+                         
+  <Button
+                            text="Download"
+                            icon="sap-icon://download"
+                            type="Ghost"
+                            press="onDownloadMenuPress"
+                        />
+                      
+                        </Toolbar>
+                  
+                    <!-- ================= TABLE ================= -->
+
+                    <table:Table
+                        id="AppendedReportTable"
+                        rows="{/PricingRegionSet}"
+                        visibleRowCount="11"
+                        enableBusyIndicator="true"
+                        enableColumnReordering="true"
+                        selectionMode="None"
+                        width="100%"
+                        sort="onSort"
+                    >
+                        <table:columns>
+                            <!-- REGION -->
+                            <table:Column
+                                width="180px"
+                                sortProperty="Region"
+                                sorted="true"
+                                sortOrder="Ascending"
+                            >
+                                <Label
+                                    text="Region"
+                                    tooltip="Region"
+                                />
+
+                                <table:template>
+                                    <HBox
+                                        width="100%"
+                                        alignItems="Center"
+                                    >
+                                        <!-- Checkbox only for new rows -->
+                                        <CheckBox
+                                            selected="{_selectedForDelete}"
+                                            visible="{= ${@$ui5.context.isTransient} === true }"
+                                            select="onNewRowSelect"
+                                        />
+
+                                        <!-- Existing row -->
+                                        <Text
+                                            text="{Region}"
+                                            visible="{= ${@$ui5.context.isTransient} !== true }"
+                                        />
+
+                                        <!-- New row -->
+                                        <Input
+                                            value="{Region}"
+                                            maxLength="3"
+                                            required="true"
+                                            visible="{= ${@$ui5.context.isTransient} === true }"
+                                            class="sapUiTinyMarginBegin"
+                                            width="110px"
+                                        />
+                                    </HBox>
+                                </table:template>
+                            </table:Column>
+
+                        
+                            <!-- ENGINE TYPE -->
+                            <table:Column width="180px">
+                                <Label
+                                    text="Engine Type"
+                                    tooltip="Engine Type"
+                                />
+
+                                <table:template>
+                                    <VBox>
+                                        <Text
+                                            text="{EngineType}"
+                                            visible="{= ${@$ui5.context.isTransient} !== true }"
+                                        />
+
+                                        <Select
+                                            selectedKey="{EngineType}"
+                                            width="100%"
+                                            visible="{= ${@$ui5.context.isTransient} === true }"
+                                        >
+                                            <core:Item
+                                                key="EV"
+                                                text="EV"
+                                            />
+
+                                            <core:Item
+                                                key="ICE"
+                                                text="ICE"
+                                            />
+                                        </Select>
+                                    </VBox>
+                                </table:template>
+                            </table:Column>
+
+                            <!-- TRANSPORTATION -->
+                            <table:Column width="150px">
+                                <Label
+                                    text="Transportation"
+                                    tooltip="Transportation"
+                                />
+
+                                <table:template>
+                                    <VBox>
+                                        <Text
+                                            text="{Transportation}"
+                                            visible="{= ${@$ui5.context.isTransient} !== true }"
+                                        />
+
+                                        <Input
+                                            type="Number"
+                                            value="{Transportation}"
+                                            visible="{= ${@$ui5.context.isTransient} === true }"
+                                        />
+                                    </VBox>
+                                </table:template>
+                            </table:Column>
+
+                            <!-- OTHER EXPENSE GT 500 -->
+                            <table:Column width="160px">
+                                <Label
+                                    text="Other Exp. GT 500"
+                                    tooltip="Other Expense Greater Than 500"
+                                />
+
+                                <table:template>
+                                    <VBox>
+                                        <Text
+                                            text="{OtExpGt500}"
+                                            visible="{= ${@$ui5.context.isTransient} !== true }"
+                                        />
+
+                                        <Input
+                                            type="Number"
+                                            value="{OtExpGt500}"
+                                            visible="{= ${@$ui5.context.isTransient} === true }"
+                                        />
+                                    </VBox>
+                                </table:template>
+                            </table:Column>
+
+                            <!-- OTHER EXPENSE LT 500 -->
+                            <table:Column width="160px">
+                                <Label
+                                    text="Other Exp. LT 500"
+                                    tooltip="Other Expense Less Than 500"
+                                />
+
+                                <table:template>
+                                    <VBox>
+                                        <Text
+                                            text="{OtExpLt500}"
+                                            visible="{= ${@$ui5.context.isTransient} !== true }"
+                                        />
+
+                                        <Input
+                                            type="Number"
+                                            value="{OtExpLt500}"
+                                            visible="{= ${@$ui5.context.isTransient} === true }"
+                                        />
+                                    </VBox>
+                                </table:template>
+                            </table:Column>
+
+                            <!-- INSURANCE <= 350 -->
+                            <table:Column width="160px">
+                                <Label
+                                    text="Insurance ≤ 350"
+                                    tooltip="Insurance Less Than or Equal to 350"
+                                />
+
+                                <table:template>
+                                    <VBox>
+                                        <Text
+                                            text="{InsuranceLe350}"
+                                            visible="{= ${@$ui5.context.isTransient} !== true }"
+                                        />
+
+                                        <Input
+                                            type="Number"
+                                            value="{InsuranceLe350}"
+                                            visible="{= ${@$ui5.context.isTransient} === true }"
+                                        />
+                                    </VBox>
+                                </table:template>
+                            </table:Column>
+
+                            <!-- INSURANCE > 350 -->
+                            <table:Column width="160px">
+                                <Label
+                                    text="Insurance > 350"
+                                    tooltip="Insurance Greater Than 350"
+                                />
+
+                                <table:template>
+                                    <VBox>
+                                        <Text
+                                            text="{InsuranceGt350}"
+                                            visible="{= ${@$ui5.context.isTransient} !== true }"
+                                        />
+
+                                        <Input
+                                            type="Number"
+                                            value="{InsuranceGt350}"
+                                            visible="{= ${@$ui5.context.isTransient} === true }"
+                                        />
+                                    </VBox>
+                                </table:template>
+                            </table:Column>
+
+                            <!-- TPA PA GT 350 -->
+                            <table:Column width="150px">
+                                <Label
+                                    text="TPA PA GT 350"
+                                    tooltip="TPA PA Greater Than 350"
+                                />
+
+                                <table:template>
+                                    <VBox>
+                                        <Text
+                                            text="{TpaPaGt350}"
+                                            visible="{= ${@$ui5.context.isTransient} !== true }"
+                                        />
+
+                                        <Input
+                                            type="Number"
+                                            value="{TpaPaGt350}"
+                                            visible="{= ${@$ui5.context.isTransient} === true }"
+                                        />
+                                    </VBox>
+                                </table:template>
+                            </table:Column>
+
+                            <!-- TPA PA LE 350 -->
+                            <table:Column width="150px">
+                                <Label
+                                    text="TPA PA LE 350"
+                                    tooltip="TPA PA Less Than or Equal to 350"
+                                />
+
+                                <table:template>
+                                    <VBox>
+                                        <Text
+                                            text="{TpaPaLe350}"
+                                            visible="{= ${@$ui5.context.isTransient} !== true }"
+                                        />
+
+                                        <Input
+                                            type="Number"
+                                            value="{TpaPaLe350}"
+                                            visible="{= ${@$ui5.context.isTransient} === true }"
+                                        />
+                                    </VBox>
+                                </table:template>
+                            </table:Column>
+
+                            <!-- BUFF PDI -->
+                            <table:Column width="140px">
+                                <Label
+                                    text="Buffing PDI"
+                                    tooltip="Buffing PDI"
+                                />
+
+                                <table:template>
+                                    <VBox>
+                                        <Text
+                                            text="{BuffPdi}"
+                                            visible="{= ${@$ui5.context.isTransient} !== true }"
+                                        />
+
+                                        <Input
+                                            type="Number"
+                                            value="{BuffPdi}"
+                                            visible="{= ${@$ui5.context.isTransient} === true }"
+                                        />
+                                    </VBox>
+                                </table:template>
+                            </table:Column>
+
+                            <!-- HSPR -->
+                            <table:Column width="140px">
+                                <Label
+                                    text="HSPR Rate"
+                                    tooltip="HSPR Rate"
+                                />
+
+                                <table:template>
+                                    <VBox>
+                                        <Text
+                                            text="{HsprRate}"
+                                            visible="{= ${@$ui5.context.isTransient} !== true }"
+                                        />
+
+                                        <Input
+                                            type="Number"
+                                            value="{HsprRate}"
+                                            visible="{= ${@$ui5.context.isTransient} === true }"
+                                        />
+                                    </VBox>
+                                </table:template>
+                            </table:Column>
+
+                            <!-- NUMBER PLATE -->
+                            <table:Column width="160px">
+                                <Label
+                                    text="No. Plate Writing"
+                                    tooltip="Number Plate Writing"
+                                />
+
+                                <table:template>
+                                    <VBox>
+                                        <Text
+                                            text="{NoPlateWrit}"
+                                            visible="{= ${@$ui5.context.isTransient} !== true }"
+                                        />
+
+                                        <Input
+                                            type="Number"
+                                            value="{NoPlateWrit}"
+                                            visible="{= ${@$ui5.context.isTransient} === true }"
+                                        />
+                                    </VBox>
+                                </table:template>
+                            </table:Column>
+
+                            <!-- PETROL UPTO 500 -->
+                            <table:Column width="160px">
+                                <Label
+                                    text="Petrol Upto 500"
+                                    tooltip="Petrol Upto 500"
+                                />
+
+                                <table:template>
+                                    <VBox>
+                                        <Text
+                                            text="{PetrolUpto500}"
+                                            visible="{= ${@$ui5.context.isTransient} !== true }"
+                                        />
+
+                                        <Input
+                                            type="Number"
+                                            value="{PetrolUpto500}"
+                                            visible="{= ${@$ui5.context.isTransient} === true }"
+                                        />
+                                    </VBox>
+                                </table:template>
+                            </table:Column>
+
+                            <!-- PETROL GT 500 -->
+                            <table:Column width="160px">
+                                <Label
+                                    text="Petrol GT 500"
+                                    tooltip="Petrol Greater Than 500"
+                                />
+
+                                <table:template>
+                                    <VBox>
+                                        <Text
+                                            text="{PetrolGt500}"
+                                            visible="{= ${@$ui5.context.isTransient} !== true }"
+                                        />
+
+                                        <Input
+                                            type="Number"
+                                            value="{PetrolGt500}"
+                                            visible="{= ${@$ui5.context.isTransient} === true }"
+                                        />
+                                    </VBox>
+                                </table:template>
+                            </table:Column>
+
+                            <!-- RTO EXPENSE -->
+                            <table:Column width="140px">
+                                <Label
+                                    text="RTO Expense"
+                                    tooltip="RTO Expense"
+                                />
+
+                                <table:template>
+                                    <VBox>
+                                        <Text
+                                            text="{RtoExpense}"
+                                            visible="{= ${@$ui5.context.isTransient} !== true }"
+                                        />
+
+                                        <Input
+                                            type="Number"
+                                            value="{RtoExpense}"
+                                            visible="{= ${@$ui5.context.isTransient} === true }"
+                                        />
+                                    </VBox>
+                                </table:template>
+                            </table:Column>
+
+                            <!-- CITY -->
+                            <table:Column width="180px">
+                                <Label
+                                    text="City"
+                                    tooltip="City"
+                                />
+
+                                <table:template>
+                                    <VBox>
+                                        <Text
+                                            text="{Ort01}"
+                                            visible="{= ${@$ui5.context.isTransient} !== true }"
+                                        />
+
+                                        <Input
+                                            value="{Ort01}"
+                                            maxLength="25"
+                                            visible="{= ${@$ui5.context.isTransient} === true }"
+                                        />
+                                    </VBox>
+                                </table:template>
+                            </table:Column>
+
+                            <!-- BASIS -->
+                            <table:Column width="160px">
+                                <Label
+                                    text="Basis"
+                                    tooltip="Basis"
+                                />
+
+                                <table:template>
+                                    <VBox>
+                                        <Text
+                                            text="{BasisRto}"
+                                            visible="{= ${@$ui5.context.isTransient} !== true }"
+                                        />
+
+                                        <Input
+                                            value="{BasisRto}"
+                                            maxLength="20"
+                                            visible="{= ${@$ui5.context.isTransient} === true }"
+                                        />
+                                    </VBox>
+                                </table:template>
+                            </table:Column>
+                        </table:columns>
+                    </table:Table>
+               
+           
+
+            <!-- ================= FOOTER ================= -->
+            <footer>
+                <OverflowToolbar>
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </footer>
+
+            <!-- ================= DOWNLOAD ================= -->
+            <dependents>
+                <ActionSheet
+                    id="downloadActionSheet"
+                    title="Download Options"
+                    showCancelButton="true"
+                    cancelButtonText="Cancel"
+                >
+                    <Button
+                        text="Download All Data"
+                        icon="sap-icon://download"
+                        press="onDownloadAll"
+                    />
+
+                    <Button
+                        text="Select Fields &amp; Download"
+                        icon="sap-icon://table-column"
+                        press="onExcelDownload"
+                    />
+                </ActionSheet>
+            </dependents>
+
+            <!-- ================= FIELD SELECT ================= -->
+            <Dialog
+                id="fieldSelectDialog"
+                title="Select Fields to Download"
+                contentWidth="300px"
+            >
+                <List
+                    id="fieldList"
+                    mode="MultiSelect"
+                    includeItemInSelection="true"
+                    items="{fields>/fields}"
+                >
+                    <StandardListItem title="{fields>label}" />
+                </List>
+
+                <beginButton>
+                    <Button
+                        text="Download"
+                        type="Emphasized"
+                        press="onDownloadSelectedFields"
+                    />
+                </beginButton>
+
+                <endButton>
+                    <Button
+                        text="Cancel"
+                        press="onCancelDownload"
+                    />
+                </endButton>
+            </Dialog>
+        </Page>
+    </App>
+</mvc:View>

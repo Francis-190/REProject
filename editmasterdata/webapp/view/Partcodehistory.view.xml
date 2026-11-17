@@ -1,0 +1,255 @@
+<mvc:View
+    controllerName="editmasterdata.controller.Partcodehistory"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+>
+    <App>
+        <Page backgroundDesign="Solid">
+            <customHeader>
+                <Toolbar>
+                    <Button
+                        icon="sap-icon://nav-back"
+                        type="Transparent"
+                        press="onNavBack"
+                    />
+
+                    <Image
+                        src="https://www.royalenfield.com/content/dam/royal-enfield/india/logos/logo.svg"
+                        width="130px"
+                        height="40px"
+                        class="logoImage"
+                    />
+
+                    <ToolbarSpacer />
+
+                    <Title
+                        text="Part Code Master — History"
+                        class="textHeaderTitle"
+                        level="H2"
+                    />
+
+                    <ToolbarSpacer />
+                </Toolbar>
+            </customHeader>
+
+            <content>
+                <VBox style="padding: 24px 28px;">
+                    <Panel backgroundDesign="Solid">
+                        <headerToolbar>
+                            <Toolbar>
+                                <ToolbarSpacer />
+                            </Toolbar>
+                        </headerToolbar>
+
+                        <VBox class="sapUiSmallMarginTop">
+                            <Toolbar>
+                                <HBox
+                                    alignItems="Center"
+                                    renderType="Bare"
+                                >
+                                    <Label
+                                        text="Material Group"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+                                    <MultiComboBox
+                                        id="filterModelCode"
+                                        width="220px"
+                                        class="sapUiTinyMarginEnd"
+                                        items="{filter>/Family}"
+                                    >
+                                        <core:Item
+                                            key="{filter>Family}"
+                                            text="{filter>Family}"
+                                        />
+                                    </MultiComboBox>
+
+                                    <Label
+                                        text="Part Code"
+                                        class="sapUiTinyMarginBegin sapUiTinyMarginEnd"
+                                    />
+                                    <MultiComboBox
+                                        id="filterEngineType"
+                                        width="180px"
+                                        class="sapUiTinyMarginEnd"
+                                        items="{filter>/PartCode}"
+                                    >
+                                        <core:Item
+                                            key="{filter>PartCode}"
+                                            text="{filter>PartCode}"
+                                        />
+                                    </MultiComboBox>
+                                </HBox>
+
+                                <Button
+                                    text="Filter"
+                                    icon="sap-icon://filter"
+                                    type="Emphasized"
+                                    class="sapUiTinyMarginEnd"
+                                    press="onApplyFilter"
+                                />
+
+                                <Button
+                                    text="Clear"
+                                    icon="sap-icon://clear-filter"
+                                    type="Emphasized"
+                                    press="onClearFilter"
+                                />
+                            </Toolbar>
+                        </VBox>
+
+                        <Bar />
+
+                        <table:Table
+                            id="partMasterHistoryTable"
+                            rows="{/PartsSet}"
+                            visibleRowCount="12"
+                            enableBusyIndicator="true"
+                            selectionMode="None"
+                            width="100%"
+                            rowsUpdated="onRowsUpdated"
+                        >
+                            <table:rowSettingsTemplate>
+                                <table:RowSettings
+                                    highlight="{
+                                    path: 'FromDate',
+                                    formatter: '.formatRowHighlight'
+                                }"
+                                />
+                            </table:rowSettingsTemplate>
+
+                            <table:columns>
+                                <table:Column width="120px">
+                                    <Label
+                                        text="Material Group"
+                                        tooltip="Material Group"
+                                    />
+                                    <table:template>
+                                        <Text text="{Family}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="150px">
+                                    <Label
+                                        text="Part Code"
+                                        tooltip="Part Code"
+                                    />
+                                    <table:template>
+                                        <Text text="{PartCode}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="250px">
+                                    <Label
+                                        text="Description"
+                                        tooltip="Description"
+                                    />
+                                    <table:template>
+                                        <Text text="{PartDescr}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="160px">
+                                    <Label
+                                        text="Effective Date"
+                                        tooltip="Effective Date"
+                                    />
+                                    <table:template>
+                                        <Text
+                                            text="{
+            path: 'FromDate',
+            formatter: '.formatDate'
+        }"
+                                        />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="160px">
+                                    <Label
+                                        text="OE/GMA/GMA OE"
+                                        tooltip="OE/GMA/GMA OE"
+                                    />
+                                    <table:template>
+                                        <Text text="{OeGma}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="120px">
+                                    <Label
+                                        text="MRP"
+                                        tooltip="MRP"
+                                    />
+                                    <table:template>
+                                        <Text text="{Mrp}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="120px">
+                                    <Label
+                                        text="MIY Cost"
+                                        tooltip="MIY Cost"
+                                    />
+                                    <table:template>
+                                        <Text text="{MiyCost}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="120px">
+                                    <Label
+                                        text="MIY Markup"
+                                        tooltip="MIY Markup"
+                                    />
+                                    <table:template>
+                                        <Text text="{MiyMarkup}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="180px">
+                                    <Label
+                                        text="Ex Showroom / On Road"
+                                        tooltip="Ex Showroom/On Road"
+                                    />
+                                    <table:template>
+                                        <Text text="{ExShowOnRoad}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="120px">
+                                    <Label
+                                        text="MIY Cost %"
+                                        tooltip="MIY Cost %"
+                                    />
+                                    <table:template>
+                                        <Text text="{MiyCostPerc}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="140px">
+                                    <Label
+                                        text="MIY Markup %"
+                                        tooltip="MIY Markup %"
+                                    />
+                                    <table:template>
+                                        <Text text="{MiyMarkupPerc}" />
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="120px">
+                                    <Label
+                                        text="Status"
+                                        tooltip="Status"
+                                    />
+                                    <table:template>
+                                        <Text text="{Status}" />
+                                    </table:template>
+                                </table:Column>
+                            </table:columns>
+                        </table:Table>
+                    </Panel>
+                </VBox>
+            </content>
+        </Page>
+    </App>
+</mvc:View>

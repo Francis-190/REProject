@@ -1,0 +1,287 @@
+<mvc:View
+    controllerName="editmasterdata.controller.pricingcomponent"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+    displayBlock="true">
+
+    
+        <Page >
+
+
+            <customHeader>
+    <Toolbar>
+
+        <!-- Back Button -->
+        <Button
+            icon="sap-icon://nav-back"
+            type="Transparent"
+            press="onNavBack" />
+
+        <!-- Royal Enfield Logo -->
+        <Image
+            src="https://www.royalenfield.com/content/dam/royal-enfield/india/logos/logo.svg"
+            width="130px"
+            height="40px"
+            class="logoImage"
+        />
+
+        <!-- Spacer pushes title to center -->
+        <ToolbarSpacer/>
+
+        <!-- Center Title -->
+        <Title text="Pricing Component" class="textHeaderTitle" level="H2"/>
+
+        <!-- Spacer keeps title centered -->
+        <ToolbarSpacer/>
+
+    </Toolbar>
+</customHeader>
+
+<Bar ></Bar>
+
+            <!-- ================= CONTENT ================= -->
+            <content>
+
+                <VBox>
+
+                    <!-- Top Toolbar -->
+                    <Toolbar>
+
+                     <HBox alignItems="Center" renderType="Bare">
+
+            <Label text="Region" class="sapUiTinyMarginEnd"/>
+
+            <MultiComboBox
+                id="filterModelCode"
+                width="220px"
+                class="sapUiTinyMarginEnd"
+                items="{filter>/Region}">
+                <core:Item key="{filter>Region}" text="{filter>Region}" />
+            </MultiComboBox>
+
+            </HBox>
+
+            
+
+            <Button
+            text="Filter"
+            icon="sap-icon://filter"
+            class="sapUiTinyMarginEnd"
+            press="onApplyFilter"/>
+
+        <Button
+            text="Clear"
+            icon="sap-icon://clear-filter"
+            press="onClearFilter"/>
+
+                        <ToolbarSpacer/>
+                        <Button
+                            text="Create Row"
+                            icon="sap-icon://add"
+                            type="Emphasized"
+                            press="onCreateMasterRow"/>
+                    </Toolbar>
+
+                    <Bar ></Bar>
+
+                    <!-- ================= TABLE ================= -->
+                    <table:Table
+                        id="masterTable"
+                        rows="{/PricingComponentsSet}"
+                        visibleRowCount="13"
+                        selectionMode="None">
+
+                        <table:columns>
+
+                            <table:Column width="120px">
+                                <Label text="Region" tooltip="Region"/>
+                                <table:template>
+                                    <Input
+                                        value="{Region}"
+                                       editable="{= ${_isNew} === true }"
+            required="true"/>
+                                </table:template>
+                            </table:Column>
+
+                            <!-- <table:Column width="120px">
+                                <Label text="Engine Type"/>
+                                <table:template>
+                                    <Input
+                                        value="{EngineType}"
+                                        editable="{isEditable}"/>
+                                </table:template>
+                            </table:Column> -->
+
+                             <table:Column width="200px">
+    <Label text="Engine Type" tooltip="Engine Type"/>
+
+    <table:template>
+        <Select
+            
+            selectedKey="{EngineType}"
+            width="100%">
+            
+             <core:Item key="EV" text="EV"/>
+            <core:Item key="ICE" text="ICE"/>
+         
+
+        </Select>
+    </table:template>
+</table:Column>
+
+                            <table:Column width="120px">
+                                <Label text="Helmet Cost" tooltip="Helmet Cost"/>
+                                <table:template>
+                                    <Input type="Number" value="{Helmet}"
+                                       />
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="120px">
+                                <Label text="Transportation" tooltip="Transportation"/>
+                                <table:template>
+                                    <Input type="Number"
+                                     
+                                        value="{Transportation}"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="160px">
+                                <Label text="Other Expenses (+500)" tooltip="Other Expenses (+500)"/>
+                                <table:template>
+                                    <Input type="Number"
+                                    editable="{= ${_isNew} === true }"
+                                        value="{OtExpGt500}"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="160px">
+                                <Label text="Other Expenses (-500)" tooltip="Other Expence (-500)"/>
+                                <table:template>
+                                    <Input type="Number"
+                                    editable="{= ${_isNew} === true }"
+                                        value="{OtExpLt500}"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="120px">
+                                <Label text="Helmet Margin" tooltip="Helmet Margin"/>
+                                <table:template>
+                                    <Input type="Number"
+                                        value="{HelmetMargin}"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="180px">
+                                <Label text="Insuranse% Below 350cc" tooltip="Insurense Below 350cc"/>
+                                <table:template>
+                                    <Input type="Number"
+                                        value="{InsuranceLe350}"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="180px">
+                                <Label text="Insurance% Above 350cc" tooltip="Insurence% Above 350cc"/>
+                                <table:template>
+                                    <Input type="Number"
+                                        value="{InsuranceGt350}"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="180px">
+                                <Label text="TPA-PA Above 350CC" tooltip="TPA-PA Above 350CC"/>
+                                <table:template>
+                                    <Input type="Number"
+                                        value="{TpaPaGt350}"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="180px">
+                                <Label text="TPA-PA Below 350CC" tooltip="TPA-PA Below 350CC"/>
+                                <table:template>
+                                    <Input type="Number"
+                                        value="{TpaPaLe350}"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="190px">
+                                <Label text="Cleaning and Polishing PDI" tooltip="Cleaning and Polishing PDI"/>
+                                <table:template>
+                                    <Input type="Number"
+                                    liveChange="onCalcChange"
+                                        value="{BuffPdi}"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="120px">
+                                <Label text="HSPR Rate" tooltip="HSPR Rate"/>
+                                <table:template>
+                                    <Input type="Number"
+                                    liveChange="onCalcChange"
+                                        value="{HsprRate}"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="180px">
+                                <Label text="Number Plate Writing" tooltip="Number Plate Writing"/>
+                                <table:template>
+                                    <Input type="Number"
+                                    liveChange="onCalcChange"
+                                        value="{NoPlateWrit}"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="190px">
+                                <Label text="Petrol charge Below 500cc" tooltip="Petrol Charge Below 500CC"/>
+                                <table:template>
+                                    <Input type="Number"
+                                    liveChange="onCalcChange"
+                                        value="{PetrolUpto500}"/>
+                                </table:template>
+                            </table:Column>
+
+                            <table:Column width="190px">
+                                <Label text="Petrol charge above 500cc" tooltip="Petrol Charge above 500CC"/>
+                                <table:template>
+                                    <Input type="Number"
+                                    liveChange="onCalcChange"
+                                        value="{PetrolGt500}"/>
+                                </table:template>
+                            </table:Column>
+ <table:Column width="120px">
+                                <Label text="RTO Expence" tooltip="RTO Expence"/>
+                                <table:template>
+                                    <Input type="Number"
+                                    liveChange="onCalcChange"
+                                        value="{RtoExpense}"/>
+                                </table:template>
+                            </table:Column>
+ <table:Column width="120px">
+                            <Label text="Status" tooltip="Status"/>
+                            <table:template>
+                                <Text text="{Status}"/>
+                            </table:template>
+                        </table:Column>
+                        </table:columns>
+                    </table:Table>
+
+                </VBox>
+
+            </content>
+
+            <!-- ================= FOOTER ================= -->
+            <footer>
+                <OverflowToolbar>
+                    <ToolbarSpacer/>
+                    <Button
+                        text="Submit"
+                        type="Emphasized"
+                        press="onSubmit"/>
+                </OverflowToolbar>
+            </footer>
+
+        </Page>
+
+</mvc:View>

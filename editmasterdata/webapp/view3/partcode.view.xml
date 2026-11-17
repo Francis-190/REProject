@@ -1,0 +1,214 @@
+<mvc:View
+    controllerName="editmasterdata.controller.partcode"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+    <App>
+        <Page backgroundDesign="Solid" style="background: #f5f7fb;">
+
+            <customHeader>
+    <Toolbar>
+
+        <!-- Back Button -->
+        <Button
+            icon="sap-icon://nav-back"
+            type="Transparent"
+            press="onNavBack" />
+
+        <!-- Royal Enfield Logo -->
+        <Image
+            src="https://www.royalenfield.com/content/dam/royal-enfield/india/logos/logo.svg"
+            width="130px"
+            height="40px"
+            class="logoImage"
+        />
+
+        <!-- Spacer pushes title to center -->
+        <ToolbarSpacer/>
+
+        <!-- Center Title -->
+        <Title text="Part Code Master" class="textHeaderTitle" level="H2"/>
+
+        <!-- Spacer keeps title centered -->
+        <ToolbarSpacer/>
+
+    </Toolbar>
+</customHeader>
+
+            <content>
+
+            <Bar ></Bar>
+                <VBox style="padding: 24px 28px;">
+                    <Panel backgroundDesign="Solid" style="border-radius: 14px; box-shadow: 0 4px 24px rgba(26,41,128,0.09); border: 1.5px solid #e3e8f7; overflow: hidden;">
+                        <headerToolbar>
+                            <Toolbar >
+
+                             <Label text="Material Group" class="sapUiTinyMarginEnd"/>
+
+            <MultiComboBox
+                id="filterModelCode"
+                width="220px"
+                class="sapUiTinyMarginEnd"
+                items="{filter>/Family}">
+                <core:Item key="{filter>Family}" text="{filter>Family}" />
+            </MultiComboBox>
+
+            <Label text="Part Code" class="sapUiTinyMarginBegin sapUiTinyMarginEnd"/>
+
+            <MultiComboBox
+                id="filterEngineType"
+                width="180px"
+                class="sapUiTinyMarginEnd"
+                items="{filter>/PartCode}">
+                <core:Item key="{filter>PartCode}" text="{filter>PartCode}" />
+            </MultiComboBox>
+
+            <Button
+            text="Filter"
+            icon="sap-icon://filter"
+            class="sapUiTinyMarginEnd"
+            press="onApplyFilter"/>
+
+        <Button
+            text="Clear"
+            icon="sap-icon://clear-filter"
+            press="onClearFilter"/>
+                                
+                                <ToolbarSpacer />
+                                <Button
+                                    text="Create Row"
+                                    icon="sap-icon://add"
+                                    press="onCreateMasterRow"
+                                    type="Emphasized"
+                                    style="border-radius: 8px; font-weight: 600;"/>
+                            </Toolbar>
+                        </headerToolbar>
+
+                        <Bar ></Bar>
+
+                        <table:Table
+                            id="partMasterTable"
+                            rows="{/PartsSet}"
+                            visibleRowCount="13"
+                            enableBusyIndicator="true"
+                            selectionMode="None"
+                            width="100%">
+                            <table:columns>
+                                <table:Column width="120px">
+                                    <Label text="Material Group" tooltip="Metrial"/>
+                                    <table:template>
+                                        <Input value="{Family}"  editable="{= ${@$ui5.context.isTransient} === true }"
+            required="true"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="150px">
+                                    <Label text="Part code" tooltip="Part code"/>
+                                    <table:template>
+                                        <Input value="{PartCode}"  editable="{= ${@$ui5.context.isTransient} === true }"
+            required="true" style="border-radius: 6px;"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="250px">
+                                    <Label text="Description" tooltip="Description" />
+                                    <table:template>
+                                        <Input value="{PartDescr}"/>
+                                    </table:template>
+                                </table:Column>
+<!-- 
+                                <table:Column width="160px">
+                                    <Label text="OE/GMA/GMA OE" />
+                                    <table:template>
+                                        <Input value="{OeGma}"/>
+                                    </table:template>
+                                </table:Column> -->
+
+                                <table:Column width="160px">
+    <Label text="OE/GMA/GMA OE" tooltip="OE/GMA/GMA OE"/>
+    <table:template>
+        <Select
+          
+            selectedKey="{OeGma}"
+            width="100%">
+            
+            <core:Item key="OE" text="OE"/>
+            <core:Item key="GMA" text="GMA"/>
+            <core:Item key="GMA OE" text="GMA OE"/>
+
+        </Select>
+    </table:template>
+</table:Column>
+
+
+
+                                <table:Column width="120px">
+                                    <Label text="MRP" tooltip="MRP"/>
+                                    <table:template>
+                                        <Input type="Number" value="{Mrp}"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="120px">
+                                    <Label text="MIY Cost" tooltip="MIY Cost"/>
+                                    <table:template>
+                                        <Input value="{MiyCost}" type="Number"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="120px">
+                                    <Label text="MIY Markup" tooltip="MIY Markup"/>
+                                    <table:template>
+                                        <Input type="Number" value="{MiyMarkup}"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="180px">
+                                    <Label text="Ex showroom / On Road" tooltip="Ex Showroom/On Road"/>
+                                    <table:template>
+                                      <Select
+          
+            selectedKey="{ExShowOnRoad}"
+            width="100%">
+            
+             <core:Item key="EX SHOWROOM" text="EX SHOWROOM"/>
+            <core:Item key="Dealer Cost" text="ON ROAD"/>
+        </Select>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="120px">
+                                    <Label text="MIY Cost %" tooltip="MIY Cost"/>
+                                    <table:template>
+                                        <Input type="Number" value="{MiyCostPerc}"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column width="140px">
+                                    <Label text="MiY Markup %" tooltip="MIY Markup"/>
+                                    <table:template>
+                                        <Input type="Number" value="{MiyMarkupPerc}" />
+                                    </table:template>
+                                </table:Column>
+ <table:Column width="120px">
+                            <Label text="Status" tooltip="Status"/>
+                            <table:template>
+                                <Text text="{Status}"/>
+                            </table:template>
+                        </table:Column>
+
+                            </table:columns>
+                        </table:Table>
+                    </Panel>
+                </VBox>
+            </content>
+
+            <footer>
+                <OverflowToolbar>
+                    <ToolbarSpacer/>
+                    <Button
+                        text="Submit"
+                        type="Emphasized"
+                        press="onSubmit"
+                        style="border-radius: 8px; font-weight: 700; min-width: 120px;"/>
+                </OverflowToolbar>
+            </footer>
+        </Page>
+    </App>
+</mvc:View>

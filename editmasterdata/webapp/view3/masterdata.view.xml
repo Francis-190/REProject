@@ -1,0 +1,368 @@
+<mvc:View
+    controllerName="editmasterdata.controller.masterdata"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+        <Page class="page">
+            
+
+            <customHeader>
+    <Toolbar>
+
+        <!-- Back Button -->
+        <Button
+            icon="sap-icon://nav-back"
+            type="Transparent"
+            press="onNavBack" />
+
+        <!-- Royal Enfield Logo -->
+        <Image
+            src="https://www.royalenfield.com/content/dam/royal-enfield/india/logos/logo.svg"
+            width="130px"
+            height="40px"
+            class="logoImage"
+        />
+
+        <ToolbarSpacer/>
+
+        <Title text="Model Master" class="textHeaderTitle" level="H2"/>
+
+        <ToolbarSpacer/>
+
+    </Toolbar>
+</customHeader>
+
+            <content>
+
+            
+                <!-- <VBox>
+                                <Toolbar>
+                                    
+                                    <ToolbarSpacer />
+                                    <Button
+                    text="Create Row"
+                    icon="sap-icon://add"
+                    type="Emphasized"
+                    tooltip="Add a new model row"
+                    press="onCreateMasterRow"/>
+                                </Toolbar>
+                            </VBox>    -->
+
+<VBox class="sapUiSmallMarginTop">
+    <Toolbar>
+
+        <HBox alignItems="Center" renderType="Bare">
+
+            <Label text="Model Code" class="sapUiTinyMarginEnd"/>
+
+            <MultiComboBox
+                id="filterModelCode"
+                width="220px"
+                class="sapUiTinyMarginEnd"
+                items="{filter>/Models}">
+                <core:Item key="{filter>ModelCode}" text="{filter>Display}" />
+            </MultiComboBox>
+
+            <Label text="Engine Type" class="sapUiTinyMarginBegin sapUiTinyMarginEnd"/>
+
+            <MultiComboBox
+                id="filterEngineType"
+                width="180px"
+                class="sapUiTinyMarginEnd"
+                items="{filter>/EngineType}">
+                <core:Item key="{filter>Type}" text="{filter>Type}" />
+            </MultiComboBox>
+
+            <Label text="CC/Watt" class="sapUiTinyMarginBegin sapUiTinyMarginEnd"/>
+
+            <MultiComboBox
+                id="filterCcType"
+                width="180px"
+                class="sapUiTinyMarginEnd"
+                items="{filter>/CcWatt}">
+                <core:Item key="{filter>Ccwatt}" text="{filter>Ccwatt}" />
+            </MultiComboBox>
+
+                        <Label text="Model Family" class="sapUiTinyMarginBegin sapUiTinyMarginEnd"/>
+
+
+            <MultiComboBox
+                id="filterModelFam"
+                width="180px"
+                class="sapUiTinyMarginEnd"
+                items="{filter>/ModelFam}">
+                <core:Item key="{filter>ModelFam}" text="{filter>ModelFam}" />
+            </MultiComboBox>
+
+        </HBox>
+
+
+        <Button
+            text="Filter"
+            icon="sap-icon://filter"
+            class="sapUiTinyMarginEnd"
+            press="onApplyFilter"/>
+
+        <Button
+            text="Clear"
+            icon="sap-icon://clear-filter"
+            press="onClearFilter"/>
+
+<ToolbarSpacer ></ToolbarSpacer>
+
+<Button
+                    text="Create Row"
+                    icon="sap-icon://add"
+                    type="Emphasized"
+                    tooltip="Add a new model row"
+                    press="onCreateMasterRow"/>
+    </Toolbar>
+
+                                
+</VBox>
+
+<Bar ></Bar>
+
+                            
+        
+
+                <!-- TABLE -->
+            <table:Table
+    id="modelTable"
+    width="100%"
+    rows="{ path: '/ModelMasterSet' }"
+    visibleRowCount="13"
+    visibleRowCountMode="Fixed"
+    selectionMode="None"
+  
+    enableBusyIndicator="true">
+
+                    <table:columns>
+
+                        <!-- NON EDITABLE -->
+                        <!-- <table:Column width="150px">
+                            <Label text="Model Code" tooltip="Model Code"/>
+                            <table:template>
+                                <Input value="{ModelCode}"
+                                 editable="{= ${_isNew} === true }"
+            required="true" />
+                            </table:template>
+                        </table:Column> -->
+
+                        <table:Column width="150px"> <Label text="Model Code" tooltip="Model Code"/> <table:template> <Input value="{ModelCode}" editable="{= ${@$ui5.context.isTransient} || ${Status} === 'REJECTED' }" required="true" /> </table:template> </table:Column>
+
+                        <!-- <table:Column width="150px">
+                            <Label text="Engine Type"/>
+                            <table:template>
+                                <Input value="{EngineType}"
+                                 editable="{= ${_isNew} === true }"
+            required="true"/>
+            
+                            </table:template>
+                        </table:Column> -->
+
+                      <!-- <table:Column width="150px">
+    <Label text="Engine Type"/>
+
+    <table:template>
+        <ComboBox
+            selectedKey="{EngineType}"
+            editable="{= ${_isNew} === true }"
+            required="true"
+          
+            width="100%">
+
+            <core:Item key="EV" text="EV"/>
+            <core:Item key="ICE" text="ICE"/>
+
+        </ComboBox>
+    </table:template>
+
+</table:Column> -->
+
+<table:Column width="150px">
+    <Label text="Engine Type" tooltip="Engine Type"/>
+
+    <table:template>
+        <Select
+            selectedKey="{EngineType}"
+            enabled="{= ${_isNew} === true }"
+            width="100%">
+
+            <core:Item key="EV" text="EV"/>
+            <core:Item key="ICE" text="ICE"/>
+
+        </Select>
+    </table:template>
+</table:Column>
+
+
+                          
+
+                        <table:Column width="120px">
+                            <Label text="CC/Watt" tooltip="CC/Watt"/>
+                            <table:template>
+                                <Input value="{CcWatt}" 
+                                 editable="{= ${_isNew} === true }"
+            required="true"/>
+                            </table:template>
+                        </table:Column>
+
+<table:Column width="200px">
+                            <Label text="Model Type" tooltip="Model Type"/>
+                            <table:template>
+        <Select
+
+            selectedKey="{OrdType}"
+            width="100%">
+              <core:Item key="MTO" text="MTO"/>
+             <core:Item key="MTS" text="MTS"/>
+        </Select>
+                            </table:template>
+                        </table:Column>
+
+
+                        <table:Column width="200px">
+                            <Label text="Description" tooltip="Description"/>
+                            <table:template>
+                                <Input value="{Description}"/>
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="160px">
+                            <Label text="Model Family" tooltip="Model Family"/>
+                            <table:template>
+                                <Input value="{ModelFam}"/>
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="GST%" tooltip="GST%"/>
+                            <table:template>
+                                <Input type="Number" value="{path:'GstPerc', type:'sap.ca.ui.model.type.Number' }"/>
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="160px">
+                            <Label text="Dealer Margin" tooltip="Dealer Margin"/>
+                            <table:template>
+                                <Input value="{DealerMargin}" />
+                            </table:template>
+                        </table:Column>
+<!-- 
+                        <table:Column width="200px">
+                            <Label text="Dealer Margin Calculation"/>
+                            <table:template>
+                                <Input value="{DealerMargCalc}"/>
+                            </table:template>
+                        </table:Column> -->
+
+                        <table:Column width="200px">
+    <Label text="Dealer Margin Calculation" tooltip="Dealer Margin Calculation"/>
+
+    <table:template>
+        <Select
+            selectedKey="{DealerMargCalc}"
+            width="100%">
+            
+             <core:Item key="NSP" text="NSP"/>
+            <core:Item key="Dealer Cost" text="Dealer Cost"/>
+            <core:Item key="NDP" text="NDP"/>
+            <core:Item key="BASIS" text="BASIS"/>
+
+        </Select>
+    </table:template>
+</table:Column>
+                        <table:Column width="200px">
+                            <Label text="Dealer Margin Cost Impact" tooltip="Dealer Margin Cost Impact"/>
+                            <table:template>
+                                <!-- <Select
+            selectedKey="{DealerMargCostImp}"
+            width="100%">
+
+            <core:Item key="NSP" text="NSP"/>
+             <core:Item key="onBoard" text="On Board"/>
+
+        </Select> -->
+
+        <Select
+            
+            selectedKey="{DealerMargCostImp}"
+            width="100%">
+            
+            <core:Item key="NSP" text="NSP"/>
+             <core:Item key="onBoard" text="OnRoad"/>
+
+        </Select>
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="160px">
+                            <Label text="CSD Index Number" tooltip="CSD Index Number"/>
+                            <table:template>
+                                <Input value="{CsdIndex}"/>
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="160px">
+                            <Label text="CSD Discount Rate %" tooltip="CDS Discount Rate %"/>
+                            <table:template>
+                                <Input type="Number" value="{ path:'CsdDisPerc', type:'sap.ca.ui.model.type.Number'}" />
+                            </table:template>
+                        </table:Column>
+
+                        <table:Column width="120px">
+                            <Label text="GEM" tooltip="GEM"/>
+                            <table:template>
+                                <Input type="Number" value="{path:'Gem',type:'sap.ca.ui.model.type.Number'}"/>
+                            </table:template>
+                        </table:Column>
+
+                        <!-- <table:Column width="120px">
+                            <Label text="Model Status"/>
+                            <table:template>
+                                <Input value="{ModelStatus}"/>
+                            </table:template>
+                        </table:Column> -->
+
+                          <table:Column width="200px">
+                            <Label text="Model Status" tooltip="Model Status"/>
+                            <table:template>
+
+        <Select
+            
+            selectedKey="{ModelStatus}"
+            width="100%">
+            
+              <core:Item key="Active" text="Active"/>
+             <core:Item key="inactive" text="In Active"/>
+              <core:Item key="instock" text="In Stock"/>
+
+        </Select>
+                            </table:template>
+                        </table:Column>
+
+    <table:Column width="120px">
+                            <Label text="Status" tooltip="Status"/>
+                            <table:template>
+                                <Text text="{Status}"/>
+                            </table:template>
+                        </table:Column>
+                    </table:columns>
+                </table:Table>
+            </content>
+
+            <!-- FOOTER -->
+            <footer>
+                <OverflowToolbar>
+                    <ToolbarSpacer/>
+                    <Button
+                        text="Submit"
+                        type="Emphasized"
+                        press="onSubmit"/>
+                </OverflowToolbar>
+            </footer>
+        </Page>
+</mvc:View>
